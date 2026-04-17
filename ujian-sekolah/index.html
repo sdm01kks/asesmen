@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrasi Asesmen — SD Muhammadiyah 01 Kukusan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:    #1a5c35;
+      --primary-md: #2d7a4f;
+      --primary-lt: #f0faf4;
+      --gold:       #f5a623;
+      --gold-dark:  #c47f00;
+      --text:       #1e2d24;
+      --muted:      #5a6e62;
+      --bg:         #f5f9f6;
+      --white:      #ffffff;
+      --border:     #dde8e2;
+      --radius:     12px;
+      --shadow:     0 4px 20px rgba(26,92,53,.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: clamp(14px, 3.5vw, 16px); scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── TOPNAV ── */
+    .topnav {
+      background: var(--primary);
+      height: 48px;
+      display: flex; align-items: center;
+      padding: 0 20px;
+      gap: 10px;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    }
+    .topnav-brand {
+      display: flex; align-items: center; gap: 8px;
+      color: white; text-decoration: none;
+      font-size: .85rem; font-weight: 700;
+    }
+    .topnav-brand span { opacity: .8; font-weight: 500; }
+    .topnav-spacer { flex: 1; }
+    .topnav-badge {
+      font-size: .7rem; font-weight: 700;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+      color: rgba(255,255,255,.9);
+      padding: 3px 10px; border-radius: 20px;
+      letter-spacing: .04em; text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(150deg, #0a3d22 0%, #1a5c35 55%, #24784a 100%);
+      color: white;
+      padding: 52px 20px 60px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 15% 60%, rgba(245,166,35,.10) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 85% 30%, rgba(255,255,255,.06) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+
+    .school-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
+      color: #a7f3d0;
+      font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      padding: 5px 16px; border-radius: 99px;
+      margin-bottom: 20px;
+      animation: fadeDown .5s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.9rem, 5vw, 2.9rem);
+      line-height: 1.2; font-weight: 700;
+      margin-bottom: 12px;
+      animation: fadeDown .5s .08s ease both;
+    }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+
+    .hero-sub {
+      color: rgba(255,255,255,.78);
+      font-size: clamp(.88rem, 2.2vw, 1rem);
+      line-height: 1.65; max-width: 520px; margin: 0 auto 32px;
+      animation: fadeDown .5s .16s ease both;
+    }
+
+    .hero-pills {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+      animation: fadeDown .5s .24s ease both;
+    }
+    .hero-pill {
+      display: flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.88);
+      font-size: .78rem; font-weight: 600;
+      padding: 6px 14px; border-radius: 99px;
+    }
+
+    /* ── SECTION ── */
+    .section { max-width: 1000px; margin: 0 auto; padding: 48px 20px; }
+
+    .section-eyebrow {
+      font-size: .72rem; font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem; color: var(--text); margin-bottom: 4px;
+    }
+    .section-sub {
+      font-size: .88rem; color: var(--muted); margin-bottom: 28px;
+    }
+
+    /* ── ASESMEN CARDS ── */
+    .asesmen-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .asesmen-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      animation: fadeUp .5s ease both;
+    }
+    .asesmen-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(26,92,53,.14);
+      border-color: var(--primary-md);
+    }
+    .asesmen-card.disabled {
+      pointer-events: none; opacity: .6;
+      filter: grayscale(.4);
+    }
+
+    .card-accent {
+      height: 5px;
+    }
+    .card-body {
+      padding: 22px 22px 18px;
+      border-bottom: 1px solid var(--border);
+      flex: 1;
+    }
+    .card-icon-row {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 14px;
+    }
+    .card-icon {
+      width: 46px; height: 46px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
+    }
+    .card-kode {
+      font-size: .7rem; font-weight: 800; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .card-name {
+      font-size: 1.05rem; font-weight: 700; color: var(--text);
+      line-height: 1.3; margin-top: 1px;
+    }
+    .card-desc {
+      font-size: .82rem; color: var(--muted); line-height: 1.6;
+    }
+
+    .card-footer {
+      padding: 13px 22px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .card-status {
+      font-size: .72rem; font-weight: 700; letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 4px 10px; border-radius: 6px;
+    }
+    .status-ready  { background: #dcfce7; color: #166534; }
+    .status-dev    { background: #fef9c3; color: #854d0e; }
+    .status-soon   { background: #f3f4f6; color: #6b7280; }
+
+    .card-arrow {
+      width: 30px; height: 30px; border-radius: 8px;
+      background: var(--primary-lt); color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, color .2s;
+      font-size: 1rem;
+    }
+    .asesmen-card:hover .card-arrow { background: var(--primary); color: white; }
+
+    /* ── INFO STRIP ── */
+    .info-strip {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0;
+    }
+    .info-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      divide: 1px solid var(--border);
+    }
+    .info-item {
+      padding: 24px 28px;
+      border-right: 1px solid var(--border);
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .info-item:last-child { border-right: none; }
+    .info-icon {
+      font-size: 1.6rem; flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .info-label {
+      font-size: .72rem; font-weight: 800; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 2px;
+    }
+    .info-value {
+      font-size: .9rem; font-weight: 700; color: var(--text);
+      line-height: 1.35;
+    }
+
+    /* ── DOC TYPE LEGEND ── */
+    .doc-legend {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 32px;
+    }
+    .doc-legend h3 {
+      font-size: .82rem; font-weight: 800; letter-spacing: .07em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+    }
+    .doc-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .doc-type {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 12px 14px;
+      background: var(--bg);
+      border-radius: 8px; border: 1px solid var(--border);
+    }
+    .doc-type-icon {
+      width: 32px; height: 32px; border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .doc-type-name {
+      font-size: .82rem; font-weight: 700; color: var(--text); margin-bottom: 2px;
+    }
+    .doc-type-desc {
+      font-size: .74rem; color: var(--muted); line-height: 1.4;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      text-align: center; padding: 28px 16px;
+      font-size: .78rem; color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: var(--white);
+    }
+    .site-footer strong { color: var(--primary); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .info-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .info-item:last-child { border-bottom: none; }
+      .hero { padding: 40px 16px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPNAV -->
+  <nav class="topnav">
+    <a href="#" class="topnav-brand">
+      🏫 <span>SD Muhammadiyah 01 Kukusan</span>
+    </a>
+    <div class="topnav-spacer"></div>
+    <span class="topnav-badge">Admin Asesmen</span>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="school-tag">📋 TP 2025/2026 · Kelas 6</div>
+      <h1>Portal <em>Administrasi</em><br>Asesmen</h1>
+      <p class="hero-sub">
+        Kisi-kisi, kartu soal, soal & kunci jawaban, dan pedoman penskoran
+        untuk seluruh penilaian kelas 6 SD Muhammadiyah 01 Kukusan.
+      </p>
+      <div class="hero-pills">
+        <span class="hero-pill">📝 Kisi-Kisi</span>
+        <span class="hero-pill">🗂️ Kartu Soal</span>
+        <span class="hero-pill">🔑 Soal & Kunci</span>
+        <span class="hero-pill">📊 Pedoman Penskoran</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- INFO STRIP -->
+  <div class="info-strip">
+    <div class="info-inner">
+      <div class="info-item">
+        <div class="info-icon">🏫</div>
+        <div>
+          <div class="info-label">Sekolah</div>
+          <div class="info-value">SD Muhammadiyah 01 Kukusan</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📅</div>
+        <div>
+          <div class="info-label">Tahun Pelajaran</div>
+          <div class="info-value">2025 / 2026</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🎓</div>
+        <div>
+          <div class="info-label">Jenjang</div>
+          <div class="info-value">Kelas 6 (Fase C — Kurikulum Merdeka)</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">👤</div>
+        <div>
+          <div class="info-label">Pengelola</div>
+          <div class="info-value">Arif Azwar Anas, S.Pd.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="section">
+
+    <div class="section-eyebrow">Jenis Asesmen</div>
+    <h2 class="section-title">Pilih Kategori Asesmen</h2>
+    <p class="section-sub">Dokumen administrasi penilaian dikelompokkan berdasarkan jenis asesmen.</p>
+
+    <!-- DOC TYPE LEGEND -->
+    <div class="doc-legend">
+      <h3>Jenis Dokumen yang Tersedia</h3>
+      <div class="doc-types">
+        <div class="doc-type">
+          <div class="doc-type-icon" style="background:#e8f5ed;color:#1a5c35;">📋</div>
+          <div>
+            <div class="doc-type-name">Kisi-Kisi</div>
+            <div class="doc-type-desc">Kompetensi, materi, indikator, level kognitif & bentuk soal</div>
+          </div>
+        </div>
+        <div class="doc-type">
+          <div class="doc-type-icon" style="background:#edf4fb;color:#1a5aaa;">🗂️</div>
+          <div>
+            <div class="doc-type-name">Kartu Soal</div>
+            <div class="doc-type-desc">Detail tiap butir soal beserta kompetensi yang diukur</div>
+          </div>
+        </div>
+        <div class="doc-type">
+          <div class="doc-type-icon" style="background:#fdf6e3;color:#c47f00;">🔑</div>
+          <div>
+            <div class="doc-type-name">Soal & Kunci Jawaban</div>
+            <div class="doc-type-desc">Naskah soal resmi beserta kunci jawaban lengkap</div>
+          </div>
+        </div>
+        <div class="doc-type">
+          <div class="doc-type-icon" style="background:#fdf0f0;color:#b91c1c;">📊</div>
+          <div>
+            <div class="doc-type-name">Pedoman Penskoran</div>
+            <div class="doc-type-desc">Panduan pemberian nilai untuk soal uraian</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASESMEN GRID -->
+    <div class="asesmen-grid">
+
+      <!-- UJIAN SEKOLAH TERTULIS -->
+      <a href="ujian-sekolah/" class="asesmen-card" style="animation-delay:.05s">
+        <div class="card-accent" style="background:linear-gradient(90deg,#1a5c35,#2d7a4f);"></div>
+        <div class="card-body">
+          <div class="card-icon-row">
+            <div class="card-icon" style="background:#e8f5ed;color:#1a5c35;">✍️</div>
+            <div>
+              <div class="card-kode">US · Tertulis</div>
+              <div class="card-name">Ujian Sekolah Tertulis</div>
+            </div>
+          </div>
+          <p class="card-desc">
+            Kisi-kisi, kartu soal, soal & kunci jawaban untuk semua mata pelajaran
+            Ujian Sekolah Tertulis berbasis komputer. Dijadwalkan 4–11 Mei 2026.
+          </p>
+        </div>
+        <div class="card-footer">
+          <span class="card-status status-ready">Tersedia</span>
+          <div class="card-arrow">→</div>
+        </div>
+      </a>
+
+      <!-- UJIAN PRAKTIK -->
+      <div class="asesmen-card disabled" style="animation-delay:.10s">
+        <div class="card-accent" style="background:linear-gradient(90deg,#c47f00,#f5a623);"></div>
+        <div class="card-body">
+          <div class="card-icon-row">
+            <div class="card-icon" style="background:#fdf6e3;color:#c47f00;">🎭</div>
+            <div>
+              <div class="card-kode">US · Praktik</div>
+              <div class="card-name">Ujian Sekolah Praktik</div>
+            </div>
+          </div>
+          <p class="card-desc">
+            Rubrik penilaian dan lembar observasi untuk ujian praktik semua mata pelajaran.
+            Dilaksanakan 6–15 April 2026.
+          </p>
+        </div>
+        <div class="card-footer">
+          <span class="card-status status-soon">Segera</span>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+
+      <!-- UJIAN PROJEK -->
+      <div class="asesmen-card disabled" style="animation-delay:.15s">
+        <div class="card-accent" style="background:linear-gradient(90deg,#1a5aaa,#2d6fcc);"></div>
+        <div class="card-body">
+          <div class="card-icon-row">
+            <div class="card-icon" style="background:#edf4fb;color:#1a5aaa;">🔬</div>
+            <div>
+              <div class="card-kode">US · Projek</div>
+              <div class="card-name">Ujian Sekolah Projek</div>
+            </div>
+          </div>
+          <p class="card-desc">
+            Panduan projek, lembar kerja, dan rubrik penilaian projek akhir kelas 6.
+            Pelaksanaan 22–30 April 2026.
+          </p>
+        </div>
+        <div class="card-footer">
+          <span class="card-status status-soon">Segera</span>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+
+      <!-- UAM ISMUBA -->
+      <div class="asesmen-card disabled" style="animation-delay:.20s">
+        <div class="card-accent" style="background:linear-gradient(90deg,#7c3aed,#9d50ee);"></div>
+        <div class="card-body">
+          <div class="card-icon-row">
+            <div class="card-icon" style="background:#f5f0ff;color:#7c3aed;">🕌</div>
+            <div>
+              <div class="card-kode">UAM · ISMUBA</div>
+              <div class="card-name">Ujian Akhir Madrasah (UAM)</div>
+            </div>
+          </div>
+          <p class="card-desc">
+            Administrasi penilaian UAM ISMUBA — Al-Islam, Kemuhammadiyahan, dan Bahasa Arab.
+            Dijadwalkan 12–13 Mei 2026.
+          </p>
+        </div>
+        <div class="card-footer">
+          <span class="card-status status-soon">Segera</span>
+          <div class="card-arrow">→</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <strong>SD Muhammadiyah 01 Kukusan</strong> · Administrasi Asesmen · TP 2025/2026<br>
+    <span style="margin-top:4px;display:block;">Dikelola oleh Tim Kurikulum · Arif Azwar Anas, S.Pd.</span>
+  </footer>
+
+</body>
+</html>
