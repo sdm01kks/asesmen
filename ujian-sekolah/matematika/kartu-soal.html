@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kartu Soal US Matematika — SDM 01 Kukusan</title>
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$','$'],['\\(','\\)']] }, svg: { fontCache:'global' } };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green:   #1a5c35; --green-md: #2d7a4f; --green-lt: #f0faf4; --green-bdr: #b7dfc8;
+      --gold:    #f5a623; --gold-dk:  #c47f00;
+      --text:    #111;    --muted:    #555;
+      --bg:      #f0f4f1; --white:    #fff; --border: #999;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 14px; }
+    body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* ── TOPNAV ── */
+    .topnav { background: var(--green); height: 48px; display: flex; align-items: center; padding: 0 20px; gap: 8px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .topnav a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .82rem; font-weight: 600; }
+    .topnav a:hover { color: #fff; text-decoration: underline; }
+    .topnav-sep { color: rgba(255,255,255,.3); }
+    .topnav-cur { color: rgba(255,255,255,.6); font-size: .82rem; font-weight: 600; }
+
+    /* ── CONTROLS ── */
+    .controls-bar {
+      max-width: 960px; margin: 20px auto 12px; padding: 0 16px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    }
+    .ctrl-info { font-size: .8rem; color: var(--muted); }
+    .ctrl-info strong { color: var(--green); font-size: 1rem; }
+    .ctrl-nav { display: flex; align-items: center; gap: 10px; }
+    .ctrl-nav button {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--green); color: white; border: none;
+      padding: 9px 18px; border-radius: 8px; cursor: pointer;
+      font-size: .82rem; font-weight: 700; font-family: inherit;
+      transition: background .15s;
+    }
+    .ctrl-nav button:hover { background: var(--green-md); }
+    .ctrl-nav button:disabled { background: #bbb; cursor: not-allowed; }
+    .counter-display {
+      background: var(--white); border: 1.5px solid var(--green-bdr);
+      border-radius: 8px; padding: 6px 16px;
+      font-size: .82rem; font-weight: 700; color: var(--green);
+      white-space: nowrap;
+    }
+
+    /* ── DOTS NAVIGATOR ── */
+    .dots-nav {
+      max-width: 960px; margin: 0 auto 16px; padding: 0 16px;
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .dot {
+      width: 28px; height: 28px; border-radius: 6px;
+      border: 1.5px solid var(--green-bdr);
+      background: var(--white); color: var(--muted);
+      font-size: .7rem; font-weight: 700; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .15s;
+    }
+    .dot:hover { background: var(--green-lt); color: var(--green); border-color: var(--green); }
+    .dot.active { background: var(--green); color: white; border-color: var(--green); }
+    .dot.pgk { border-color: #c47f00; }
+    .dot.pgk.active { background: #c47f00; border-color: #c47f00; }
+    .dot.pgk-cat { border-color: #6d28d9; }
+    .dot.pgk-cat.active { background: #6d28d9; border-color: #6d28d9; }
+    .dot.errata { box-shadow: 0 0 0 2px #f5c842; }
+
+    /* ── KARTU ── */
+    .kartu-wrap { max-width: 960px; margin: 0 auto 28px; padding: 0 16px; }
+
+    .kartu {
+      background: var(--white);
+      border: 2px solid #333;
+      border-radius: 0;
+      overflow: hidden;
+    }
+
+    /* Title bar */
+    .kartu-title {
+      background: #d8d8d8;
+      text-align: center;
+      font-size: .92rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 7px 12px;
+      border-bottom: 1.5px solid #333;
+    }
+    .kartu-title .errata-flag {
+      display: inline-block; margin-left: 10px;
+      background: #f5c842; color: #7a5000;
+      font-size: .65rem; font-weight: 800; padding: 2px 7px; border-radius: 3px;
+      letter-spacing: .04em; text-transform: none;
+    }
+
+    /* School info */
+    .sekolah-info {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-bottom: 1.5px solid #333;
+      padding: 8px 14px;
+      font-size: .8rem;
+      gap: 2px 24px;
+    }
+    .sekolah-row { display: flex; gap: 4px; }
+    .sekolah-lbl { color: #333; min-width: 100px; }
+    .sekolah-val { font-weight: 600; }
+
+    /* Main body */
+    .kartu-body {
+      display: grid;
+      grid-template-columns: 195px 78px 1fr;
+      border-bottom: 1.5px solid #333;
+      min-height: 260px;
+    }
+
+    /* Left column */
+    .left-col {
+      border-right: 1.5px solid #333;
+      display: flex; flex-direction: column;
+    }
+    .left-sec {
+      padding: 0;
+      border-bottom: 1.5px solid #333;
+      display: flex; flex-direction: column;
+    }
+    .left-sec:last-child { border-bottom: none; flex: 1; }
+    .left-sec-label {
+      font-size: .68rem; font-weight: 800; letter-spacing: .06em;
+      text-transform: uppercase; background: #e8e8e8; color: #333;
+      padding: 4px 8px; border-bottom: 1px solid #bbb;
+    }
+    .left-sec-body { font-size: .77rem; padding: 8px 9px; line-height: 1.55; color: #222; flex: 1; }
+
+    /* Mid column */
+    .mid-col {
+      border-right: 1.5px solid #333;
+      display: flex; flex-direction: column; align-items: stretch;
+    }
+    .mid-sec {
+      border-bottom: 1.5px solid #333;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 6px 4px;
+    }
+    .mid-sec:last-child { border-bottom: none; flex: 1; }
+    .mid-lbl {
+      font-size: .62rem; font-weight: 800; letter-spacing: .06em;
+      text-transform: uppercase; color: #555; margin-bottom: 4px; text-align: center;
+    }
+    .nomor-val {
+      font-size: 1.7rem; font-weight: 800; color: var(--green); line-height: 1; text-align: center;
+    }
+    .kunci-val {
+      font-size: 1.5rem; font-weight: 800; color: var(--green); text-align: center; line-height: 1.2;
+    }
+    .kunci-multi {
+      font-size: .75rem; font-weight: 800; color: var(--green); text-align: center; line-height: 1.7;
+    }
+    .kunci-cat-table { font-size: .67rem; color: var(--green); font-weight: 700; text-align: left; line-height: 1.8; padding: 0 2px; }
+    .kunci-cat-row { display: flex; gap: 4px; align-items: center; }
+    .kunci-cat-num { min-width: 14px; color: #666; font-weight: 600; }
+
+    /* Right column */
+    .right-col { display: flex; flex-direction: column; }
+    .soal-label {
+      font-size: .68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      background: #e8e8e8; color: #333; padding: 4px 12px; border-bottom: 1px solid #bbb;
+    }
+    .soal-body { padding: 10px 14px; font-size: .83rem; line-height: 1.6; flex: 1; }
+
+    /* Stimulus inside soal */
+    .stimulus {
+      background: #f8fdf9; border: 1px solid var(--green-bdr);
+      border-left: 3.5px solid var(--green);
+      border-radius: 0 4px 4px 0; padding: 8px 11px; margin-bottom: 10px;
+    }
+    .stim-head {
+      font-size: .67rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 5px; padding-bottom: 4px; border-bottom: 1px dashed var(--green-bdr);
+    }
+    .stim-content { font-size: .8rem; line-height: 1.6; }
+    .stim-content ul { list-style: none; padding-left: 4px; }
+    .stim-content ul li::before { content: '• '; color: var(--green); font-weight: 700; }
+
+    /* Image placeholder */
+    .img-ph {
+      background: #f0f8f4; border: 1.5px dashed var(--green-bdr);
+      border-radius: 4px; padding: 10px 12px; text-align: center; margin: 6px 0;
+    }
+    .img-ph-icon { font-size: 1.3rem; margin-bottom: 3px; }
+    .img-ph-title { font-size: .72rem; font-weight: 700; color: var(--green); margin-bottom: 2px; }
+    .img-ph-desc { font-size: .68rem; color: var(--muted); }
+
+    /* Question */
+    .q-text { font-size: .85rem; font-weight: 600; color: #111; margin-bottom: 9px; line-height: 1.6; }
+
+    /* Hint */
+    .hint { font-size: .72rem; background: #fdf6e3; border-left: 3px solid var(--gold); padding: 5px 9px; margin-bottom: 8px; color: var(--gold-dk); font-weight: 600; border-radius: 0 4px 4px 0; }
+    .hint-cat { font-size: .72rem; background: #edf4fb; border-left: 3px solid #1a5aaa; padding: 5px 9px; margin-bottom: 8px; color: #1a5aaa; font-weight: 600; border-radius: 0 4px 4px 0; }
+
+    /* Options */
+    .opt-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .opt-item { display: flex; gap: 8px; align-items: flex-start; padding: 5px 8px; border: 1px solid #e0e0e0; border-radius: 4px; font-size: .8rem; line-height: 1.5; }
+    .opt-letter { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #ccc; display: flex; align-items: center; justify-content: center; font-size: .67rem; font-weight: 800; color: #777; flex-shrink: 0; }
+    .pgk-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .pgk-item { display: flex; gap: 8px; align-items: flex-start; padding: 5px 8px; border: 1px solid #e0e0e0; border-radius: 4px; font-size: .8rem; line-height: 1.5; }
+    .pgk-check { width: 18px; height: 18px; border-radius: 3px; border: 1.5px solid #ccc; flex-shrink: 0; margin-top: 1px; }
+
+    /* Matrix table */
+    .matrix-wrap { overflow-x: auto; margin-top: 4px; }
+    .mtx { width: 100%; border-collapse: collapse; font-size: .76rem; }
+    .mtx th { background: var(--green-lt); color: var(--green); font-size: .68rem; font-weight: 800; padding: 5px 8px; border: 1px solid #ccc; text-align: center; }
+    .mtx th:first-child { text-align: left; }
+    .mtx td { padding: 5px 8px; border: 1px solid #ddd; text-align: center; }
+    .mtx td:first-child { text-align: left; font-weight: 500; }
+    .radio-circle { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid #aaa; display: inline-block; }
+
+    /* Stats bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: auto auto auto auto auto 1fr auto;
+      border-top: 1.5px solid #333;
+      font-size: .72rem;
+    }
+    .stat-cell {
+      padding: 0; border-right: 1px solid #555;
+      display: flex; flex-direction: column;
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-top {
+      font-size: .6rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+      background: #e0e0e0; padding: 3px 8px; border-bottom: 1px solid #bbb; text-align: center; color: #444;
+    }
+    .stat-val { padding: 4px 8px; font-weight: 700; text-align: center; color: #222; }
+    .stat-val.lg { font-size: .85rem; font-weight: 800; color: var(--green); }
+
+    /* Proporsi sub-grid */
+    .stat-proporsi { }
+    .stat-proporsi .stat-top { }
+    .proporsi-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .prop-sub { border-right: 1px solid #ddd; display: flex; flex-direction: column; align-items: center; }
+    .prop-sub:last-child { border-right: none; }
+    .prop-letter { font-size: .6rem; font-weight: 800; background: #f0f0f0; padding: 2px 0; width: 100%; text-align: center; border-bottom: 1px solid #ddd; }
+    .prop-val { font-size: .72rem; font-weight: 700; padding: 3px 6px; color: #555; }
+
+    /* Elemen badge */
+    .el-badge { display: inline-block; font-size: .62rem; font-weight: 800; padding: 2px 6px; border-radius: 3px; margin-bottom: 4px; letter-spacing: .04em; text-transform: uppercase; }
+    .el-bil { background: #e3f0ff; color: #1a5aaa; }
+    .el-alj { background: #f0e3ff; color: #6d28d9; }
+    .el-peng { background: #dcfce7; color: #166534; }
+    .el-geo { background: #fef9c3; color: #854d0e; }
+    .el-data { background: #fee2e2; color: #991b1b; }
+
+    /* FOOTER */
+    .site-footer { text-align: center; padding: 20px; font-size: .75rem; color: var(--muted); border-top: 1px solid #ddd; background: var(--white); margin-top: 8px; }
+
+    @media (max-width: 680px) {
+      .kartu-body { grid-template-columns: 150px 60px 1fr; }
+      .sekolah-info { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: repeat(4, 1fr); font-size: .65rem; }
+    }
+
+    @media print {
+      .topnav, .controls-bar, .dots-nav, .site-footer { display: none; }
+      .kartu-wrap { margin: 0; padding: 0; max-width: 100%; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../../">← Beranda</a>
+  <span class="topnav-sep">/</span>
+  <a href="../">Ujian Sekolah</a>
+  <span class="topnav-sep">/</span>
+  <a href="./">Matematika</a>
+  <span class="topnav-sep">/</span>
+  <span class="topnav-cur">Kartu Soal</span>
+</nav>
+
+<!-- CONTROLS -->
+<div class="controls-bar">
+  <div class="ctrl-info">
+    Kartu Soal <strong id="curr-num">1</strong> dari 35 &nbsp;·&nbsp;
+    <span id="curr-type-info" style="font-size:.78rem;"></span>
+    <span id="curr-elemen-info" style="font-size:.78rem;margin-left:4px;"></span>
+  </div>
+  <div class="ctrl-nav">
+    <button id="btn-prev" onclick="nav(-1)" disabled>← Sebelumnya</button>
+    <div class="counter-display" id="counter-display">1 / 35</div>
+    <button id="btn-next" onclick="nav(1)">Berikutnya →</button>
+  </div>
+</div>
+
+<!-- DOTS NAVIGATOR -->
+<div class="dots-nav" id="dots-nav"></div>
+
+<!-- CARD CONTAINER -->
+<div class="kartu-wrap">
+  <div class="kartu" id="kartu-el"></div>
+</div>
+
+<!-- BOTTOM CONTROLS -->
+<div class="controls-bar" style="margin-top:0;margin-bottom:20px;">
+  <div></div>
+  <div class="ctrl-nav">
+    <button id="btn-prev2" onclick="nav(-1)" disabled>← Sebelumnya</button>
+    <div class="counter-display" id="counter-display2">1 / 35</div>
+    <button id="btn-next2" onclick="nav(1)">Berikutnya →</button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <strong>SD Muhammadiyah 01 Kukusan</strong> · Kartu Soal Ujian Sekolah Matematika · TP 2025/2026<br>
+  Penyusun: Arif Azwar Anas, S.Pd. · Tanggal Ujian: 8 Mei 2026
+</footer>
+
+<script>
+// ════════════════════════════════════
+//  DATA
+// ════════════════════════════════════
+const CP = {
+  bil1: 'Menunjukkan pemahaman dan intuisi bilangan (number sense) pada bilangan cacah sampai 1.000.000; membaca, menulis, menentukan nilai tempat, membandingkan, mengurutkan, melakukan komposisi dan dekomposisi bilangan; menyelesaikan masalah yang berkaitan dengan uang; melakukan operasi penjumlahan, pengurangan, perkalian, dan pembagian bilangan cacah sampai 100.000; serta menyelesaikan masalah yang berkaitan dengan KPK dan FPB.',
+  bil2: 'Membandingkan dan mengurutkan berbagai pecahan termasuk pecahan campuran, melakukan operasi penjumlahan dan pengurangan pecahan, serta melakukan operasi perkalian dan pembagian pecahan dengan bilangan asli; mengubah pecahan menjadi berbagai bentuk pecahan lain, serta membandingkan dan mengurutkan bilangan desimal (satu angka di belakang koma).',
+  alj:  'Menemukan nilai yang belum diketahui dalam kalimat matematika yang melibatkan penjumlahan, pengurangan, perkalian, dan pembagian pada bilangan cacah sampai 1000 menggunakan sifat-sifat bilangan dan operasinya. Mengidentifikasi, meniru, dan mengembangkan pola bilangan membesar dan mengecil yang melibatkan perkalian dan pembagian; bernalar secara proporsional untuk menyelesaikan masalah sehari-hari dengan rasio satuan; menggunakan operasi perkalian dan pembagian dalam menyelesaikan masalah sehari-hari yang terkait dengan proporsi.',
+  peng: 'Menentukan keliling dan luas berbagai bentuk bangun datar (segitiga, segiempat, dan segi banyak) serta gabungannya; menghitung durasi waktu dan mengukur besar sudut pada bangun datar atau yang dibentuk dari dua garis berpotongan.',
+  geo:  'Mengkonstruksi dan mengurai bangun ruang (kubus, balok, dan gabungannya) dan mengenali visualisasi spasial (bagian depan, atas, dan samping); membandingkan karakteristik antar bangun datar dan antar bangun ruang; serta menentukan lokasi pada peta yang menggunakan sistem berpetak.',
+  data: 'Mengurutkan, membandingkan, menyajikan, dan menganalisis data banyak benda dan data hasil pengukuran dalam bentuk gambar, piktogram, diagram batang, dan tabel frekuensi untuk mendapatkan informasi; menentukan kejadian dengan kemungkinan yang lebih besar atau lebih kecil dalam suatu percobaan acak.'
+};
+
+// imgPlaceholder helper
+function imgPH(icon, title, desc) {
+  return `<div class="img-ph"><div class="img-ph-icon">${icon}</div><div class="img-ph-title">${title}</div><div class="img-ph-desc">${desc}</div></div>`;
+}
+
+const SOAL = [
+  // ── 1 ──
+  { id:1, type:'pg', el:'Bilangan', lv:'L1', errata:false,
+    cp: CP.bil1, materi:'Nilai Tempat & Komposisi',
+    indikator:'Disajikan bilangan cacah besar (jumlah penduduk kota). Siswa dapat <strong>menentukan</strong> nilai tempat dari angka tertentu dalam bilangan tersebut.',
+    kunci:'A',
+    soal:`<div class="stimulus"><div class="stim-head">Data Penduduk Kota</div><div class="stim-content">Jumlah penduduk sebuah kota adalah <strong>485.729</strong> jiwa.</div></div>
+<p class="q-text">Angka <strong>8</strong> pada bilangan tersebut menempati nilai tempat …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Puluhan ribu</li><li class="opt-item"><span class="opt-letter">B</span>Ratusan ribu</li><li class="opt-item"><span class="opt-letter">C</span>Puluhan</li><li class="opt-item"><span class="opt-letter">D</span>Ratusan</li></ol>`
+  },
+  // ── 2 ──
+  { id:2, type:'pg', el:'Bilangan', lv:'L2', errata:true,
+    cp: CP.bil1, materi:'Operasi Hitung Uang',
+    indikator:'Disajikan daftar harga barang di koperasi sekolah. Siswa dapat <strong>menghitung</strong> total biaya dan kembalian berdasarkan jumlah barang yang dibeli.',
+    kunci:'B',
+    soal:`<div class="stimulus"><div class="stim-head">Belanja di Koperasi</div><div class="stim-content">Daftar harga barang:<ul><li>Buku tulis: Rp 4.500</li><li>Pensil: Rp 2.000</li><li>Penghapus: Rp 1.500 <em style="color:#c47f00;font-size:.8em;">(⚠ errata: seharusnya Rp 2.000)</em></li></ul>Rina membeli 3 buku tulis, 2 pensil, dan 1 penghapus, membayar Rp 25.000.</div></div>
+<p class="q-text">Berapa kembalian yang diterima Rina?</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Rp 5.000</li><li class="opt-item"><span class="opt-letter">B</span>Rp 5.500</li><li class="opt-item"><span class="opt-letter">C</span>Rp 6.000</li><li class="opt-item"><span class="opt-letter">D</span>Rp 6.500</li></ol>`
+  },
+  // ── 3 ──
+  { id:3, type:'pg', el:'Bilangan', lv:'L2', errata:false,
+    cp: CP.bil1, materi:'KPK & FPB',
+    indikator:'Disajikan kasus jadwal dua kegiatan berulang (jadwal les). Siswa dapat <strong>menentukan</strong> kapan kedua kegiatan bertemu lagi menggunakan KPK.',
+    kunci:'B',
+    soal:`<div class="stimulus"><div class="stim-head">Jadwal Kegiatan</div><div class="stim-content">Andi mengikuti les matematika setiap <strong>4 hari</strong> sekali. Budi mengikuti les matematika setiap <strong>6 hari</strong> sekali. Mereka bertemu pertama kali pada tanggal 10 Januari 2026.</div></div>
+<p class="q-text">Kapan mereka akan bertemu lagi untuk <strong>kedua kalinya</strong>?</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Tanggal 20 Januari</li><li class="opt-item"><span class="opt-letter">B</span>Tanggal 22 Januari</li><li class="opt-item"><span class="opt-letter">C</span>Tanggal 24 Januari</li><li class="opt-item"><span class="opt-letter">D</span>Tanggal 26 Januari</li></ol>`
+  },
+  // ── 4 ──
+  { id:4, type:'pg', el:'Bilangan', lv:'L1', errata:false,
+    cp: CP.bil2, materi:'Pecahan Senilai',
+    indikator:'Disajikan sebuah pecahan. Siswa dapat <strong>memilih</strong> pecahan yang nilainya sama dari opsi yang diberikan.',
+    kunci:'A',
+    soal:`<div class="stimulus"><div class="stim-head">Pecahan Senilai</div><div class="stim-content">Diberikan pecahan $\\dfrac{3}{4}$.</div></div>
+<p class="q-text">Pecahan yang senilai dengan $\\dfrac{3}{4}$ adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>$\\dfrac{6}{8}$</li><li class="opt-item"><span class="opt-letter">B</span>$\\dfrac{5}{8}$</li><li class="opt-item"><span class="opt-letter">C</span>$\\dfrac{9}{16}$</li><li class="opt-item"><span class="opt-letter">D</span>$\\dfrac{7}{10}$</li></ol>`
+  },
+  // ── 5 ──
+  { id:5, type:'pg', el:'Bilangan', lv:'L2', errata:false,
+    cp: CP.bil2, materi:'Operasi Pecahan',
+    indikator:'Disajikan konteks pembagian bahan makanan. Siswa dapat <strong>menghitung</strong> hasil pembagian pecahan campuran dengan bilangan asli.',
+    kunci:'A',
+    soal:`<div class="stimulus"><div class="stim-head">Pembagian Bahan Makanan</div><div class="stim-content">Ibu memiliki $2\\frac{1}{2}$ kg tepung. Tepung tersebut akan dibagi rata kepada <strong>5 orang anak</strong> untuk membuat kue.</div></div>
+<p class="q-text">Berapa kg tepung yang diterima setiap anak?</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>$\\dfrac{1}{2}$ kg</li><li class="opt-item"><span class="opt-letter">B</span>$\\dfrac{1}{4}$ kg</li><li class="opt-item"><span class="opt-letter">C</span>$\\dfrac{3}{4}$ kg</li><li class="opt-item"><span class="opt-letter">D</span>1 kg</li></ol>`
+  },
+  // ── 6 ──
+  { id:6, type:'pg', el:'Bilangan', lv:'L3', errata:false,
+    cp: CP.bil2, materi:'Desimal',
+    indikator:'Disajikan data hasil pengukuran panjang benda (desimal satu angka). Siswa dapat <strong>mengurutkan</strong> data dari yang terpendek ke terpanjang.',
+    kunci:'A',
+    soal:`<div class="stimulus"><div class="stim-head">Pengukuran Panjang</div><div class="stim-content">Hasil pengukuran panjang 4 benda:<ul><li>Pensil: 15,5 cm</li><li>Penggaris: 30,2 cm</li><li>Buku: 21,8 cm</li><li>Kotak: 18,3 cm</li></ul></div></div>
+<p class="q-text">Urutkan benda dari yang <strong>terpendek ke terpanjang</strong>!</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Pensil, Kotak, Buku, Penggaris</li><li class="opt-item"><span class="opt-letter">B</span>Pensil, Buku, Kotak, Penggaris</li><li class="opt-item"><span class="opt-letter">C</span>Kotak, Pensil, Buku, Penggaris</li><li class="opt-item"><span class="opt-letter">D</span>Pensil, Kotak, Penggaris, Buku</li></ol>`
+  },
+  // ── 7 ──
+  { id:7, type:'pg', el:'Bilangan', lv:'L2', errata:false,
+    cp: CP.bil1, materi:'Estimasi Bilangan',
+    indikator:'Disajikan kasus belanja dengan harga asli. Siswa dapat <strong>menentukan</strong> taksiran terbaik (pembulatan ke ribuan terdekat) untuk memastikan kecukupan uang.',
+    kunci:'B',
+    soal:`<div class="stimulus"><div class="stim-head">Estimasi Belanja</div><div class="stim-content">Ayah berbelanja dengan membawa uang Rp 100.000. Harga barang:<ul><li>Beras: Rp 48.500</li><li>Minyak: Rp 23.800</li><li>Gula: Rp 15.200</li></ul></div></div>
+<p class="q-text">Dengan <strong>pembulatan ke ribuan terdekat</strong>, apakah uang Ayah cukup?</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Cukup, sisa sekitar Rp 10.000</li><li class="opt-item"><span class="opt-letter">B</span>Cukup, sisa sekitar Rp 12.000</li><li class="opt-item"><span class="opt-letter">C</span>Tidak cukup, kurang sekitar Rp 2.000</li><li class="opt-item"><span class="opt-letter">D</span>Tidak cukup, kurang sekitar Rp 5.000</li></ol>`
+  },
+  // ── 8 ──
+  { id:8, type:'pgk', el:'Bilangan', lv:'L2', errata:false,
+    cp: CP.bil2, materi:'Konversi Pecahan–Desimal',
+    indikator:'Disajikan beberapa pecahan biasa. Siswa dapat <strong>memilih lebih dari satu</strong> pecahan yang jika diubah ke desimal hasilnya lebih dari 0,5.',
+    kunci:['A','B','C','D'],
+    soal:`<div class="stimulus"><div class="stim-head">Konversi Pecahan</div><div class="stim-content">Diberikan pecahan-pecahan: $\\dfrac{2}{3}$, $\\dfrac{3}{5}$, $\\dfrac{5}{8}$, $\\dfrac{7}{10}$</div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Pilih pecahan yang jika diubah menjadi desimal hasilnya <strong>lebih dari 0,5</strong>!</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. $\\dfrac{2}{3}$</li><li class="pgk-item"><span class="pgk-check"></span>B. $\\dfrac{3}{5}$</li><li class="pgk-item"><span class="pgk-check"></span>C. $\\dfrac{5}{8}$</li><li class="pgk-item"><span class="pgk-check"></span>D. $\\dfrac{7}{10}$</li></ul>`
+  },
+  // ── 9 ──
+  { id:9, type:'pgk', el:'Bilangan', lv:'L1', errata:false,
+    cp: CP.bil1, materi:'Faktor Persekutuan',
+    indikator:'Disajikan dua bilangan cacah. Siswa dapat <strong>memilih lebih dari satu</strong> bilangan yang merupakan faktor persekutuan dari keduanya.',
+    kunci:['A','B','C','D'],
+    soal:`<div class="stimulus"><div class="stim-head">Faktor Persekutuan</div><div class="stim-content">Diberikan dua bilangan: <strong>24</strong> dan <strong>36</strong>.</div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Pilih bilangan yang merupakan <strong>faktor persekutuan</strong> dari 24 dan 36!</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. 2</li><li class="pgk-item"><span class="pgk-check"></span>B. 3</li><li class="pgk-item"><span class="pgk-check"></span>C. 4</li><li class="pgk-item"><span class="pgk-check"></span>D. 6</li></ul>`
+  },
+  // ── 10 ──
+  { id:10, type:'pgk', el:'Bilangan', lv:'L3', errata:true,
+    cp: CP.bil2, materi:'Pecahan Campuran',
+    indikator:'Disajikan dua pecahan campuran. Siswa dapat <strong>memilih lebih dari satu</strong> langkah penyelesaian yang benar untuk menjumlahkan kedua pecahan.',
+    kunci:['A','B','C'],
+    soal:`<div class="stimulus"><div class="stim-head">Penjumlahan Pecahan Campuran</div><div class="stim-content">Diberikan operasi: $2\\dfrac{1}{3} + 1\\dfrac{2}{5}$</div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Pilih langkah penyelesaian yang benar! <em style="color:#c47f00;font-size:.8em;">(⚠ opsi C mengandung errata — lihat kisi-kisi)</em></p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Ubah ke pecahan biasa: $\\dfrac{7}{3} + \\dfrac{7}{5}$</li><li class="pgk-item"><span class="pgk-check"></span>B. Samakan penyebut menjadi 15</li><li class="pgk-item"><span class="pgk-check"></span>C. Hasil akhir: $3\\dfrac{14}{15}$ <em style="color:#c47f00;">(seharusnya $3\\dfrac{11}{15}$)</em></li><li class="pgk-item"><span class="pgk-check"></span>D. Hasil akhir: $4\\dfrac{1}{15}$</li></ul>`
+  },
+  // ── 11 ──
+  { id:11, type:'pg', el:'Aljabar', lv:'L1', errata:false,
+    cp: CP.alj, materi:'Nilai Belum Diketahui',
+    indikator:'Disajikan kalimat matematika terbuka (15 × n = 150). Siswa dapat <strong>menentukan</strong> nilai n yang tepat menggunakan sifat operasi hitung.',
+    kunci:'B',
+    soal:`<div class="stimulus"><div class="stim-head">Nilai Belum Diketahui</div><div class="stim-content">Diberikan kalimat matematika: $15 \\times n = 150$</div></div>
+<p class="q-text">Berapa nilai $n$ yang tepat?</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>5</li><li class="opt-item"><span class="opt-letter">B</span>10</li><li class="opt-item"><span class="opt-letter">C</span>15</li><li class="opt-item"><span class="opt-letter">D</span>20</li></ol>`
+  },
+  // ── 12 ──
+  { id:12, type:'pg', el:'Aljabar', lv:'L3', errata:false,
+    cp: CP.alj, materi:'Pola Bilangan',
+    indikator:'Disajikan urutan bilangan dengan pola perkalian (2, 4, 8, 16, ...). Siswa dapat <strong>menentukan</strong> dua bilangan selanjutnya dalam pola tersebut.',
+    kunci:'C',
+    soal:`<div class="stimulus"><div class="stim-head">Pola Bilangan</div><div class="stim-content">Diberikan urutan bilangan: <strong>2, 4, 8, 16, …</strong></div></div>
+<p class="q-text">Dua bilangan selanjutnya dalam pola tersebut adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>24, 32</li><li class="opt-item"><span class="opt-letter">B</span>32, 48</li><li class="opt-item"><span class="opt-letter">C</span>32, 64</li><li class="opt-item"><span class="opt-letter">D</span>20, 24</li></ol>`
+  },
+  // ── 13 ──
+  { id:13, type:'pg', el:'Aljabar', lv:'L2', errata:false,
+    cp: CP.alj, materi:'Rasio Satuan',
+    indikator:'Disajikan harga beberapa buah sejenis. Siswa dapat <strong>menghitung</strong> harga untuk jumlah barang tertentu menggunakan rasio satuan.',
+    kunci:'C',
+    soal:`<div class="stimulus"><div class="stim-head">Rasio Satuan</div><div class="stim-content">Harga <strong>3</strong> buah apel adalah Rp <strong>18.000</strong>.</div></div>
+<p class="q-text">Berapa harga untuk <strong>7</strong> buah apel?</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Rp 35.000</li><li class="opt-item"><span class="opt-letter">B</span>Rp 38.000</li><li class="opt-item"><span class="opt-letter">C</span>Rp 42.000</li><li class="opt-item"><span class="opt-letter">D</span>Rp 45.000</li></ol>`
+  },
+  // ── 14 ──
+  { id:14, type:'pg', el:'Aljabar', lv:'L2', errata:false,
+    cp: CP.alj, materi:'Proporsi',
+    indikator:'Disajikan resep makanan untuk 4 orang. Siswa dapat <strong>menentukan</strong> bahan yang dibutuhkan jika resep dibuat untuk 10 orang.',
+    kunci:'C',
+    soal:`<div class="stimulus"><div class="stim-head">Resep Masakan</div><div class="stim-content">Resep kue untuk <strong>4 orang</strong> membutuhkan <strong>200 gram</strong> tepung.</div></div>
+<p class="q-text">Jika ingin membuat kue untuk <strong>10 orang</strong>, berapa gram tepung yang dibutuhkan?</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>400 gram</li><li class="opt-item"><span class="opt-letter">B</span>450 gram</li><li class="opt-item"><span class="opt-letter">C</span>500 gram</li><li class="opt-item"><span class="opt-letter">D</span>550 gram</li></ol>`
+  },
+  // ── 15 ──
+  { id:15, type:'pgk', el:'Aljabar', lv:'L3', errata:false,
+    cp: CP.alj, materi:'Sifat Operasi Hitung',
+    indikator:'Disajikan beberapa pasangan kalimat matematika. Siswa dapat <strong>memilih lebih dari satu</strong> pasangan yang memiliki hasil sama berdasarkan sifat operasi hitung.',
+    kunci:['A','B'],
+    soal:`<div class="stimulus"><div class="stim-head">Sifat Operasi Hitung</div><div class="stim-content">Perhatikan pasangan kalimat matematika berikut.</div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Pilih pasangan yang memiliki <strong>hasil sama</strong>!</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. $5 \\times (3+2)$ dan $(5\\times3)+(5\\times2)$</li><li class="pgk-item"><span class="pgk-check"></span>B. $8+(4+6)$ dan $(8+4)+6$</li><li class="pgk-item"><span class="pgk-check"></span>C. $12-5$ dan $5-12$</li><li class="pgk-item"><span class="pgk-check"></span>D. $10\\div2$ dan $2\\div10$</li></ul>`
+  },
+  // ── 16 ──
+  { id:16, type:'pgk', el:'Aljabar', lv:'L3', errata:false,
+    cp: CP.alj, materi:'Pola Gambar & Bilangan',
+    indikator:'Disajikan pola gambar yang bertambah teratur. Siswa dapat <strong>memilih lebih dari satu</strong> pernyataan yang benar tentang hubungan urutan gambar dan jumlah objek.',
+    kunci:['A','B','C'],
+    soal:`<div class="stimulus"><div class="stim-head">Pola Gambar</div>${imgPH('🔷','Pola Gambar Bertambah 3 Setiap Urutan','Gambar 1: 3 objek · Gambar 2: 6 objek · Gambar 3: 9 objek · ...')}<div class="stim-content">Pola gambar bertambah secara teratur seperti yang terlihat di atas.</div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Pilih pernyataan yang <strong>benar</strong> tentang pola gambar tersebut!</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Pola bertambah 3 setiap gambar</li><li class="pgk-item"><span class="pgk-check"></span>B. Gambar 5 memiliki 15 objek</li><li class="pgk-item"><span class="pgk-check"></span>C. Rumus pola: $3 \\times n$</li><li class="pgk-item"><span class="pgk-check"></span>D. Gambar 10 memiliki 25 objek</li></ul>`
+  },
+  // ── 17 ──
+  { id:17, type:'pgk-cat', el:'Bilangan', lv:'L1', errata:false,
+    cp: CP.bil1, materi:'Klasifikasi Bilangan Prima',
+    indikator:'Disajikan 5 bilangan cacah berbeda. Siswa dapat <strong>mengklasifikasikan</strong> setiap bilangan sebagai Bilangan Prima atau Bukan Prima.',
+    kunci:{rows:['2','9','11','15','17'], cols:['Prima','Bukan Prima'], ans:['Prima','Bukan Prima','Prima','Bukan Prima','Prima']},
+    soal:`<div class="stimulus"><div class="stim-head">Klasifikasi Bilangan</div><div class="stim-content">Bilangan: <strong>2, 9, 11, 15, 17</strong></div></div>
+<p class="hint-cat">⊞ Klasifikasikan setiap bilangan ke kolom yang tepat.</p>
+<p class="q-text">Tentukan apakah setiap bilangan termasuk <strong>Prima</strong> atau <strong>Bukan Prima</strong>!</p>
+<div class="matrix-wrap"><table class="mtx"><thead><tr><th>Bilangan</th><th>Prima</th><th>Bukan Prima</th></tr></thead><tbody><tr><td>2</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>9</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>11</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>15</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>17</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr></tbody></table></div>`
+  },
+  // ── 18 ──
+  { id:18, type:'pgk-cat', el:'Aljabar', lv:'L3', errata:false,
+    cp: CP.alj, materi:'Klasifikasi Operasi Hitung',
+    indikator:'Disajikan 3 cerita masalah sehari-hari. Siswa dapat <strong>mengklasifikasikan</strong> setiap masalah diselesaikan dengan Perkalian/Pembagian atau Penjumlahan/Pengurangan.',
+    kunci:{rows:['Membagi 24 permen kepada 6 anak','Menjumlahkan tabungan 3 bulan','Harga 5 buku dengan harga satuan diketahui'], cols:['Perk./Pemb.','Penj./Peng.'], ans:['Perk./Pemb.','Penj./Peng.','Perk./Pemb.']},
+    soal:`<div class="stimulus"><div class="stim-head">Jenis Operasi Hitung</div><div class="stim-content">Tiga cerita masalah matematika sehari-hari.</div></div>
+<p class="hint-cat">⊞ Klasifikasikan setiap masalah ke kolom yang tepat.</p>
+<p class="q-text">Tentukan operasi yang digunakan untuk menyelesaikan setiap masalah!</p>
+<div class="matrix-wrap"><table class="mtx"><thead><tr><th>Cerita Masalah</th><th>Perkalian / Pembagian</th><th>Penjumlahan / Pengurangan</th></tr></thead><tbody><tr><td>Membagi 24 permen kepada 6 anak</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Menjumlahkan tabungan 3 bulan</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Menghitung harga 5 buku (harga satuan diketahui)</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr></tbody></table></div>`
+  },
+  // ── 19 ──
+  { id:19, type:'pg', el:'Pengukuran', lv:'L2', errata:false,
+    cp: CP.peng, materi:'Luas Gabungan',
+    indikator:'Disajikan gambar denah lahan (persegi panjang 10m×8m + segitiga alas 10m tinggi 6m). Siswa dapat <strong>menghitung</strong> luas total lahan.',
+    kunci:'B',
+    soal:`<div class="stimulus"><div class="stim-head">Luas Lahan Sekolah</div>${imgPH('📐','Denah Lahan — Persegi Panjang + Segitiga','Persegi panjang: 10m × 8m · Segitiga: alas 10m, tinggi 6m')}<div class="stim-content">Denah lahan terdiri dari persegi panjang (10m×8m) dan segitiga (alas 10m, tinggi 6m).</div></div>
+<p class="q-text">Hitung <strong>luas total</strong> lahan tersebut!</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>100 m²</li><li class="opt-item"><span class="opt-letter">B</span>110 m²</li><li class="opt-item"><span class="opt-letter">C</span>120 m²</li><li class="opt-item"><span class="opt-letter">D</span>130 m²</li></ol>`
+  },
+  // ── 20 ──
+  { id:20, type:'pg', el:'Pengukuran', lv:'L2', errata:false,
+    cp: CP.peng, materi:'Keliling',
+    indikator:'Disajikan taman berbentuk persegi panjang (15m × 10m). Siswa dapat <strong>menghitung</strong> panjang pagar yang dibutuhkan untuk mengelilingi taman.',
+    kunci:'C',
+    soal:`<div class="stimulus"><div class="stim-head">Keliling Taman</div><div class="stim-content">Taman berbentuk <strong>persegi panjang</strong> dengan panjang <strong>15 m</strong> dan lebar <strong>10 m</strong>.</div></div>
+<p class="q-text">Berapa panjang pagar yang dibutuhkan untuk mengelilingi taman?</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>40 m</li><li class="opt-item"><span class="opt-letter">B</span>45 m</li><li class="opt-item"><span class="opt-letter">C</span>50 m</li><li class="opt-item"><span class="opt-letter">D</span>55 m</li></ol>`
+  },
+  // ── 21 ──
+  { id:21, type:'pg', el:'Pengukuran', lv:'L1', errata:false,
+    cp: CP.peng, materi:'Sudut',
+    indikator:'Disajikan gambar jam dinding menunjukkan pukul 03.00. Siswa dapat <strong>menentukan</strong> besar sudut terkecil antara jarum jam dan jarum menit.',
+    kunci:'C',
+    soal:`<div class="stimulus"><div class="stim-head">Sudut Jam</div>${imgPH('🕒','Jam Dinding — Pukul 03.00','Jarum jam di angka 3 · Jarum menit di angka 12')}</div>
+<p class="q-text">Berapa besar <strong>sudut terkecil</strong> yang dibentuk oleh jarum jam dan jarum menit?</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>45°</li><li class="opt-item"><span class="opt-letter">B</span>60°</li><li class="opt-item"><span class="opt-letter">C</span>90°</li><li class="opt-item"><span class="opt-letter">D</span>120°</li></ol>`
+  },
+  // ── 22 ──
+  { id:22, type:'pgk', el:'Pengukuran', lv:'L3', errata:true,
+    cp: CP.peng, materi:'Durasi Waktu',
+    indikator:'Disajikan jadwal kegiatan belajar siswa. Siswa dapat <strong>memilih lebih dari satu</strong> kegiatan yang memiliki durasi waktu lebih dari 1 jam.',
+    kunci:['A','C','D'],
+    soal:`<div class="stimulus"><div class="stim-head">Durasi Kegiatan</div><div class="stim-content">Jadwal kegiatan belajar:<ul><li>Belajar: 07.00 – 08.30</li><li>Olahraga: 09.00 – 10.00</li><li>Seni: 10.30 – 11.45</li><li>Istirahat: 12.00 – 13.00</li></ul></div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Pilih kegiatan yang durasinya <strong>lebih dari 1 jam</strong>! <em style="color:#c47f00;font-size:.8em;">(⚠ errata — lihat kisi-kisi)</em></p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Belajar (90 menit)</li><li class="pgk-item"><span class="pgk-check"></span>B. Olahraga (60 menit)</li><li class="pgk-item"><span class="pgk-check"></span>C. Seni (75 menit)</li><li class="pgk-item"><span class="pgk-check"></span>D. Istirahat (60 menit)</li></ul>`
+  },
+  // ── 23 ──
+  { id:23, type:'pg', el:'Pengukuran', lv:'L2', errata:false,
+    cp: CP.peng, materi:'Volume Balok',
+    indikator:'Disajikan bak mandi berbentuk balok (p=120cm, l=80cm, t=70cm). Siswa dapat <strong>menghitung</strong> volume air maksimal dalam satuan liter.',
+    kunci:'B',
+    soal:`<div class="stimulus"><div class="stim-head">Volume Bak Mandi</div><div class="stim-content">Bak mandi berbentuk balok: panjang <strong>120 cm</strong>, lebar <strong>80 cm</strong>, tinggi <strong>70 cm</strong>.</div></div>
+<p class="q-text">Berapa liter volume air maksimal yang dapat ditampung?</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>576 liter</li><li class="opt-item"><span class="opt-letter">B</span>672 liter</li><li class="opt-item"><span class="opt-letter">C</span>756 liter</li><li class="opt-item"><span class="opt-letter">D</span>840 liter</li></ol>`
+  },
+  // ── 24 ──
+  { id:24, type:'pg', el:'Geometri', lv:'L1', errata:false,
+    cp: CP.geo, materi:'Jaring-Jaring Kubus',
+    indikator:'Disajikan beberapa pola gabungan persegi. Siswa dapat <strong>menentukan</strong> pola mana yang merupakan jaring-jaring kubus yang valid.',
+    kunci:'A',
+    soal:`<div class="stimulus"><div class="stim-head">Jaring-Jaring Kubus</div>${imgPH('📦','4 Pola Jaring-Jaring (A, B, C, D)','Pola A: valid · Pola B, C, D: tidak valid sebagai jaring-jaring kubus')}</div>
+<p class="q-text">Manakah yang merupakan <strong>jaring-jaring kubus</strong> yang valid?</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Pola A</li><li class="opt-item"><span class="opt-letter">B</span>Pola B</li><li class="opt-item"><span class="opt-letter">C</span>Pola C</li><li class="opt-item"><span class="opt-letter">D</span>Pola D</li></ol>`
+  },
+  // ── 25 ──
+  { id:25, type:'pgk', el:'Geometri', lv:'L3', errata:false,
+    cp: CP.geo, materi:'Visualisasi Spasial',
+    indikator:'Disajikan gambar bangun ruang gabungan dari beberapa sudut pandang. Siswa dapat <strong>memilih lebih dari satu</strong> tampak yang benar.',
+    kunci:['B','D'],
+    soal:`<div class="stimulus"><div class="stim-head">Tampak Bangun Ruang</div>${imgPH('🧊','Bangun Ruang Gabungan — Berbagai Sudut Pandang','Tampak depan, samping, atas, dan belakang ditampilkan sebagai pilihan')}</div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Pilih gambar yang menunjukkan <strong>tampak yang benar</strong>!</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Tampak depan menunjukkan 6 persegi</li><li class="pgk-item"><span class="pgk-check"></span>B. Tampak samping menunjukkan 4 persegi</li><li class="pgk-item"><span class="pgk-check"></span>C. Tampak atas menunjukkan 3 persegi</li><li class="pgk-item"><span class="pgk-check"></span>D. Tampak belakang sama dengan depan</li></ul>`
+  },
+  // ── 26 ──
+  { id:26, type:'pgk-cat', el:'Geometri', lv:'L1', errata:false,
+    cp: CP.geo, materi:'Karakteristik Bangun Ruang',
+    indikator:'Disajikan 3 pernyataan tentang sifat kubus dan balok. Siswa dapat <strong>mengklasifikasikan</strong> setiap pernyataan sebagai Benar atau Salah.',
+    kunci:{rows:['Kubus memiliki 6 sisi yang sama besar','Balok memiliki 12 rusuk','Kubus memiliki 8 titik sudut'], cols:['Benar','Salah'], ans:['Benar','Benar','Benar']},
+    soal:`<div class="stimulus"><div class="stim-head">Sifat Bangun Ruang</div><div class="stim-content">Pernyataan tentang kubus dan balok:</div></div>
+<p class="hint-cat">⊞ Klasifikasikan setiap pernyataan sebagai Benar atau Salah.</p>
+<p class="q-text">Tentukan kebenaran setiap pernyataan!</p>
+<div class="matrix-wrap"><table class="mtx"><thead><tr><th>Pernyataan</th><th>Benar</th><th>Salah</th></tr></thead><tbody><tr><td>Kubus memiliki 6 sisi yang sama besar</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Balok memiliki 12 rusuk</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Kubus memiliki 8 titik sudut</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr></tbody></table></div>`
+  },
+  // ── 27 ──
+  { id:27, type:'pg', el:'Geometri', lv:'L2', errata:false,
+    cp: CP.geo, materi:'Koordinat Peta',
+    indikator:'Disajikan peta lingkungan sekolah dengan sistem koordinat (huruf dan angka). Siswa dapat <strong>menentukan</strong> koordinat lokasi perpustakaan.',
+    kunci:'A',
+    soal:`<div class="stimulus"><div class="stim-head">Koordinat Peta</div>${imgPH('🗺️','Peta Lingkungan Sekolah — Sistem Grid','Sumbu horizontal: huruf (A, B, C...) · Sumbu vertikal: angka (1, 2, 3...)')}</div>
+<p class="q-text">Perpustakaan terletak pada koordinat …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>(A, 1)</li><li class="opt-item"><span class="opt-letter">B</span>(C, 2)</li><li class="opt-item"><span class="opt-letter">C</span>(D, 4)</li><li class="opt-item"><span class="opt-letter">D</span>(A, 5)</li></ol>`
+  },
+  // ── 28 ──
+  { id:28, type:'pgk', el:'Geometri', lv:'L3', errata:false,
+    cp: CP.geo, materi:'Perbandingan Bangun',
+    indikator:'Disajikan 3 gambar bangun (persegi, kubus, lingkaran). Siswa dapat <strong>memilih lebih dari satu</strong> bangun yang memiliki titik sudut.',
+    kunci:['A','B'],
+    soal:`<div class="stimulus"><div class="stim-head">Sifat Bangun</div>${imgPH('🔷','3 Gambar Bangun: Persegi · Kubus · Lingkaran','Ditampilkan tiga bangun geometri berdampingan')}</div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Pilih bangun yang memiliki <strong>titik sudut</strong>!</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Persegi</li><li class="pgk-item"><span class="pgk-check"></span>B. Kubus</li><li class="pgk-item"><span class="pgk-check"></span>C. Lingkaran</li><li class="pgk-item"><span class="pgk-check"></span>D. Semua memiliki titik sudut</li></ul>`
+  },
+  // ── 29 ──
+  { id:29, type:'pg', el:'Analisis Data', lv:'L1', errata:false,
+    cp: CP.data, materi:'Membaca Diagram Batang',
+    indikator:'Disajikan diagram batang jumlah kehadiran siswa dalam seminggu. Siswa dapat <strong>menentukan</strong> hari dengan jumlah kehadiran tertinggi.',
+    kunci:'C',
+    soal:`<div class="stimulus"><div class="stim-head">Diagram Kehadiran</div>${imgPH('📊','Diagram Batang — Kehadiran Siswa Seminggu','Senin, Selasa, Rabu (tertinggi), Kamis, Jumat · Sumbu Y: jumlah siswa')}</div>
+<p class="q-text">Hari dengan jumlah kehadiran <strong>tertinggi</strong> adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Senin</li><li class="opt-item"><span class="opt-letter">B</span>Selasa</li><li class="opt-item"><span class="opt-letter">C</span>Rabu</li><li class="opt-item"><span class="opt-letter">D</span>Kamis</li></ol>`
+  },
+  // ── 30 ──
+  { id:30, type:'pg', el:'Analisis Data', lv:'L3', errata:false,
+    cp: CP.data, materi:'Analisis Tabel Data',
+    indikator:'Disajikan data nilai ujian siswa (nilai tertinggi dan terendah diketahui). Siswa dapat <strong>menghitung</strong> selisih nilai tertinggi dan terendah.',
+    kunci:'C',
+    soal:`<div class="stimulus"><div class="stim-head">Tabel Nilai</div><div class="stim-content">Data nilai ujian:<ul><li>Nilai tertinggi: 95</li><li>Nilai terendah: 60</li><li>Rata-rata: 78</li></ul></div></div>
+<p class="q-text">Berapa <strong>selisih</strong> nilai tertinggi dan terendah?</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>25</li><li class="opt-item"><span class="opt-letter">B</span>30</li><li class="opt-item"><span class="opt-letter">C</span>35</li><li class="opt-item"><span class="opt-letter">D</span>40</li></ol>`
+  },
+  // ── 31 ──
+  { id:31, type:'pg', el:'Analisis Data', lv:'L2', errata:false,
+    cp: CP.data, materi:'Rata-Rata (Mean)',
+    indikator:'Disajikan data tinggi badan 5 siswa. Siswa dapat <strong>menghitung</strong> rata-rata tinggi badan dari data tersebut.',
+    kunci:'B',
+    soal:`<div class="stimulus"><div class="stim-head">Rata-Rata Tinggi Badan</div><div class="stim-content">Data tinggi badan 5 siswa (cm): <strong>140, 145, 150, 155, 160</strong></div></div>
+<p class="q-text">Berapa <strong>rata-rata</strong> tinggi badan dari data tersebut?</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>148 cm</li><li class="opt-item"><span class="opt-letter">B</span>150 cm</li><li class="opt-item"><span class="opt-letter">C</span>152 cm</li><li class="opt-item"><span class="opt-letter">D</span>155 cm</li></ol>`
+  },
+  // ── 32 ──
+  { id:32, type:'pgk', el:'Analisis Data', lv:'L3', errata:false,
+    cp: CP.data, materi:'Interpretasi Tren Data',
+    indikator:'Disajikan grafik penjualan koperasi selama 4 bulan dengan tren naik. Siswa dapat <strong>memilih lebih dari satu</strong> kesimpulan yang valid berdasarkan data.',
+    kunci:['A','B'],
+    soal:`<div class="stimulus"><div class="stim-head">Grafik Penjualan</div>${imgPH('📈','Grafik Penjualan Koperasi — 4 Bulan','Jan → Feb → Mar → Apr · Tren: meningkat setiap bulan')}</div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Pilih kesimpulan yang <strong>valid</strong> berdasarkan grafik!</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Penjualan April lebih tinggi dari Januari</li><li class="pgk-item"><span class="pgk-check"></span>B. Tren penjualan meningkat</li><li class="pgk-item"><span class="pgk-check"></span>C. Penjualan Februari lebih rendah dari Maret</li><li class="pgk-item"><span class="pgk-check"></span>D. Penjualan tetap setiap bulan</li></ul>`
+  },
+  // ── 33 ──
+  { id:33, type:'pg', el:'Analisis Data', lv:'L3', errata:false,
+    cp: CP.data, materi:'Peluang Sederhana',
+    indikator:'Disajikan kantong berisi kelereng beberapa warna (jumlah diketahui). Siswa dapat <strong>menentukan</strong> warna kelereng yang paling mungkin terambil secara acak.',
+    kunci:'A',
+    soal:`<div class="stimulus"><div class="stim-head">Peluang Kelereng</div><div class="stim-content">Kantong berisi:<ul><li>5 kelereng merah</li><li>3 kelereng biru</li><li>2 kelereng hijau</li></ul></div></div>
+<p class="q-text">Warna kelereng yang <strong>paling mungkin</strong> terambil secara acak adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Merah</li><li class="opt-item"><span class="opt-letter">B</span>Biru</li><li class="opt-item"><span class="opt-letter">C</span>Hijau</li><li class="opt-item"><span class="opt-letter">D</span>Semua sama</li></ol>`
+  },
+  // ── 34 ──
+  { id:34, type:'pgk-cat', el:'Analisis Data', lv:'L3', errata:false,
+    cp: CP.data, materi:'Jenis Penyajian Data',
+    indikator:'Disajikan 3 bentuk penyajian data (Diagram Batang, Tabel, Piktogram). Siswa dapat <strong>mengklasifikasikan</strong> setiap bentuk sesuai fungsi utamanya.',
+    kunci:{rows:['Diagram Batang','Tabel','Piktogram'], cols:['Memband. Jumlah','Tren Waktu'], ans:['Memband. Jumlah','Memband. Jumlah','Memband. Jumlah']},
+    soal:`<div class="stimulus"><div class="stim-head">Penyajian Data</div><div class="stim-content">Tiga bentuk penyajian data: <strong>Diagram Batang, Tabel, Piktogram</strong></div></div>
+<p class="hint-cat">⊞ Klasifikasikan setiap bentuk ke kolom yang tepat.</p>
+<p class="q-text">Klasifikasikan setiap bentuk penyajian berdasarkan fungsi utamanya!</p>
+<div class="matrix-wrap"><table class="mtx"><thead><tr><th>Bentuk Penyajian</th><th>Membandingkan Jumlah</th><th>Melihat Tren Waktu</th></tr></thead><tbody><tr><td>Diagram Batang</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Tabel</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Piktogram</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr></tbody></table></div>`
+  },
+  // ── 35 ──
+  { id:35, type:'pgk-cat', el:'Analisis Data', lv:'L1', errata:false,
+    cp: CP.data, materi:'Kemungkinan Kejadian',
+    indikator:'Disajikan 3 pernyataan kejadian sehari-hari. Siswa dapat <strong>mengklasifikasikan</strong> setiap kejadian sebagai Pasti, Mungkin, atau Tidak Mungkin terjadi.',
+    kunci:{rows:['Matahari terbit dari barat','Hujan di musim kemarau','Manusia bernapas'], cols:['Pasti','Mungkin','Tidak Mungkin'], ans:['Tidak Mungkin','Mungkin','Pasti']},
+    soal:`<div class="stimulus"><div class="stim-head">Kemungkinan Kejadian</div><div class="stim-content">Tiga pernyataan kejadian sehari-hari.</div></div>
+<p class="hint-cat">⊞ Klasifikasikan setiap kejadian ke kolom yang tepat.</p>
+<p class="q-text">Tentukan kemungkinan setiap kejadian!</p>
+<div class="matrix-wrap"><table class="mtx"><thead><tr><th>Kejadian</th><th>Pasti</th><th>Mungkin</th><th>Tidak Mungkin</th></tr></thead><tbody><tr><td>Matahari terbit dari barat</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Hujan di musim kemarau</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Manusia bernapas</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr></tbody></table></div>`
+  }
+];
+
+// ════════════════════════════════════
+//  HELPERS
+// ════════════════════════════════════
+const EL_CLASS = { 'Bilangan':'el-bil', 'Aljabar':'el-alj', 'Pengukuran':'el-peng', 'Geometri':'el-geo', 'Analisis Data':'el-data' };
+
+const TYPE_LABEL = { 'pg':'Pilihan Ganda', 'pgk':'PG Kompleks', 'pgk-cat':'PG Kategori' };
+
+function kunciDisplay(soal) {
+  if (soal.type === 'pg') {
+    return `<div class="kunci-val">${soal.kunci}</div>`;
+  } else if (soal.type === 'pgk') {
+    return `<div class="kunci-multi">${soal.kunci.join('<br>')}</div>`;
+  } else {
+    // pgk-cat: show row → answer
+    const k = soal.kunci;
+    let html = '<div class="kunci-cat-table">';
+    k.rows.forEach((r, i) => {
+      const label = r.length > 10 ? r.substring(0,10)+'…' : r;
+      html += `<div class="kunci-cat-row"><span class="kunci-cat-num">${i+1}.</span><span>${k.ans[i]}</span></div>`;
+    });
+    html += '</div>';
+    return html;
+  }
+}
+
+function proporsiCells(type) {
+  if (type === 'pgk-cat') {
+    return `<div class="proporsi-inner" style="grid-template-columns:1fr;">
+      <div class="prop-sub" style="border:none;"><div class="prop-letter" style="font-size:.58rem;">Multi Kategori</div><div class="prop-val">—</div></div>
+    </div>`;
+  }
+  return `<div class="proporsi-inner">
+    <div class="prop-sub"><div class="prop-letter">A</div><div class="prop-val">—</div></div>
+    <div class="prop-sub"><div class="prop-letter">B</div><div class="prop-val">—</div></div>
+    <div class="prop-sub"><div class="prop-letter">C</div><div class="prop-val">—</div></div>
+    <div class="prop-sub"><div class="prop-letter">D</div><div class="prop-val">—</div></div>
+  </div>`;
+}
+
+// ════════════════════════════════════
+//  RENDER
+// ════════════════════════════════════
+let current = 0;
+
+function render(idx) {
+  const s = SOAL[idx];
+  const elClass = EL_CLASS[s.el] || 'el-bil';
+  const typeLabel = TYPE_LABEL[s.type] || s.type.toUpperCase();
+  const errataBadge = s.errata ? '<span class="errata-flag">⚠ Errata</span>' : '';
+
+  const html = `
+  <div class="kartu-title">KARTU SOAL ${typeLabel.toUpperCase()}${errataBadge}</div>
+
+  <div class="sekolah-info">
+    <div>
+      <div class="sekolah-row"><span class="sekolah-lbl">Sekolah</span><span class="sekolah-val">: SD Muhammadiyah 01 Kukusan</span></div>
+      <div class="sekolah-row"><span class="sekolah-lbl">Fase/Kelas</span><span class="sekolah-val">: C / VI (Enam)</span></div>
+      <div class="sekolah-row"><span class="sekolah-lbl">Kurikulum</span><span class="sekolah-val">: Merdeka</span></div>
+    </div>
+    <div>
+      <div class="sekolah-row"><span class="sekolah-lbl">Mata Pelajaran</span><span class="sekolah-val">: Matematika</span></div>
+      <div class="sekolah-row"><span class="sekolah-lbl">Tahun Ajaran</span><span class="sekolah-val">: 2025/2026</span></div>
+      <div class="sekolah-row"><span class="sekolah-lbl">Penyusun</span><span class="sekolah-val">: Arif Azwar Anas, S.Pd.</span></div>
+    </div>
+  </div>
+
+  <div class="kartu-body">
+    <!-- LEFT -->
+    <div class="left-col">
+      <div class="left-sec">
+        <div class="left-sec-label">Capaian Pembelajaran</div>
+        <div class="left-sec-body"><span class="el-badge ${elClass}">${s.el}</span><br>${s.cp}</div>
+      </div>
+      <div class="left-sec">
+        <div class="left-sec-label">Materi</div>
+        <div class="left-sec-body">${s.materi}</div>
+      </div>
+      <div class="left-sec">
+        <div class="left-sec-label">Indikator Soal</div>
+        <div class="left-sec-body">${s.indikator}</div>
+      </div>
+    </div>
+
+    <!-- MID -->
+    <div class="mid-col">
+      <div class="mid-sec">
+        <div class="mid-lbl">Nomor</div>
+        <div class="nomor-val">${s.id}</div>
+      </div>
+      <div class="mid-sec" style="flex:1;">
+        <div class="mid-lbl">Kunci</div>
+        ${kunciDisplay(s)}
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-col">
+      <div class="soal-label">Soal</div>
+      <div class="soal-body">${s.soal}</div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-cell">
+      <div class="stat-top">Digunakan untuk</div>
+      <div class="stat-val">Ujian Sekolah</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-top">Tanggal</div>
+      <div class="stat-val">8 Mei 2026</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-top">Jumlah Siswa</div>
+      <div class="stat-val">—</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-top">Kompleksitas</div>
+      <div class="stat-val lg">${s.lv}</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-top">Daya Pembeda</div>
+      <div class="stat-val">—</div>
+    </div>
+    <div class="stat-cell stat-proporsi">
+      <div class="stat-top">Proporsi Jawaban</div>
+      ${proporsiCells(s.type)}
+    </div>
+    <div class="stat-cell">
+      <div class="stat-top">Ket.</div>
+      <div class="stat-val">${s.errata ? '⚠' : ''}</div>
+    </div>
+  </div>`;
+
+  document.getElementById('kartu-el').innerHTML = html;
+
+  // Update controls
+  const n = idx + 1;
+  document.getElementById('curr-num').textContent = n;
+  document.getElementById('counter-display').textContent = `${n} / ${SOAL.length}`;
+  document.getElementById('counter-display2').textContent = `${n} / ${SOAL.length}`;
+  document.getElementById('curr-type-info').textContent = typeLabel;
+  document.getElementById('curr-elemen-info').innerHTML = `<span class="el-badge ${elClass}">${s.el}</span>`;
+
+  const prevBtns = [document.getElementById('btn-prev'), document.getElementById('btn-prev2')];
+  const nextBtns = [document.getElementById('btn-next'), document.getElementById('btn-next2')];
+  prevBtns.forEach(b => b.disabled = idx === 0);
+  nextBtns.forEach(b => b.disabled = idx === SOAL.length - 1);
+
+  // Update dots
+  document.querySelectorAll('.dot').forEach((d, i) => {
+    d.classList.toggle('active', i === idx);
+  });
+
+  // MathJax re-typeset
+  if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise([document.getElementById('kartu-el')]).catch(e => console.warn(e));
+  }
+
+  // Scroll to top of card
+  document.querySelector('.kartu-wrap').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function nav(dir) {
+  const newIdx = current + dir;
+  if (newIdx < 0 || newIdx >= SOAL.length) return;
+  current = newIdx;
+  render(current);
+}
+
+function goTo(idx) {
+  current = idx;
+  render(current);
+}
+
+// Build dots navigator
+function buildDots() {
+  const container = document.getElementById('dots-nav');
+  SOAL.forEach((s, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot ' + s.type + (s.errata ? ' errata' : '');
+    d.textContent = s.id;
+    d.title = `Soal ${s.id} — ${s.el} — ${TYPE_LABEL[s.type]}${s.errata ? ' (⚠ Errata)' : ''}`;
+    d.onclick = () => goTo(i);
+    container.appendChild(d);
+  });
+}
+
+// Init
+buildDots();
+render(0);
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nav(1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   nav(-1);
+});
+</script>
+</body>
+</html>
