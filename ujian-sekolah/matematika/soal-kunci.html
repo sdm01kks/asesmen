@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soal & Kunci Jawaban — US Matematika · SDM 01 Kukusan</title>
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$','$'],['\\(','\\)']] }, svg: { fontCache:'global' } };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green:    #1a5c35; --green-md: #2d7a4f; --green-lt: #f0faf4; --green-border: #b7dfc8;
+      --gold:     #f5a623; --gold-dk:  #c47f00; --gold-lt:  #fdf6e3;
+      --blue:     #1a5aaa; --blue-lt:  #edf4fb;
+      --text:     #1e2d24; --muted:    #5a6e62;
+      --bg:       #f5f9f6; --white:    #fff; --border: #dde8e2;
+      --r: 10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: clamp(13px, 3vw, 15px); scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); }
+
+    /* NAV */
+    .topnav { background: var(--green); height: 48px; display: flex; align-items: center; padding: 0 20px; gap: 8px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+    .topnav a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .82rem; font-weight: 600; }
+    .topnav a:hover { color: white; text-decoration: underline; }
+    .topnav-sep { color: rgba(255,255,255,.3); }
+    .topnav-cur { color: rgba(255,255,255,.6); font-size: .82rem; font-weight: 600; }
+
+    /* HEADER */
+    .page-header { background: linear-gradient(150deg,#0a3d22,#1a5c35 60%,#24784a); color: white; padding: 32px 20px 36px; border-bottom: 3px solid var(--gold); position: relative; overflow: hidden; }
+    .page-header::before { content:''; position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px); background-size:24px 24px; }
+    .header-inner { position:relative; max-width:820px; margin:0 auto; display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+    .header-left {}
+    .header-kode { font-size:.7rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#a7f3d0; margin-bottom:6px; }
+    .page-header h1 { font-family:'Fraunces',serif; font-size:clamp(1.4rem,4vw,2rem); font-weight:700; margin-bottom:4px; }
+    .page-header h1 em { color:var(--gold); font-style:italic; }
+    .header-meta { display:flex; flex-wrap:wrap; gap:4px 16px; margin-top:10px; font-size:.76rem; color:rgba(255,255,255,.78); }
+    .header-meta span::before { content:'·'; margin-right:6px; opacity:.5; }
+    .header-meta span:first-child::before { display:none; }
+
+    /* TOGGLE BUTTON */
+    .toggle-kunci-btn {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.15);
+      border: 1.5px solid rgba(255,255,255,.3);
+      color: white; font-size: .82rem; font-weight: 700;
+      padding: 10px 18px; border-radius: 8px; cursor: pointer;
+      transition: background .2s, border-color .2s;
+      white-space: nowrap; flex-shrink: 0;
+      margin-top: 20px;
+    }
+    .toggle-kunci-btn:hover { background: rgba(255,255,255,.25); }
+    .toggle-kunci-btn.active { background: var(--gold); border-color: var(--gold); color: #1a2000; }
+    .btn-icon { font-size: 1rem; }
+
+    /* MAIN */
+    .main { max-width: 820px; margin: 0 auto; padding: 28px 20px 60px; }
+
+    /* ERRATA BAR */
+    .errata-bar { background: #fffbf0; border: 1px solid #f5c842; border-radius: var(--r); padding: 12px 16px; margin-bottom: 24px; font-size: .78rem; color: #7a5200; display: flex; gap: 8px; align-items: flex-start; }
+    .errata-bar::before { content: '⚠'; flex-shrink: 0; }
+
+    /* KELOMPOK DIVIDER */
+    .kelompok-div { background: var(--green); color: white; padding: 10px 16px; border-radius: var(--r) var(--r) 0 0; margin-top: 28px; display: flex; align-items: center; justify-content: space-between; }
+    .kelompok-div:first-of-type { margin-top: 0; }
+    .kelompok-title { font-weight: 700; font-size: .88rem; }
+    .kelompok-sub { font-size: .74rem; opacity: .8; }
+    .kelompok-badge { font-size: .7rem; font-weight: 700; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.25); padding: 3px 10px; border-radius: 20px; }
+
+    /* SOAL ITEM */
+    .soal-item {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r); margin-bottom: 14px; overflow: hidden;
+    }
+    .soal-item:first-of-type { border-radius: 0 0 var(--r) var(--r); }
+
+    .soal-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px; border-bottom: 1px solid var(--border);
+      background: var(--green-lt);
+    }
+    .soal-num {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--green); color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: .88rem; flex-shrink: 0;
+    }
+    .soal-meta { flex: 1; display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+    .tag-elemen { font-size: .65rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; }
+    .el-bil { background: #e3f0ff; color: #1a5aaa; }
+    .el-alj { background: #f0e3ff; color: #6d28d9; }
+    .el-peng { background: #dcfce7; color: #166534; }
+    .el-geo { background: #fef9c3; color: #854d0e; }
+    .el-data { background: #fee2e2; color: #991b1b; }
+    .tag-fmt { font-size: .65rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
+    .fmt-a { background: #e3f0ff; color: #1a5aaa; }
+    .fmt-b { background: #fff0e3; color: #c47f00; }
+    .fmt-c { background: #f0e3ff; color: #6d28d9; }
+    .tag-lv { font-size: .65rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
+    .lv-c2 { background: #dcfce7; color: #166534; }
+    .lv-c3 { background: #fef9c3; color: #854d0e; }
+    .lv-c4 { background: #fee2e2; color: #991b1b; }
+    .soal-skor { margin-left: auto; font-size: .72rem; font-weight: 800; color: var(--green); background: var(--green-lt); border: 1px solid var(--green-border); padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
+    .soal-errata { font-size: .65rem; font-weight: 700; background: #fff0c0; color: #92600a; border: 1px solid #f5c842; padding: 2px 6px; border-radius: 3px; }
+
+    .soal-body { padding: 16px 18px; }
+
+    /* STIMULUS */
+    .stimulus { background: #f9fefe; border: 1px solid var(--border); border-left: 4px solid var(--green); padding: 14px 16px; border-radius: 0 6px 6px 0; margin-bottom: 14px; }
+    .stim-head { font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--green); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px dashed var(--border); }
+    .stim-body { font-size: .88rem; line-height: 1.65; color: var(--text); }
+    .stim-body p { margin-bottom: 4px; }
+    .stim-list { list-style: none; padding: 0; margin: 6px 0; }
+    .stim-list li { padding: 2px 0; display: flex; gap: 8px; font-size: .86rem; }
+    .stim-list li::before { content: '•'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+    /* GAMBAR PLACEHOLDER */
+    .img-placeholder { background: #f1f8f4; border: 1.5px dashed var(--green-border); border-radius: 6px; padding: 20px 16px; text-align: center; margin: 10px 0; }
+    .img-placeholder-icon { font-size: 1.8rem; margin-bottom: 6px; }
+    .img-placeholder-title { font-size: .78rem; font-weight: 700; color: var(--green); margin-bottom: 3px; }
+    .img-placeholder-desc { font-size: .72rem; color: var(--muted); }
+
+    /* PERTANYAAN */
+    .q-text { font-size: .95rem; font-weight: 600; color: var(--text); margin-bottom: 12px; line-height: 1.6; }
+
+    /* HINT */
+    .hint-pgk { font-size: .76rem; background: #fdf6e3; border-left: 3px solid var(--gold); padding: 7px 12px; border-radius: 0 5px 5px 0; margin-bottom: 10px; color: var(--gold-dk); font-weight: 600; }
+    .hint-pgc { font-size: .76rem; background: #edf4fb; border-left: 3px solid var(--blue); padding: 7px 12px; border-radius: 0 5px 5px 0; margin-bottom: 10px; color: var(--blue); font-weight: 600; }
+
+    /* PG OPTIONS */
+    .opt-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+    .opt-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 7px; font-size: .87rem; color: var(--text); line-height: 1.5; }
+    .opt-letter { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 800; color: var(--muted); flex-shrink: 0; }
+    .opt-item.correct { background: #f0faf4; border-color: var(--green-md); }
+    .opt-item.correct .opt-letter { background: var(--green); border-color: var(--green); color: white; }
+
+    /* PGK OPTIONS */
+    .pgk-opt-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+    .pgk-opt-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 7px; font-size: .87rem; color: var(--text); line-height: 1.5; }
+    .pgk-opt-item .opt-check { width: 20px; height: 20px; border-radius: 4px; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: .65rem; color: white; flex-shrink: 0; margin-top: 1px; }
+    .pgk-opt-item.correct { background: #f0faf4; border-color: var(--green-md); }
+    .pgk-opt-item.correct .opt-check { background: var(--green); border-color: var(--green); }
+
+    /* MATRIX TABLE */
+    .matrix-wrap { overflow-x: auto; margin-top: 4px; }
+    .matrix-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+    .matrix-table th { background: var(--green-lt); color: var(--green); font-size: .7rem; font-weight: 800; text-align: center; padding: 8px 12px; border: 1px solid var(--border); }
+    .matrix-table th:first-child { text-align: left; }
+    .matrix-table td { padding: 8px 12px; border: 1px solid var(--border); text-align: center; }
+    .matrix-table td:first-child { text-align: left; font-weight: 600; }
+    .matrix-table td.ans-cell { background: #f0faf4; color: var(--green); font-weight: 800; font-size: .78rem; }
+
+    /* KUNCI JAWABAN SECTION */
+    .kunci-section { display: none; margin-top: 16px; padding-top: 16px; border-top: 2px dashed var(--green-border); }
+    .kunci-section.visible { display: block; }
+    .kunci-head { display: flex; align-items: center; gap: 8px; font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+    .kunci-badge { background: var(--green); color: white; font-size: .65rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; }
+
+    .kunci-row { background: var(--green-lt); border: 1px solid var(--green-border); border-radius: 7px; padding: 10px 14px; margin-bottom: 8px; }
+    .kunci-label { font-size: .7rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .kunci-value { font-size: .88rem; font-weight: 700; color: var(--green); }
+    .kunci-value .correct-tag { display: inline-flex; align-items: center; gap: 4px; background: var(--green); color: white; font-size: .7rem; padding: 2px 7px; border-radius: 4px; font-weight: 700; margin-right: 4px; }
+
+    .pembahasan-box { background: #fffbf0; border: 1px solid #f5c842; border-radius: 7px; padding: 12px 14px; margin-top: 8px; }
+    .pembahasan-head { font-size: .7rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--gold-dk); margin-bottom: 8px; display: flex; gap: 6px; align-items: center; }
+    .pembahasan-body { font-size: .84rem; color: var(--text); line-height: 1.65; }
+    .pembahasan-body p { margin-bottom: 5px; }
+    .pembahasan-body .step { display: flex; gap: 8px; margin: 3px 0; }
+    .pembahasan-body .step-n { font-weight: 800; color: var(--gold-dk); min-width: 18px; }
+    .errata-note { background: #fef2f2; border: 1px solid #fca5a5; border-radius: 5px; padding: 8px 10px; font-size: .76rem; color: #7f1d1d; margin-top: 6px; }
+    .errata-note::before { content: '⚠ Catatan: '; font-weight: 800; }
+
+    /* STICKY TOGGLE BAR */
+    .sticky-bar { position: sticky; top: 48px; z-index: 90; background: var(--white); border-bottom: 1px solid var(--border); padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+    .sticky-label { font-size: .78rem; font-weight: 600; color: var(--muted); }
+    .toggle-btn-sticky { display: flex; align-items: center; gap: 7px; background: var(--green); color: white; border: none; font-size: .78rem; font-weight: 700; padding: 8px 16px; border-radius: 7px; cursor: pointer; transition: background .2s; }
+    .toggle-btn-sticky:hover { background: var(--green-md); }
+    .toggle-btn-sticky.active { background: var(--gold-dk); }
+
+    /* FOOTER */
+    .site-footer { text-align:center; padding:24px 16px; font-size:.76rem; color:var(--muted); border-top:1px solid var(--border); background:var(--white); }
+
+    @media print {
+      .topnav, .sticky-bar { display: none; }
+      .kunci-section { display: block !important; }
+      .main { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../../">← Beranda</a>
+  <span class="topnav-sep">/</span>
+  <a href="../">Ujian Sekolah</a>
+  <span class="topnav-sep">/</span>
+  <a href="./">Matematika</a>
+  <span class="topnav-sep">/</span>
+  <span class="topnav-cur">Soal &amp; Kunci Jawaban</span>
+</nav>
+
+<header class="page-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="header-kode">Administrasi · Ujian Sekolah Tertulis · TP 2025/2026</div>
+      <h1>Soal &amp; <em>Kunci Jawaban</em></h1>
+      <div class="header-meta">
+        <span>SD Muhammadiyah 01 Kukusan</span>
+        <span>Matematika — Kelas 6</span>
+        <span>35 Soal · 8 Mei 2026</span>
+        <span>Total Skor: 47</span>
+      </div>
+    </div>
+    <button class="toggle-kunci-btn" id="mainToggleBtn" onclick="toggleAll()">
+      <span class="btn-icon">🔑</span> Tampilkan Kunci &amp; Pembahasan
+    </button>
+  </div>
+</header>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar">
+  <span class="sticky-label">Soal Ujian Sekolah Matematika · 35 Soal</span>
+  <button class="toggle-btn-sticky" id="stickyToggleBtn" onclick="toggleAll()">
+    🔑 Tampilkan Kunci &amp; Pembahasan
+  </button>
+</div>
+
+<main class="main">
+
+  <div class="errata-bar">
+    Dokumen ini memuat 3 catatan errata (Soal 2, 10, 22). Detail pembahasan masing-masing soal mencantumkan penjelasan dan koreksi yang diperlukan. Lihat halaman <a href="kisi-kisi.html" style="color:inherit;font-weight:700;">Kisi-Kisi</a> untuk ringkasan errata.
+  </div>
+
+  <!-- ═══════════════════════════════ -->
+  <!--      KELOMPOK SOAL 1           -->
+  <!-- ═══════════════════════════════ -->
+  <div class="kelompok-div">
+    <div><div class="kelompok-title">Kelompok Soal 1</div><div class="kelompok-sub">Soal 1–18 · Bilangan &amp; Aljabar</div></div>
+    <span class="kelompok-badge">Skor maks: 26</span>
+  </div>
+
+  <!-- SOAL 1 -->
+  <div class="soal-item" id="s1">
+    <div class="soal-header">
+      <div class="soal-num">1</div>
+      <div class="soal-meta">
+        <span class="tag-elemen el-bil">Bilangan</span>
+        <span class="tag-fmt fmt-a">PG Tunggal</span>
+        <span class="tag-lv lv-c2">C2 Pemahaman</span>
+      </div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Data Penduduk Kota</div>
+        <div class="stim-body"><p>Jumlah penduduk sebuah kota adalah <strong>485.729</strong> jiwa.</p></div>
+      </div>
+      <p class="q-text">Angka <strong>8</strong> pada bilangan tersebut menempati nilai tempat …</p>
+      <ol class="opt-list" type="A">
+        <li class="opt-item" id="s1a"><span class="opt-letter">A</span> Puluhan ribu</li>
+        <li class="opt-item" id="s1b"><span class="opt-letter">B</span> Ratusan ribu</li>
+        <li class="opt-item" id="s1c"><span class="opt-letter">C</span> Puluhan</li>
+        <li class="opt-item" id="s1d"><span class="opt-letter">D</span> Ratusan</li>
+      </ol>
+      <div class="kunci-section" id="k1">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row">
+          <div class="kunci-label">Jawaban Benar</div>
+          <div class="kunci-value"><span class="correct-tag">✓ A</span> Puluhan ribu</div>
+        </div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>Uraikan nilai tempat bilangan 485.729:</p>
+            <div class="step"><span class="step-n">4</span><span>= 400.000 (Ratus ribuan)</span></div>
+            <div class="step"><span class="step-n">8</span><span>= <strong>80.000 (Puluhan ribuan)</strong></span></div>
+            <div class="step"><span class="step-n">5</span><span>= 5.000 (Ribuan)</span></div>
+            <div class="step"><span class="step-n">7</span><span>= 700 (Ratusan)</span></div>
+            <div class="step"><span class="step-n">2</span><span>= 20 (Puluhan)</span></div>
+            <div class="step"><span class="step-n">9</span><span>= 9 (Satuan)</span></div>
+            <p style="margin-top:6px;">Angka 8 berada di posisi ke-2 dari kiri, yaitu nilai tempat <strong>puluhan ribu</strong> (80.000).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 2 -->
+  <div class="soal-item" id="s2">
+    <div class="soal-header">
+      <div class="soal-num">2</div>
+      <div class="soal-meta">
+        <span class="tag-elemen el-bil">Bilangan</span>
+        <span class="tag-fmt fmt-a">PG Tunggal</span>
+        <span class="tag-lv lv-c3">C3 Aplikasi</span>
+        <span class="soal-errata">⚠ errata</span>
+      </div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Belanja di Koperasi</div>
+        <div class="stim-body">
+          <p>Daftar harga barang di koperasi sekolah:</p>
+          <ul class="stim-list">
+            <li>Buku tulis: Rp 4.500</li>
+            <li>Pensil: Rp 2.000</li>
+            <li>Penghapus: Rp 1.500 <em style="color:#c47f00;font-size:.8em;">(* lihat catatan errata)</em></li>
+          </ul>
+          <p>Rina membeli 3 buku tulis, 2 pensil, dan 1 penghapus. Ia membayar dengan uang Rp 25.000.</p>
+        </div>
+      </div>
+      <p class="q-text">Berapa kembalian yang diterima Rina?</p>
+      <ol class="opt-list">
+        <li class="opt-item"><span class="opt-letter">A</span> Rp 5.000</li>
+        <li class="opt-item" id="s2b"><span class="opt-letter">B</span> Rp 5.500</li>
+        <li class="opt-item"><span class="opt-letter">C</span> Rp 6.000</li>
+        <li class="opt-item"><span class="opt-letter">D</span> Rp 6.500</li>
+      </ol>
+      <div class="kunci-section" id="k2">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row">
+          <div class="kunci-label">Jawaban Benar (sesuai kunci resmi)</div>
+          <div class="kunci-value"><span class="correct-tag">✓ B</span> Rp 5.500</div>
+        </div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>Berdasarkan kunci jawaban resmi, total belanja Rina = Rp 19.500, sehingga kembalian = Rp 25.000 − Rp 19.500 = <strong>Rp 5.500</strong>.</p>
+            <p>Agar total = Rp 19.500, harga penghapus seharusnya <strong>Rp 2.000</strong>:</p>
+            <div class="step"><span class="step-n">•</span><span>3 × Rp 4.500 = Rp 13.500</span></div>
+            <div class="step"><span class="step-n">•</span><span>2 × Rp 2.000 = Rp 4.000</span></div>
+            <div class="step"><span class="step-n">•</span><span>1 × Rp 2.000 = Rp 2.000</span></div>
+            <div class="step"><span class="step-n">•</span><span>Total = Rp 19.500 → Kembalian = <strong>Rp 5.500</strong></span></div>
+            <div class="errata-note">Harga penghapus yang tertera di stimulus (Rp 1.500) menghasilkan total Rp 19.000 dan kembalian Rp 6.000, bukan Rp 5.500. Kemungkinan terjadi kesalahan pengetikan pada stimulus soal — harga penghapus seharusnya Rp 2.000.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 3 -->
+  <div class="soal-item" id="s3">
+    <div class="soal-header">
+      <div class="soal-num">3</div>
+      <div class="soal-meta"><span class="tag-elemen el-bil">Bilangan</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Jadwal Kegiatan</div>
+        <div class="stim-body"><p>Andi mengikuti les matematika setiap <strong>4 hari</strong> sekali. Budi mengikuti les matematika setiap <strong>6 hari</strong> sekali. Mereka bertemu pertama kali pada tanggal 10 Januari 2026.</p></div>
+      </div>
+      <p class="q-text">Kapan mereka akan bertemu lagi untuk <strong>kedua kalinya</strong>?</p>
+      <ol class="opt-list">
+        <li class="opt-item"><span class="opt-letter">A</span> Tanggal 20 Januari</li>
+        <li class="opt-item" id="s3b"><span class="opt-letter">B</span> Tanggal 22 Januari</li>
+        <li class="opt-item"><span class="opt-letter">C</span> Tanggal 24 Januari</li>
+        <li class="opt-item"><span class="opt-letter">D</span> Tanggal 26 Januari</li>
+      </ol>
+      <div class="kunci-section" id="k3">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ B</span> Tanggal 22 Januari</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>KPK dari 4 dan 6: Kelipatan 4 = 4, 8, <strong>12</strong>, 16, ... | Kelipatan 6 = 6, <strong>12</strong>, 18, ...</p>
+            <p>KPK(4, 6) = <strong>12</strong>. Mereka akan bertemu setiap 12 hari.</p>
+            <p>Pertemuan pertama: 10 Januari → Pertemuan kedua: 10 + 12 = <strong>22 Januari</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 4 -->
+  <div class="soal-item" id="s4">
+    <div class="soal-header">
+      <div class="soal-num">4</div>
+      <div class="soal-meta"><span class="tag-elemen el-bil">Bilangan</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Pecahan Senilai</div>
+        <div class="stim-body"><p>Diberikan pecahan $\dfrac{3}{4}$. Pilih pecahan yang nilainya sama!</p></div>
+      </div>
+      <p class="q-text">Pecahan yang senilai dengan $\dfrac{3}{4}$ adalah …</p>
+      <ol class="opt-list">
+        <li class="opt-item" id="s4a"><span class="opt-letter">A</span> $\dfrac{6}{8}$</li>
+        <li class="opt-item"><span class="opt-letter">B</span> $\dfrac{5}{8}$</li>
+        <li class="opt-item"><span class="opt-letter">C</span> $\dfrac{9}{16}$</li>
+        <li class="opt-item"><span class="opt-letter">D</span> $\dfrac{7}{10}$</li>
+      </ol>
+      <div class="kunci-section" id="k4">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ A</span> $\frac{6}{8}$</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>$\dfrac{3}{4} = \dfrac{3 \times 2}{4 \times 2} = \dfrac{6}{8}$ ✓ (dikalikan 2)</p>
+            <p>Cek yang lain: $\frac{5}{8}=0{,}625$; $\frac{3}{4}=0{,}75$ → tidak sama. $\frac{9}{16}=0{,}5625$ → tidak sama. $\frac{7}{10}=0{,}7$ → tidak sama.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 5 -->
+  <div class="soal-item" id="s5">
+    <div class="soal-header">
+      <div class="soal-num">5</div>
+      <div class="soal-meta"><span class="tag-elemen el-bil">Bilangan</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Pembagian Bahan Makanan</div>
+        <div class="stim-body"><p>Ibu memiliki $2\frac{1}{2}$ kg tepung. Tepung tersebut akan dibagi rata kepada <strong>5 orang anak</strong> untuk membuat kue.</p></div>
+      </div>
+      <p class="q-text">Berapa kg tepung yang diterima setiap anak?</p>
+      <ol class="opt-list">
+        <li class="opt-item" id="s5a"><span class="opt-letter">A</span> $\dfrac{1}{2}$ kg</li>
+        <li class="opt-item"><span class="opt-letter">B</span> $\dfrac{1}{4}$ kg</li>
+        <li class="opt-item"><span class="opt-letter">C</span> $\dfrac{3}{4}$ kg</li>
+        <li class="opt-item"><span class="opt-letter">D</span> 1 kg</li>
+      </ol>
+      <div class="kunci-section" id="k5">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ A</span> ½ kg</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>$2\frac{1}{2} \div 5 = \frac{5}{2} \div 5 = \frac{5}{2} \times \frac{1}{5} = \frac{5}{10} = \frac{1}{2}$ kg ✓</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 6 -->
+  <div class="soal-item" id="s6">
+    <div class="soal-header">
+      <div class="soal-num">6</div>
+      <div class="soal-meta"><span class="tag-elemen el-bil">Bilangan</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c4">C4 Analisis</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Pengukuran Panjang</div>
+        <div class="stim-body">
+          <p>Hasil pengukuran panjang 4 benda:</p>
+          <ul class="stim-list">
+            <li>Pensil: 15,5 cm</li><li>Penggaris: 30,2 cm</li><li>Buku: 21,8 cm</li><li>Kotak: 18,3 cm</li>
+          </ul>
+        </div>
+      </div>
+      <p class="q-text">Urutkan benda dari yang <strong>terpendek ke terpanjang</strong>!</p>
+      <ol class="opt-list">
+        <li class="opt-item" id="s6a"><span class="opt-letter">A</span> Pensil, Kotak, Buku, Penggaris</li>
+        <li class="opt-item"><span class="opt-letter">B</span> Pensil, Buku, Kotak, Penggaris</li>
+        <li class="opt-item"><span class="opt-letter">C</span> Kotak, Pensil, Buku, Penggaris</li>
+        <li class="opt-item"><span class="opt-letter">D</span> Pensil, Kotak, Penggaris, Buku</li>
+      </ol>
+      <div class="kunci-section" id="k6">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ A</span> Pensil, Kotak, Buku, Penggaris</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>Urutkan: 15,5 &lt; 18,3 &lt; 21,8 &lt; 30,2 → Pensil (15,5) · Kotak (18,3) · Buku (21,8) · Penggaris (30,2) ✓</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 7 -->
+  <div class="soal-item" id="s7">
+    <div class="soal-header">
+      <div class="soal-num">7</div>
+      <div class="soal-meta"><span class="tag-elemen el-bil">Bilangan</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Estimasi Belanja</div>
+        <div class="stim-body">
+          <p>Ayah berbelanja dengan membawa uang Rp 100.000. Harga barang:</p>
+          <ul class="stim-list"><li>Beras: Rp 48.500</li><li>Minyak: Rp 23.800</li><li>Gula: Rp 15.200</li></ul>
+        </div>
+      </div>
+      <p class="q-text">Dengan <strong>pembulatan ke ribuan terdekat</strong>, apakah uang Ayah cukup?</p>
+      <ol class="opt-list">
+        <li class="opt-item"><span class="opt-letter">A</span> Cukup, sisa sekitar Rp 10.000</li>
+        <li class="opt-item" id="s7b"><span class="opt-letter">B</span> Cukup, sisa sekitar Rp 12.000</li>
+        <li class="opt-item"><span class="opt-letter">C</span> Tidak cukup, kurang sekitar Rp 2.000</li>
+        <li class="opt-item"><span class="opt-letter">D</span> Tidak cukup, kurang sekitar Rp 5.000</li>
+      </ol>
+      <div class="kunci-section" id="k7">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ B</span> Cukup, sisa sekitar Rp 12.000</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>Pembulatan ke ribuan terdekat:</p>
+            <div class="step"><span class="step-n">•</span><span>Beras: Rp 48.500 → Rp 49.000</span></div>
+            <div class="step"><span class="step-n">•</span><span>Minyak: Rp 23.800 → Rp 24.000</span></div>
+            <div class="step"><span class="step-n">•</span><span>Gula: Rp 15.200 → Rp 15.000</span></div>
+            <p>Total taksiran = Rp 49.000 + Rp 24.000 + Rp 15.000 = <strong>Rp 88.000</strong></p>
+            <p>Sisa uang = Rp 100.000 − Rp 88.000 = <strong>Rp 12.000</strong> ✓</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 8 -->
+  <div class="soal-item" id="s8">
+    <div class="soal-header">
+      <div class="soal-num">8</div>
+      <div class="soal-meta"><span class="tag-elemen el-bil">Bilangan</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div>
+      <span class="soal-skor">2 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Konversi Pecahan</div>
+        <div class="stim-body">
+          <p>Diberikan pecahan-pecahan berikut: $\dfrac{2}{3}$, $\dfrac{3}{5}$, $\dfrac{5}{8}$, $\dfrac{7}{10}$</p>
+        </div>
+      </div>
+      <p class="hint-pgk">☑ Boleh memilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+      <p class="q-text">Pilih pecahan yang jika diubah menjadi desimal hasilnya <strong>lebih dari 0,5</strong>!</p>
+      <ul class="pgk-opt-list">
+        <li class="pgk-opt-item" id="s8a"><span class="opt-check">✓</span> $\dfrac{2}{3}$</li>
+        <li class="pgk-opt-item" id="s8b"><span class="opt-check">✓</span> $\dfrac{3}{5}$</li>
+        <li class="pgk-opt-item" id="s8c"><span class="opt-check">✓</span> $\dfrac{5}{8}$</li>
+        <li class="pgk-opt-item" id="s8d"><span class="opt-check">✓</span> $\dfrac{7}{10}$</li>
+      </ul>
+      <div class="kunci-section" id="k8">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓</span> Semua (A, B, C, D)</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <div class="step"><span class="step-n">A</span><span>$\frac{2}{3} \approx 0{,}667 > 0{,}5$ ✓</span></div>
+            <div class="step"><span class="step-n">B</span><span>$\frac{3}{5} = 0{,}6 > 0{,}5$ ✓</span></div>
+            <div class="step"><span class="step-n">C</span><span>$\frac{5}{8} = 0{,}625 > 0{,}5$ ✓</span></div>
+            <div class="step"><span class="step-n">D</span><span>$\frac{7}{10} = 0{,}7 > 0{,}5$ ✓</span></div>
+            <p style="margin-top:4px;">Keempat pecahan menghasilkan desimal di atas 0,5.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 9 -->
+  <div class="soal-item" id="s9">
+    <div class="soal-header">
+      <div class="soal-num">9</div>
+      <div class="soal-meta"><span class="tag-elemen el-bil">Bilangan</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div>
+      <span class="soal-skor">2 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Faktor Persekutuan</div>
+        <div class="stim-body"><p>Diberikan dua bilangan: <strong>24</strong> dan <strong>36</strong>.</p></div>
+      </div>
+      <p class="hint-pgk">☑ Boleh memilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+      <p class="q-text">Pilih bilangan yang merupakan <strong>faktor persekutuan</strong> dari 24 dan 36!</p>
+      <ul class="pgk-opt-list">
+        <li class="pgk-opt-item" id="s9a"><span class="opt-check">✓</span> 2</li>
+        <li class="pgk-opt-item" id="s9b"><span class="opt-check">✓</span> 3</li>
+        <li class="pgk-opt-item" id="s9c"><span class="opt-check">✓</span> 4</li>
+        <li class="pgk-opt-item" id="s9d"><span class="opt-check">✓</span> 6</li>
+      </ul>
+      <div class="kunci-section" id="k9">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓</span> Semua (2, 3, 4, 6)</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>Faktor 24 = {1, 2, 3, 4, 6, 8, 12, 24}</p>
+            <p>Faktor 36 = {1, 2, 3, 4, 6, 9, 12, 18, 36}</p>
+            <p>Faktor persekutuan = {1, 2, 3, 4, 6, 12}. Dari opsi: 2 ✓, 3 ✓, 4 ✓, 6 ✓ — keempatnya merupakan faktor persekutuan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 10 -->
+  <div class="soal-item" id="s10">
+    <div class="soal-header">
+      <div class="soal-num">10</div>
+      <div class="soal-meta"><span class="tag-elemen el-bil">Bilangan</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c4">C4 Analisis</span><span class="soal-errata">⚠ errata</span></div>
+      <span class="soal-skor">2 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Penjumlahan Pecahan Campuran</div>
+        <div class="stim-body"><p>Diberikan operasi: $2\dfrac{1}{3} + 1\dfrac{2}{5}$</p></div>
+      </div>
+      <p class="hint-pgk">☑ Boleh memilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+      <p class="q-text">Pilih langkah penyelesaian yang benar!</p>
+      <ul class="pgk-opt-list">
+        <li class="pgk-opt-item" id="s10a"><span class="opt-check">✓</span> Ubah ke pecahan biasa: $\dfrac{7}{3} + \dfrac{7}{5}$</li>
+        <li class="pgk-opt-item" id="s10b"><span class="opt-check">✓</span> Samakan penyebut menjadi 15</li>
+        <li class="pgk-opt-item" id="s10c"><span class="opt-check">✓</span> Hasil akhir: $3\dfrac{14}{15}$ <em style="color:#c47f00;font-size:.8em;">(* lihat errata)</em></li>
+        <li class="pgk-opt-item"><span class="opt-check"></span> Hasil akhir: $4\dfrac{1}{15}$</li>
+      </ul>
+      <div class="kunci-section" id="k10">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar (kunci resmi)</div><div class="kunci-value"><span class="correct-tag">✓</span> A, B, C</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <div class="step"><span class="step-n">1</span><span>$2\frac{1}{3} = \frac{7}{3}$ dan $1\frac{2}{5} = \frac{7}{5}$ → langkah A benar ✓</span></div>
+            <div class="step"><span class="step-n">2</span><span>KPK(3,5) = 15 → samakan penyebut menjadi 15 → langkah B benar ✓</span></div>
+            <div class="step"><span class="step-n">3</span><span>$\frac{7}{3} = \frac{35}{15}$, $\frac{7}{5} = \frac{21}{15}$ → jumlah = $\frac{56}{15} = 3\frac{11}{15}$</span></div>
+            <div class="errata-note">Hasil akhir yang matematikanya benar adalah $3\frac{11}{15}$, bukan $3\frac{14}{15}$ (opsi C) maupun $4\frac{1}{15}$ (opsi D). Kunci resmi memilih opsi A, B, C — namun opsi C mengandung kesalahan perhitungan. Langkah 1 dan 2 benar; hasil akhir perlu dikoreksi menjadi $3\frac{11}{15}$.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 11 -->
+  <div class="soal-item" id="s11">
+    <div class="soal-header">
+      <div class="soal-num">11</div>
+      <div class="soal-meta"><span class="tag-elemen el-alj">Aljabar</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Nilai Belum Diketahui</div>
+        <div class="stim-body"><p>Diberikan kalimat matematika: $15 \times n = 150$</p></div>
+      </div>
+      <p class="q-text">Berapa nilai $n$ yang tepat?</p>
+      <ol class="opt-list">
+        <li class="opt-item"><span class="opt-letter">A</span> 5</li>
+        <li class="opt-item" id="s11b"><span class="opt-letter">B</span> 10</li>
+        <li class="opt-item"><span class="opt-letter">C</span> 15</li>
+        <li class="opt-item"><span class="opt-letter">D</span> 20</li>
+      </ol>
+      <div class="kunci-section" id="k11">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ B</span> 10</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body"><p>$n = 150 \div 15 = \mathbf{10}$ ✓</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 12 -->
+  <div class="soal-item" id="s12">
+    <div class="soal-header">
+      <div class="soal-num">12</div>
+      <div class="soal-meta"><span class="tag-elemen el-alj">Aljabar</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c4">C4 Penalaran</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Pola Bilangan</div>
+        <div class="stim-body"><p>Diberikan urutan bilangan: <strong>2, 4, 8, 16, …</strong></p></div>
+      </div>
+      <p class="q-text">Dua bilangan selanjutnya dalam pola tersebut adalah …</p>
+      <ol class="opt-list">
+        <li class="opt-item"><span class="opt-letter">A</span> 24, 32</li>
+        <li class="opt-item"><span class="opt-letter">B</span> 32, 48</li>
+        <li class="opt-item" id="s12c"><span class="opt-letter">C</span> 32, 64</li>
+        <li class="opt-item"><span class="opt-letter">D</span> 20, 24</li>
+      </ol>
+      <div class="kunci-section" id="k12">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ C</span> 32, 64</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body"><p>Pola: setiap bilangan dikali 2. (2 → 4 → 8 → 16 → <strong>32</strong> → <strong>64</strong>) ✓</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 13 -->
+  <div class="soal-item" id="s13">
+    <div class="soal-header">
+      <div class="soal-num">13</div>
+      <div class="soal-meta"><span class="tag-elemen el-alj">Aljabar</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Rasio Satuan</div>
+        <div class="stim-body"><p>Harga <strong>3</strong> buah apel adalah Rp <strong>18.000</strong>.</p></div>
+      </div>
+      <p class="q-text">Berapa harga untuk <strong>7</strong> buah apel?</p>
+      <ol class="opt-list">
+        <li class="opt-item"><span class="opt-letter">A</span> Rp 35.000</li>
+        <li class="opt-item"><span class="opt-letter">B</span> Rp 38.000</li>
+        <li class="opt-item" id="s13c"><span class="opt-letter">C</span> Rp 42.000</li>
+        <li class="opt-item"><span class="opt-letter">D</span> Rp 45.000</li>
+      </ol>
+      <div class="kunci-section" id="k13">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ C</span> Rp 42.000</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>Harga satuan = Rp 18.000 ÷ 3 = Rp 6.000 per apel.</p>
+            <p>Harga 7 apel = 7 × Rp 6.000 = <strong>Rp 42.000</strong> ✓</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 14 -->
+  <div class="soal-item" id="s14">
+    <div class="soal-header">
+      <div class="soal-num">14</div>
+      <div class="soal-meta"><span class="tag-elemen el-alj">Aljabar</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Resep Masakan</div>
+        <div class="stim-body"><p>Resep kue untuk <strong>4 orang</strong> membutuhkan <strong>200 gram</strong> tepung.</p></div>
+      </div>
+      <p class="q-text">Jika ingin membuat kue untuk <strong>10 orang</strong>, berapa gram tepung yang dibutuhkan?</p>
+      <ol class="opt-list">
+        <li class="opt-item"><span class="opt-letter">A</span> 400 gram</li>
+        <li class="opt-item"><span class="opt-letter">B</span> 450 gram</li>
+        <li class="opt-item" id="s14c"><span class="opt-letter">C</span> 500 gram</li>
+        <li class="opt-item"><span class="opt-letter">D</span> 550 gram</li>
+      </ol>
+      <div class="kunci-section" id="k14">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ C</span> 500 gram</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>Tepung per orang = 200 ÷ 4 = 50 gram. Untuk 10 orang = 10 × 50 = <strong>500 gram</strong> ✓</p>
+            <p>Atau: $\frac{10}{4} \times 200 = 2{,}5 \times 200 = 500$ gram ✓</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 15 -->
+  <div class="soal-item" id="s15">
+    <div class="soal-header">
+      <div class="soal-num">15</div>
+      <div class="soal-meta"><span class="tag-elemen el-alj">Aljabar</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c4">C4 Analisis</span></div>
+      <span class="soal-skor">2 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Sifat Operasi Hitung</div>
+        <div class="stim-body"><p>Perhatikan pasangan kalimat matematika berikut:</p></div>
+      </div>
+      <p class="hint-pgk">☑ Boleh memilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+      <p class="q-text">Pilih pasangan yang memiliki <strong>hasil sama</strong>!</p>
+      <ul class="pgk-opt-list">
+        <li class="pgk-opt-item" id="s15a"><span class="opt-check">✓</span> $5 \times (3 + 2)$ dan $(5 \times 3) + (5 \times 2)$</li>
+        <li class="pgk-opt-item" id="s15b"><span class="opt-check">✓</span> $8 + (4 + 6)$ dan $(8 + 4) + 6$</li>
+        <li class="pgk-opt-item"><span class="opt-check"></span> $12 - 5$ dan $5 - 12$</li>
+        <li class="pgk-opt-item"><span class="opt-check"></span> $10 \div 2$ dan $2 \div 10$</li>
+      </ul>
+      <div class="kunci-section" id="k15">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓</span> A dan B</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <div class="step"><span class="step-n">A</span><span>$5\times(3+2)=5\times5=25$ dan $(5\times3)+(5\times2)=15+10=25$ ✓ (Sifat Distributif)</span></div>
+            <div class="step"><span class="step-n">B</span><span>$8+(4+6)=18$ dan $(8+4)+6=18$ ✓ (Sifat Asosiatif)</span></div>
+            <div class="step"><span class="step-n">C</span><span>$12-5=7$ ≠ $5-12=-7$ ✗ (Pengurangan tidak komutatif)</span></div>
+            <div class="step"><span class="step-n">D</span><span>$10\div2=5$ ≠ $2\div10=0{,}2$ ✗ (Pembagian tidak komutatif)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 16 -->
+  <div class="soal-item" id="s16">
+    <div class="soal-header">
+      <div class="soal-num">16</div>
+      <div class="soal-meta"><span class="tag-elemen el-alj">Aljabar</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c4">C4 Penalaran</span></div>
+      <span class="soal-skor">2 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Pola Gambar</div>
+        <div class="img-placeholder">
+          <div class="img-placeholder-icon">🔷</div>
+          <div class="img-placeholder-title">Pola Gambar — Bertambah 3 Setiap Urutan</div>
+          <div class="img-placeholder-desc">Gambar 1: 3 objek · Gambar 2: 6 objek · Gambar 3: 9 objek · ... (dst.)</div>
+        </div>
+        <div class="stim-body"><p>Pola gambar bertambah secara teratur seperti yang terlihat di atas.</p></div>
+      </div>
+      <p class="hint-pgk">☑ Boleh memilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+      <p class="q-text">Pilih pernyataan yang <strong>benar</strong> tentang pola gambar tersebut!</p>
+      <ul class="pgk-opt-list">
+        <li class="pgk-opt-item" id="s16a"><span class="opt-check">✓</span> Pola bertambah 3 setiap gambar</li>
+        <li class="pgk-opt-item" id="s16b"><span class="opt-check">✓</span> Gambar 5 memiliki 15 objek</li>
+        <li class="pgk-opt-item" id="s16c"><span class="opt-check">✓</span> Rumus pola: $3 \times n$</li>
+        <li class="pgk-opt-item"><span class="opt-check"></span> Gambar 10 memiliki 25 objek</li>
+      </ul>
+      <div class="kunci-section" id="k16">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓</span> A, B, dan C</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <div class="step"><span class="step-n">A</span><span>Bertambah 3 setiap gambar ✓</span></div>
+            <div class="step"><span class="step-n">B</span><span>Gambar 5: $3 \times 5 = 15$ ✓</span></div>
+            <div class="step"><span class="step-n">C</span><span>Rumus = $3 \times n$ ✓</span></div>
+            <div class="step"><span class="step-n">D</span><span>Gambar 10: $3 \times 10 = 30$ (bukan 25) ✗</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 17 -->
+  <div class="soal-item" id="s17">
+    <div class="soal-header">
+      <div class="soal-num">17</div>
+      <div class="soal-meta"><span class="tag-elemen el-bil">Bilangan</span><span class="tag-fmt fmt-c">PG Kategori</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div>
+      <span class="soal-skor">2 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Klasifikasi Bilangan</div>
+        <div class="stim-body"><p>Bilangan: <strong>2, 9, 11, 15, 17</strong></p></div>
+      </div>
+      <p class="hint-pgc">⊞ Klasifikasikan setiap bilangan ke kolom yang tepat.</p>
+      <p class="q-text">Tentukan apakah setiap bilangan termasuk <strong>Prima</strong> atau <strong>Bukan Prima</strong>!</p>
+      <div class="matrix-wrap">
+        <table class="matrix-table">
+          <thead><tr><th>Bilangan</th><th>Prima</th><th>Bukan Prima</th></tr></thead>
+          <tbody>
+            <tr><td>2</td><td class="ans-cell">✓</td><td></td></tr>
+            <tr><td>9</td><td></td><td class="ans-cell">✓</td></tr>
+            <tr><td>11</td><td class="ans-cell">✓</td><td></td></tr>
+            <tr><td>15</td><td></td><td class="ans-cell">✓</td></tr>
+            <tr><td>17</td><td class="ans-cell">✓</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="kunci-section" id="k17">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <div class="step"><span class="step-n">2</span><span>Prima ✓ (hanya faktor 1 dan 2)</span></div>
+            <div class="step"><span class="step-n">9</span><span>Bukan Prima ✓ (9 = 3 × 3)</span></div>
+            <div class="step"><span class="step-n">11</span><span>Prima ✓ (hanya faktor 1 dan 11)</span></div>
+            <div class="step"><span class="step-n">15</span><span>Bukan Prima ✓ (15 = 3 × 5)</span></div>
+            <div class="step"><span class="step-n">17</span><span>Prima ✓ (hanya faktor 1 dan 17)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 18 -->
+  <div class="soal-item" id="s18">
+    <div class="soal-header">
+      <div class="soal-num">18</div>
+      <div class="soal-meta"><span class="tag-elemen el-alj">Aljabar</span><span class="tag-fmt fmt-c">PG Kategori</span><span class="tag-lv lv-c4">C4 Analisis</span></div>
+      <span class="soal-skor">2 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Jenis Operasi</div>
+        <div class="stim-body"><p>Tiga cerita masalah matematika:</p></div>
+      </div>
+      <p class="hint-pgc">⊞ Klasifikasikan setiap masalah ke kolom yang tepat.</p>
+      <p class="q-text">Tentukan operasi yang digunakan untuk menyelesaikan setiap masalah!</p>
+      <div class="matrix-wrap">
+        <table class="matrix-table">
+          <thead><tr><th>Cerita Masalah</th><th>Perkalian / Pembagian</th><th>Penjumlahan / Pengurangan</th></tr></thead>
+          <tbody>
+            <tr><td>Membagi 24 permen kepada 6 anak</td><td class="ans-cell">✓</td><td></td></tr>
+            <tr><td>Menjumlahkan tabungan 3 bulan</td><td></td><td class="ans-cell">✓</td></tr>
+            <tr><td>Menghitung harga 5 buku (harga satuan diketahui)</td><td class="ans-cell">✓</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="kunci-section" id="k18">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <div class="step"><span class="step-n">1</span><span>Membagi 24 permen: 24 ÷ 6 → <strong>Pembagian</strong> ✓</span></div>
+            <div class="step"><span class="step-n">2</span><span>Menjumlahkan tabungan: total = jumlah bulan ke-1 + 2 + 3 → <strong>Penjumlahan</strong> ✓</span></div>
+            <div class="step"><span class="step-n">3</span><span>Harga 5 buku: 5 × harga satuan → <strong>Perkalian</strong> ✓</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ -->
+  <!--      KELOMPOK SOAL 2           -->
+  <!-- ═══════════════════════════════ -->
+  <div class="kelompok-div" style="margin-top:32px;">
+    <div><div class="kelompok-title">Kelompok Soal 2</div><div class="kelompok-sub">Soal 19–35 · Pengukuran, Geometri &amp; Analisis Data</div></div>
+    <span class="kelompok-badge">Skor maks: 21</span>
+  </div>
+
+  <!-- SOAL 19 -->
+  <div class="soal-item" id="s19">
+    <div class="soal-header">
+      <div class="soal-num">19</div>
+      <div class="soal-meta"><span class="tag-elemen el-peng">Pengukuran</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Luas Lahan Sekolah</div>
+        <div class="img-placeholder">
+          <div class="img-placeholder-icon">📐</div>
+          <div class="img-placeholder-title">Denah Lahan — Gabungan Persegi Panjang &amp; Segitiga</div>
+          <div class="img-placeholder-desc">Persegi panjang: 10m × 8m · Segitiga: alas 10m, tinggi 6m</div>
+        </div>
+        <div class="stim-body"><p>Denah lahan terdiri dari persegi panjang (10m × 8m) dan segitiga (alas 10m, tinggi 6m).</p></div>
+      </div>
+      <p class="q-text">Hitung <strong>luas total</strong> lahan tersebut!</p>
+      <ol class="opt-list">
+        <li class="opt-item"><span class="opt-letter">A</span> 100 m²</li>
+        <li class="opt-item" id="s19b"><span class="opt-letter">B</span> 110 m²</li>
+        <li class="opt-item"><span class="opt-letter">C</span> 120 m²</li>
+        <li class="opt-item"><span class="opt-letter">D</span> 130 m²</li>
+      </ol>
+      <div class="kunci-section" id="k19">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ B</span> 110 m²</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <div class="step"><span class="step-n">•</span><span>Luas persegi panjang = 10 × 8 = <strong>80 m²</strong></span></div>
+            <div class="step"><span class="step-n">•</span><span>Luas segitiga = ½ × 10 × 6 = <strong>30 m²</strong></span></div>
+            <div class="step"><span class="step-n">•</span><span>Luas total = 80 + 30 = <strong>110 m²</strong> ✓</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 20 -->
+  <div class="soal-item" id="s20">
+    <div class="soal-header">
+      <div class="soal-num">20</div>
+      <div class="soal-meta"><span class="tag-elemen el-peng">Pengukuran</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Keliling Taman</div>
+        <div class="stim-body"><p>Taman berbentuk <strong>persegi panjang</strong> dengan panjang <strong>15 m</strong> dan lebar <strong>10 m</strong>.</p></div>
+      </div>
+      <p class="q-text">Berapa panjang pagar yang dibutuhkan untuk mengelilingi taman?</p>
+      <ol class="opt-list">
+        <li class="opt-item"><span class="opt-letter">A</span> 40 m</li>
+        <li class="opt-item"><span class="opt-letter">B</span> 45 m</li>
+        <li class="opt-item" id="s20c"><span class="opt-letter">C</span> 50 m</li>
+        <li class="opt-item"><span class="opt-letter">D</span> 55 m</li>
+      </ol>
+      <div class="kunci-section" id="k20">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ C</span> 50 m</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body"><p>Keliling persegi panjang = 2 × (p + l) = 2 × (15 + 10) = 2 × 25 = <strong>50 m</strong> ✓</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 21 -->
+  <div class="soal-item" id="s21">
+    <div class="soal-header">
+      <div class="soal-num">21</div>
+      <div class="soal-meta"><span class="tag-elemen el-peng">Pengukuran</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Sudut Jam</div>
+        <div class="img-placeholder">
+          <div class="img-placeholder-icon">🕒</div>
+          <div class="img-placeholder-title">Jam Dinding Menunjukkan Pukul 03.00</div>
+          <div class="img-placeholder-desc">Jarum jam di angka 3 · Jarum menit di angka 12</div>
+        </div>
+      </div>
+      <p class="q-text">Berapa besar <strong>sudut terkecil</strong> yang dibentuk oleh jarum jam dan jarum menit?</p>
+      <ol class="opt-list">
+        <li class="opt-item"><span class="opt-letter">A</span> 45°</li>
+        <li class="opt-item"><span class="opt-letter">B</span> 60°</li>
+        <li class="opt-item" id="s21c"><span class="opt-letter">C</span> 90°</li>
+        <li class="opt-item"><span class="opt-letter">D</span> 120°</li>
+      </ol>
+      <div class="kunci-section" id="k21">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ C</span> 90°</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>Jam dibagi 12 angka → setiap angka = 360° ÷ 12 = 30°. Dari angka 12 ke angka 3 = 3 × 30° = <strong>90°</strong> ✓ (sudut siku-siku)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 22 -->
+  <div class="soal-item" id="s22">
+    <div class="soal-header">
+      <div class="soal-num">22</div>
+      <div class="soal-meta"><span class="tag-elemen el-peng">Pengukuran</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c4">C4 Analisis</span><span class="soal-errata">⚠ errata</span></div>
+      <span class="soal-skor">2 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Durasi Kegiatan</div>
+        <div class="stim-body">
+          <p>Jadwal kegiatan belajar:</p>
+          <ul class="stim-list">
+            <li>Belajar: 07.00 – 08.30</li>
+            <li>Olahraga: 09.00 – 10.00</li>
+            <li>Seni: 10.30 – 11.45</li>
+            <li>Istirahat: 12.00 – 13.00</li>
+          </ul>
+        </div>
+      </div>
+      <p class="hint-pgk">☑ Boleh memilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+      <p class="q-text">Pilih kegiatan yang durasinya <strong>lebih dari 1 jam</strong>!</p>
+      <ul class="pgk-opt-list">
+        <li class="pgk-opt-item" id="s22a"><span class="opt-check">✓</span> Belajar</li>
+        <li class="pgk-opt-item"><span class="opt-check"></span> Olahraga</li>
+        <li class="pgk-opt-item" id="s22c"><span class="opt-check">✓</span> Seni</li>
+        <li class="pgk-opt-item" id="s22d"><span class="opt-check">✓</span> Istirahat</li>
+      </ul>
+      <div class="kunci-section" id="k22">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar (kunci resmi)</div><div class="kunci-value"><span class="correct-tag">✓</span> Belajar, Seni, Istirahat</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <div class="step"><span class="step-n">•</span><span>Belajar: 07.00–08.30 = <strong>90 menit = 1,5 jam</strong> → lebih dari 1 jam ✓</span></div>
+            <div class="step"><span class="step-n">•</span><span>Olahraga: 09.00–10.00 = <strong>60 menit = tepat 1 jam</strong> → tidak lebih dari 1 jam</span></div>
+            <div class="step"><span class="step-n">•</span><span>Seni: 10.30–11.45 = <strong>75 menit = 1,25 jam</strong> → lebih dari 1 jam ✓</span></div>
+            <div class="step"><span class="step-n">•</span><span>Istirahat: 12.00–13.00 = <strong>60 menit = tepat 1 jam</strong></span></div>
+            <div class="errata-note">Kunci resmi memilih Belajar, Seni, dan Istirahat. Namun Istirahat (60 menit) dan Olahraga (60 menit) memiliki durasi yang sama persis (tepat 1 jam, bukan lebih dari 1 jam). Jika mengikuti interpretasi ketat ">1 jam", jawaban yang konsisten seharusnya hanya Belajar dan Seni. Perlu klarifikasi apakah soal bermaksud "≥ 1 jam" atau "> 1 jam".</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 23 -->
+  <div class="soal-item" id="s23">
+    <div class="soal-header">
+      <div class="soal-num">23</div>
+      <div class="soal-meta"><span class="tag-elemen el-peng">Pengukuran</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Volume Bak Mandi</div>
+        <div class="stim-body"><p>Bak mandi berbentuk balok: panjang <strong>120 cm</strong>, lebar <strong>80 cm</strong>, tinggi <strong>70 cm</strong>.</p></div>
+      </div>
+      <p class="q-text">Berapa liter volume air maksimal yang dapat ditampung?</p>
+      <ol class="opt-list">
+        <li class="opt-item"><span class="opt-letter">A</span> 576 liter</li>
+        <li class="opt-item" id="s23b"><span class="opt-letter">B</span> 672 liter</li>
+        <li class="opt-item"><span class="opt-letter">C</span> 756 liter</li>
+        <li class="opt-item"><span class="opt-letter">D</span> 840 liter</li>
+      </ol>
+      <div class="kunci-section" id="k23">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ B</span> 672 liter</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>V = p × l × t = 120 × 80 × 70 = <strong>672.000 cm³</strong></p>
+            <p>Konversi: 1 liter = 1.000 cm³ → 672.000 cm³ = <strong>672 liter</strong> ✓</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 24 -->
+  <div class="soal-item" id="s24">
+    <div class="soal-header">
+      <div class="soal-num">24</div>
+      <div class="soal-meta"><span class="tag-elemen el-geo">Geometri</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Jaring-Jaring Kubus</div>
+        <div class="img-placeholder">
+          <div class="img-placeholder-icon">📦</div>
+          <div class="img-placeholder-title">4 Pola Jaring-Jaring (A, B, C, D)</div>
+          <div class="img-placeholder-desc">Pola A: valid · Pola B, C, D: tidak valid sebagai jaring-jaring kubus</div>
+        </div>
+      </div>
+      <p class="q-text">Manakah yang merupakan <strong>jaring-jaring kubus</strong> yang valid?</p>
+      <ol class="opt-list">
+        <li class="opt-item" id="s24a"><span class="opt-letter">A</span> Pola A</li>
+        <li class="opt-item"><span class="opt-letter">B</span> Pola B</li>
+        <li class="opt-item"><span class="opt-letter">C</span> Pola C</li>
+        <li class="opt-item"><span class="opt-letter">D</span> Pola D</li>
+      </ol>
+      <div class="kunci-section" id="k24">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ A</span> Pola A</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body"><p>Jaring-jaring kubus yang valid terdiri dari 6 persegi yang tersusun sehingga saat dilipat semua sisi bertemu tanpa tumpang tindih. Ada 11 kemungkinan jaring-jaring kubus yang valid. Pola A memenuhi syarat tersebut.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 25 -->
+  <div class="soal-item" id="s25">
+    <div class="soal-header">
+      <div class="soal-num">25</div>
+      <div class="soal-meta"><span class="tag-elemen el-geo">Geometri</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c4">C4 Analisis</span></div>
+      <span class="soal-skor">2 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Tampak Bangun Ruang</div>
+        <div class="img-placeholder">
+          <div class="img-placeholder-icon">🧊</div>
+          <div class="img-placeholder-title">Bangun Ruang Gabungan dari Berbagai Sudut Pandang</div>
+          <div class="img-placeholder-desc">Tampak depan, samping, atas, dan belakang disajikan sebagai pilihan</div>
+        </div>
+      </div>
+      <p class="hint-pgk">☑ Boleh memilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+      <p class="q-text">Pilih gambar yang menunjukkan <strong>tampak yang benar</strong>!</p>
+      <ul class="pgk-opt-list">
+        <li class="pgk-opt-item"><span class="opt-check"></span> Tampak depan menunjukkan 6 persegi</li>
+        <li class="pgk-opt-item" id="s25b"><span class="opt-check">✓</span> Tampak samping menunjukkan 4 persegi</li>
+        <li class="pgk-opt-item"><span class="opt-check"></span> Tampak atas menunjukkan 3 persegi</li>
+        <li class="pgk-opt-item" id="s25d"><span class="opt-check">✓</span> Tampak belakang sama dengan depan</li>
+      </ul>
+      <div class="kunci-section" id="k25">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓</span> B dan D</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body"><p>Tampak samping = 4 persegi ✓ dan tampak belakang = tampak depan (simetris) ✓. Jawaban berdasarkan karakteristik bangun ruang gabungan yang ditampilkan.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 26 -->
+  <div class="soal-item" id="s26">
+    <div class="soal-header">
+      <div class="soal-num">26</div>
+      <div class="soal-meta"><span class="tag-elemen el-geo">Geometri</span><span class="tag-fmt fmt-c">PG Kategori</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div>
+      <span class="soal-skor">2 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Sifat Bangun Ruang</div>
+        <div class="stim-body"><p>Pernyataan tentang kubus dan balok:</p></div>
+      </div>
+      <p class="hint-pgc">⊞ Klasifikasikan setiap pernyataan sebagai Benar atau Salah.</p>
+      <p class="q-text">Tentukan kebenaran setiap pernyataan!</p>
+      <div class="matrix-wrap">
+        <table class="matrix-table">
+          <thead><tr><th>Pernyataan</th><th>Benar</th><th>Salah</th></tr></thead>
+          <tbody>
+            <tr><td>Kubus memiliki 6 sisi yang sama besar</td><td class="ans-cell">✓</td><td></td></tr>
+            <tr><td>Balok memiliki 12 rusuk</td><td class="ans-cell">✓</td><td></td></tr>
+            <tr><td>Kubus memiliki 8 titik sudut</td><td class="ans-cell">✓</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="kunci-section" id="k26">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <div class="step"><span class="step-n">1</span><span>Kubus: 6 sisi, semua berbentuk persegi (sama besar) ✓</span></div>
+            <div class="step"><span class="step-n">2</span><span>Balok: 12 rusuk (sama seperti kubus) ✓</span></div>
+            <div class="step"><span class="step-n">3</span><span>Kubus: 8 titik sudut ✓</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 27 -->
+  <div class="soal-item" id="s27">
+    <div class="soal-header">
+      <div class="soal-num">27</div>
+      <div class="soal-meta"><span class="tag-elemen el-geo">Geometri</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Koordinat Peta</div>
+        <div class="img-placeholder">
+          <div class="img-placeholder-icon">🗺️</div>
+          <div class="img-placeholder-title">Peta Lingkungan Sekolah — Sistem Koordinat Grid</div>
+          <div class="img-placeholder-desc">Sumbu horizontal: huruf (A, B, C, D, ...) · Sumbu vertikal: angka (1, 2, 3, 4, 5, ...)</div>
+        </div>
+      </div>
+      <p class="q-text">Perpustakaan terletak pada koordinat …</p>
+      <ol class="opt-list">
+        <li class="opt-item" id="s27a"><span class="opt-letter">A</span> (A, 1)</li>
+        <li class="opt-item"><span class="opt-letter">B</span> (C, 2)</li>
+        <li class="opt-item"><span class="opt-letter">C</span> (D, 4)</li>
+        <li class="opt-item"><span class="opt-letter">D</span> (A, 5)</li>
+      </ol>
+      <div class="kunci-section" id="k27">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ A</span> (A, 1)</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body"><p>Berdasarkan gambar peta, perpustakaan berada di posisi kolom A, baris 1 → koordinat <strong>(A, 1)</strong>. Membaca peta: kolom (huruf) dibaca lebih dulu, kemudian baris (angka).</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 28 -->
+  <div class="soal-item" id="s28">
+    <div class="soal-header">
+      <div class="soal-num">28</div>
+      <div class="soal-meta"><span class="tag-elemen el-geo">Geometri</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c4">C4 Analisis</span></div>
+      <span class="soal-skor">2 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Sifat Bangun</div>
+        <div class="img-placeholder">
+          <div class="img-placeholder-icon">🔷</div>
+          <div class="img-placeholder-title">3 Gambar Bangun: Persegi · Kubus · Lingkaran</div>
+          <div class="img-placeholder-desc">Ditampilkan tiga bangun geometri berdampingan</div>
+        </div>
+      </div>
+      <p class="hint-pgk">☑ Boleh memilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+      <p class="q-text">Pilih bangun yang memiliki <strong>titik sudut</strong>!</p>
+      <ul class="pgk-opt-list">
+        <li class="pgk-opt-item" id="s28a"><span class="opt-check">✓</span> Persegi</li>
+        <li class="pgk-opt-item" id="s28b"><span class="opt-check">✓</span> Kubus</li>
+        <li class="pgk-opt-item"><span class="opt-check"></span> Lingkaran</li>
+        <li class="pgk-opt-item"><span class="opt-check"></span> Semua memiliki titik sudut</li>
+      </ul>
+      <div class="kunci-section" id="k28">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓</span> Persegi dan Kubus</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <div class="step"><span class="step-n">•</span><span>Persegi: memiliki <strong>4 titik sudut</strong> ✓</span></div>
+            <div class="step"><span class="step-n">•</span><span>Kubus: memiliki <strong>8 titik sudut</strong> ✓</span></div>
+            <div class="step"><span class="step-n">•</span><span>Lingkaran: <strong>tidak memiliki titik sudut</strong> (tidak ada sudut) ✗</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 29 -->
+  <div class="soal-item" id="s29">
+    <div class="soal-header">
+      <div class="soal-num">29</div>
+      <div class="soal-meta"><span class="tag-elemen el-data">Analisis Data</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Diagram Kehadiran</div>
+        <div class="img-placeholder">
+          <div class="img-placeholder-icon">📊</div>
+          <div class="img-placeholder-title">Diagram Batang — Kehadiran Siswa Seminggu</div>
+          <div class="img-placeholder-desc">Senin, Selasa, Rabu (tertinggi), Kamis, Jumat · Sumbu Y: jumlah siswa</div>
+        </div>
+      </div>
+      <p class="q-text">Hari dengan jumlah kehadiran <strong>tertinggi</strong> adalah …</p>
+      <ol class="opt-list">
+        <li class="opt-item"><span class="opt-letter">A</span> Senin</li>
+        <li class="opt-item"><span class="opt-letter">B</span> Selasa</li>
+        <li class="opt-item" id="s29c"><span class="opt-letter">C</span> Rabu</li>
+        <li class="opt-item"><span class="opt-letter">D</span> Kamis</li>
+      </ol>
+      <div class="kunci-section" id="k29">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ C</span> Rabu</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body"><p>Berdasarkan diagram batang, batang tertinggi berada pada hari <strong>Rabu</strong>, menunjukkan jumlah kehadiran paling banyak.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 30 -->
+  <div class="soal-item" id="s30">
+    <div class="soal-header">
+      <div class="soal-num">30</div>
+      <div class="soal-meta"><span class="tag-elemen el-data">Analisis Data</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c4">C4 Analisis</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Tabel Nilai</div>
+        <div class="stim-body">
+          <p>Data nilai ujian:</p>
+          <ul class="stim-list"><li>Nilai tertinggi: 95</li><li>Nilai terendah: 60</li><li>Rata-rata: 78</li></ul>
+        </div>
+      </div>
+      <p class="q-text">Berapa <strong>selisih</strong> nilai tertinggi dan terendah?</p>
+      <ol class="opt-list">
+        <li class="opt-item"><span class="opt-letter">A</span> 25</li>
+        <li class="opt-item"><span class="opt-letter">B</span> 30</li>
+        <li class="opt-item" id="s30c"><span class="opt-letter">C</span> 35</li>
+        <li class="opt-item"><span class="opt-letter">D</span> 40</li>
+      </ol>
+      <div class="kunci-section" id="k30">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ C</span> 35</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body"><p>Selisih = nilai tertinggi − nilai terendah = 95 − 60 = <strong>35</strong> ✓</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 31 -->
+  <div class="soal-item" id="s31">
+    <div class="soal-header">
+      <div class="soal-num">31</div>
+      <div class="soal-meta"><span class="tag-elemen el-data">Analisis Data</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Rata-Rata Tinggi Badan</div>
+        <div class="stim-body"><p>Data tinggi badan 5 siswa (cm): <strong>140, 145, 150, 155, 160</strong></p></div>
+      </div>
+      <p class="q-text">Berapa <strong>rata-rata</strong> tinggi badan dari data tersebut?</p>
+      <ol class="opt-list">
+        <li class="opt-item"><span class="opt-letter">A</span> 148 cm</li>
+        <li class="opt-item" id="s31b"><span class="opt-letter">B</span> 150 cm</li>
+        <li class="opt-item"><span class="opt-letter">C</span> 152 cm</li>
+        <li class="opt-item"><span class="opt-letter">D</span> 155 cm</li>
+      </ol>
+      <div class="kunci-section" id="k31">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ B</span> 150 cm</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>Rata-rata = jumlah data ÷ banyak data</p>
+            <p>= (140 + 145 + 150 + 155 + 160) ÷ 5 = 750 ÷ 5 = <strong>150 cm</strong> ✓</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 32 -->
+  <div class="soal-item" id="s32">
+    <div class="soal-header">
+      <div class="soal-num">32</div>
+      <div class="soal-meta"><span class="tag-elemen el-data">Analisis Data</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c4">C4 Penalaran</span></div>
+      <span class="soal-skor">2 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Grafik Penjualan</div>
+        <div class="img-placeholder">
+          <div class="img-placeholder-icon">📈</div>
+          <div class="img-placeholder-title">Grafik Penjualan Koperasi — 4 Bulan</div>
+          <div class="img-placeholder-desc">Jan → Feb → Mar → Apr · Tren: meningkat setiap bulan</div>
+        </div>
+      </div>
+      <p class="hint-pgk">☑ Boleh memilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+      <p class="q-text">Pilih kesimpulan yang <strong>valid</strong> berdasarkan grafik!</p>
+      <ul class="pgk-opt-list">
+        <li class="pgk-opt-item" id="s32a"><span class="opt-check">✓</span> Penjualan April lebih tinggi dari Januari</li>
+        <li class="pgk-opt-item" id="s32b"><span class="opt-check">✓</span> Tren penjualan meningkat</li>
+        <li class="pgk-opt-item"><span class="opt-check"></span> Penjualan Februari lebih rendah dari Maret</li>
+        <li class="pgk-opt-item"><span class="opt-check"></span> Penjualan tetap setiap bulan</li>
+      </ul>
+      <div class="kunci-section" id="k32">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓</span> A dan B</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <div class="step"><span class="step-n">A</span><span>April tertinggi, Januari terendah → April &gt; Januari ✓</span></div>
+            <div class="step"><span class="step-n">B</span><span>Grafik naik setiap bulan → tren meningkat ✓</span></div>
+            <div class="step"><span class="step-n">C</span><span>Dari grafik, Februari &lt; Maret (tren naik). Namun kunci tidak memilih ini — menunjukkan bahwa opsi C dianggap tidak cukup valid atau data grafik menunjukkan hal berbeda.</span></div>
+            <div class="step"><span class="step-n">D</span><span>Tidak tepat — penjualan justru naik ✗</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 33 -->
+  <div class="soal-item" id="s33">
+    <div class="soal-header">
+      <div class="soal-num">33</div>
+      <div class="soal-meta"><span class="tag-elemen el-data">Analisis Data</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c4">C4 Penalaran</span></div>
+      <span class="soal-skor">1 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Peluang Kelereng</div>
+        <div class="stim-body">
+          <p>Kantong berisi:</p>
+          <ul class="stim-list"><li>5 kelereng merah</li><li>3 kelereng biru</li><li>2 kelereng hijau</li></ul>
+        </div>
+      </div>
+      <p class="q-text">Warna kelereng yang <strong>paling mungkin</strong> terambil secara acak adalah …</p>
+      <ol class="opt-list">
+        <li class="opt-item" id="s33a"><span class="opt-letter">A</span> Merah</li>
+        <li class="opt-item"><span class="opt-letter">B</span> Biru</li>
+        <li class="opt-item"><span class="opt-letter">C</span> Hijau</li>
+        <li class="opt-item"><span class="opt-letter">D</span> Semua sama</li>
+      </ol>
+      <div class="kunci-section" id="k33">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="kunci-row"><div class="kunci-label">Jawaban Benar</div><div class="kunci-value"><span class="correct-tag">✓ A</span> Merah</div></div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>Total kelereng = 5 + 3 + 2 = 10</p>
+            <p>P(merah) = 5/10 = 1/2 · P(biru) = 3/10 · P(hijau) = 2/10</p>
+            <p>Kelereng <strong>merah</strong> paling banyak → peluangnya paling besar ✓</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 34 -->
+  <div class="soal-item" id="s34">
+    <div class="soal-header">
+      <div class="soal-num">34</div>
+      <div class="soal-meta"><span class="tag-elemen el-data">Analisis Data</span><span class="tag-fmt fmt-c">PG Kategori</span><span class="tag-lv lv-c4">C4 Analisis</span></div>
+      <span class="soal-skor">2 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Penyajian Data</div>
+        <div class="stim-body"><p>Tiga bentuk penyajian data: <strong>Diagram Batang, Tabel, Piktogram</strong></p></div>
+      </div>
+      <p class="hint-pgc">⊞ Klasifikasikan setiap bentuk ke kolom yang tepat.</p>
+      <p class="q-text">Klasifikasikan setiap bentuk penyajian berdasarkan fungsi utamanya!</p>
+      <div class="matrix-wrap">
+        <table class="matrix-table">
+          <thead><tr><th>Bentuk Penyajian</th><th>Membandingkan Jumlah</th><th>Melihat Tren Waktu</th></tr></thead>
+          <tbody>
+            <tr><td>Diagram Batang</td><td class="ans-cell">✓</td><td></td></tr>
+            <tr><td>Tabel</td><td class="ans-cell">✓</td><td></td></tr>
+            <tr><td>Piktogram</td><td class="ans-cell">✓</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="kunci-section" id="k34">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <p>Berdasarkan kunci jawaban, ketiga bentuk diklasifikasikan sebagai <strong>Membandingkan Jumlah</strong>:</p>
+            <div class="step"><span class="step-n">•</span><span><strong>Diagram Batang</strong>: sangat efektif untuk membandingkan nilai antar kategori ✓</span></div>
+            <div class="step"><span class="step-n">•</span><span><strong>Tabel</strong>: menyajikan data terstruktur untuk dibandingkan ✓</span></div>
+            <div class="step"><span class="step-n">•</span><span><strong>Piktogram</strong>: representasi visual sederhana untuk membandingkan jumlah ✓</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOAL 35 -->
+  <div class="soal-item" id="s35">
+    <div class="soal-header">
+      <div class="soal-num">35</div>
+      <div class="soal-meta"><span class="tag-elemen el-data">Analisis Data</span><span class="tag-fmt fmt-c">PG Kategori</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div>
+      <span class="soal-skor">2 poin</span>
+    </div>
+    <div class="soal-body">
+      <div class="stimulus">
+        <div class="stim-head">Kemungkinan Kejadian</div>
+        <div class="stim-body"><p>Tiga pernyataan kejadian sehari-hari.</p></div>
+      </div>
+      <p class="hint-pgc">⊞ Klasifikasikan setiap kejadian ke kolom yang tepat.</p>
+      <p class="q-text">Tentukan kemungkinan setiap kejadian!</p>
+      <div class="matrix-wrap">
+        <table class="matrix-table">
+          <thead><tr><th>Kejadian</th><th>Pasti</th><th>Mungkin</th><th>Tidak Mungkin</th></tr></thead>
+          <tbody>
+            <tr><td>Matahari terbit dari barat</td><td></td><td></td><td class="ans-cell">✓</td></tr>
+            <tr><td>Hujan di musim kemarau</td><td></td><td class="ans-cell">✓</td><td></td></tr>
+            <tr><td>Manusia bernapas</td><td class="ans-cell">✓</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="kunci-section" id="k35">
+        <div class="kunci-head"><span class="kunci-badge">KUNCI</span> Jawaban &amp; Pembahasan</div>
+        <div class="pembahasan-box">
+          <div class="pembahasan-head">💡 Pembahasan</div>
+          <div class="pembahasan-body">
+            <div class="step"><span class="step-n">1</span><span>Matahari terbit dari barat → <strong>Tidak Mungkin</strong> (selalu dari timur) ✓</span></div>
+            <div class="step"><span class="step-n">2</span><span>Hujan di musim kemarau → <strong>Mungkin</strong> (jarang, tapi bisa terjadi) ✓</span></div>
+            <div class="step"><span class="step-n">3</span><span>Manusia bernapas → <strong>Pasti</strong> (syarat kehidupan) ✓</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <strong>SD Muhammadiyah 01 Kukusan</strong> · Soal &amp; Kunci Jawaban US Matematika · TP 2025/2026<br>
+  <span style="margin-top:3px;display:block;">Dikelola oleh: Arif Azwar Anas, S.Pd. · Dokumen ini bersifat administratif dan tidak untuk dibagikan kepada siswa sebelum ujian.</span>
+</footer>
+
+<script>
+  let kunciVisible = false;
+
+  function toggleAll() {
+    kunciVisible = !kunciVisible;
+    const sections = document.querySelectorAll('.kunci-section');
+    sections.forEach(s => s.classList.toggle('visible', kunciVisible));
+
+    // Update correct option highlight
+    const correctPairs = {
+      's1a':true,'s2b':true,'s3b':true,'s4a':true,'s5a':true,'s6a':true,'s7b':true,
+      's8a':true,'s8b':true,'s8c':true,'s8d':true,
+      's9a':true,'s9b':true,'s9c':true,'s9d':true,
+      's10a':true,'s10b':true,'s10c':true,
+      's11b':true,'s12c':true,'s13c':true,'s14c':true,
+      's15a':true,'s15b':true,
+      's16a':true,'s16b':true,'s16c':true,
+      's19b':true,'s20c':true,'s21c':true,
+      's22a':true,'s22c':true,'s22d':true,
+      's23b':true,'s24a':true,
+      's25b':true,'s25d':true,
+      's27a':true,
+      's28a':true,'s28b':true,
+      's29c':true,'s30c':true,'s31b':true,
+      's32a':true,'s32b':true,
+      's33a':true
+    };
+
+    Object.keys(correctPairs).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('correct', kunciVisible);
+    });
+
+    // Update buttons
+    const mainBtn = document.getElementById('mainToggleBtn');
+    const stickyBtn = document.getElementById('stickyToggleBtn');
+    if (kunciVisible) {
+      mainBtn.innerHTML = '<span class="btn-icon">🔒</span> Sembunyikan Kunci & Pembahasan';
+      mainBtn.classList.add('active');
+      stickyBtn.textContent = '🔒 Sembunyikan Kunci & Pembahasan';
+      stickyBtn.classList.add('active');
+    } else {
+      mainBtn.innerHTML = '<span class="btn-icon">🔑</span> Tampilkan Kunci & Pembahasan';
+      mainBtn.classList.remove('active');
+      stickyBtn.textContent = '🔑 Tampilkan Kunci & Pembahasan';
+      stickyBtn.classList.remove('active');
+    }
+
+    // Update pgk correct styles
+    const pgkCorrect = ['s8a','s8b','s8c','s8d','s9a','s9b','s9c','s9d','s10a','s10b','s10c','s15a','s15b','s16a','s16b','s16c','s22a','s22c','s22d','s25b','s25d','s28a','s28b','s32a','s32b'];
+    pgkCorrect.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('correct', kunciVisible);
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kisi-Kisi US Matematika — SDM 01 Kukusan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green:    #1a5c35; --green-md: #2d7a4f; --green-lt: #f0faf4; --green-border: #b7dfc8;
+      --gold:     #f5a623; --gold-dk:  #c47f00; --gold-lt:  #fdf6e3;
+      --blue:     #1a5aaa; --blue-lt:  #edf4fb;
+      --purple:   #6d28d9; --purple-lt:#f5f0ff;
+      --red:      #b91c1c; --red-lt:   #fef2f2;
+      --text:     #1e2d24; --muted:    #5a6e62;
+      --bg:       #f5f9f6; --white:    #fff; --border:  #dde8e2;
+      --r:        10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: clamp(13px, 3vw, 15px); scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); }
+
+    /* NAV */
+    .topnav { background: var(--green); height: 48px; display: flex; align-items: center; padding: 0 20px; gap: 8px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+    .topnav a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .82rem; font-weight: 600; }
+    .topnav a:hover { color: white; text-decoration: underline; }
+    .topnav-sep { color: rgba(255,255,255,.3); }
+    .topnav-cur { color: rgba(255,255,255,.6); font-size: .82rem; font-weight: 600; }
+
+    /* HEADER */
+    .page-header { background: linear-gradient(150deg,#0a3d22,#1a5c35 60%,#24784a); color: white; padding: 32px 20px 36px; border-bottom: 3px solid var(--gold); position: relative; overflow: hidden; }
+    .page-header::before { content:''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size: 24px 24px; }
+    .header-inner { position: relative; max-width: 960px; margin: 0 auto; }
+    .header-kode { font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #a7f3d0; margin-bottom: 6px; }
+    .page-header h1 { font-family: 'Fraunces', serif; font-size: clamp(1.4rem,4vw,2rem); font-weight: 700; margin-bottom: 4px; }
+    .page-header h1 em { color: var(--gold); font-style: italic; }
+    .header-meta { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 12px; font-size: .78rem; color: rgba(255,255,255,.8); }
+    .header-meta span::before { content: '·'; margin-right: 6px; opacity: .5; }
+    .header-meta span:first-child::before { display: none; }
+
+    /* MAIN */
+    .main { max-width: 960px; margin: 0 auto; padding: 32px 20px 56px; }
+
+    /* SUMMARY GRID */
+    .summary-section { margin-bottom: 32px; }
+    .section-label { font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 20px; }
+    .stat-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px; }
+    .stat-card-val { font-size: 1.6rem; font-weight: 800; color: var(--green); line-height: 1; margin-bottom: 2px; }
+    .stat-card-label { font-size: .73rem; color: var(--muted); font-weight: 600; }
+
+    /* DIST BARS */
+    .dist-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+    @media (max-width: 640px) { .dist-grid { grid-template-columns: 1fr; } }
+    .dist-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 16px; }
+    .dist-card h3 { font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .dist-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: .78rem; }
+    .dist-label { width: 100px; font-weight: 600; color: var(--text); flex-shrink: 0; font-size: .74rem; }
+    .dist-bar-wrap { flex: 1; background: var(--bg); border-radius: 4px; height: 8px; overflow: hidden; }
+    .dist-bar { height: 100%; border-radius: 4px; }
+    .dist-count { width: 28px; text-align: right; font-weight: 700; color: var(--muted); font-size: .73rem; }
+
+    /* FORMAT LEGEND */
+    .format-legend { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 16px 18px; margin-bottom: 24px; }
+    .format-legend h3 { font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .format-items { display: flex; flex-wrap: wrap; gap: 10px; }
+    .fmt { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); flex: 1 1 180px; }
+    .fmt-badge { font-size: .68rem; font-weight: 800; letter-spacing: .05em; padding: 2px 7px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 1px; }
+    .fmt-a { background: #e3f0ff; color: #1a5aaa; } .fmt-b { background: #fff0e3; color: #c47f00; } .fmt-c { background: #f0e3ff; color: #6d28d9; }
+    .fmt-text strong { display: block; font-size: .82rem; margin-bottom: 2px; }
+    .fmt-text span { font-size: .74rem; color: var(--muted); }
+
+    /* ERRATA */
+    .errata { background: #fffbf0; border: 1px solid #f5c842; border-radius: var(--r); padding: 14px 16px; margin-bottom: 24px; }
+    .errata-head { display: flex; align-items: center; gap: 8px; font-size: .75rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #92600a; margin-bottom: 8px; }
+    .errata-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+    .errata-list li { font-size: .79rem; color: #5a3e00; display: flex; gap: 8px; }
+    .errata-list li::before { content: '⚠'; flex-shrink: 0; }
+
+    /* KELOMPOK HEADER */
+    .kelompok-header { background: var(--green); color: white; padding: 10px 16px; border-radius: var(--r) var(--r) 0 0; display: flex; align-items: center; justify-content: space-between; margin-top: 28px; }
+    .kelompok-header:first-of-type { margin-top: 0; }
+    .kelompok-title { font-size: .88rem; font-weight: 700; }
+    .kelompok-sub { font-size: .74rem; opacity: .8; }
+    .kelompok-badge { font-size: .7rem; font-weight: 700; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.25); padding: 3px 10px; border-radius: 20px; }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-top: none; border-radius: 0 0 var(--r) var(--r); background: var(--white); margin-bottom: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: .78rem; }
+    thead th { background: var(--green-lt); color: var(--green); font-size: .68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 9px 10px; border-bottom: 2px solid var(--green-border); text-align: left; white-space: nowrap; }
+    thead th:first-child { width: 36px; text-align: center; }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--green-lt); }
+    tbody tr.elemen-divider td { background: #f8fdf9; font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--green-md); padding: 6px 10px; border-bottom: 1px solid var(--green-border); }
+    tbody td { padding: 10px 10px; vertical-align: top; color: var(--text); line-height: 1.5; }
+    td.no { text-align: center; font-weight: 800; color: var(--green); font-size: .85rem; width: 36px; }
+    td.cp { font-size: .72rem; color: var(--muted); max-width: 200px; }
+    td.konsep { font-weight: 700; font-size: .8rem; }
+    td.konsep small { display: block; font-weight: 400; color: var(--muted); font-size: .72rem; margin-top: 2px; }
+    td.indikator { max-width: 260px; font-size: .77rem; }
+    td.format { white-space: nowrap; }
+    .badge-fmt { display: inline-block; font-size: .67rem; font-weight: 800; padding: 2px 7px; border-radius: 4px; }
+    td.level .badge-level { display: inline-block; font-size: .67rem; font-weight: 800; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+    .lv-c2 { background: #dcfce7; color: #166534; }
+    .lv-c3 { background: #fef9c3; color: #854d0e; }
+    .lv-c4 { background: #fee2e2; color: #991b1b; }
+    .skor { text-align: center; font-weight: 700; color: var(--green); }
+    .flag-errata { display: inline-block; font-size: .65rem; font-weight: 700; background: #fff0c0; color: #92600a; border: 1px solid #f5c842; padding: 1px 5px; border-radius: 3px; margin-left: 4px; cursor: help; }
+
+    /* ELEMEN TAG */
+    .elemen-tag { display: inline-block; font-size: .65rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; margin-bottom: 3px; }
+    .el-bilangan { background: #e3f0ff; color: #1a5aaa; }
+    .el-aljabar { background: #f0e3ff; color: #6d28d9; }
+    .el-pengukuran { background: #dcfce7; color: #166534; }
+    .el-geometri { background: #fef9c3; color: #854d0e; }
+    .el-data { background: #fee2e2; color: #991b1b; }
+
+    /* GUARDRAILS */
+    .guardrails { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; margin-top: 24px; }
+    .guardrails h3 { font-size: .78rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .guardrail-item { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+    .guardrail-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .guardrail-title { font-size: .82rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .guardrail-body { font-size: .76rem; color: var(--muted); line-height: 1.6; }
+    .guardrail-ex { display: flex; flex-direction: column; gap: 3px; margin-top: 5px; }
+    .ex-row { font-size: .74rem; display: flex; gap: 6px; align-items: flex-start; }
+    .ex-tag { font-size: .65rem; font-weight: 800; padding: 1px 6px; border-radius: 3px; flex-shrink: 0; margin-top: 1px; }
+    .tag-wrong { background: #fee2e2; color: #991b1b; }
+    .tag-right { background: #dcfce7; color: #166534; }
+
+    /* FOOTER */
+    .site-footer { text-align: center; padding: 24px 16px; font-size: .76rem; color: var(--muted); border-top: 1px solid var(--border); background: var(--white); }
+
+    @media print {
+      .topnav { display: none; }
+      .main { padding: 16px; }
+      body { background: white; }
+      .table-wrap { border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../../">← Beranda</a>
+  <span class="topnav-sep">/</span>
+  <a href="../">Ujian Sekolah</a>
+  <span class="topnav-sep">/</span>
+  <a href="./">Matematika</a>
+  <span class="topnav-sep">/</span>
+  <span class="topnav-cur">Kisi-Kisi</span>
+</nav>
+
+<header class="page-header">
+  <div class="header-inner">
+    <div class="header-kode">Administrasi · Ujian Sekolah Tertulis · TP 2025/2026</div>
+    <h1>Kisi-Kisi <em>Matematika</em></h1>
+    <div class="header-meta">
+      <span>SD Muhammadiyah 01 Kukusan</span>
+      <span>Kelas 6 — Fase C</span>
+      <span>35 Soal · 2 Kelompok Soal</span>
+      <span>8 Mei 2026</span>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- SUMMARY -->
+  <div class="summary-section">
+    <div class="section-label">Ringkasan Distribusi Soal</div>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-card-val">35</div><div class="stat-card-label">Total Soal</div></div>
+      <div class="stat-card"><div class="stat-card-val">5</div><div class="stat-card-label">Elemen / Domain</div></div>
+      <div class="stat-card"><div class="stat-card-val">23</div><div class="stat-card-label">Soal PG Tunggal (A)</div></div>
+      <div class="stat-card"><div class="stat-card-val">8</div><div class="stat-card-label">Soal PG Kompleks (B)</div></div>
+      <div class="stat-card"><div class="stat-card-val">4</div><div class="stat-card-label">Soal PG Kategori (C)</div></div>
+      <div class="stat-card"><div class="stat-card-val">47</div><div class="stat-card-label">Total Skor Maksimal</div></div>
+    </div>
+    <div class="dist-grid">
+      <div class="dist-card">
+        <h3>Per Elemen</h3>
+        <div class="dist-row"><span class="dist-label">Bilangan</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:48.6%;background:#1a5aaa"></div></div><span class="dist-count">10</span></div>
+        <div class="dist-row"><span class="dist-label">Aljabar</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:38.1%;background:#6d28d9"></div></div><span class="dist-count">8</span></div>
+        <div class="dist-row"><span class="dist-label">Pengukuran</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:23.8%;background:#16a34a"></div></div><span class="dist-count">5</span></div>
+        <div class="dist-row"><span class="dist-label">Geometri</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:23.8%;background:#c47f00"></div></div><span class="dist-count">5</span></div>
+        <div class="dist-row"><span class="dist-label">Analisis Data</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:33.3%;background:#b91c1c"></div></div><span class="dist-count">7</span></div>
+      </div>
+      <div class="dist-card">
+        <h3>Per Format Soal</h3>
+        <div class="dist-row"><span class="dist-label">PG Tunggal (A)</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:65.7%;background:#1a5c35"></div></div><span class="dist-count">23</span></div>
+        <div class="dist-row"><span class="dist-label">PG Kompleks (B)</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:22.9%;background:#c47f00"></div></div><span class="dist-count">8</span></div>
+        <div class="dist-row"><span class="dist-label">PG Kategori (C)</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:11.4%;background:#6d28d9"></div></div><span class="dist-count">4</span></div>
+      </div>
+      <div class="dist-card">
+        <h3>Per Level Kognitif</h3>
+        <div class="dist-row"><span class="dist-label">Pemahaman (C2)</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:34.3%;background:#16a34a"></div></div><span class="dist-count">12</span></div>
+        <div class="dist-row"><span class="dist-label">Aplikasi (C3)</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:40%;background:#ca8a04"></div></div><span class="dist-count">14</span></div>
+        <div class="dist-row"><span class="dist-label">Analisis/Penalaran (C4)</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:25.7%;background:#b91c1c"></div></div><span class="dist-count">9</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMAT LEGEND -->
+  <div class="format-legend">
+    <h3>Legenda Format Soal</h3>
+    <div class="format-items">
+      <div class="fmt"><span class="fmt-badge fmt-a">Tipe A</span><div class="fmt-text"><strong>PG Tunggal</strong><span>Pilih satu jawaban benar dari 4 pilihan. Skor: 1 poin.</span></div></div>
+      <div class="fmt"><span class="fmt-badge fmt-b">Tipe B</span><div class="fmt-text"><strong>PG Kompleks</strong><span>Pilih satu atau lebih jawaban benar. Skor: 2 poin (penuh jika semua benar).</span></div></div>
+      <div class="fmt"><span class="fmt-badge fmt-c">Tipe C</span><div class="fmt-text"><strong>PG Kategori</strong><span>Klasifikasikan setiap item ke kategori yang tepat. Skor: 2 poin.</span></div></div>
+    </div>
+  </div>
+
+  <!-- ERRATA -->
+  <div class="errata">
+    <div class="errata-head">⚠ Catatan Penyesuaian (Errata)</div>
+    <ul class="errata-list">
+      <li><strong>Soal 2</strong> — Stimulus menyebut harga penghapus Rp 1.500, namun kunci jawaban (Rp 5.500) hanya valid jika harga penghapus adalah Rp 2.000 (total belanja = Rp 19.500). Perlu koreksi pada stimulus soal atau kunci jawaban.</li>
+      <li><strong>Soal 10</strong> — Hasil akhir yang benar untuk 2⅓ + 1⅖ adalah <strong>3 11/15</strong> (bukan 3 14/15). Opsi jawaban C (3 14/15) dalam kunci perlu dikoreksi. Langkah 1 dan 2 dalam kunci sudah benar.</li>
+      <li><strong>Soal 22</strong> — Olahraga (09.00–10.00 = tepat 60 menit) dan Istirahat (12.00–13.00 = tepat 60 menit) memiliki durasi yang sama, namun kunci hanya memilih Istirahat. Perlu konsistensi: jika "lebih dari 1 jam" berarti &gt;60 menit, maka jawaban yang benar adalah Belajar dan Seni saja.</li>
+    </ul>
+  </div>
+
+  <!-- ═══ KELOMPOK SOAL 1 ═══ -->
+  <div class="kelompok-header">
+    <div><div class="kelompok-title">Kelompok Soal 1</div><div class="kelompok-sub">Soal 1–18 · Sesi pertama</div></div>
+    <span class="kelompok-badge">Elemen: Bilangan &amp; Aljabar</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Elemen</th>
+          <th>CP Fase C (Ringkasan)</th>
+          <th>Konsep Kunci</th>
+          <th>Indikator Soal</th>
+          <th>Format</th>
+          <th>Level</th>
+          <th>Skor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="elemen-divider"><td colspan="8">Bilangan — Soal 1–10</td></tr>
+
+        <tr>
+          <td class="no">1</td>
+          <td><span class="elemen-tag el-bilangan">Bilangan</span></td>
+          <td class="cp">Number sense hingga 1.000.000; nilai tempat, komposisi dan dekomposisi bilangan.</td>
+          <td class="konsep"><strong>Nilai Tempat &amp; Komposisi</strong><small>Memahami nilai tempat hingga ratus ribuan</small></td>
+          <td class="indikator">Disajikan bilangan cacah besar (jumlah penduduk kota). Siswa dapat <strong>menentukan</strong> nilai tempat dari angka tertentu dalam bilangan tersebut.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">2</td>
+          <td><span class="elemen-tag el-bilangan">Bilangan</span></td>
+          <td class="cp">Operasi hitung cacah; masalah berkaitan dengan uang.</td>
+          <td class="konsep"><strong>Operasi Hitung Uang</strong> <span class="flag-errata" title="Lihat catatan errata soal 2">⚠ errata</span><small>Penyelesaian masalah transaksi kontekstual</small></td>
+          <td class="indikator">Disajikan daftar harga barang di koperasi sekolah. Siswa dapat <strong>menghitung</strong> total biaya dan kembalian berdasarkan jumlah barang yang dibeli.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">3</td>
+          <td><span class="elemen-tag el-bilangan">Bilangan</span></td>
+          <td class="cp">Masalah berkaitan dengan KPK dan FPB.</td>
+          <td class="konsep"><strong>KPK &amp; FPB</strong><small>Menyelesaikan masalah jadwal berulang</small></td>
+          <td class="indikator">Disajikan kasus dua jadwal kegiatan berulang (jadwal les). Siswa dapat <strong>menentukan</strong> kapan kedua kegiatan bertemu lagi menggunakan KPK.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">4</td>
+          <td><span class="elemen-tag el-bilangan">Bilangan</span></td>
+          <td class="cp">Pecahan campuran; mengubah pecahan ke berbagai bentuk; membandingkan.</td>
+          <td class="konsep"><strong>Pecahan Senilai</strong><small>Memahami ekuivalensi pecahan</small></td>
+          <td class="indikator">Disajikan sebuah pecahan. Siswa dapat <strong>memilih</strong> pecahan yang nilainya sama dari opsi yang diberikan.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">5</td>
+          <td><span class="elemen-tag el-bilangan">Bilangan</span></td>
+          <td class="cp">Operasi perkalian dan pembagian pecahan dengan bilangan asli.</td>
+          <td class="konsep"><strong>Operasi Pecahan</strong><small>Pembagian bahan untuk beberapa orang</small></td>
+          <td class="indikator">Disajikan konteks pembagian bahan makanan. Siswa dapat <strong>menghitung</strong> hasil pembagian pecahan campuran dengan bilangan asli.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">6</td>
+          <td><span class="elemen-tag el-bilangan">Bilangan</span></td>
+          <td class="cp">Membandingkan dan mengurutkan bilangan desimal (satu angka di belakang koma).</td>
+          <td class="konsep"><strong>Desimal</strong><small>Mengurutkan data hasil pengukuran</small></td>
+          <td class="indikator">Disajikan data hasil pengukuran panjang benda (desimal satu angka). Siswa dapat <strong>mengurutkan</strong> data dari yang terpendek ke terpanjang.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">7</td>
+          <td><span class="elemen-tag el-bilangan">Bilangan</span></td>
+          <td class="cp">Number sense; operasi hitung; masalah berkaitan dengan uang.</td>
+          <td class="konsep"><strong>Estimasi Bilangan</strong><small>Menaksir hasil operasi dengan pembulatan</small></td>
+          <td class="indikator">Disajikan kasus belanja dengan harga asli. Siswa dapat <strong>menentukan</strong> taksiran terbaik (pembulatan ke ribuan terdekat) untuk memastikan kecukupan uang.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">8</td>
+          <td><span class="elemen-tag el-bilangan">Bilangan</span></td>
+          <td class="cp">Mengubah pecahan ke berbagai bentuk; membandingkan dan mengurutkan.</td>
+          <td class="konsep"><strong>Konversi Pecahan–Desimal</strong><small>Mengubah pecahan biasa ke desimal</small></td>
+          <td class="indikator">Disajikan beberapa pecahan biasa. Siswa dapat <strong>memilih lebih dari satu</strong> pecahan yang jika diubah ke desimal hasilnya lebih dari 0,5.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr>
+          <td class="no">9</td>
+          <td><span class="elemen-tag el-bilangan">Bilangan</span></td>
+          <td class="cp">Masalah berkaitan dengan KPK dan FPB; faktor bilangan.</td>
+          <td class="konsep"><strong>Faktor Persekutuan</strong><small>Menentukan FPB dua bilangan</small></td>
+          <td class="indikator">Disajikan dua bilangan cacah. Siswa dapat <strong>memilih lebih dari satu</strong> bilangan yang merupakan faktor persekutuan dari keduanya.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr>
+          <td class="no">10</td>
+          <td><span class="elemen-tag el-bilangan">Bilangan</span></td>
+          <td class="cp">Operasi penjumlahan dan pengurangan pecahan campuran; menyamakan penyebut.</td>
+          <td class="konsep"><strong>Pecahan Campuran</strong> <span class="flag-errata" title="Lihat catatan errata soal 10">⚠ errata</span><small>Langkah penyelesaian penjumlahan pecahan campuran</small></td>
+          <td class="indikator">Disajikan dua pecahan campuran. Siswa dapat <strong>memilih lebih dari satu</strong> langkah penyelesaian yang benar untuk menjumlahkan kedua pecahan.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr class="elemen-divider"><td colspan="8">Aljabar — Soal 11–16, 18</td></tr>
+
+        <tr>
+          <td class="no">11</td>
+          <td><span class="elemen-tag el-aljabar">Aljabar</span></td>
+          <td class="cp">Menemukan nilai yang belum diketahui dalam kalimat matematika menggunakan sifat operasi hitung.</td>
+          <td class="konsep"><strong>Nilai Belum Diketahui</strong><small>Menyelesaikan kalimat matematika terbuka</small></td>
+          <td class="indikator">Disajikan kalimat matematika terbuka (misal: 15 × n = 150). Siswa dapat <strong>menentukan</strong> nilai n yang tepat.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">12</td>
+          <td><span class="elemen-tag el-aljabar">Aljabar</span></td>
+          <td class="cp">Mengidentifikasi, meniru, dan mengembangkan pola bilangan membesar yang melibatkan perkalian.</td>
+          <td class="konsep"><strong>Pola Bilangan</strong><small>Mengidentifikasi aturan dan melanjutkan pola</small></td>
+          <td class="indikator">Disajikan urutan bilangan dengan pola perkalian (misal: 2, 4, 8, 16, ...). Siswa dapat <strong>menentukan</strong> dua bilangan selanjutnya dalam pola tersebut.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Penalaran</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">13</td>
+          <td><span class="elemen-tag el-aljabar">Aljabar</span></td>
+          <td class="cp">Bernalar proporsional; rasio satuan untuk menyelesaikan masalah sehari-hari.</td>
+          <td class="konsep"><strong>Rasio Satuan</strong><small>Menghitung harga berdasarkan proporsi</small></td>
+          <td class="indikator">Disajikan harga beberapa buah sejenis. Siswa dapat <strong>menghitung</strong> harga untuk jumlah barang tertentu menggunakan rasio satuan.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">14</td>
+          <td><span class="elemen-tag el-aljabar">Aljabar</span></td>
+          <td class="cp">Operasi perkalian dan pembagian dalam masalah proporsi sehari-hari.</td>
+          <td class="konsep"><strong>Proporsi</strong><small>Menyesuaikan resep untuk jumlah berbeda</small></td>
+          <td class="indikator">Disajikan resep makanan untuk 4 orang. Siswa dapat <strong>menentukan</strong> bahan yang dibutuhkan jika resep dibuat untuk 10 orang.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">15</td>
+          <td><span class="elemen-tag el-aljabar">Aljabar</span></td>
+          <td class="cp">Sifat-sifat operasi hitung: komutatif, asosiatif, distributif.</td>
+          <td class="konsep"><strong>Sifat Operasi Hitung</strong><small>Komutatif, asosiatif, distributif</small></td>
+          <td class="indikator">Disajikan beberapa pasangan kalimat matematika. Siswa dapat <strong>memilih lebih dari satu</strong> pasangan yang memiliki hasil sama berdasarkan sifat operasi hitung.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr>
+          <td class="no">16</td>
+          <td><span class="elemen-tag el-aljabar">Aljabar</span></td>
+          <td class="cp">Mengidentifikasi dan mengembangkan pola bilangan; menemukan aturan pola.</td>
+          <td class="konsep"><strong>Pola Gambar &amp; Bilangan</strong><small>Hubungan visual dan numerik dalam pola</small></td>
+          <td class="indikator">Disajikan pola gambar yang bertambah teratur. Siswa dapat <strong>memilih lebih dari satu</strong> pernyataan yang benar tentang hubungan urutan gambar dan jumlah objek.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Penalaran</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr class="elemen-divider"><td colspan="8">Bilangan (Soal Kategori) — Soal 17</td></tr>
+
+        <tr>
+          <td class="no">17</td>
+          <td><span class="elemen-tag el-bilangan">Bilangan</span></td>
+          <td class="cp">Number sense; sifat bilangan: ganjil, genap, prima, komposit.</td>
+          <td class="konsep"><strong>Klasifikasi Bilangan</strong><small>Prima vs. Bukan Prima</small></td>
+          <td class="indikator">Disajikan 5 bilangan cacah berbeda. Siswa dapat <strong>mengklasifikasikan</strong> setiap bilangan sebagai Bilangan Prima atau Bukan Prima.</td>
+          <td class="format"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr class="elemen-divider"><td colspan="8">Aljabar (Soal Kategori) — Soal 18</td></tr>
+
+        <tr>
+          <td class="no">18</td>
+          <td><span class="elemen-tag el-aljabar">Aljabar</span></td>
+          <td class="cp">Operasi perkalian dan pembagian vs. penjumlahan dan pengurangan dalam konteks masalah.</td>
+          <td class="konsep"><strong>Klasifikasi Operasi Hitung</strong><small>Memilih operasi yang tepat untuk masalah</small></td>
+          <td class="indikator">Disajikan 3 cerita masalah sehari-hari. Siswa dapat <strong>mengklasifikasikan</strong> setiap masalah diselesaikan dengan Perkalian/Pembagian atau Penjumlahan/Pengurangan.</td>
+          <td class="format"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══ KELOMPOK SOAL 2 ═══ -->
+  <div class="kelompok-header" style="margin-top:32px;">
+    <div><div class="kelompok-title">Kelompok Soal 2</div><div class="kelompok-sub">Soal 19–35 · Sesi kedua</div></div>
+    <span class="kelompok-badge">Elemen: Pengukuran, Geometri &amp; Analisis Data</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Elemen</th>
+          <th>CP Fase C (Ringkasan)</th>
+          <th>Konsep Kunci</th>
+          <th>Indikator Soal</th>
+          <th>Format</th>
+          <th>Level</th>
+          <th>Skor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="elemen-divider"><td colspan="8">Pengukuran — Soal 19–23</td></tr>
+
+        <tr>
+          <td class="no">19</td>
+          <td><span class="elemen-tag el-pengukuran">Pengukuran</span></td>
+          <td class="cp">Menentukan luas berbagai bangun datar dan gabungannya.</td>
+          <td class="konsep"><strong>Luas Gabungan</strong><small>Luas kombinasi persegi panjang dan segitiga</small></td>
+          <td class="indikator">Disajikan gambar denah lahan yang terdiri dari gabungan persegi panjang (10m×8m) dan segitiga (alas 10m, tinggi 6m). Siswa dapat <strong>menghitung</strong> luas total lahan. &#x1F4F8; <em>Membutuhkan gambar denah.</em></td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">20</td>
+          <td><span class="elemen-tag el-pengukuran">Pengukuran</span></td>
+          <td class="cp">Menentukan keliling berbagai bentuk bangun datar dan gabungannya.</td>
+          <td class="konsep"><strong>Keliling</strong><small>Menentukan panjang batas bangun datar</small></td>
+          <td class="indikator">Disajikan taman berbentuk persegi panjang (15m × 10m). Siswa dapat <strong>menghitung</strong> panjang pagar yang dibutuhkan untuk mengelilingi taman.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">21</td>
+          <td><span class="elemen-tag el-pengukuran">Pengukuran</span></td>
+          <td class="cp">Mengukur besar sudut pada bangun datar atau yang dibentuk dari dua garis berpotongan.</td>
+          <td class="konsep"><strong>Sudut</strong><small>Besar sudut yang dibentuk jarum jam</small></td>
+          <td class="indikator">Disajikan gambar jam dinding menunjukkan pukul 03.00. Siswa dapat <strong>menentukan</strong> besar sudut terkecil antara jarum jam dan jarum menit. &#x1F4F8; <em>Membutuhkan gambar jam.</em></td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">22</td>
+          <td><span class="elemen-tag el-pengukuran">Pengukuran</span></td>
+          <td class="cp">Menghitung durasi waktu dari jadwal kegiatan.</td>
+          <td class="konsep"><strong>Durasi Waktu</strong> <span class="flag-errata" title="Lihat catatan errata soal 22">⚠ errata</span><small>Membandingkan durasi kegiatan harian</small></td>
+          <td class="indikator">Disajikan jadwal kegiatan belajar siswa dengan waktu mulai dan selesai. Siswa dapat <strong>memilih lebih dari satu</strong> kegiatan yang memiliki durasi waktu lebih dari 1 jam.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr>
+          <td class="no">23</td>
+          <td><span class="elemen-tag el-pengukuran">Pengukuran</span></td>
+          <td class="cp">Menentukan volume balok; satuan volume dan konversi ke satuan liter.</td>
+          <td class="konsep"><strong>Volume Balok</strong><small>Menghitung kapasitas tampung bak mandi</small></td>
+          <td class="indikator">Disajikan bak mandi berbentuk balok (p=120cm, l=80cm, t=70cm). Siswa dapat <strong>menghitung</strong> volume air maksimal dalam satuan liter.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr class="elemen-divider"><td colspan="8">Geometri — Soal 24–28</td></tr>
+
+        <tr>
+          <td class="no">24</td>
+          <td><span class="elemen-tag el-geometri">Geometri</span></td>
+          <td class="cp">Mengkonstruksi dan mengurai bangun ruang (kubus); mengenali jaring-jaring.</td>
+          <td class="konsep"><strong>Jaring-Jaring</strong><small>Mengidentifikasi jaring-jaring kubus yang valid</small></td>
+          <td class="indikator">Disajikan beberapa pola gabungan persegi. Siswa dapat <strong>menentukan</strong> pola mana yang merupakan jaring-jaring kubus yang valid. &#x1F4F8; <em>Membutuhkan gambar jaring-jaring.</em></td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">25</td>
+          <td><span class="elemen-tag el-geometri">Geometri</span></td>
+          <td class="cp">Mengenali visualisasi spasial bangun ruang (tampak depan, atas, samping).</td>
+          <td class="konsep"><strong>Visualisasi Spasial</strong><small>Tampak depan, samping, atas bangun ruang</small></td>
+          <td class="indikator">Disajikan gambar bangun ruang gabungan dari beberapa sudut pandang. Siswa dapat <strong>memilih lebih dari satu</strong> tampak yang benar. &#x1F4F8; <em>Membutuhkan gambar tampak.</em></td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr>
+          <td class="no">26</td>
+          <td><span class="elemen-tag el-geometri">Geometri</span></td>
+          <td class="cp">Membandingkan karakteristik antar bangun ruang; sisi, rusuk, dan titik sudut.</td>
+          <td class="konsep"><strong>Karakteristik Bangun Ruang</strong><small>Sifat sisi, rusuk, sudut kubus dan balok</small></td>
+          <td class="indikator">Disajikan 3 pernyataan tentang sifat kubus dan balok. Siswa dapat <strong>mengklasifikasikan</strong> setiap pernyataan sebagai Benar atau Salah.</td>
+          <td class="format"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr>
+          <td class="no">27</td>
+          <td><span class="elemen-tag el-geometri">Geometri</span></td>
+          <td class="cp">Menentukan lokasi pada peta yang menggunakan sistem berpetak.</td>
+          <td class="konsep"><strong>Koordinat Peta</strong><small>Lokasi pada sistem grid huruf-angka</small></td>
+          <td class="indikator">Disajikan peta lingkungan sekolah dengan sistem koordinat (huruf dan angka). Siswa dapat <strong>menentukan</strong> koordinat lokasi tertentu (perpustakaan) pada peta. &#x1F4F8; <em>Membutuhkan gambar peta.</em></td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">28</td>
+          <td><span class="elemen-tag el-geometri">Geometri</span></td>
+          <td class="cp">Membandingkan karakteristik antar bangun datar dan antar bangun ruang; titik sudut.</td>
+          <td class="konsep"><strong>Perbandingan Bangun</strong><small>Sifat titik sudut bangun datar dan ruang</small></td>
+          <td class="indikator">Disajikan gambar 3 bangun (persegi, kubus, lingkaran). Siswa dapat <strong>memilih lebih dari satu</strong> bangun yang memiliki titik sudut. &#x1F4F8; <em>Membutuhkan gambar.</em></td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr class="elemen-divider"><td colspan="8">Analisis Data dan Peluang — Soal 29–35</td></tr>
+
+        <tr>
+          <td class="no">29</td>
+          <td><span class="elemen-tag el-data">Analisis Data</span></td>
+          <td class="cp">Membaca dan menganalisis data dalam diagram batang untuk mendapat informasi.</td>
+          <td class="konsep"><strong>Membaca Diagram Batang</strong><small>Mengambil informasi dari diagram batang</small></td>
+          <td class="indikator">Disajikan diagram batang jumlah kehadiran siswa dalam seminggu. Siswa dapat <strong>menentukan</strong> hari dengan jumlah kehadiran tertinggi. &#x1F4F8; <em>Membutuhkan gambar diagram.</em></td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">30</td>
+          <td><span class="elemen-tag el-data">Analisis Data</span></td>
+          <td class="cp">Membandingkan dan menganalisis data dalam tabel; menentukan selisih.</td>
+          <td class="konsep"><strong>Analisis Tabel Data</strong><small>Membandingkan nilai dalam tabel</small></td>
+          <td class="indikator">Disajikan data nilai ujian siswa (nilai tertinggi dan terendah diketahui). Siswa dapat <strong>menghitung</strong> selisih nilai tertinggi dan terendah.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">31</td>
+          <td><span class="elemen-tag el-data">Analisis Data</span></td>
+          <td class="cp">Mengurutkan dan menganalisis data; menentukan rata-rata (mean) data tunggal.</td>
+          <td class="konsep"><strong>Rata-Rata (Mean)</strong><small>Menghitung mean dari data tinggi badan</small></td>
+          <td class="indikator">Disajikan data tinggi badan 5 siswa. Siswa dapat <strong>menghitung</strong> rata-rata tinggi badan dari data tersebut.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">32</td>
+          <td><span class="elemen-tag el-data">Analisis Data</span></td>
+          <td class="cp">Menganalisis data dalam grafik; menyimpulkan tren kenaikan atau penurunan.</td>
+          <td class="konsep"><strong>Interpretasi Tren Data</strong><small>Menyimpulkan dari grafik penjualan</small></td>
+          <td class="indikator">Disajikan grafik penjualan koperasi selama 4 bulan dengan tren naik. Siswa dapat <strong>memilih lebih dari satu</strong> kesimpulan yang valid berdasarkan data. &#x1F4F8; <em>Membutuhkan gambar grafik.</em></td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Penalaran</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr>
+          <td class="no">33</td>
+          <td><span class="elemen-tag el-data">Analisis Data</span></td>
+          <td class="cp">Menentukan kejadian dengan kemungkinan lebih besar atau lebih kecil dalam percobaan acak.</td>
+          <td class="konsep"><strong>Peluang Sederhana</strong><small>Menentukan kejadian paling mungkin</small></td>
+          <td class="indikator">Disajikan kantong berisi kelereng beberapa warna (jumlah diketahui). Siswa dapat <strong>menentukan</strong> warna kelereng yang paling mungkin terambil secara acak.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Penalaran</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr>
+          <td class="no">34</td>
+          <td><span class="elemen-tag el-data">Analisis Data</span></td>
+          <td class="cp">Menyajikan data dalam berbagai bentuk; memilih bentuk penyajian yang tepat.</td>
+          <td class="konsep"><strong>Jenis Penyajian Data</strong> <span class="flag-errata" title="Disesuaikan: kunci jawaban menunjukkan semua tiga bentuk = Membandingkan Jumlah">✎ disesuaikan</span><small>Kesesuaian bentuk penyajian dengan tujuan</small></td>
+          <td class="indikator">Disajikan 3 bentuk penyajian data (Diagram Batang, Tabel, Piktogram). Siswa dapat <strong>mengklasifikasikan</strong> setiap bentuk sebagai lebih cocok untuk <em>Membandingkan Jumlah</em> berdasarkan fungsinya.</td>
+          <td class="format"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr>
+          <td class="no">35</td>
+          <td><span class="elemen-tag el-data">Analisis Data</span></td>
+          <td class="cp">Menentukan kemungkinan kejadian: pasti, mungkin, atau tidak mungkin.</td>
+          <td class="konsep"><strong>Kemungkinan Kejadian</strong><small>Pasti, Mungkin, Tidak Mungkin</small></td>
+          <td class="indikator">Disajikan 3 pernyataan kejadian sehari-hari. Siswa dapat <strong>mengklasifikasikan</strong> setiap kejadian sebagai Pasti, Mungkin, atau Tidak Mungkin terjadi.</td>
+          <td class="format"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GUARDRAILS -->
+  <div class="guardrails" style="margin-top:28px;">
+    <h3>Guardrails — Penjaga Esensi Soal Matematika</h3>
+    <div class="guardrail-item">
+      <div class="guardrail-title">🔢 Kelompok 1: Hindari Cerita yang Mengaburkan Operasi</div>
+      <div class="guardrail-body">
+        Soal Bilangan dan Aljabar harus fokus pada <em>number sense</em> dan operasi hitung, bukan pengetahuan latar belakang.
+        <div class="guardrail-ex">
+          <div class="ex-row"><span class="ex-tag tag-wrong">✕</span> Cerita 3 paragraf tentang sejarah uang, baru di akhir ada soal 1000 + 2000.</div>
+          <div class="ex-row"><span class="ex-tag tag-right">✓</span> Contextual problem statement (1–2 kalimat) yang langsung menuntut operasi hitung atau analisis nilai tempat.</div>
+        </div>
+      </div>
+    </div>
+    <div class="guardrail-item">
+      <div class="guardrail-title">📐 Kelompok 2: Visualisasi adalah Kunci</div>
+      <div class="guardrail-body">
+        Soal Geometri dan Data <strong>wajib</strong> menyertakan gambar/diagram. Siswa tidak boleh diminta membayangkan bentuk secara abstrak tanpa stimulus visual yang jelas. Istilah baku: <em>Jaring-jaring, Volume, Koordinat, Diagram Batang, Peluang, Rata-rata.</em>
+      </div>
+    </div>
+    <div class="guardrail-item">
+      <div class="guardrail-title">🎯 Konteks Relevan — Kehidupan Siswa Kelas 6</div>
+      <div class="guardrail-body">
+        Gunakan konteks: Uang saku, belanja koperasi, jadwal kegiatan, resep masakan, pola ubin lantai, bak mandi, diagram kehadiran sekolah.
+      </div>
+    </div>
+    <div class="guardrail-item">
+      <div class="guardrail-title">⚖️ Keseimbangan Level Kognitif</div>
+      <div class="guardrail-body">
+        Distribusi target: C2 Pemahaman (±34%), C3 Aplikasi (±40%), C4 Analisis/Penalaran (±26%). Pastikan tidak semua soal hanya menghitung rumus — ada yang membaca informasi (C2), ada yang menganalisis tren/pola (C4).
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <strong>SD Muhammadiyah 01 Kukusan</strong> · Kisi-Kisi Ujian Sekolah Matematika · TP 2025/2026<br>
+  <span style="margin-top:3px;display:block;">Dikelola oleh: Arif Azwar Anas, S.Pd. · Terakhir diperbarui: April 2026</span>
+</footer>
+
+</body>
+</html>
