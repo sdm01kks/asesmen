@@ -153,6 +153,15 @@
     .matrix-table td:first-child { text-align: left; font-weight: 600; }
     .matrix-table td.ans-cell { background: #f0faf4; color: var(--green); font-weight: 800; font-size: .78rem; }
 
+
+    /* Soal images */
+    .soal-img {
+      max-width: 100%; height: auto;
+      display: block; border-radius: 6px;
+      margin: 8px auto; max-height: 280px;
+      border: 1px solid var(--border);
+    }
+
     /* KUNCI JAWABAN SECTION */
     .kunci-section { display: none; margin-top: 16px; padding-top: 16px; border-top: 2px dashed var(--green-border); }
     .kunci-section.visible { display: block; }
@@ -214,9 +223,12 @@
         <span>Total Skor: 47</span>
       </div>
     </div>
-    <button class="toggle-kunci-btn" id="mainToggleBtn" onclick="toggleAll()">
-      <span class="btn-icon">🔑</span> Tampilkan Kunci &amp; Pembahasan
-    </button>
+    <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
+      <button class="toggle-kunci-btn" id="mainToggleBtn" onclick="toggleAll()">
+        <span class="btn-icon">🔑</span> Tampilkan Kunci &amp; Pembahasan
+      </button>
+      <a href="soal-kunci.docx" download style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);color:white;font-size:.78rem;font-weight:700;padding:8px 16px;border-radius:8px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,.25)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">⬇ Unduh Word (.docx)</a>
+    </div>
   </div>
 </header>
 
@@ -238,7 +250,7 @@
   <!--      KELOMPOK SOAL 1           -->
   <!-- ═══════════════════════════════ -->
   <div class="kelompok-div">
-    <div><div class="kelompok-title">Kelompok Soal 1</div><div class="kelompok-sub">Soal 1–18 · Bilangan &amp; Aljabar</div></div>
+    <div><div class="kelompok-title">Kelompok Soal 1</div><div class="kelompok-sub">Bilangan &amp; Aljabar</div></div>
     <span class="kelompok-badge">Skor maks: 26</span>
   </div>
 
@@ -800,11 +812,7 @@
     <div class="soal-body">
       <div class="stimulus">
         <div class="stim-head">Pola Gambar</div>
-        <div class="img-placeholder">
-          <div class="img-placeholder-icon">🔷</div>
-          <div class="img-placeholder-title">Pola Gambar — Bertambah 3 Setiap Urutan</div>
-          <div class="img-placeholder-desc">Gambar 1: 3 objek · Gambar 2: 6 objek · Gambar 3: 9 objek · ... (dst.)</div>
-        </div>
+        <img src="img/pola-gambar.png" alt="Pola Gambar" class="soal-img">
         <div class="stim-body"><p>Pola gambar bertambah secara teratur seperti yang terlihat di atas.</p></div>
       </div>
       <p class="hint-pgk">☑ Boleh memilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
@@ -915,7 +923,7 @@
   <!--      KELOMPOK SOAL 2           -->
   <!-- ═══════════════════════════════ -->
   <div class="kelompok-div" style="margin-top:32px;">
-    <div><div class="kelompok-title">Kelompok Soal 2</div><div class="kelompok-sub">Soal 19–35 · Pengukuran, Geometri &amp; Analisis Data</div></div>
+    <div><div class="kelompok-title">Kelompok Soal 2</div><div class="kelompok-sub">Pengukuran, Geometri &amp; Analisis Data</div></div>
     <span class="kelompok-badge">Skor maks: 21</span>
   </div>
 
@@ -929,11 +937,7 @@
     <div class="soal-body">
       <div class="stimulus">
         <div class="stim-head">Luas Lahan Sekolah</div>
-        <div class="img-placeholder">
-          <div class="img-placeholder-icon">📐</div>
-          <div class="img-placeholder-title">Denah Lahan — Gabungan Persegi Panjang &amp; Segitiga</div>
-          <div class="img-placeholder-desc">Persegi panjang: 10m × 8m · Segitiga: alas 10m, tinggi 6m</div>
-        </div>
+        <img src="img/denah-lahan.png" alt="Denah Lahan Sekolah" class="soal-img">
         <div class="stim-body"><p>Denah lahan terdiri dari persegi panjang (10m × 8m) dan segitiga (alas 10m, tinggi 6m).</p></div>
       </div>
       <p class="q-text">Hitung <strong>luas total</strong> lahan tersebut!</p>
@@ -998,11 +1002,7 @@
     <div class="soal-body">
       <div class="stimulus">
         <div class="stim-head">Sudut Jam</div>
-        <div class="img-placeholder">
-          <div class="img-placeholder-icon">🕒</div>
-          <div class="img-placeholder-title">Jam Dinding Menunjukkan Pukul 03.00</div>
-          <div class="img-placeholder-desc">Jarum jam di angka 3 · Jarum menit di angka 12</div>
-        </div>
+        <img src="img/jam-dinding.png" alt="Jam Dinding Pukul 03.00" class="soal-img">
       </div>
       <p class="q-text">Berapa besar <strong>sudut terkecil</strong> yang dibentuk oleh jarum jam dan jarum menit?</p>
       <ol class="opt-list">
@@ -1112,11 +1112,7 @@
     <div class="soal-body">
       <div class="stimulus">
         <div class="stim-head">Jaring-Jaring Kubus</div>
-        <div class="img-placeholder">
-          <div class="img-placeholder-icon">📦</div>
-          <div class="img-placeholder-title">4 Pola Jaring-Jaring (A, B, C, D)</div>
-          <div class="img-placeholder-desc">Pola A: valid · Pola B, C, D: tidak valid sebagai jaring-jaring kubus</div>
-        </div>
+        <img src="img/jaring-kubus.png" alt="Jaring-Jaring Kubus" class="soal-img">
       </div>
       <p class="q-text">Manakah yang merupakan <strong>jaring-jaring kubus</strong> yang valid?</p>
       <ol class="opt-list">
@@ -1146,11 +1142,7 @@
     <div class="soal-body">
       <div class="stimulus">
         <div class="stim-head">Tampak Bangun Ruang</div>
-        <div class="img-placeholder">
-          <div class="img-placeholder-icon">🧊</div>
-          <div class="img-placeholder-title">Bangun Ruang Gabungan dari Berbagai Sudut Pandang</div>
-          <div class="img-placeholder-desc">Tampak depan, samping, atas, dan belakang disajikan sebagai pilihan</div>
-        </div>
+        <img src="img/tampak-bangun-ruang.png" alt="Tampak Bangun Ruang" class="soal-img">
       </div>
       <p class="hint-pgk">☑ Boleh memilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
       <p class="q-text">Pilih gambar yang menunjukkan <strong>tampak yang benar</strong>!</p>
@@ -1219,11 +1211,7 @@
     <div class="soal-body">
       <div class="stimulus">
         <div class="stim-head">Koordinat Peta</div>
-        <div class="img-placeholder">
-          <div class="img-placeholder-icon">🗺️</div>
-          <div class="img-placeholder-title">Peta Lingkungan Sekolah — Sistem Koordinat Grid</div>
-          <div class="img-placeholder-desc">Sumbu horizontal: huruf (A, B, C, D, ...) · Sumbu vertikal: angka (1, 2, 3, 4, 5, ...)</div>
-        </div>
+        <img src="img/peta-koordinat.png" alt="Peta Koordinat Sekolah" class="soal-img">
       </div>
       <p class="q-text">Perpustakaan terletak pada koordinat …</p>
       <ol class="opt-list">
@@ -1253,11 +1241,7 @@
     <div class="soal-body">
       <div class="stimulus">
         <div class="stim-head">Sifat Bangun</div>
-        <div class="img-placeholder">
-          <div class="img-placeholder-icon">🔷</div>
-          <div class="img-placeholder-title">3 Gambar Bangun: Persegi · Kubus · Lingkaran</div>
-          <div class="img-placeholder-desc">Ditampilkan tiga bangun geometri berdampingan</div>
-        </div>
+        <img src="img/bangun-datar-ruang.png" alt="Bangun Datar dan Ruang" class="soal-img">
       </div>
       <p class="hint-pgk">☑ Boleh memilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
       <p class="q-text">Pilih bangun yang memiliki <strong>titik sudut</strong>!</p>
@@ -1292,11 +1276,7 @@
     <div class="soal-body">
       <div class="stimulus">
         <div class="stim-head">Diagram Kehadiran</div>
-        <div class="img-placeholder">
-          <div class="img-placeholder-icon">📊</div>
-          <div class="img-placeholder-title">Diagram Batang — Kehadiran Siswa Seminggu</div>
-          <div class="img-placeholder-desc">Senin, Selasa, Rabu (tertinggi), Kamis, Jumat · Sumbu Y: jumlah siswa</div>
-        </div>
+        <img src="img/diagram-kehadiran.png" alt="Diagram Kehadiran Siswa" class="soal-img">
       </div>
       <p class="q-text">Hari dengan jumlah kehadiran <strong>tertinggi</strong> adalah …</p>
       <ol class="opt-list">
@@ -1392,11 +1372,7 @@
     <div class="soal-body">
       <div class="stimulus">
         <div class="stim-head">Grafik Penjualan</div>
-        <div class="img-placeholder">
-          <div class="img-placeholder-icon">📈</div>
-          <div class="img-placeholder-title">Grafik Penjualan Koperasi — 4 Bulan</div>
-          <div class="img-placeholder-desc">Jan → Feb → Mar → Apr · Tren: meningkat setiap bulan</div>
-        </div>
+        <img src="img/grafik-penjualan.png" alt="Grafik Penjualan Koperasi" class="soal-img">
       </div>
       <p class="hint-pgk">☑ Boleh memilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
       <p class="q-text">Pilih kesimpulan yang <strong>valid</strong> berdasarkan grafik!</p>
