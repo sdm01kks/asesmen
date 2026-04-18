@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedoman Penskoran US Matematika — SDM 01 Kukusan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$','$'],['\\(','\\)']] }, svg: { fontCache:'global' } };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root {
+      --green:    #1a5c35; --green-md: #2d7a4f; --green-lt: #f0faf4; --green-bdr: #b7dfc8;
+      --gold:     #f5a623; --gold-dk:  #c47f00; --gold-lt:  #fdf6e3;
+      --blue:     #1a5aaa; --blue-lt:  #edf4fb;
+      --red:      #b91c1c; --red-lt:   #fef2f2;
+      --purple:   #6d28d9; --purple-lt:#f5f0ff;
+      --text:     #1e2d24; --muted:    #5a6e62;
+      --bg:       #f5f9f6; --white:    #fff; --border: #dde8e2;
+      --r: 10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: clamp(13px, 3vw, 15px); scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); }
+
+    /* ── NAV ── */
+    .topnav { background: var(--green); height: 48px; display: flex; align-items: center; padding: 0 20px; gap: 8px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+    .topnav a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .82rem; font-weight: 600; }
+    .topnav a:hover { color: white; text-decoration: underline; }
+    .topnav-sep { color: rgba(255,255,255,.3); }
+    .topnav-cur { color: rgba(255,255,255,.6); font-size: .82rem; font-weight: 600; }
+
+    /* ── HEADER ── */
+    .page-header {
+      background: linear-gradient(150deg, #0a3d22 0%, var(--green) 60%, #24784a 100%);
+      color: white; padding: 32px 20px 36px;
+      border-bottom: 3px solid var(--gold);
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .header-inner { position: relative; max-width: 860px; margin: 0 auto; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .header-left {}
+    .header-kode { font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #a7f3d0; margin-bottom: 6px; }
+    .page-header h1 { font-family: 'Fraunces', serif; font-size: clamp(1.4rem,4vw,2rem); font-weight: 700; margin-bottom: 4px; }
+    .page-header h1 em { color: var(--gold); font-style: italic; }
+    .header-meta { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 10px; font-size: .76rem; color: rgba(255,255,255,.78); }
+    .header-meta span::before { content: '·'; margin-right: 6px; opacity: .5; }
+    .header-meta span:first-child::before { display: none; }
+    .btn-download {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,.14); border: 1.5px solid rgba(255,255,255,.28);
+      color: white; font-size: .82rem; font-weight: 700;
+      padding: 10px 18px; border-radius: 8px; cursor: pointer;
+      text-decoration: none; transition: background .2s; white-space: nowrap; margin-top: 20px;
+    }
+    .btn-download:hover { background: rgba(255,255,255,.24); }
+
+    /* ── STICKY BAR ── */
+    .sticky-bar {
+      position: sticky; top: 48px; z-index: 90;
+      background: var(--white); border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+    .sticky-label { font-size: .78rem; font-weight: 600; color: var(--muted); }
+    .sticky-right { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .btn-dl-sm {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--green-lt); color: var(--green);
+      border: 1.5px solid var(--green-bdr);
+      font-size: .78rem; font-weight: 700;
+      padding: 7px 14px; border-radius: 7px;
+      text-decoration: none; transition: background .15s;
+    }
+    .btn-dl-sm:hover { background: #d8f5e6; }
+
+    /* ── MAIN ── */
+    .main { max-width: 860px; margin: 0 auto; padding: 28px 20px 60px; }
+
+    /* ── SUMMARY BOXES ── */
+    .summary-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px; margin-bottom: 28px;
+    }
+    .sum-card {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 16px 18px; display: flex; flex-direction: column; gap: 2px;
+    }
+    .sum-val { font-size: 1.6rem; font-weight: 800; color: var(--green); line-height: 1; }
+    .sum-label { font-size: .73rem; color: var(--muted); font-weight: 600; }
+
+    /* ── SCORING RULES BOX ── */
+    .rules-box {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 20px 22px; margin-bottom: 28px;
+    }
+    .rules-box h3 {
+      font-size: .78rem; font-weight: 800; letter-spacing: .07em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 14px;
+    }
+    .rule-row {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+    }
+    .rule-row:last-child { border-bottom: none; }
+    .rule-badge {
+      font-size: .68rem; font-weight: 800; padding: 3px 9px; border-radius: 5px;
+      white-space: nowrap; flex-shrink: 0; margin-top: 1px;
+    }
+    .rb-a { background: #e3f0ff; color: var(--blue); }
+    .rb-b { background: #fff0e3; color: var(--gold-dk); }
+    .rb-c { background: #f0e3ff; color: var(--purple); }
+    .rule-desc { font-size: .82rem; line-height: 1.6; color: var(--text); }
+    .rule-desc strong { color: var(--green); }
+
+    /* ── KELOMPOK HEADER ── */
+    .kelompok-header {
+      background: var(--green); color: white;
+      padding: 10px 16px; border-radius: var(--r) var(--r) 0 0;
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 28px;
+    }
+    .kelompok-title { font-weight: 700; font-size: .9rem; }
+    .kelompok-badge { font-size: .72rem; font-weight: 700; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.25); padding: 3px 10px; border-radius: 20px; }
+
+    /* ── SCORING TABLE ── */
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-top: none; border-radius: 0 0 var(--r) var(--r); background: var(--white); margin-bottom: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+    thead th { background: var(--green-lt); color: var(--green); font-size: .68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 9px 12px; border-bottom: 2px solid var(--green-bdr); text-align: left; }
+    thead th:nth-child(1) { width: 40px; text-align: center; }
+    thead th:nth-child(2) { width: 90px; }
+    thead th:nth-child(3) { width: 60px; text-align: center; }
+    thead th:nth-child(4) { width: 70px; text-align: center; }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--green-lt); }
+    tbody td { padding: 9px 12px; vertical-align: top; line-height: 1.5; }
+    td.no { text-align: center; font-weight: 800; color: var(--green); font-size: .85rem; }
+    td.fmt { white-space: nowrap; }
+    td.skor { text-align: center; font-weight: 700; }
+    td.kunci { text-align: center; font-weight: 800; color: var(--green); font-size: .85rem; }
+
+    .badge-fmt { display: inline-block; font-size: .67rem; font-weight: 800; padding: 2px 7px; border-radius: 4px; }
+    .fmt-a { background: #e3f0ff; color: var(--blue); }
+    .fmt-b { background: #fff0e3; color: var(--gold-dk); }
+    .fmt-c { background: #f0e3ff; color: var(--purple); }
+
+    .rubrik-cell { font-size: .78rem; line-height: 1.6; }
+    .rubrik-cell .r-full  { color: #166534; font-weight: 600; }
+    .rubrik-cell .r-half  { color: var(--gold-dk); font-weight: 600; }
+    .rubrik-cell .r-zero  { color: #6b7280; }
+    .rubrik-cell .r-note  { font-size: .71rem; color: #9ca3af; font-style: italic; }
+
+    .kunci-multi { display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; }
+    .kunci-tag { font-size: .65rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; background: var(--green-lt); color: var(--green); border: 1px solid var(--green-bdr); }
+
+    .errata-cell { font-size: .7rem; color: var(--gold-dk); font-weight: 700; }
+
+    /* ── NILAI AKHIR BOX ── */
+    .nilai-box {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 20px 22px; margin-top: 28px;
+    }
+    .nilai-box h3 { font-size: .78rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .formula-block {
+      background: var(--green-lt); border: 1px solid var(--green-bdr);
+      border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; text-align: center;
+    }
+    .formula-block .formula { font-size: 1.1rem; font-weight: 700; color: var(--green); margin-bottom: 6px; }
+    .formula-block .formula-sub { font-size: .8rem; color: var(--muted); }
+    .konversi-table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+    .konversi-table th { background: var(--green); color: white; padding: 7px 12px; text-align: center; font-size: .72rem; font-weight: 800; }
+    .konversi-table td { padding: 7px 12px; border-bottom: 1px solid var(--border); text-align: center; }
+    .konversi-table tr:last-child td { border-bottom: none; }
+    .konversi-table tr:nth-child(even) td { background: var(--bg); }
+    .grade-a { color: #166534; font-weight: 800; }
+    .grade-b { color: #854d0e; font-weight: 800; }
+    .grade-c { color: #c2410c; font-weight: 800; }
+    .grade-d { color: var(--red); font-weight: 800; }
+
+    /* ── FOOTER ── */
+    .site-footer { text-align: center; padding: 24px 16px; font-size: .76rem; color: var(--muted); border-top: 1px solid var(--border); background: var(--white); }
+
+    @media print {
+      .topnav, .sticky-bar { display: none; }
+      .main { padding: 12px; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../../">← Beranda</a>
+  <span class="topnav-sep">/</span>
+  <a href="../">Ujian Sekolah</a>
+  <span class="topnav-sep">/</span>
+  <a href="./">Matematika</a>
+  <span class="topnav-sep">/</span>
+  <span class="topnav-cur">Pedoman Penskoran</span>
+</nav>
+
+<header class="page-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="header-kode">Administrasi · Ujian Sekolah Tertulis · TP 2025/2026</div>
+      <h1>Pedoman <em>Penskoran</em></h1>
+      <div class="header-meta">
+        <span>SD Muhammadiyah 01 Kukusan</span>
+        <span>Matematika — Kelas 6</span>
+        <span>35 Soal · 8 Mei 2026</span>
+        <span>Total Skor: 47</span>
+      </div>
+    </div>
+    <a href="pedoman-penskoran.docx" download class="btn-download">⬇ Unduh Word (.docx)</a>
+  </div>
+</header>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar">
+  <span class="sticky-label">Pedoman Penskoran US Matematika · 35 Soal · Skor Maks: 47</span>
+  <div class="sticky-right">
+    <a href="pedoman-penskoran.docx" download class="btn-dl-sm">⬇ Unduh Word (.docx)</a>
+  </div>
+</div>
+
+<main class="main">
+
+  <!-- SUMMARY -->
+  <div class="summary-grid">
+    <div class="sum-card"><div class="sum-val">35</div><div class="sum-label">Total Soal</div></div>
+    <div class="sum-card"><div class="sum-val">47</div><div class="sum-label">Skor Maksimal</div></div>
+    <div class="sum-card"><div class="sum-val">23</div><div class="sum-label">Soal PG Tunggal (@ 1 poin)</div></div>
+    <div class="sum-card"><div class="sum-val">8</div><div class="sum-label">Soal PG Kompleks (@ 2 poin)</div></div>
+    <div class="sum-card"><div class="sum-val">4</div><div class="sum-label">Soal PG Kategori (@ 2 poin)</div></div>
+  </div>
+
+  <!-- RULES -->
+  <div class="rules-box">
+    <h3>Aturan Penskoran per Tipe Soal</h3>
+
+    <div class="rule-row">
+      <span class="rule-badge rb-a">Tipe A — PG Tunggal</span>
+      <div class="rule-desc">
+        <strong>Skor 1</strong> jika jawaban benar (satu pilihan tepat). &nbsp;|&nbsp;
+        <strong>Skor 0</strong> jika jawaban salah atau tidak menjawab.
+        Tidak ada nilai negatif. Soal nomor: 1, 2, 3, 4, 5, 6, 7, 11, 12, 13, 14, 19, 20, 21, 23, 24, 27, 29, 30, 31, 33.
+      </div>
+    </div>
+
+    <div class="rule-row">
+      <span class="rule-badge rb-b">Tipe B — PG Kompleks</span>
+      <div class="rule-desc">
+        <strong>Skor 2</strong> jika semua pilihan yang benar dipilih dan tidak ada pilihan yang salah dipilih. &nbsp;|&nbsp;
+        <strong>Skor 1</strong> jika sebagian besar jawaban benar (hanya 1 kesalahan: 1 jawaban benar tidak dipilih atau 1 jawaban salah dipilih). &nbsp;|&nbsp;
+        <strong>Skor 0</strong> jika lebih dari 1 kesalahan atau tidak menjawab.
+        Soal nomor: 8, 9, 10, 15, 16, 22, 25, 28, 32.
+      </div>
+    </div>
+
+    <div class="rule-row">
+      <span class="rule-badge rb-c">Tipe C — PG Kategori</span>
+      <div class="rule-desc">
+        <strong>Skor 2</strong> jika seluruh item diklasifikasikan dengan benar. &nbsp;|&nbsp;
+        <strong>Skor 1</strong> jika sebagian besar benar (hanya 1 item salah klasifikasi). &nbsp;|&nbsp;
+        <strong>Skor 0</strong> jika 2 atau lebih item salah, atau tidak menjawab.
+        Soal nomor: 17, 18, 26, 34, 35.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ KELOMPOK SOAL 1 ═══ -->
+  <div class="kelompok-header">
+    <div class="kelompok-title">Kelompok Soal 1 — Bilangan & Aljabar</div>
+    <span class="kelompok-badge">Soal 1–18 · Skor maks: 26</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Tipe</th>
+          <th>Skor Maks</th>
+          <th>Kunci</th>
+          <th>Rubrik Penskoran</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td class="no">1</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">A</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi A (Puluhan ribu).<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">2</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">B <span class="errata-cell">⚠</span></td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi B (Rp 5.500).<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.<br>
+            <span class="r-note">⚠ Errata: harga penghapus di stimulus seharusnya Rp 2.000 agar kunci valid.</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">3</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">B</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi B (Tanggal 22 Januari). KPK(4,6)=12 → 10+12=22.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">4</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">A</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi A ($\frac{6}{8}$), karena $\frac{3}{4}=\frac{6}{8}$.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">5</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">A</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi A ($\frac{1}{2}$ kg), karena $2\frac{1}{2}\div5=\frac{1}{2}$.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">6</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">A</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi A (Pensil, Kotak, Buku, Penggaris). Urutan: 15,5 &lt; 18,3 &lt; 21,8 &lt; 30,2.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">7</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">B</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi B (Cukup, sisa ~Rp 12.000). Taksiran: 49+24+15=88, sisa=12.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr style="background:#fdf6e3;">
+          <td class="no">8</td>
+          <td class="fmt"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="skor">2</td>
+          <td class="kunci"><div class="kunci-multi"><span class="kunci-tag">A</span><span class="kunci-tag">B</span><span class="kunci-tag">C</span><span class="kunci-tag">D</span></div></td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 2:</span> Memilih semua (A, B, C, D) — semua pecahan &gt; 0,5.<br>
+            <span class="r-half">Skor 1:</span> Memilih 3 dari 4 jawaban benar (1 kesalahan).<br>
+            <span class="r-zero">Skor 0:</span> 2+ kesalahan atau kosong.
+          </td>
+        </tr>
+
+        <tr style="background:#fdf6e3;">
+          <td class="no">9</td>
+          <td class="fmt"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="skor">2</td>
+          <td class="kunci"><div class="kunci-multi"><span class="kunci-tag">A</span><span class="kunci-tag">B</span><span class="kunci-tag">C</span><span class="kunci-tag">D</span></div></td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 2:</span> Memilih semua (2, 3, 4, 6) — keempatnya faktor persekutuan 24 dan 36.<br>
+            <span class="r-half">Skor 1:</span> Hanya 1 kesalahan (1 pilihan terlewat).<br>
+            <span class="r-zero">Skor 0:</span> 2+ kesalahan atau kosong.
+          </td>
+        </tr>
+
+        <tr style="background:#fdf6e3;">
+          <td class="no">10</td>
+          <td class="fmt"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="skor">2</td>
+          <td class="kunci"><div class="kunci-multi"><span class="kunci-tag">A</span><span class="kunci-tag">B</span><span class="kunci-tag">C</span></div><span class="errata-cell" style="display:block;margin-top:3px;">⚠</span></td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 2:</span> Memilih A, B, dan C (sesuai kunci resmi).<br>
+            <span class="r-half">Skor 1:</span> Memilih A dan B saja (2 dari 3 benar tanpa salah pilih) — dapat diterima mengingat errata.<br>
+            <span class="r-zero">Skor 0:</span> Tidak memilih A dan B, atau memilih D.<br>
+            <span class="r-note">⚠ Errata: Opsi C (3 14/15) mengandung kesalahan hitung; jawaban matematika yang benar adalah 3 11/15. Guru dapat mempertimbangkan skor 2 juga untuk pilihan A+B.</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">11</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">B</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi B (10), karena 150 ÷ 15 = 10.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">12</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">C</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi C (32, 64). Pola ×2: 16→32→64.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">13</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">C</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi C (Rp 42.000). Satuan=6.000, 7×6.000=42.000.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">14</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">C</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi C (500 gram). 200÷4×10=500.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr style="background:#fdf6e3;">
+          <td class="no">15</td>
+          <td class="fmt"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="skor">2</td>
+          <td class="kunci"><div class="kunci-multi"><span class="kunci-tag">A</span><span class="kunci-tag">B</span></div></td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 2:</span> Memilih A dan B saja (tidak memilih C atau D).<br>
+            <span class="r-half">Skor 1:</span> Memilih A dan B ditambah 1 jawaban salah (C atau D).<br>
+            <span class="r-zero">Skor 0:</span> Tidak memilih A atau B, atau keduanya tidak dipilih.
+          </td>
+        </tr>
+
+        <tr style="background:#fdf6e3;">
+          <td class="no">16</td>
+          <td class="fmt"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="skor">2</td>
+          <td class="kunci"><div class="kunci-multi"><span class="kunci-tag">A</span><span class="kunci-tag">B</span><span class="kunci-tag">C</span></div></td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 2:</span> Memilih A, B, dan C (tidak memilih D).<br>
+            <span class="r-half">Skor 1:</span> Memilih 2 dari 3 benar tanpa memilih D, atau memilih A+B+C+D.<br>
+            <span class="r-zero">Skor 0:</span> Hanya 1 atau tidak memilih.
+          </td>
+        </tr>
+
+        <tr style="background:#f5f0ff;">
+          <td class="no">17</td>
+          <td class="fmt"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="skor">2</td>
+          <td class="kunci" style="font-size:.7rem;text-align:left;padding:8px 12px;">
+            2=Prima<br>9=Bukan<br>11=Prima<br>15=Bukan<br>17=Prima
+          </td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 2:</span> Semua 5 bilangan diklasifikasikan benar.<br>
+            <span class="r-half">Skor 1:</span> 4 dari 5 benar (1 salah klasifikasi).<br>
+            <span class="r-zero">Skor 0:</span> 3 atau lebih salah, atau tidak menjawab.
+          </td>
+        </tr>
+
+        <tr style="background:#f5f0ff;">
+          <td class="no">18</td>
+          <td class="fmt"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="skor">2</td>
+          <td class="kunci" style="font-size:.7rem;text-align:left;padding:8px 12px;">
+            1=Perk/Pemb<br>2=Penj/Peng<br>3=Perk/Pemb
+          </td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 2:</span> Semua 3 masalah diklasifikasikan ke operasi yang tepat.<br>
+            <span class="r-half">Skor 1:</span> 2 dari 3 benar.<br>
+            <span class="r-zero">Skor 0:</span> 1 atau tidak ada yang benar, atau kosong.
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══ KELOMPOK SOAL 2 ═══ -->
+  <div class="kelompok-header" style="margin-top:32px;">
+    <div class="kelompok-title">Kelompok Soal 2 — Pengukuran, Geometri & Analisis Data</div>
+    <span class="kelompok-badge">Soal 19–35 · Skor maks: 21</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Tipe</th>
+          <th>Skor Maks</th>
+          <th>Kunci</th>
+          <th>Rubrik Penskoran</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td class="no">19</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">B</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi B (110 m²). L.persegi panjang=80+L.segitiga=30=110 m².<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">20</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">C</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi C (50 m). K=2×(15+10)=50 m.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">21</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">C</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi C (90°). 360°÷12=30°/angka, dari 12 ke 3 = 3×30°=90°.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr style="background:#fdf6e3;">
+          <td class="no">22</td>
+          <td class="fmt"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="skor">2</td>
+          <td class="kunci"><div class="kunci-multi"><span class="kunci-tag">A</span><span class="kunci-tag">C</span><span class="kunci-tag">D</span></div><span class="errata-cell" style="display:block;margin-top:3px;">⚠</span></td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 2 (kunci resmi):</span> Memilih A (90 mnt), C (75 mnt), D (60 mnt).<br>
+            <span class="r-full">Skor 2 (alternatif):</span> Memilih A dan C saja — jika interpretasi "lebih dari 1 jam" diterapkan secara ketat (&gt;60 mnt).<br>
+            <span class="r-half">Skor 1:</span> Hanya 1 kesalahan dari kunci yang digunakan.<br>
+            <span class="r-zero">Skor 0:</span> 2+ kesalahan atau kosong.<br>
+            <span class="r-note">⚠ Errata: Istirahat=60 mnt (tepat 1 jam, bukan &gt;1 jam). Guru menentukan interpretasi yang digunakan secara konsisten.</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">23</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">B</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi B (672 liter). V=120×80×70=672.000 cm³=672 L.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">24</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">A</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi A (Pola A) — jaring-jaring kubus yang valid.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr style="background:#fdf6e3;">
+          <td class="no">25</td>
+          <td class="fmt"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="skor">2</td>
+          <td class="kunci"><div class="kunci-multi"><span class="kunci-tag">B</span><span class="kunci-tag">D</span></div></td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 2:</span> Memilih B dan D saja (tampak samping=4 persegi; tampak belakang=depan).<br>
+            <span class="r-half">Skor 1:</span> Memilih B saja atau D saja (1 benar, tidak memilih yang salah).<br>
+            <span class="r-zero">Skor 0:</span> Memilih A atau C, atau tidak menjawab.
+          </td>
+        </tr>
+
+        <tr style="background:#f5f0ff;">
+          <td class="no">26</td>
+          <td class="fmt"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="skor">2</td>
+          <td class="kunci" style="font-size:.7rem;text-align:left;padding:8px 12px;">
+            1=Benar<br>2=Benar<br>3=Benar
+          </td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 2:</span> Semua 3 pernyataan diklasifikasikan Benar.<br>
+            <span class="r-half">Skor 1:</span> 2 dari 3 benar (1 salah).<br>
+            <span class="r-zero">Skor 0:</span> 2+ salah atau kosong.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">27</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">A</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi A — koordinat (A, 1) sesuai posisi perpustakaan di peta.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr style="background:#fdf6e3;">
+          <td class="no">28</td>
+          <td class="fmt"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="skor">2</td>
+          <td class="kunci"><div class="kunci-multi"><span class="kunci-tag">A</span><span class="kunci-tag">B</span></div></td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 2:</span> Memilih A (Persegi) dan B (Kubus) saja — keduanya memiliki titik sudut.<br>
+            <span class="r-half">Skor 1:</span> Memilih A atau B saja (tanpa memilih C atau D).<br>
+            <span class="r-zero">Skor 0:</span> Memilih C atau D, atau tidak menjawab.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">29</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">C</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi C (Rabu) — batang tertinggi pada diagram.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">30</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">C</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi C (35). Selisih = 95 − 60 = 35.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">31</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">B</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi B (150 cm). Rata-rata = 750 ÷ 5 = 150.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr style="background:#fdf6e3;">
+          <td class="no">32</td>
+          <td class="fmt"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="skor">2</td>
+          <td class="kunci"><div class="kunci-multi"><span class="kunci-tag">A</span><span class="kunci-tag">B</span></div></td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 2:</span> Memilih A (April &gt; Januari) dan B (tren meningkat) saja.<br>
+            <span class="r-half">Skor 1:</span> Memilih A+B+C (1 kesalahan, C juga valid secara logika dari grafik).<br>
+            <span class="r-zero">Skor 0:</span> Tidak memilih A dan B, atau memilih D.
+          </td>
+        </tr>
+
+        <tr>
+          <td class="no">33</td>
+          <td class="fmt"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="skor">1</td>
+          <td class="kunci">A</td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 1:</span> Memilih opsi A (Merah). P(merah)=5/10=1/2, terbesar.<br>
+            <span class="r-zero">Skor 0:</span> Jawaban lain atau kosong.
+          </td>
+        </tr>
+
+        <tr style="background:#f5f0ff;">
+          <td class="no">34</td>
+          <td class="fmt"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="skor">2</td>
+          <td class="kunci" style="font-size:.7rem;text-align:left;padding:8px 12px;">
+            Semua → Memband. Jumlah
+          </td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 2:</span> Ketiga bentuk (Diagram Batang, Tabel, Piktogram) diklasifikasikan ke "Membandingkan Jumlah".<br>
+            <span class="r-half">Skor 1:</span> 2 dari 3 benar.<br>
+            <span class="r-zero">Skor 0:</span> 2+ salah atau kosong.
+          </td>
+        </tr>
+
+        <tr style="background:#f5f0ff;">
+          <td class="no">35</td>
+          <td class="fmt"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="skor">2</td>
+          <td class="kunci" style="font-size:.7rem;text-align:left;padding:8px 12px;">
+            Matahari=Tidak Mungkin<br>Hujan=Mungkin<br>Manusia=Pasti
+          </td>
+          <td class="rubrik-cell">
+            <span class="r-full">Skor 2:</span> Ketiga kejadian diklasifikasikan benar (Tidak Mungkin / Mungkin / Pasti).<br>
+            <span class="r-half">Skor 1:</span> 2 dari 3 benar.<br>
+            <span class="r-zero">Skor 0:</span> 2+ salah atau kosong.
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- NILAI AKHIR -->
+  <div class="nilai-box">
+    <h3>Konversi Skor ke Nilai Akhir</h3>
+    <div class="formula-block">
+      <div class="formula">Nilai Akhir = (Skor Perolehan ÷ 47) × 100</div>
+      <div class="formula-sub">Skor maksimal: 47 poin &nbsp;|&nbsp; PG Tunggal: 1 poin &nbsp;·&nbsp; PG Kompleks: 2 poin &nbsp;·&nbsp; PG Kategori: 2 poin</div>
+    </div>
+    <table class="konversi-table">
+      <thead>
+        <tr>
+          <th>Rentang Skor</th>
+          <th>Rentang Nilai</th>
+          <th>Predikat</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>43 – 47</td><td>91 – 100</td><td class="grade-a">A (Sangat Baik)</td><td>Melampaui KKM, sangat memuaskan</td></tr>
+        <tr><td>37 – 42</td><td>79 – 89</td><td class="grade-b">B (Baik)</td><td>Di atas KKM, memuaskan</td></tr>
+        <tr><td>31 – 36</td><td>66 – 77</td><td class="grade-c">C (Cukup)</td><td>Memenuhi KKM minimal (70)</td></tr>
+        <tr><td>0 – 30</td><td>0 – 64</td><td class="grade-d">D (Perlu Bimbingan)</td><td>Di bawah KKM, perlu remedial</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.76rem;color:var(--muted);margin-top:12px;">
+      * KKM Matematika Kelas 6 SD Muhammadiyah 01 Kukusan: <strong>70</strong>.
+      Siswa dengan nilai di bawah 70 diwajibkan mengikuti program remedial.
+    </p>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <strong>SD Muhammadiyah 01 Kukusan</strong> · Pedoman Penskoran US Matematika · TP 2025/2026<br>
+  <span style="margin-top:3px;display:block;">Dikelola oleh: Arif Azwar Anas, S.Pd.</span>
+</footer>
+
+</body>
+</html>
