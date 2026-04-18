@@ -132,6 +132,21 @@
     /* FOOTER */
     .site-footer { text-align: center; padding: 24px 16px; font-size: .76rem; color: var(--muted); border-top: 1px solid var(--border); background: var(--white); }
 
+
+    /* Export button */
+    .export-bar {
+      max-width: 960px; margin: 0 auto 4px; padding: 0 20px;
+      display: flex; justify-content: flex-end; gap: 10px;
+    }
+    .btn-export {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: #1a5c35; color: white; border: none;
+      padding: 9px 18px; border-radius: 8px; cursor: pointer;
+      font-size: .82rem; font-weight: 700; font-family: inherit;
+      text-decoration: none; transition: background .15s;
+    }
+    .btn-export:hover { background: #2d7a4f; }
+
     @media print {
       .topnav { display: none; }
       .main { padding: 16px; }
@@ -165,6 +180,10 @@
   </div>
 </header>
 
+
+<div class="export-bar">
+  <a href="kisi-kisi.docx" download class="btn-export">⬇ Unduh Word (.docx)</a>
+</div>
 <main class="main">
 
   <!-- SUMMARY -->
@@ -224,7 +243,7 @@
 
   <!-- ═══ KELOMPOK SOAL 1 ═══ -->
   <div class="kelompok-header">
-    <div><div class="kelompok-title">Kelompok Soal 1</div><div class="kelompok-sub">Soal 1–18 · Elemen Bilangan dan Aljabar </div></div>
+    <div><div class="kelompok-title">Kelompok Soal 1</div><div class="kelompok-sub">Soal 1–18</div></div>
     <span class="kelompok-badge">Elemen: Bilangan &amp; Aljabar</span>
   </div>
   <div class="table-wrap">
@@ -454,7 +473,7 @@
 
   <!-- ═══ KELOMPOK SOAL 2 ═══ -->
   <div class="kelompok-header" style="margin-top:32px;">
-    <div><div class="kelompok-title">Kelompok Soal 2</div><div class="kelompok-sub">Soal 19–35 · Elemen Geometri dan Pengukuran</div></div>
+    <div><div class="kelompok-title">Kelompok Soal 2</div><div class="kelompok-sub">Soal 19–35</div></div>
     <span class="kelompok-badge">Elemen: Pengukuran, Geometri &amp; Analisis Data</span>
   </div>
   <div class="table-wrap">
