@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kartu Soal — Bahasa Indonesia · SD Muhammadiyah 01 Kukusan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--green:#1a5c35;--green-md:#2d7a4f;--green-lt:#f0faf4;--green-bdr:#b7dfc8;--gold:#f5a623;--gold-dk:#c47f00;--gold-lt:#fdf6e3;--blue:#1a5aaa;--blue-lt:#edf4fb;--purple:#6d28d9;--purple-lt:#f5f0ff;--text:#1e2d24;--muted:#5a6e62;--bg:#f5f9f6;--white:#fff;--border:#dde8e2;--r:10px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    .topnav{background:var(--green);color:#fff;padding:0 20px;height:46px;display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:100;font-size:.82rem}
+    .topnav a{color:rgba(255,255,255,.82);text-decoration:none;font-weight:600}
+    .topnav a:hover{color:#fff;text-decoration:underline}
+    .topnav-sep{color:rgba(255,255,255,.35)}
+    .topnav-cur{color:#fff;font-weight:700}
+    .sticky-bar{position:sticky;top:46px;z-index:90;background:var(--white);border-bottom:1px solid var(--border);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+    .sticky-label{font-size:.82rem;font-weight:700;color:var(--muted)}
+    .btn-dl-sm{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:var(--green);color:#fff;border-radius:6px;font-size:.8rem;font-weight:700;text-decoration:none}
+    .btn-dl-sm:hover{background:var(--green-md)}
+    .page-header{background:var(--green);color:#fff;padding:28px 24px 20px;border-bottom:4px solid var(--gold)}
+    .header-inner{max-width:900px;margin:0 auto}
+    .header-kode{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;opacity:.75;margin-bottom:6px}
+    .page-header h1{font-family:'Fraunces',serif;font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;margin-bottom:10px}
+    .page-header h1 em{color:var(--gold);font-style:italic}
+    .header-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.84rem;opacity:.88}
+    .header-meta span::before{content:'·';margin-right:6px;opacity:.5}
+    .header-meta span:first-child::before{display:none}
+    .main{max-width:900px;margin:0 auto;padding:20px 20px 60px}
+
+    /* DOTS NAVIGATOR */
+    .dots-wrap{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:16px 20px;margin-bottom:16px}
+    .dots-title{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:10px}
+    .dots-grid{display:flex;flex-wrap:wrap;gap:6px}
+    .dot{width:28px;height:28px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;cursor:pointer;border:1.5px solid var(--border);color:var(--muted);transition:all .15s}
+    .dot:hover{border-color:var(--green);color:var(--green);background:var(--green-lt)}
+    .dot.active{border:2.5px solid var(--green);background:var(--green);color:#fff;transform:scale(1.1)}
+    .dot.type-a{border-color:#1a5aaa;color:#1a5aaa;background:#edf4fb}
+    .dot.type-b{border-color:#c47f00;color:#c47f00;background:#fff8ec}
+    .dot.type-c{border-color:#6d28d9;color:#6d28d9;background:#f5f0ff}
+    .dot.type-a.active{background:#1a5aaa;color:#fff;border-color:#1a5aaa}
+    .dot.type-b.active{background:#c47f00;color:#fff;border-color:#c47f00}
+    .dot.type-c.active{background:#6d28d9;color:#fff;border-color:#6d28d9}
+    .dot.errata-dot::after{content:'⚠';font-size:.55rem;margin-left:1px}
+
+    /* KARTU */
+    .kartu-wrap{position:relative}
+    .kartu{background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;display:none}
+    .kartu.active{display:block;animation:fadeIn .25s ease}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+    .kartu-header{background:var(--green);color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+    .kartu-num{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700}
+    .kartu-badges{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+    .badge{font-size:.72rem;font-weight:700;padding:3px 8px;border-radius:20px}
+    .b-mm{background:rgba(255,255,255,.18);color:#fff}
+    .b-ms{background:rgba(173,209,255,.35);color:#fff}
+    .b-bp{background:rgba(255,214,120,.35);color:#fff}
+    .b-mls{background:rgba(200,170,255,.35);color:#fff}
+    .fmt-a{background:#e3f0ff;color:#1a5aaa}
+    .fmt-b{background:#fff0e3;color:#c47f00}
+    .fmt-c{background:#f0e3ff;color:#6d28d9}
+    .lv-c2{background:#dcfce7;color:#166534}
+    .lv-c3{background:#fef9c3;color:#854d0e}
+    .lv-c4{background:#fee2e2;color:#991b1b}
+    .b-errata{background:rgba(255,193,7,.35);color:#ffe082;border:1px solid rgba(255,193,7,.5)}
+
+    .kartu-body{padding:0}
+
+    .kartu-meta-row{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--border)}
+    .meta-cell{padding:10px 14px;font-size:.8rem;border-right:1px solid var(--border)}
+    .meta-cell:last-child{border-right:none}
+    .meta-label{font-weight:700;color:var(--muted);font-size:.7rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+    .meta-val{color:var(--text);line-height:1.4}
+
+    .kartu-content{padding:16px 18px}
+
+    .stimulus-box{background:var(--bg);border:1px solid var(--border);border-left:4px solid var(--green);border-radius:6px;padding:12px 14px;margin-bottom:14px}
+    .stimulus-head{font-weight:800;color:var(--green);text-transform:uppercase;font-size:.72rem;letter-spacing:.5px;border-bottom:1px dashed var(--border);padding-bottom:6px;margin-bottom:8px}
+    .stimulus-box p{font-size:.85rem;line-height:1.7;color:#2d3748;margin-bottom:6px}
+    .stimulus-box p:last-child{margin-bottom:0}
+    .stimulus-img{max-width:100%;height:auto;display:block;border-radius:6px;margin:8px 0}
+    .visual-frame{background:#f8fafc;border:1px solid var(--border);border-radius:6px;padding:12px;display:flex;justify-content:center;margin:8px 0}
+
+    .q-text{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:12px;line-height:1.55}
+    .opt-list{list-style:none;display:flex;flex-direction:column;gap:5px}
+    .opt-item{display:flex;gap:8px;padding:8px 10px;background:var(--bg);border:1px solid var(--border);border-radius:5px;font-size:.85rem}
+    .opt-letter{font-weight:800;color:var(--muted);min-width:18px}
+    .pgk-opt-list{list-style:none;display:flex;flex-direction:column;gap:5px}
+    .pgk-opt-item{display:flex;gap:8px;padding:8px 10px;background:var(--bg);border:1px solid var(--border);border-radius:5px;font-size:.85rem}
+    .check-box{width:16px;height:16px;border:1.5px solid var(--border);border-radius:3px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:.65rem}
+    .matrix-wrap{overflow-x:auto}
+    .matrix-table{width:100%;border-collapse:collapse;font-size:.82rem}
+    .matrix-table th,.matrix-table td{border:1px solid var(--border);padding:7px 10px}
+    .matrix-table th{background:var(--green-lt);text-align:center;font-weight:700;color:var(--green)}
+    .matrix-table td:first-child{text-align:left;font-weight:500}
+    .matrix-table td{text-align:center}
+
+    .kartu-kunci{background:var(--green-lt);border-top:2px solid var(--green-bdr);padding:14px 18px}
+    .kunci-label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px}
+    .kunci-ans{font-size:1rem;font-weight:800;color:var(--green);background:#dcfce7;padding:4px 12px;border-radius:6px;border:1.5px solid #166534;display:inline-block;margin-bottom:6px}
+    .ans-matrix{width:100%;border-collapse:collapse;font-size:.82rem;margin-bottom:6px}
+    .ans-matrix th,.ans-matrix td{border:1px solid var(--border);padding:6px 10px}
+    .ans-matrix th{background:var(--green-lt);text-align:center;font-weight:700;color:var(--green)}
+    .ans-matrix td{text-align:center}
+    .ans-matrix td:first-child{text-align:left;font-weight:500}
+    .ans-cell{background:#dcfce7;color:#166534;font-weight:800;border-color:#166534}
+
+    .kartu-footer{background:#f9f9f9;border-top:1px solid var(--border);padding:10px 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:4px 16px;font-size:.75rem}
+    .footer-cell .fc-label{color:var(--muted);font-weight:700;font-size:.65rem;text-transform:uppercase}
+    .footer-cell .fc-val{color:var(--text);font-weight:600}
+
+    /* NAVIGATION */
+    .nav-bar{display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:10px}
+    .nav-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;background:var(--green);color:#fff;border:none;border-radius:6px;font-size:.85rem;font-weight:700;cursor:pointer;font-family:inherit}
+    .nav-btn:hover{background:var(--green-md)}
+    .nav-btn:disabled{background:var(--border);color:var(--muted);cursor:not-allowed}
+    .nav-counter{font-size:.9rem;font-weight:700;color:var(--green);text-align:center}
+
+    .legend-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;align-items:center;font-size:.78rem}
+    .legend-item{display:flex;align-items:center;gap:4px;font-weight:600}
+    .legend-dot{width:14px;height:14px;border-radius:3px}
+
+    .site-footer{text-align:center;font-size:.78rem;color:var(--muted);padding:24px 16px;border-top:1px solid var(--border)}
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../../">← Beranda</a><span class="topnav-sep">/</span>
+  <a href="../">Ujian Sekolah</a><span class="topnav-sep">/</span>
+  <a href="./">Bahasa Indonesia</a><span class="topnav-sep">/</span>
+  <span class="topnav-cur">Kartu Soal</span>
+</nav>
+
+<div class="sticky-bar">
+  <span class="sticky-label">Kartu Soal Bahasa Indonesia · 40 Kartu</span>
+  <a href="kartu-soal.docx" download class="btn-dl-sm">⬇ Unduh Word (.docx)</a>
+</div>
+
+<header class="page-header">
+  <div class="header-inner">
+    <div class="header-kode">Administrasi · Ujian Sekolah Tertulis · TP 2025/2026</div>
+    <h1>Kartu <em>Soal</em></h1>
+    <div class="header-meta">
+      <span>SD Muhammadiyah 01 Kukusan</span><span>Bahasa Indonesia — Kelas 6</span>
+      <span>40 Kartu · 5 Mei 2026</span><span>← → untuk navigasi</span>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+<div class="legend-bar">
+  <span style="color:var(--muted);font-weight:700">Warna kartu:</span>
+  <span class="legend-item"><span class="legend-dot" style="background:#edf4fb;border:1.5px solid #1a5aaa"></span>PG Tunggal (A)</span>
+  <span class="legend-item"><span class="legend-dot" style="background:#fff8ec;border:1.5px solid #c47f00"></span>PG Kompleks (B)</span>
+  <span class="legend-item"><span class="legend-dot" style="background:#f5f0ff;border:1.5px solid #6d28d9"></span>PG Kategori (C)</span>
+  <span class="legend-item"><span class="legend-dot" style="background:var(--gold-lt);border:1.5px solid var(--gold)"></span>⚠ Errata</span>
+</div>
+
+<div class="dots-wrap">
+  <div class="dots-title">Navigator Soal (klik untuk loncat)</div>
+  <div class="dots-grid" id="dotsGrid"></div>
+</div>
+
+<div class="kartu-wrap" id="kartuContainer"></div>
+
+<div class="nav-bar">
+  <button class="nav-btn" id="btnPrev" onclick="goTo(cur-1)" disabled>← Sebelumnya</button>
+  <div class="nav-counter" id="navCounter">1 / 40</div>
+  <button class="nav-btn" id="btnNext" onclick="goTo(cur+1)">Selanjutnya →</button>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  Kartu Soal Bahasa Indonesia &nbsp;·&nbsp; SD Muhammadiyah 01 Kukusan &nbsp;·&nbsp; TP 2025/2026 &nbsp;·&nbsp; Penyusun: Arif Azwar Anas, S.Pd.
+</footer>
+
+<script>
+const SOAL = [
+  {id:1,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pg",level:"C2",skor:1,errata:false,
+   cp:"Memahami informasi berupa gagasan dari berbagai jenis teks (fiksi dan nonfiksi)",
+   konsep:"Ide pokok teks nonsastra",
+   ind:"Menentukan ide pokok paragraf pertama dari teks tata tertib ujian sekolah",
+   stim:`<div class="stimulus-head">Teks 1 · Jadwal dan Tata Tertib Ujian Sekolah</div><p>Ujian Sekolah bagi siswa kelas 6 SD Muhammadiyah 01 Kukusan akan segera dilaksanakan. Kegiatan ini merupakan agenda tahunan yang wajib diikuti oleh seluruh siswa sebagai syarat kelulusan. Berdasarkan kalender akademik tahun 2025/2026, ujian tertulis akan berlangsung selama enam hari, dimulai dari tanggal 15 Mei hingga 20 Mei 2026. Setiap harinya, siswa diwajibkan hadir di sekolah paling lambat pukul 07.00 WIB untuk mengikuti pengarahan sebelum ujian dimulai.</p>`,
+   q:"Berdasarkan teks tersebut, apa ide pokok paragraf pertama?",
+   opt:["Waktu dan ketentuan kehadiran siswa saat ujian","Daftar mata pelajaran yang akan diujikan","Protokol kesehatan selama ujian berlangsung","Pengumuman hasil ujian sekolah"],
+   ans:"A"},
+
+  {id:2,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pg",level:"C3",skor:1,errata:false,
+   cp:"Memahami informasi berupa gagasan dari berbagai jenis teks (fiksi dan nonfiksi)",
+   konsep:"Hubungan sebab-akibat dalam teks",
+   ind:"Mengidentifikasi akibat dari pelanggaran tata tertib berdasarkan teks informasi",
+   stim:`<div class="stimulus-head">Teks 1 · Jadwal dan Tata Tertib Ujian Sekolah (lanjutan)</div><p><em>(Teks sama dengan soal nomor 1)</em></p>`,
+   q:"Apa akibatnya jika siswa membawa alat komunikasi ke dalam ruang ujian?",
+   opt:["Siswa akan mendapat nilai tambahan","Siswa akan dikenakan sanksi pelanggaran","Siswa boleh menggunakannya saat istirahat","Siswa harus menyerahkannya kepada teman"],
+   ans:"B"},
+
+  {id:3,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pg",level:"C3",skor:1,errata:false,
+   cp:"Membaca dan menafsirkan teks visual termasuk tabel, grafik, dan diagram",
+   konsep:"Teks visual — grafik batang",
+   ind:"Menafsirkan data dari grafik batang minat baca siswa per kelas",
+   stim:`<div class="stimulus-head">Teks 2 · Grafik Minat Baca Siswa</div><p>Perpustakaan sekolah melakukan survei minat baca siswa semester ganjil 2025. Grafik menampilkan data buku dipinjam per siswa dari kelas 4, 5, dan 6. Kelas 6 tertinggi: 45 buku/bulan. Kelas 4 terendah: 25 buku/bulan.</p><div class="visual-frame"><img src="https://i.ibb.co.com/CpCCLpdj/grafik-minat-baca.png" alt="Grafik Minat Baca" class="stimulus-img"></div>`,
+   q:"Berdasarkan grafik tersebut, pernyataan mana yang sesuai?",
+   opt:["Kelas 4 memiliki minat baca tertinggi","Kelas 6 memiliki minat baca tertinggi","Kelas 5 dan 6 memiliki minat baca sama","Kelas 4 lebih tinggi dari Kelas 5"],
+   ans:"B"},
+
+  {id:4,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pg",level:"C2",skor:1,errata:false,
+   cp:"Mengidentifikasi nilai moral dari teks sastra (cerita pendek, cerita rakyat)",
+   konsep:"Nilai moral cerita (sastra)",
+   ind:"Mengidentifikasi nilai moral dari tindakan tokoh dalam kutipan cerpen",
+   stim:`<div class="stimulus-head">Teks 3 · Persahabatan di Bawah Pohon Rindang</div><p>Rina tampak murung. Sinta yang menyadari perubahan sikap sahabatnya segera menghampiri. "Ada apa, Rin?" tanya Sinta lembut. Rina bercerita kehilangan uang saku dan takut dimarahi. Sinta mendengarkan dengan saksama. "Jangan khawatir, kita cari bersama. Kalau tidak ketemu, aku pinjamkan uangku," ucap Sinta tulus.</p>`,
+   q:"Nilai moral yang terkandung dalam tindakan Sinta adalah...",
+   opt:["Kejujuran dan tanggung jawab","Kepedulian dan ketulusan","Kepemimpinan dan keberanian","Kedisiplinan dan ketepatan"],
+   ans:"B"},
+
+  {id:5,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pg",level:"C3",skor:1,errata:false,
+   cp:"Menganalisis watak tokoh berdasarkan dialog dan tindakannya dalam teks sastra",
+   konsep:"Watak tokoh dalam cerita",
+   ind:"Menganalisis watak tokoh berdasarkan dialog dalam kutipan cerpen",
+   stim:`<div class="stimulus-head">Teks 3 · Persahabatan di Bawah Pohon Rindang (lanjutan)</div><p><em>(Teks sama dengan soal nomor 4)</em></p>`,
+   q:"Watak tokoh Sinta berdasarkan dialog dalam kutipan tersebut adalah...",
+   opt:["Penyemangat dan peduli","Sombong dan angkuh","Pendiam dan pemalu","Pemarah dan mudah tersinggung"],
+   ans:"A"},
+
+  {id:6,kel:"Kelompok 1",elemen:"Menyimak",type:"pg",level:"C2",skor:1,errata:false,
+   cp:"Menganalisis dan memaknai informasi dari teks aural (monolog, dialog)",
+   konsep:"Tujuan komunikasi teks aural",
+   ind:"Memahami tujuan utama komunikasi dari transkrip pidato kepala sekolah",
+   stim:`<div class="stimulus-head">Teks 4 · Transkrip Pidato Kepala Sekolah</div><p>"Assalamualaikum. Pertama, menjaga kebersihan lingkungan sekolah. Kedua, menciptakan suasana kondusif. Ketiga, mengikuti aturan panitia ujian. Jagalah kesehatan dengan makan bergizi dan istirahat cukup. Wassalamualaikum."</p>`,
+   q:"Tujuan utama komunikasi dalam pidato tersebut adalah...",
+   opt:["Mengumumkan jadwal libur sekolah","Mengajak siswa menjaga kebersihan dan kedisiplinan","Memberikan penghargaan kepada siswa berprestasi","Menginformasikan perubahan kurikulum"],
+   ans:"B"},
+
+  {id:7,kel:"Kelompok 1",elemen:"Menyimak",type:"pg",level:"C2",skor:1,errata:false,
+   cp:"Mengidentifikasi amanat/perasaan dari puisi yang dibacakan (teks aural)",
+   konsep:"Amanat dan perasaan dalam puisi",
+   ind:"Mengidentifikasi perasaan penyair yang tergambar dalam puisi lirik untuk ibu",
+   stim:`<div class="stimulus-head">Teks 5 · Puisi "Untuk Ibu"</div><p>Engkau laksana mentari pagi / Yang menerangi jalan hidupku / Hangat sinarmu mengusir sepi / Dalam setiap langkah kakiku<br><br>Terima kasih, Ibu / Atas segala kasih sayangmu / Tanpamu aku takkan berarti / Di dunia yang penuh warna ini</p>`,
+   q:"Perasaan penyair yang tergambar dalam puisi tersebut adalah...",
+   opt:["Kasih sayang dan terima kasih kepada ibu","Kesedihan karena kehilangan ibu","Kebanggaan terhadap prestasi ibu","Kerinduan pada kampung halaman"],
+   ans:"A"},
+
+  {id:8,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pg",level:"C3",skor:1,errata:false,
+   cp:"Menganalisis kalimat persuasif dalam iklan layanan masyarakat",
+   konsep:"Kalimat persuasif iklan",
+   ind:"Mengidentifikasi kalimat persuasif yang paling tepat dari iklan layanan masyarakat hemat air",
+   stim:`<div class="stimulus-head">Teks 6 · Iklan Layanan Masyarakat — Hemat Air</div><div class="visual-frame"><img src="https://i.ibb.co.com/99zPM56c/iklan-hemat-air.png" alt="Iklan Hemat Air" class="stimulus-img"></div><p>"Air adalah sumber kehidupan. Ketersediaan air bersih semakin menipis. Mari kita bersama-sama menghemat air mulai dari sekarang!"</p>`,
+   q:"Kalimat persuasif yang paling tepat sesuai konteks iklan tersebut adalah...",
+   opt:["Air sangat penting bagi kehidupan manusia","Ayo bersama-sama hemat air untuk masa depan!","Keran air harus selalu ditutup rapat","Jangan membuang air secara sembarangan"],
+   ans:"B"},
+
+  {id:9,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pg",level:"C2",skor:1,errata:false,
+   cp:"Memahami kosakata baru berdasarkan konteks kalimat",
+   konsep:"Makna kata kontekstual",
+   ind:"Memahami makna kata 'erosi' berdasarkan konteks kalimat dalam teks berita lingkungan",
+   stim:`<div class="stimulus-head">Teks 7 · Berita Lingkungan</div><p>Hujan deras selama tiga hari menyebabkan erosi tanah yang parah. Air hujan yang mengalir deras <strong>mengikis</strong> lapisan tanah atas sehingga struktur tanah menjadi tidak stabil. Akibatnya, beberapa wilayah mengalami longsor.</p>`,
+   q:"Berdasarkan konteks kalimat, makna kata \"erosi\" adalah...",
+   opt:["Pengikisan tanah oleh air","Genangan air di permukaan","Longsoran tanah dari bukit","Banjir bandang yang besar"],
+   ans:"A"},
+
+  {id:10,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pg",level:"C3",skor:1,errata:false,
+   cp:"Menganalisis hubungan sebab-akibat dalam teks prosedur",
+   konsep:"Sebab-akibat teks prosedur",
+   ind:"Menganalisis akibat jika salah satu langkah prosedur cetak dilewati",
+   stim:`<div class="stimulus-head">Teks 8 · Prosedur Menggunakan Printer</div><p>Langkah 1: Pastikan printer menyala. Langkah 2: Periksa ketersediaan kertas di tray. Langkah 3: Buka dokumen. Langkah 4: Pilih menu print. Langkah 5: Klik tombol print.<br><br>Jika langkah kedua tidak dilakukan, printer akan menarik dari tray kosong → kertas terjepit atau pesan error → dokumen tidak dapat dicetak.</p>`,
+   q:"Jika langkah kedua dilewati, apa akibatnya?",
+   opt:["Printer tidak akan menyala","Dokumen tidak dapat dicetak karena tidak ada kertas","Printer akan rusak permanen","Hasil cetakan akan buram"],
+   ans:"B"},
+
+  {id:11,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pgk",level:"C4",skor:2,errata:false,
+   cp:"Memilah fakta dan opini dalam teks pendapat/argumentasi",
+   konsep:"Fakta dan opini",
+   ind:"Memilih dua kalimat yang merupakan fakta berdasarkan teks argumentasi penggunaan gawai",
+   stim:`<div class="stimulus-head">Teks 9 · Penggunaan Gawai</div><p>Menurut penelitian terbaru, penggunaan gawai lebih dari 4 jam per hari dapat mengganggu kesehatan mata dan menyebabkan sakit kepala. Gawai juga memiliki manfaat besar untuk mengakses informasi dan berkomunikasi jarak jauh.</p>`,
+   q:"Pilih DUA kalimat yang merupakan FAKTA berdasarkan teks tersebut!",
+   opt:["Penggunaan gawai lebih dari 4 jam per hari dapat mengganggu kesehatan mata","Gawai bermanfaat untuk mengakses informasi","Semua anak harus dilarang menggunakan gawai","Gawai adalah penyebab utama penyakit mata"],
+   ans:["A","B"]},
+
+  {id:12,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pgk",level:"C4",skor:2,errata:false,
+   cp:"Mengidentifikasi nilai kearifan lokal dan nilai budaya dalam cerita rakyat",
+   konsep:"Nilai kearifan lokal cerita rakyat",
+   ind:"Mengidentifikasi dua nilai kearifan lokal dalam cerita rakyat Malin Kundang",
+   stim:`<div class="stimulus-head">Teks 10 · Cerita Rakyat Malin Kundang</div><p>Malin Kundang kembali dengan kaya dan sukses, namun malu mengakui ibunya yang miskin dan tua. Ia mengusir ibunya. Sang ibu berdoa, dan Malin berubah menjadi batu. Cerita ini mengajarkan pentingnya menghormati orang tua.</p>`,
+   q:"Pilih DUA nilai kearifan lokal yang tercermin dalam cerita tersebut!",
+   opt:["Hormat dan berbakti kepada orang tua","Jangan malu mengakui asal-usul keluarga","Kesuksesan materi adalah yang utama","Harus meninggalkan kampung halaman"],
+   ans:["A","B"]},
+
+  {id:13,kel:"Kelompok 1",elemen:"Menyimak",type:"pgk",level:"C2",skor:2,errata:false,
+   cp:"Menganalisis informasi spesifik dari teks aural berupa pengumuman",
+   konsep:"Isi informasi pengumuman",
+   ind:"Mengidentifikasi dua syarat peserta dari transkrip pengumuman lomba",
+   stim:`<div class="stimulus-head">Teks 11 · Transkrip Pengumuman Lomba</div><p>"Akan diadakan lomba membaca puisi. Syarat: (1) Siswa kelas 6. (2) Pendaftaran ditutup 10 Mei. (3) Bawa surat izin orang tua. (4) Hadir 30 menit sebelum acara. Daftar ke ruang guru."</p>`,
+   q:"Pilih DUA syarat peserta yang disebutkan dalam pengumuman!",
+   opt:["Siswa kelas 6","Mendaftar sebelum tanggal 10 Mei","Membawa kostum khusus","Menghafal 5 puisi"],
+   ans:["A","B"]},
+
+  {id:14,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pgk",level:"C3",skor:2,errata:false,
+   cp:"Mengidentifikasi struktur teks narasi: orientasi, komplikasi, dan resolusi",
+   konsep:"Struktur teks narasi — resolusi",
+   ind:"Mengidentifikasi dua paragraf yang termasuk bagian resolusi dari teks narasi acak",
+   stim:`<div class="stimulus-head">Teks 12 · Cerita Pendek Acak</div><p>(1) Akhirnya, Rina memutuskan untuk meminta maaf kepada Sinta.<br>(2) Rina dan Sita bertengkar karena salah paham.<br>(3) Mereka pun kembali berteman seperti semula.<br>(4) Sita menerima permintaan maaf Rina dengan lapang dada.</p>`,
+   q:"Pilih DUA paragraf yang termasuk bagian RESOLUSI (penyelesaian)!",
+   opt:["Akhirnya, Rina memutuskan untuk meminta maaf","Sita menerima permintaan maaf Rina dengan lapang dada","Rina dan Sita bertengkar karena salah paham","Mereka pun kembali berteman seperti semula"],
+   ans:["B","D"]},
+
+  {id:15,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pgk",level:"C4",skor:2,errata:false,
+   cp:"Memahami makna simbolik (konotatif) dalam puisi",
+   konsep:"Makna simbolik puisi",
+   ind:"Mengidentifikasi dua kata yang memiliki makna simbolik dalam puisi perjuangan",
+   stim:`<div class="stimulus-head">Teks 13 · Puisi Perjuangan</div><p>Merah darah para pahlawan / Mewarnai tanah pertiwi / Putih tulang mereka yang gugur / Menjadi pondasi negeri ini</p>`,
+   q:"Pilih DUA kata yang memiliki makna SIMBOLIK dalam puisi tersebut!",
+   opt:["Merah darah","Putih tulang","Berkibarlah","Negeri"],
+   ans:["A","B"]},
+
+  {id:16,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pgk-cat",level:"C4",skor:2,errata:false,
+   cp:"Memahami kosakata baru yang memiliki makna denotatif dan konotatif",
+   konsep:"Makna denotatif dan konotatif",
+   ind:"Membedakan makna denotatif vs konotatif dari kata 'kepala' dalam tiga konteks kalimat",
+   stim:`<div class="stimulus-head">Teks 14 · Makna Kata "Kepala"</div><p>(1) Kepala sekolah menghadiri rapat dinas.<br>(2) Jangan duduk di kepala meja saat acara formal.<br>(3) Dia tetap kepala dingin meski diprovokasi.</p>`,
+   q:'Tentukan makna DENOTATIF atau KONOTATIF untuk setiap kalimat!',
+   rows:["Kalimat 1: Kepala sekolah","Kalimat 2: Kepala meja","Kalimat 3: Kepala dingin"],
+   cols:["Denotatif","Konotatif"],
+   ans:["Denotatif","Konotatif","Konotatif"]},
+
+  {id:17,kel:"Kelompok 1",elemen:"Menyimak",type:"pgk-cat",level:"C3",skor:2,errata:false,
+   cp:"Menganalisis nada dan suasana dalam berbagai kutipan teks aural",
+   konsep:"Nada teks aural",
+   ind:"Mengklasifikasikan nada dari tiga kutipan teks aural berbeda konteks",
+   stim:`<div class="stimulus-head">Teks 15 · Nada Teks Aural</div><p>(1) "Kami berduka cita atas meninggalnya Bapak Guru."<br>(2) "Selamat! Kamu berhasil menjadi juara lomba!"<br>(3) "Semua siswa wajib berkumpul di lapangan sekarang!"</p>`,
+   q:"Tentukan NADA setiap kutipan teks aural!",
+   rows:["Kutipan 1: Berita duka","Kutipan 2: Berita juara","Kutipan 3: Pengumuman"],
+   cols:["Sedih","Gembira","Tegas"],
+   ans:["Sedih","Gembira","Tegas"]},
+
+  {id:18,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pgk-cat",level:"C3",skor:2,errata:false,
+   cp:"Memahami dan mengklasifikasikan berbagai jenis teks (sastra dan nonsastra)",
+   konsep:"Jenis teks — sastra dan nonsastra",
+   ind:"Mengklasifikasikan judul bacaan sebagai teks sastra (fiksi) atau nonsastra (nonfiksi)",
+   stim:`<div class="stimulus-head">Teks 16 · Jenis Teks</div><p>(1) Cerita Rakyat Timun Mas dari Jawa Tengah.<br>(2) Berita Banjir di Koran Hari Ini.<br>(3) Buku Ensiklopedia Hewan Langka.</p>`,
+   q:"Klasifikasikan setiap judul sebagai Teks Sastra (Fiksi) atau Teks Nonsastra (Nonfiksi)!",
+   rows:["Cerita Rakyat Timun Mas","Berita Banjir di Koran","Buku Ensiklopedia Hewan"],
+   cols:["Teks Sastra (Fiksi)","Teks Nonsastra (Nonfiksi)"],
+   ans:["Teks Sastra (Fiksi)","Teks Nonsastra (Nonfiksi)","Teks Nonsastra (Nonfiksi)"]},
+
+  {id:19,kel:"Kelompok 1",elemen:"Membaca dan Memirsa",type:"pgk-cat",level:"C4",skor:2,errata:false,
+   cp:"Memahami dan mengidentifikasi kalimat yang efektif",
+   konsep:"Kalimat efektif",
+   ind:"Mengklasifikasikan kalimat yang efektif dan tidak efektif dari tiga contoh",
+   stim:`<div class="stimulus-head">Teks 17 · Kalimat Efektif</div><p>(1) "Siswa yang rajin belajar akan mendapatkan nilai baik."<br>(2) "Belajar yang rajin oleh siswa akan nilai baik didapatkan."<br>(3) "Rajin belajar siswa akan dapat nilai baik."</p>`,
+   q:"Klasifikasikan mana kalimat yang EFEKTIF dan TIDAK EFEKTIF!",
+   rows:["Kalimat 1","Kalimat 2","Kalimat 3"],
+   cols:["Efektif","Tidak Efektif"],
+   ans:["Efektif","Tidak Efektif","Tidak Efektif"]},
+
+  {id:20,kel:"Kelompok 1",elemen:"Menyimak",type:"pgk-cat",level:"C3",skor:2,errata:false,
+   cp:"Menganalisis tujuan komunikasi dari berbagai pesan dan teks aural",
+   konsep:"Tujuan pesan singkat",
+   ind:"Mengklasifikasikan tujuan tiga pesan singkat (mengajak, memberitahu, memerintah)",
+   stim:`<div class="stimulus-head">Teks 18 · Tujuan Pesan Singkat</div><p>(1) "Ayo kita bersama-sama membersihkan kelas!"<br>(2) "Besok ada ujian matematika, jangan lupa belajar."<br>(3) "Kumpulkan tugas besok pagi sebelum jam 7!"</p>`,
+   q:"Klasifikasikan tujuan setiap pesan!",
+   rows:["Pesan 1: Ajakan bersih kelas","Pesan 2: Info ujian","Pesan 3: Perintah kumpul tugas"],
+   cols:["Mengajak","Memberitahu","Memerintah"],
+   ans:["Mengajak","Memberitahu","Memerintah"]},
+
+  {id:21,kel:"Kelompok 2",elemen:"Berbicara dan Mempresentasikan",type:"pg",level:"C3",skor:1,errata:false,
+   cp:"Menyampaikan presentasi/pidato dengan struktur yang sistematis dan efektif",
+   konsep:"Struktur pidato yang sistematis",
+   ind:"Menentukan urutan struktur naskah pidato yang paling sistematis",
+   stim:`<div class="stimulus-head">Teks 19 · Naskah Pidato Acak</div><p>(A) "Demikian pidato saya, mohon maaf jika ada kesalahan."<br>(B) "Assalamualaikum, yang saya hormati Bapak/Ibu guru..."<br>(C) "Mari kita jaga kebersihan sekolah bersama-sama."</p>`,
+   q:"Urutan struktur pidato yang paling sistematis adalah...",
+   opt:["B - C - A","A - B - C","C - B - A","B - A - C"],
+   ans:"A"},
+
+  {id:22,kel:"Kelompok 2",elemen:"Berbicara dan Mempresentasikan",type:"pg",level:"C3",skor:1,errata:false,
+   cp:"Menggunakan bahasa tubuh dan intonasi yang tepat saat presentasi",
+   konsep:"Bahasa tubuh dan intonasi presentasi",
+   ind:"Memilih teknik penyampaian presentasi yang paling efektif",
+   stim:`<div class="stimulus-head">Teks 20 · Situasi Presentasi</div><p>Andi akan mempresentasikan hasil penelitiannya. Ia ingin menekankan poin penting tentang dampak sampah plastik. Ia membutuhkan teknik penyampaian yang efektif agar audiens memperhatikan poin tersebut.</p>`,
+   q:"Instruksi bahasa tubuh dan intonasi yang paling tepat adalah...",
+   opt:["Naikkan volume suara dan gunakan gerakan tangan saat menyampaikan poin penting","Berbicara pelan dan menunduk saat presentasi","Duduk sambil membaca naskah tanpa kontak mata","Berbicara cepat agar cepat selesai"],
+   ans:"A"},
+
+  {id:23,kel:"Kelompok 2",elemen:"Berbicara dan Mempresentasikan",type:"pg",level:"C4",skor:1,errata:false,
+   cp:"Menilai efektivitas kalimat pembuka presentasi yang menarik perhatian audiens",
+   konsep:"Efektivitas kalimat pembuka",
+   ind:"Menilai dan memilih kalimat pembuka presentasi yang lebih efektif dari dua variasi",
+   stim:`<div class="stimulus-head">Teks 21 · Kalimat Pembuka Presentasi</div><p>Variasi 1: "Halo teman-teman, saya akan presentasi."<br>Variasi 2: "Selamat pagi! Pernahkah kalian berpikir berapa sampah yang kita hasilkan setiap hari?"</p>`,
+   q:"Kalimat pembuka yang lebih efektif untuk menarik perhatian audiens adalah...",
+   opt:["Variasi 2 karena menggunakan pertanyaan provokatif","Variasi 1 karena lebih singkat dan jelas","Kedua variasi sama efektifnya","Variasi 1 karena lebih formal"],
+   ans:"A"},
+
+  {id:24,kel:"Kelompok 2",elemen:"Berbicara dan Mempresentasikan",type:"pg",level:"C4",skor:1,errata:false,
+   cp:"Menggunakan media visual (slide) secara efektif dalam presentasi",
+   konsep:"Fungsi dan kelemahan media visual (slide)",
+   ind:"Mengidentifikasi kelemahan slide presentasi yang terlalu padat teks",
+   stim:`<div class="stimulus-head">Teks 22 · Slide Presentasi</div><div class="visual-frame"><img src="https://i.ibb.co.com/yBgtCYBK/slide-presentasi.png" alt="Slide Presentasi" class="stimulus-img"></div><p>Prinsip presentasi efektif: slide harus mudah dibaca dalam 30 detik. Teks terlalu padat membuat audiens kesulitan menangkap poin penting.</p>`,
+   q:"Berdasarkan prinsip presentasi efektif, kelemahan slide tersebut adalah...",
+   opt:["Terlalu padat teks sehingga sulit dibaca audiens","Warna background kurang menarik","Judul slide terlalu pendek","Tidak ada gambar sama sekali"],
+   ans:"A"},
+
+  {id:25,kel:"Kelompok 2",elemen:"Berbicara dan Mempresentasikan",type:"pgk",level:"C3",skor:2,errata:false,
+   cp:"Menggunakan kesantunan berbahasa dalam tanya jawab forum formal",
+   konsep:"Kesantunan berbahasa dalam tanya jawab",
+   ind:"Memilih dua tanggapan presenter yang memenuhi kriteria kesantunan dan kejelasan",
+   stim:`<div class="stimulus-head">Teks 23 · Situasi Tanya Jawab</div><p>Setelah presentasi, seorang audiens mengajukan pertanyaan yang kurang jelas. Sebagai presenter, bagaimana tanggapan yang santun dan profesional?</p>`,
+   q:"Pilih DUA kalimat tanggapan yang memenuhi kriteria kesantunan dan kejelasan!",
+   opt:['"Terima kasih atas pertanyaannya. Bisa Anda ulangi lebih jelas?"','"Maaf, saya kurang memahami. Bisa dijelaskan lebih detail?"','"Pertanyaan Anda tidak jelas, ulangi lagi!"','"Saya tidak akan menjawab pertanyaan seperti itu."'],
+   ans:["A","B"]},
+
+  {id:26,kel:"Kelompok 2",elemen:"Menulis",type:"pgk",level:"C3",skor:2,errata:false,
+   cp:"Menulis kalimat kompleks menggunakan konjungsi yang tepat",
+   konsep:"Konjungsi sebab-akibat",
+   ind:"Memilih dua kalimat kompleks yang menggunakan konjungsi sebab-akibat secara tepat",
+   stim:`<div class="stimulus-head">Teks 24 · Kalimat Tunggal</div><p>(1) Hujan turun sangat deras. (2) Jalan menjadi banjir. (3) Siswa terlambat ke sekolah. (4) Guru memberikan toleransi.</p>`,
+   q:"Pilih DUA gabungan kalimat kompleks yang menggunakan konjungsi SEBAB-AKIBAT secara tepat!",
+   opt:["Hujan turun sangat deras sehingga jalan menjadi banjir.","Karena hujan turun deras, siswa terlambat ke sekolah.","Hujan turun deras dan jalan banjir.","Siswa terlambat tetapi guru toleransi."],
+   ans:["A","B"]},
+
+  {id:27,kel:"Kelompok 2",elemen:"Menulis",type:"pgk",level:"C4",skor:2,errata:false,
+   cp:"Menggunakan kosakata kreatif (majas, pilihan kata puisi) dalam menulis",
+   konsep:"Kosakata kreatif — majas dalam puisi",
+   ind:"Mengidentifikasi dua kata yang digunakan secara kreatif dalam puisi",
+   stim:`<div class="stimulus-head">Teks 25 · Kutipan Puisi</div><p>Angin berbisik lembut di telinga / Membawa kabar dari negeri jauh / Bulan tersenyum manis menyapa / Menerangi malam yang sunyi senyap</p>`,
+   q:"Pilih DUA kata yang digunakan secara KREATIF untuk menggambarkan suasana!",
+   opt:["Berbisik (angin)","Tersenyum (bulan)","Malam","Jauh"],
+   ans:["A","B"]},
+
+  {id:28,kel:"Kelompok 2",elemen:"Menulis",type:"pgk",level:"C3",skor:2,errata:false,
+   cp:"Menulis dan melengkapi teks narasi (orientasi–komplikasi–resolusi)",
+   konsep:"Struktur narasi — komplikasi",
+   ind:"Memilih dua paragraf yang cocok sebagai bagian komplikasi dalam cerita pendek",
+   stim:`<div class="stimulus-head">Teks 26 · Cerita Pendek</div><p>Orientasi: Rina adalah siswa berprestasi. Resolusi: Rina menerima piala dengan bangga. Cerita kehilangan satu bagian.</p>`,
+   q:"Pilih DUA paragraf yang cocok sebagai bagian KOMPLIKASI (masalah)!",
+   opt:["Suatu hari, Rina sakit sehingga tidak bisa ikut lomba.","Rina merasa sedih dan kecewa karena gagal.","Rina adalah siswa berprestasi di sekolahnya.","Rina menerima piala dengan bangga."],
+   ans:["A","B"]},
+
+  {id:29,kel:"Kelompok 2",elemen:"Menulis",type:"pgk",level:"C4",skor:2,errata:true,
+   cp:"Menulis teks prosedur dengan urutan langkah yang logis dan runtut",
+   konsep:"Urutan logis teks prosedur",
+   ind:"Mengidentifikasi pasangan langkah yang harus ditukar agar teks prosedur menjadi logis",
+   stim:`<div class="stimulus-head">Teks 27 · Teks Prosedur Acak</div><p>(1) Sajikan nasi goreng di piring. (2) Tumis bumbu hingga harum. (3) Masukkan nasi dan aduk rata. (4) Siapkan bahan-bahan.</p>`,
+   q:"Pilih DUA langkah yang harus DITUKAR posisinya agar logis!",
+   opt:["Langkah 1 dan 4","Langkah 2 dan 4","Langkah 3 dan 4","Langkah 1 dan 3"],
+   ans:["A","B"]},
+
+  {id:30,kel:"Kelompok 2",elemen:"Menulis",type:"pgk-cat",level:"C4",skor:2,errata:false,
+   cp:"Mengembangkan paragraf dengan kalimat utama dan kalimat penjelas yang relevan",
+   konsep:"Pengembangan paragraf — relevansi kalimat",
+   ind:"Mengklasifikasikan kalimat relevan dan tidak relevan terhadap ide pokok paragraf",
+   stim:`<div class="stimulus-head">Teks 28 · Pengembangan Paragraf</div><p>Ide Pokok: Manfaat olahraga pagi.<br>(1) Olahraga pagi menyehatkan jantung. (2) Udara pagi masih segar. (3) Saya suka makan nasi goreng. (4) Olahraga meningkatkan stamina.</p>`,
+   q:"Klasifikasikan kalimat RELEVAN atau TIDAK RELEVAN terhadap ide pokok!",
+   rows:["Kalimat 1: Olahraga pagi menyehatkan jantung","Kalimat 2: Udara pagi masih segar","Kalimat 3: Saya suka makan nasi goreng","Kalimat 4: Olahraga meningkatkan stamina"],
+   cols:["Relevan","Tidak Relevan"],
+   ans:["Relevan","Relevan","Tidak Relevan","Relevan"]},
+
+  {id:31,kel:"Kelompok 2",elemen:"Menulis",type:"pgk-cat",level:"C3",skor:2,errata:false,
+   cp:"Menulis dengan ejaan dan tanda baca yang benar sesuai EYD",
+   konsep:"Ejaan dan tanda baca (EYD)",
+   ind:"Mengklasifikasikan kalimat benar dan salah menurut kaidah EYD",
+   stim:`<div class="stimulus-head">Teks 29 · Ejaan dan Tanda Baca</div><p>(1) "ibu pergi ke pasar." (2) "Ibu pergi ke pasar." (3) "Ibu Pergi Ke Pasar."</p>`,
+   q:"Klasifikasikan mana kalimat yang BENAR dan SALAH menurut EYD!",
+   rows:["Kalimat 1","Kalimat 2","Kalimat 3"],
+   cols:["Benar","Salah"],
+   ans:["Salah","Benar","Salah"]},
+
+  {id:32,kel:"Kelompok 2",elemen:"Menulis",type:"pgk-cat",level:"C4",skor:2,errata:false,
+   cp:"Menggunakan kosakata baru dengan makna denotatif dan konotatif dalam menulis",
+   konsep:"Makna denotatif dan konotatif dalam menulis",
+   ind:"Mengklasifikasikan makna denotatif atau konotatif dari kata 'bunga' dalam tiga konteks",
+   stim:`<div class="stimulus-head">Teks 30 · Makna Kata "Bunga"</div><p>(1) Ayah menabung di bunga bank. (2) Ibu menanam bunga di taman. (3) Dia dianggap bunga desa di kampungnya.</p>`,
+   q:"Klasifikasikan makna DENOTATIF atau KONOTATIF untuk setiap kalimat!",
+   rows:["Kalimat 1: Bunga bank","Kalimat 2: Bunga taman","Kalimat 3: Bunga desa"],
+   cols:["Denotatif","Konotatif"],
+   ans:["Konotatif","Denotatif","Konotatif"]},
+
+  {id:33,kel:"Kelompok 2",elemen:"Menulis",type:"pgk-cat",level:"C3",skor:2,errata:false,
+   cp:"Menulis dan membedakan berbagai jenis teks (deskripsi dan eksposisi)",
+   konsep:"Jenis teks menulis — deskripsi dan eksposisi",
+   ind:"Mengklasifikasikan dua kutipan sebagai teks deskripsi atau teks eksposisi",
+   stim:`<div class="stimulus-head">Teks 31 · Jenis Teks</div><p>(1) "Rumah itu berwarna putih dengan taman luas di depan." (2) "Menurut saya, pendidikan adalah kunci kesuksesan."</p>`,
+   q:"Klasifikasikan setiap kutipan sebagai Teks DESKRIPSI atau Teks EKSPOSISI!",
+   rows:["Kutipan 1: Rumah berwarna putih","Kutipan 2: Pendidikan kunci kesuksesan"],
+   cols:["Teks Deskripsi","Teks Eksposisi"],
+   ans:["Teks Deskripsi","Teks Eksposisi"]},
+
+  {id:34,kel:"Kelompok 2",elemen:"Berbicara dan Mempresentasikan",type:"pgk-cat",level:"C3",skor:2,errata:false,
+   cp:"Mengadaptasi bahasa sesuai audiens: pilihan kata formal dan non-formal",
+   konsep:"Adaptasi bahasa sesuai audiens",
+   ind:"Mengklasifikasikan pilihan kata formal atau non-formal sesuai konteks audiens berbeda",
+   stim:`<div class="stimulus-head">Teks 32 · Adaptasi Audiens</div><p>Situasi 1: Presentasi untuk teman sebaya. Situasi 2: Presentasi untuk guru dan kepala sekolah.</p>`,
+   q:"Klasifikasikan pilihan kata FORMAL atau NON-FORMAL sesuai audiens!",
+   rows:["Situasi 1: Teman sebaya","Situasi 2: Guru dan kepala sekolah"],
+   cols:["Non-Formal","Formal"],
+   ans:["Non-Formal","Formal"]},
+
+  {id:35,kel:"Kelompok 2",elemen:"Menulis",type:"pgk-cat",level:"C4",skor:2,errata:false,
+   cp:"Menggunakan kosakata kreatif dan majas dalam menulis",
+   konsep:"Majas personifikasi",
+   ind:"Mengklasifikasikan kalimat yang menggunakan majas personifikasi dan kalimat biasa",
+   stim:`<div class="stimulus-head">Teks 33 · Majas Personifikasi</div><p>(1) "Angin membelai rambutku." (2) "Dia berjalan ke sekolah." (3) "Matahari tersenyum pagi ini."</p>`,
+   q:"Klasifikasikan mana yang menggunakan MAJAS PERSONIFIKASI dan mana KALIMAT BIASA!",
+   rows:["Kalimat 1: Angin membelai","Kalimat 2: Dia berjalan","Kalimat 3: Matahari tersenyum"],
+   cols:["Majas Personifikasi","Kalimat Biasa"],
+   ans:["Majas Personifikasi","Kalimat Biasa","Majas Personifikasi"]},
+
+  {id:36,kel:"Kelompok 2",elemen:"Membaca dan Memirsa",type:"pg",level:"C4",skor:1,errata:false,
+   cp:"Membaca dan menafsirkan teks visual termasuk diagram alur",
+   konsep:"Teks visual — diagram alur",
+   ind:"Menafsirkan diagram alur daur ulang dan menemukan langkah yang hilang secara logis",
+   stim:`<div class="stimulus-head">Teks 34 · Diagram Alur Daur Ulang</div><div class="visual-frame"><img src="https://i.ibb.co.com/mVP9Vm7p/diagram-daur-ulang.png" alt="Diagram Daur Ulang" class="stimulus-img"></div><p>Proses daur ulang: (1) Pengumpulan sampah. (2) Pemilahan sampah. (3) Pengolahan sampah. (4) Pembuatan produk baru. Kotak kuning dalam diagram menunjukkan satu langkah yang hilang.</p>`,
+   q:"Berdasarkan urutan logis diagram, langkah yang hilang pada kotak kuning adalah...",
+   opt:["Kumpulkan","Pilah","Proseskan","Produk"],
+   ans:"B"},
+
+  {id:37,kel:"Kelompok 2",elemen:"Menyimak",type:"pg",level:"C2",skor:1,errata:false,
+   cp:"Menganalisis dan memaknai informasi dari teks aural (percakapan telepon)",
+   konsep:"Tujuan percakapan telepon",
+   ind:"Memahami tujuan utama panggilan telepon berdasarkan transkrip percakapan",
+   stim:`<div class="stimulus-head">Teks 35 · Transkrip Percakapan Telepon</div><p>"Halo, Bu? Ini Andi. Saya ingin memberitahu bahwa saya tidak bisa hadir di pertemuan besok karena sakit. Mohon maaf, Bu. Saya sudah minum obat dan akan istirahat. Terima kasih, Bu."</p>`,
+   q:"Tujuan utama panggilan telepon tersebut adalah...",
+   opt:["Mengundang ibu ke pertemuan","Memberitahu ketidakhadiran karena sakit","Menanyakan jadwal pertemuan","Meminta izin untuk sakit"],
+   ans:"B"},
+
+  {id:38,kel:"Kelompok 2",elemen:"Menulis",type:"pg",level:"C3",skor:1,errata:false,
+   cp:"Menulis teks dengan koherensi: kalimat penghubung antarparagraf yang tepat",
+   konsep:"Koherensi teks — kalimat penghubung",
+   ind:"Memilih kalimat penghubung antarparagraf yang paling tepat",
+   stim:`<div class="stimulus-head">Teks 36 · Dua Paragraf Terpisah</div><p>Paragraf 1: Olahraga sangat penting untuk kesehatan jantung dan paru-paru.<br>Paragraf 2: Kita harus rutin berolahraga setiap hari minimal 30 menit.</p>`,
+   q:"Kalimat penghubung yang paling tepat untuk menyatukan kedua paragraf tersebut adalah...",
+   opt:["Oleh karena itu,","Namun,","Tetapi,","Sedangkan"],
+   ans:"A"},
+
+  {id:39,kel:"Kelompok 2",elemen:"Berbicara dan Mempresentasikan",type:"pgk",level:"C4",skor:2,errata:false,
+   cp:"Mengevaluasi dan memilih strategi perbaikan presentasi yang efektif",
+   konsep:"Strategi perbaikan presentasi",
+   ind:"Memilih dua strategi perbaikan presentasi yang paling tepat untuk mengatasi rasa gugup",
+   stim:`<div class="stimulus-head">Teks 37 · Kasus Presentasi</div><p>Rina merasa gugup saat presentasi. Suaranya bergetar dan ia sering lupa isi materi. Apa strategi perbaikan yang tepat untuk presentasi berikutnya?</p>`,
+   q:"Pilih DUA strategi perbaikan yang tepat untuk presentasi berikutnya!",
+   opt:["Berlatih lebih sering di depan cermin","Menyiapkan catatan kecil sebagai pengingat","Menghindari presentasi selamanya","Berbicara sangat cepat agar cepat selesai"],
+   ans:["A","B"]},
+
+  {id:40,kel:"Kelompok 2",elemen:"Menulis",type:"pgk-cat",level:"C4",skor:2,errata:false,
+   cp:"Menyunting teks: mengidentifikasi kesalahan ejaan, diksi, dan struktur kalimat",
+   konsep:"Menyunting teks — jenis kesalahan",
+   ind:"Mengklasifikasikan jenis kesalahan (ejaan, diksi, atau struktur) dari kutipan paragraf",
+   stim:`<div class="stimulus-head">Teks 38 · Paragraf dengan Kesalahan</div><p>"siswa yang rajin akan dapat nilai baik. mereka harus belajar setiap hari. guru memberikan tugas banyak."</p>`,
+   q:'Klasifikasikan setiap kesalahan sebagai EJAAN, DIKSI, atau STRUKTUR!',
+   rows:['"siswa" (huruf kapital)','"dapat" (pilihan kata)','"guru memberikan tugas banyak" (struktur)'],
+   cols:["Ejaan","Diksi","Struktur"],
+   ans:["Ejaan","Diksi","Struktur"]}
+];
+
+let cur = 0;
+
+function elBadge(elemen) {
+  const m = {'Membaca dan Memirsa':'b-mm','Menyimak':'b-ms','Berbicara dan Mempresentasikan':'b-bp','Menulis':'b-mls'};
+  return `<span class="badge ${m[elemen]||'b-mm'}">${elemen}</span>`;
+}
+function typeBadge(type) {
+  const m = {'pg':'<span class="badge fmt-a">PG Tunggal</span>','pgk':'<span class="badge fmt-b">PG Kompleks</span>','pgk-cat':'<span class="badge fmt-c">PG Kategori</span>'};
+  return m[type]||'';
+}
+function lvBadge(lv) {
+  const m = {'C2':'lv-c2','C3':'lv-c3','C4':'lv-c4'};
+  return `<span class="badge ${m[lv]||'lv-c3'}">${lv}</span>`;
+}
+function dotClass(s) {
+  if(s.type==='pg') return 'type-a';
+  if(s.type==='pgk') return 'type-b';
+  return 'type-c';
+}
+
+function renderAns(s) {
+  if(s.type==='pg') {
+    return `<div class="kunci-ans">${s.ans}</div>`;
+  } else if(s.type==='pgk') {
+    return `<div class="kunci-ans">${Array.isArray(s.ans)?s.ans.join(' &amp; '):s.ans}</div>`;
+  } else {
+    let tbl = `<table class="ans-matrix"><tr><th>Pernyataan</th>${s.cols.map(c=>`<th>${c}</th>`).join('')}</tr>`;
+    s.rows.forEach((r,i)=>{
+      tbl+=`<tr><td>${r}</td>${s.cols.map(c=>`<td class="${s.ans[i]===c?'ans-cell':''}">${s.ans[i]===c?'✓':''}</td>`).join('')}</tr>`;
+    });
+    tbl+='</table>';
+    return tbl;
+  }
+}
+
+function renderSoal(s) {
+  let optHtml = '';
+  if(s.type==='pg') {
+    const letters=['A','B','C','D'];
+    optHtml=`<ul class="opt-list">${s.opt.map((o,i)=>`<li class="opt-item"><span class="opt-letter">${letters[i]}</span>${o}</li>`).join('')}</ul>`;
+  } else if(s.type==='pgk') {
+    const letters=['A','B','C','D'];
+    optHtml=`<ul class="pgk-opt-list">${s.opt.map((o,i)=>{
+      const correct=Array.isArray(s.ans)?s.ans.includes(letters[i]):false;
+      return `<li class="pgk-opt-item${correct?' correct':''}"><span class="check-box">${correct?'✓':''}</span>${o}</li>`;
+    }).join('')}</ul>`;
+  } else {
+    let tbl=`<div class="matrix-wrap"><table class="matrix-table"><tr><th>Pernyataan</th>${s.cols.map(c=>`<th>${c}</th>`).join('')}</tr>`;
+    s.rows.forEach(r=>tbl+=`<tr><td>${r}</td>${s.cols.map(()=>`<td></td>`).join('')}</tr>`);
+    tbl+='</table></div>';
+    optHtml=tbl;
+  }
+
+  return `
+  <div class="kartu-header">
+    <span class="kartu-num">Soal ${s.id}</span>
+    <div class="kartu-badges">
+      ${elBadge(s.elemen)}${typeBadge(s.type)}${lvBadge(s.level)}
+      <span class="badge b-skor" style="background:rgba(255,255,255,.2);color:#fff;">Skor ${s.skor}</span>
+      ${s.errata?'<span class="badge b-errata">⚠ Errata</span>':''}
+    </div>
+  </div>
+  <div class="kartu-body">
+    <div class="kartu-meta-row">
+      <div class="meta-cell"><div class="meta-label">Kelompok Soal</div><div class="meta-val">${s.kel}</div></div>
+      <div class="meta-cell"><div class="meta-label">Konsep Kunci</div><div class="meta-val">${s.konsep}</div></div>
+    </div>
+    <div class="kartu-meta-row">
+      <div class="meta-cell" style="grid-column:span 2"><div class="meta-label">Indikator Soal</div><div class="meta-val">${s.ind}</div></div>
+    </div>
+    <div class="kartu-content">
+      <div class="stimulus-box">${s.stim}</div>
+      <div class="q-text">${s.id}. ${s.q}</div>
+      ${optHtml}
+    </div>
+    <div class="kartu-kunci">
+      <div class="kunci-label">🔑 Kunci Jawaban</div>
+      ${renderAns(s)}
+    </div>
+    <div class="kartu-footer">
+      <div class="footer-cell"><div class="fc-label">Capaian Pembelajaran</div><div class="fc-val">${s.cp}</div></div>
+      <div class="footer-cell"><div class="fc-label">Elemen</div><div class="fc-val">${s.elemen}</div></div>
+      <div class="footer-cell"><div class="fc-label">Level Kognitif</div><div class="fc-val">${s.level}</div></div>
+      <div class="footer-cell"><div class="fc-label">Skor Maksimum</div><div class="fc-val">${s.skor}</div></div>
+    </div>
+  </div>`;
+}
+
+function buildUI() {
+  const grid = document.getElementById('dotsGrid');
+  const container = document.getElementById('kartuContainer');
+
+  SOAL.forEach((s,i) => {
+    const dot = document.createElement('div');
+    dot.className = `dot ${dotClass(s)}${s.errata?' errata-dot':''}${i===0?' active':''}`;
+    dot.textContent = s.id;
+    dot.title = `Soal ${s.id} — ${s.elemen} (${s.type==='pg'?'PG Tunggal':s.type==='pgk'?'PG Kompleks':'PG Kategori'})`;
+    dot.onclick = () => goTo(i);
+    dot.id = `dot-${i}`;
+    grid.appendChild(dot);
+
+    const kartu = document.createElement('div');
+    kartu.className = `kartu${i===0?' active':''}`;
+    kartu.id = `kartu-${i}`;
+    kartu.innerHTML = renderSoal(s);
+    container.appendChild(kartu);
+  });
+}
+
+function goTo(idx) {
+  if(idx<0||idx>=SOAL.length) return;
+  document.getElementById(`kartu-${cur}`).classList.remove('active');
+  document.getElementById(`dot-${cur}`).classList.remove('active');
+  cur = idx;
+  document.getElementById(`kartu-${cur}`).classList.add('active');
+  document.getElementById(`dot-${cur}`).classList.add('active');
+  document.getElementById('navCounter').textContent = `${cur+1} / ${SOAL.length}`;
+  document.getElementById('btnPrev').disabled = cur===0;
+  document.getElementById('btnNext').disabled = cur===SOAL.length-1;
+  document.getElementById(`dot-${cur}`).scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.addEventListener('keydown', e => {
+  if(e.key==='ArrowLeft') goTo(cur-1);
+  if(e.key==='ArrowRight') goTo(cur+1);
+});
+
+buildUI();
+</script>
+</body>
+</html>

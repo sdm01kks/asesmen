@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kisi-Kisi Ujian Sekolah — Bahasa Indonesia · SD Muhammadiyah 01 Kukusan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green:    #1a5c35;
+      --green-md: #2d7a4f;
+      --green-lt: #f0faf4;
+      --green-bdr:#b7dfc8;
+      --gold:     #f5a623;
+      --gold-dk:  #c47f00;
+      --gold-lt:  #fdf6e3;
+      --blue:     #1a5aaa;
+      --blue-lt:  #edf4fb;
+      --red:      #b91c1c;
+      --red-lt:   #fef2f2;
+      --purple:   #6d28d9;
+      --purple-lt:#f5f0ff;
+      --text:     #1e2d24;
+      --muted:    #5a6e62;
+      --bg:       #f5f9f6;
+      --white:    #ffffff;
+      --border:   #dde8e2;
+      --r:        10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── TOPNAV ── */
+    .topnav { background: var(--green); color: #fff; padding: 0 20px; height: 46px; display: flex; align-items: center; gap: 8px; position: sticky; top: 0; z-index: 100; font-size: 0.82rem; }
+    .topnav a { color: rgba(255,255,255,0.82); text-decoration: none; font-weight: 600; }
+    .topnav a:hover { color: #fff; text-decoration: underline; }
+    .topnav-sep { color: rgba(255,255,255,0.35); }
+    .topnav-cur { color: #fff; font-weight: 700; }
+
+    /* ── STICKY BAR ── */
+    .sticky-bar { position: sticky; top: 46px; z-index: 90; background: var(--white); border-bottom: 1px solid var(--border); padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .sticky-label { font-size: 0.82rem; font-weight: 700; color: var(--muted); }
+    .btn-dl-sm { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; background: var(--green); color: #fff; border-radius: 6px; font-size: 0.8rem; font-weight: 700; text-decoration: none; }
+    .btn-dl-sm:hover { background: var(--green-md); }
+
+    /* ── HEADER ── */
+    .page-header { background: var(--green); color: #fff; padding: 32px 24px 24px; border-bottom: 4px solid var(--gold); }
+    .header-inner { max-width: 1100px; margin: 0 auto; }
+    .header-kode { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; opacity: 0.75; margin-bottom: 8px; }
+    .page-header h1 { font-family: 'Fraunces', serif; font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 700; line-height: 1.25; margin-bottom: 12px; }
+    .page-header h1 em { color: var(--gold); font-style: italic; }
+    .header-meta { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.84rem; opacity: 0.88; }
+    .header-meta span::before { content: '·'; margin-right: 6px; opacity: 0.5; }
+    .header-meta span:first-child::before { display: none; }
+
+    /* ── MAIN ── */
+    .main { max-width: 1100px; margin: 24px auto; padding: 0 20px 60px; }
+
+    /* ── ERRATA BOX ── */
+    .errata-box { background: var(--gold-lt); border: 1.5px solid var(--gold); border-radius: var(--r); padding: 14px 18px; margin-bottom: 20px; }
+    .errata-box .errata-title { font-size: 0.9rem; font-weight: 800; color: var(--gold-dk); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    .errata-box ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+    .errata-box li { font-size: 0.84rem; color: #5c4b1c; display: flex; gap: 8px; align-items: flex-start; }
+    .errata-box li::before { content: '⚠'; flex-shrink: 0; }
+
+    /* ── STAT GRID ── */
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 20px; }
+    .stat-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px; }
+    .stat-card .stat-val { font-size: 1.7rem; font-weight: 800; color: var(--green); line-height: 1; }
+    .stat-card .stat-lbl { font-size: 0.75rem; color: var(--muted); margin-top: 4px; font-weight: 600; }
+
+    /* ── DIST GRID ── */
+    .dist-grid { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 16px 20px; margin-bottom: 20px; }
+    .dist-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 12px; }
+    .dist-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .dist-bar-lbl { font-size: 0.78rem; font-weight: 700; width: 130px; flex-shrink: 0; }
+    .dist-bar-track { flex: 1; height: 14px; background: #e8f0eb; border-radius: 7px; overflow: hidden; }
+    .dist-bar-fill { height: 100%; border-radius: 7px; transition: width 0.8s ease; }
+    .dist-bar-val { font-size: 0.78rem; font-weight: 700; width: 70px; }
+
+    /* ── FORMAT LEGEND ── */
+    .fmt-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .fmt-badge { font-size: 0.78rem; font-weight: 700; padding: 5px 12px; border-radius: 20px; }
+    .fmt-a { background: #e3f0ff; color: #1a5aaa; }
+    .fmt-b { background: #fff0e3; color: #c47f00; }
+    .fmt-c { background: #f0e3ff; color: #6d28d9; }
+    .lv-c2 { background: #dcfce7; color: #166534; }
+    .lv-c3 { background: #fef9c3; color: #854d0e; }
+    .lv-c4 { background: #fee2e2; color: #991b1b; }
+    .flag-errata { font-size: 0.7rem; font-weight: 700; background: var(--gold-lt); color: var(--gold-dk); border: 1px solid var(--gold); padding: 2px 6px; border-radius: 4px; margin-left: 4px; }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; border-radius: var(--r); border: 1px solid var(--border); margin-bottom: 32px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    thead th { background: var(--green); color: #fff; padding: 10px 12px; text-align: left; font-weight: 700; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.15); }
+    thead th:last-child { border-right: none; }
+    tbody td { padding: 9px 12px; vertical-align: top; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); color: var(--text); }
+    tbody td:last-child { border-right: none; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: var(--green-lt); }
+    .divider-row td { background: var(--green-lt); font-weight: 800; font-size: 0.8rem; color: var(--green); padding: 8px 12px; border-bottom: 2px solid var(--green-bdr); }
+    .no-col { font-weight: 800; color: var(--green); text-align: center; white-space: nowrap; }
+    .col-konsep { max-width: 180px; line-height: 1.4; }
+    .col-ind { max-width: 240px; line-height: 1.4; }
+    .col-cp { max-width: 160px; font-size: 0.78rem; line-height: 1.4; color: var(--muted); }
+    .skor-col { text-align: center; font-weight: 700; }
+
+    /* ── GUARDRAILS ── */
+    .guardrails { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; margin-bottom: 20px; }
+    .guardrails h3 { font-size: 0.85rem; font-weight: 800; color: var(--green); margin-bottom: 12px; }
+    .guardrails-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .guardrail-item { font-size: 0.82rem; color: var(--text); display: flex; gap: 8px; align-items: flex-start; line-height: 1.5; }
+    .guardrail-item::before { content: '✓'; color: var(--green); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── FOOTER ── */
+    .site-footer { text-align: center; font-size: 0.78rem; color: var(--muted); padding: 24px 16px; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../../">← Beranda</a>
+  <span class="topnav-sep">/</span>
+  <a href="../">Ujian Sekolah</a>
+  <span class="topnav-sep">/</span>
+  <a href="./">Bahasa Indonesia</a>
+  <span class="topnav-sep">/</span>
+  <span class="topnav-cur">Kisi-Kisi</span>
+</nav>
+
+<div class="sticky-bar">
+  <span class="sticky-label">Kisi-Kisi Bahasa Indonesia · 40 Soal · 4 Elemen</span>
+  <a href="kisi-kisi.docx" download class="btn-dl-sm">⬇ Unduh Word (.docx)</a>
+</div>
+
+<header class="page-header">
+  <div class="header-inner">
+    <div class="header-kode">Administrasi · Ujian Sekolah Tertulis · TP 2025/2026</div>
+    <h1>Kisi-Kisi <em>Bahasa Indonesia</em></h1>
+    <div class="header-meta">
+      <span>SD Muhammadiyah 01 Kukusan</span>
+      <span>Bahasa Indonesia — Kelas 6</span>
+      <span>40 Soal · 5 Mei 2026</span>
+      <span>Total Skor: 63</span>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- ERRATA BOX -->
+  <div class="errata-box">
+    <div class="errata-title">⚠ Errata — Perbedaan Distribusi Format Soal</div>
+    <ul>
+      <li>Dokumen kisi-kisi awal menyatakan: PG Tunggal 18, PG Kompleks 12, PG Kategori 10 (Skor maks 62). Namun setelah verifikasi dengan naskah soal final, distribusi aktual adalah: <strong>PG Tunggal 17, PG Kompleks 11, PG Kategori 12 (Skor maks 63)</strong>.</li>
+      <li>Perubahan: 1 soal PG Tunggal dan 1 soal PG Kompleks kurang; 2 soal PG Kategori lebih dari rencana awal. Dokumen ini menggunakan data soal final yang telah diverifikasi.</li>
+      <li>Guru disarankan menggunakan skor maksimal <strong>63 poin</strong> sebagai basis konversi nilai.</li>
+    </ul>
+  </div>
+
+  <!-- STAT GRID -->
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-val">40</div>
+      <div class="stat-lbl">Total Soal</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">4</div>
+      <div class="stat-lbl">Elemen</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">63</div>
+      <div class="stat-lbl">Skor Maksimum</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">17</div>
+      <div class="stat-lbl">PG Tunggal (A)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">11</div>
+      <div class="stat-lbl">PG Kompleks (B)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">12</div>
+      <div class="stat-lbl">PG Kategori (C)</div>
+    </div>
+  </div>
+
+  <!-- DIST GRID -->
+  <div class="dist-grid">
+    <div class="dist-title">Distribusi Soal per Elemen</div>
+    <div class="dist-bar-row">
+      <div class="dist-bar-lbl">📖 Membaca &amp; Memirsa</div>
+      <div class="dist-bar-track"><div class="dist-bar-fill" style="width:40%;background:var(--green);"></div></div>
+      <div class="dist-bar-val" style="color:var(--green);">16 soal / 23 pts</div>
+    </div>
+    <div class="dist-bar-row">
+      <div class="dist-bar-lbl">🎧 Menyimak</div>
+      <div class="dist-bar-track"><div class="dist-bar-fill" style="width:15%;background:#2a70b8;"></div></div>
+      <div class="dist-bar-val" style="color:#2a70b8;">6 soal / 9 pts</div>
+    </div>
+    <div class="dist-bar-row">
+      <div class="dist-bar-lbl">🎤 Berbicara &amp; Pres.</div>
+      <div class="dist-bar-track"><div class="dist-bar-fill" style="width:17.5%;background:#c47f00;"></div></div>
+      <div class="dist-bar-val" style="color:#c47f00;">7 soal / 10 pts</div>
+    </div>
+    <div class="dist-bar-row">
+      <div class="dist-bar-lbl">✍️ Menulis</div>
+      <div class="dist-bar-track"><div class="dist-bar-fill" style="width:27.5%;background:#6d28d9;"></div></div>
+      <div class="dist-bar-val" style="color:#6d28d9;">11 soal / 21 pts</div>
+    </div>
+  </div>
+
+  <!-- FORMAT LEGEND -->
+  <div class="fmt-legend">
+    <span class="fmt-badge fmt-a">Tipe A — PG Tunggal (×1 poin)</span>
+    <span class="fmt-badge fmt-b">Tipe B — PG Kompleks (×2 poin)</span>
+    <span class="fmt-badge fmt-c">Tipe C — PG Kategori (×2 poin)</span>
+    <span class="fmt-badge lv-c2">C2 Pemahaman</span>
+    <span class="fmt-badge lv-c3">C3 Aplikasi</span>
+    <span class="fmt-badge lv-c4">C4 Analisis/Penalaran</span>
+  </div>
+
+  <!-- KISI-KISI TABLE -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:38px;">No</th>
+          <th style="width:120px;">Elemen</th>
+          <th style="width:150px;">Capaian Pembelajaran (Fase C)</th>
+          <th style="width:160px;">Konsep Kunci</th>
+          <th style="width:230px;">Indikator Soal</th>
+          <th style="width:70px;">Format</th>
+          <th style="width:60px;">Level</th>
+          <th style="width:50px;">Skor</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- ═══ ELEMEN 1: MEMBACA DAN MEMIRSA ═══ -->
+        <tr class="divider-row">
+          <td colspan="8">📖 Elemen 1 — Membaca dan Memirsa (16 Soal · 23 Poin)</td>
+        </tr>
+        <tr>
+          <td class="no-col">1</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Memahami informasi berupa gagasan dari berbagai jenis teks (fiksi dan nonfiksi)</td>
+          <td class="col-konsep">Ide pokok teks nonsastra</td>
+          <td class="col-ind">Menentukan ide pokok paragraf pertama dari teks tata tertib ujian sekolah</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c2">C2</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">2</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Memahami informasi berupa gagasan dari berbagai jenis teks (fiksi dan nonfiksi)</td>
+          <td class="col-konsep">Hubungan sebab-akibat dalam teks</td>
+          <td class="col-ind">Mengidentifikasi akibat dari pelanggaran tata tertib berdasarkan teks informasi ujian</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">3</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Membaca dan menafsirkan teks visual termasuk tabel, grafik, dan diagram</td>
+          <td class="col-konsep">Teks visual — grafik batang</td>
+          <td class="col-ind">Menafsirkan data dari grafik batang minat baca siswa per kelas dan menentukan pernyataan yang sesuai</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">4</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Mengidentifikasi nilai moral dari teks sastra (cerita pendek, cerita rakyat)</td>
+          <td class="col-konsep">Nilai moral cerita (sastra)</td>
+          <td class="col-ind">Mengidentifikasi nilai moral yang terkandung dalam tindakan tokoh dari kutipan cerpen</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c2">C2</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">5</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Menganalisis watak tokoh berdasarkan dialog dan tindakannya dalam teks sastra</td>
+          <td class="col-konsep">Watak tokoh dalam cerita</td>
+          <td class="col-ind">Menganalisis watak tokoh berdasarkan dialog dalam kutipan cerpen persahabatan</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">8</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Menganalisis kalimat persuasif dalam iklan layanan masyarakat dan teks visual</td>
+          <td class="col-konsep">Kalimat persuasif iklan</td>
+          <td class="col-ind">Mengidentifikasi kalimat persuasif yang paling tepat dari iklan layanan masyarakat hemat air</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">9</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Memahami kosakata baru yang memiliki makna denotatif berdasarkan konteks kalimat</td>
+          <td class="col-konsep">Makna kata kontekstual</td>
+          <td class="col-ind">Memahami makna kata "erosi" berdasarkan konteks kalimat dalam teks berita lingkungan</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c2">C2</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">10</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Menganalisis hubungan sebab-akibat dalam teks prosedur</td>
+          <td class="col-konsep">Sebab-akibat teks prosedur</td>
+          <td class="col-ind">Menganalisis akibat yang terjadi jika salah satu langkah prosedur cetak dilewati</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">11</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Memilah fakta dan opini dalam teks pendapat/argumentasi</td>
+          <td class="col-konsep">Fakta dan opini</td>
+          <td class="col-ind">Memilih dua kalimat yang merupakan fakta berdasarkan teks argumentasi penggunaan gawai</td>
+          <td><span class="fmt-badge fmt-b">B</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">12</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Mengidentifikasi nilai kearifan lokal dan nilai budaya dalam cerita rakyat</td>
+          <td class="col-konsep">Nilai kearifan lokal cerita rakyat</td>
+          <td class="col-ind">Mengidentifikasi dua nilai kearifan lokal yang tercermin dalam cerita rakyat Malin Kundang</td>
+          <td><span class="fmt-badge fmt-b">B</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">14</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Mengidentifikasi struktur teks narasi: orientasi, komplikasi, dan resolusi</td>
+          <td class="col-konsep">Struktur teks narasi — resolusi</td>
+          <td class="col-ind">Mengidentifikasi dua paragraf yang termasuk bagian resolusi dari teks narasi acak</td>
+          <td><span class="fmt-badge fmt-b">B</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">15</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Memahami makna simbolik (konotatif) dalam puisi</td>
+          <td class="col-konsep">Makna simbolik puisi</td>
+          <td class="col-ind">Mengidentifikasi dua kata yang memiliki makna simbolik dalam puisi perjuangan</td>
+          <td><span class="fmt-badge fmt-b">B</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">16</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Memahami kosakata baru yang memiliki makna denotatif dan konotatif</td>
+          <td class="col-konsep">Makna denotatif dan konotatif</td>
+          <td class="col-ind">Membedakan dan mengklasifikasikan makna denotatif vs konotatif dari kata "kepala" dalam tiga konteks kalimat</td>
+          <td><span class="fmt-badge fmt-c">C</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">18</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Memahami dan mengklasifikasikan berbagai jenis teks (sastra dan nonsastra)</td>
+          <td class="col-konsep">Jenis teks — sastra dan nonsastra</td>
+          <td class="col-ind">Mengklasifikasikan judul-judul bacaan sebagai teks sastra (fiksi) atau nonsastra (nonfiksi)</td>
+          <td><span class="fmt-badge fmt-c">C</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">19</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Memahami dan mengidentifikasi kalimat yang efektif dalam teks</td>
+          <td class="col-konsep">Kalimat efektif</td>
+          <td class="col-ind">Mengklasifikasikan kalimat yang efektif dan tidak efektif dari tiga contoh kalimat</td>
+          <td><span class="fmt-badge fmt-c">C</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">36</td>
+          <td>Membaca dan Memirsa</td>
+          <td class="col-cp">Membaca dan menafsirkan teks visual termasuk tabel, grafik, dan diagram alur</td>
+          <td class="col-konsep">Teks visual — diagram alur</td>
+          <td class="col-ind">Menafsirkan diagram alur proses daur ulang sampah dan menemukan langkah yang hilang secara logis</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+
+        <!-- ═══ ELEMEN 2: MENYIMAK ═══ -->
+        <tr class="divider-row">
+          <td colspan="8">🎧 Elemen 2 — Menyimak (6 Soal · 9 Poin)</td>
+        </tr>
+        <tr>
+          <td class="no-col">6</td>
+          <td>Menyimak</td>
+          <td class="col-cp">Menganalisis dan memaknai informasi dari teks aural (monolog, dialog)</td>
+          <td class="col-konsep">Tujuan komunikasi teks aural</td>
+          <td class="col-ind">Memahami tujuan utama komunikasi dari transkrip pidato kepala sekolah</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c2">C2</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">7</td>
+          <td>Menyimak</td>
+          <td class="col-cp">Mengidentifikasi amanat/perasaan dari puisi yang dibacakan (teks aural)</td>
+          <td class="col-konsep">Amanat dan perasaan dalam puisi</td>
+          <td class="col-ind">Mengidentifikasi perasaan penyair yang tergambar dalam puisi lirik untuk ibu</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c2">C2</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">13</td>
+          <td>Menyimak</td>
+          <td class="col-cp">Menganalisis informasi spesifik dari teks aural berupa pengumuman</td>
+          <td class="col-konsep">Isi informasi pengumuman</td>
+          <td class="col-ind">Mengidentifikasi dua syarat peserta yang disebutkan dalam transkrip pengumuman lomba</td>
+          <td><span class="fmt-badge fmt-b">B</span></td>
+          <td><span class="fmt-badge lv-c2">C2</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">17</td>
+          <td>Menyimak</td>
+          <td class="col-cp">Menganalisis nada dan suasana dalam berbagai kutipan teks aural</td>
+          <td class="col-konsep">Nada teks aural</td>
+          <td class="col-ind">Mengklasifikasikan nada (sedih, gembira, tegas) dari tiga kutipan teks aural yang berbeda konteks</td>
+          <td><span class="fmt-badge fmt-c">C</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">20</td>
+          <td>Menyimak</td>
+          <td class="col-cp">Menganalisis tujuan komunikasi dari berbagai pesan dan teks aural</td>
+          <td class="col-konsep">Tujuan pesan singkat</td>
+          <td class="col-ind">Mengklasifikasikan tujuan tiga pesan singkat (mengajak, memberitahu, memerintah)</td>
+          <td><span class="fmt-badge fmt-c">C</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">37</td>
+          <td>Menyimak</td>
+          <td class="col-cp">Menganalisis dan memaknai informasi dari teks aural (percakapan telepon)</td>
+          <td class="col-konsep">Tujuan percakapan telepon</td>
+          <td class="col-ind">Memahami tujuan utama panggilan telepon berdasarkan transkrip percakapan</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c2">C2</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+
+        <!-- ═══ ELEMEN 3: BERBICARA DAN MEMPRESENTASIKAN ═══ -->
+        <tr class="divider-row">
+          <td colspan="8">🎤 Elemen 3 — Berbicara dan Mempresentasikan (7 Soal · 10 Poin)</td>
+        </tr>
+        <tr>
+          <td class="no-col">21</td>
+          <td>Berbicara dan Mempresentasikan</td>
+          <td class="col-cp">Menyampaikan presentasi/pidato dengan struktur yang sistematis dan efektif</td>
+          <td class="col-konsep">Struktur pidato yang sistematis</td>
+          <td class="col-ind">Menentukan urutan struktur naskah pidato yang paling sistematis (pembuka-isi-penutup)</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">22</td>
+          <td>Berbicara dan Mempresentasikan</td>
+          <td class="col-cp">Menggunakan bahasa tubuh dan intonasi yang tepat saat presentasi</td>
+          <td class="col-konsep">Bahasa tubuh dan intonasi presentasi</td>
+          <td class="col-ind">Memilih teknik penyampaian presentasi yang paling efektif menggunakan bahasa tubuh dan intonasi</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">23</td>
+          <td>Berbicara dan Mempresentasikan</td>
+          <td class="col-cp">Menilai dan memilih kalimat pembuka presentasi yang efektif menarik perhatian audiens</td>
+          <td class="col-konsep">Efektivitas kalimat pembuka</td>
+          <td class="col-ind">Menilai dan memilih kalimat pembuka presentasi yang lebih efektif dari dua variasi yang diberikan</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">24</td>
+          <td>Berbicara dan Mempresentasikan</td>
+          <td class="col-cp">Menggunakan media visual (slide) secara efektif dalam presentasi</td>
+          <td class="col-konsep">Fungsi dan kelemahan media visual (slide)</td>
+          <td class="col-ind">Mengidentifikasi kelemahan utama dari slide presentasi yang terlalu padat teks berdasarkan prinsip presentasi efektif</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">25</td>
+          <td>Berbicara dan Mempresentasikan</td>
+          <td class="col-cp">Menggunakan kesantunan berbahasa dalam tanya jawab forum formal</td>
+          <td class="col-konsep">Kesantunan berbahasa dalam tanya jawab</td>
+          <td class="col-ind">Memilih dua tanggapan presenter yang memenuhi kriteria kesantunan dan kejelasan saat menghadapi pertanyaan</td>
+          <td><span class="fmt-badge fmt-b">B</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">34</td>
+          <td>Berbicara dan Mempresentasikan</td>
+          <td class="col-cp">Mengadaptasi bahasa sesuai audiens: pilihan kata formal dan non-formal</td>
+          <td class="col-konsep">Adaptasi bahasa sesuai audiens</td>
+          <td class="col-ind">Mengklasifikasikan pilihan kata formal atau non-formal sesuai konteks audiens yang berbeda</td>
+          <td><span class="fmt-badge fmt-c">C</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">39</td>
+          <td>Berbicara dan Mempresentasikan</td>
+          <td class="col-cp">Mengevaluasi dan memilih strategi perbaikan presentasi yang efektif</td>
+          <td class="col-konsep">Strategi perbaikan presentasi</td>
+          <td class="col-ind">Memilih dua strategi perbaikan presentasi yang paling tepat untuk mengatasi rasa gugup</td>
+          <td><span class="fmt-badge fmt-b">B</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+
+        <!-- ═══ ELEMEN 4: MENULIS ═══ -->
+        <tr class="divider-row">
+          <td colspan="8">✍️ Elemen 4 — Menulis (11 Soal · 21 Poin)</td>
+        </tr>
+        <tr>
+          <td class="no-col">26</td>
+          <td>Menulis</td>
+          <td class="col-cp">Menulis kalimat kompleks menggunakan konjungsi yang tepat</td>
+          <td class="col-konsep">Konjungsi sebab-akibat</td>
+          <td class="col-ind">Memilih dua gabungan kalimat kompleks yang menggunakan konjungsi sebab-akibat secara tepat</td>
+          <td><span class="fmt-badge fmt-b">B</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">27</td>
+          <td>Menulis</td>
+          <td class="col-cp">Menggunakan kosakata kreatif (majas, pilihan kata puisi) dalam menulis</td>
+          <td class="col-konsep">Kosakata kreatif — majas dalam puisi</td>
+          <td class="col-ind">Mengidentifikasi dua kata yang digunakan secara kreatif untuk menggambarkan suasana dalam puisi</td>
+          <td><span class="fmt-badge fmt-b">B</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">28</td>
+          <td>Menulis</td>
+          <td class="col-cp">Menulis dan melengkapi teks narasi (orientasi–komplikasi–resolusi)</td>
+          <td class="col-konsep">Struktur narasi — komplikasi</td>
+          <td class="col-ind">Memilih dua paragraf yang cocok sebagai bagian komplikasi (masalah) dalam cerita pendek</td>
+          <td><span class="fmt-badge fmt-b">B</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">29</td>
+          <td>Menulis</td>
+          <td class="col-cp">Menulis teks prosedur dengan urutan langkah yang logis dan runtut</td>
+          <td class="col-konsep">Urutan logis teks prosedur</td>
+          <td class="col-ind">Mengidentifikasi pasangan langkah yang harus ditukar posisinya agar teks prosedur menjadi logis <span class="flag-errata">⚠ errata</span></td>
+          <td><span class="fmt-badge fmt-b">B</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">30</td>
+          <td>Menulis</td>
+          <td class="col-cp">Mengembangkan paragraf dengan kalimat utama dan kalimat penjelas yang relevan</td>
+          <td class="col-konsep">Pengembangan paragraf — relevansi kalimat</td>
+          <td class="col-ind">Mengklasifikasikan kalimat relevan dan tidak relevan terhadap ide pokok paragraf tentang manfaat olahraga</td>
+          <td><span class="fmt-badge fmt-c">C</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">31</td>
+          <td>Menulis</td>
+          <td class="col-cp">Menulis dengan ejaan dan tanda baca yang benar sesuai EYD</td>
+          <td class="col-konsep">Ejaan dan tanda baca (EYD)</td>
+          <td class="col-ind">Mengklasifikasikan kalimat yang benar dan salah menurut kaidah EYD (huruf kapital awal kalimat)</td>
+          <td><span class="fmt-badge fmt-c">C</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">32</td>
+          <td>Menulis</td>
+          <td class="col-cp">Menggunakan kosakata baru dengan makna denotatif dan konotatif dalam konteks menulis</td>
+          <td class="col-konsep">Makna denotatif dan konotatif dalam menulis</td>
+          <td class="col-ind">Mengklasifikasikan makna denotatif atau konotatif dari kata "bunga" dalam tiga konteks kalimat berbeda</td>
+          <td><span class="fmt-badge fmt-c">C</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">33</td>
+          <td>Menulis</td>
+          <td class="col-cp">Menulis dan membedakan berbagai jenis teks (deskripsi dan eksposisi)</td>
+          <td class="col-konsep">Jenis teks menulis — deskripsi dan eksposisi</td>
+          <td class="col-ind">Mengklasifikasikan dua kutipan sebagai teks deskripsi atau teks eksposisi berdasarkan ciri-cirinya</td>
+          <td><span class="fmt-badge fmt-c">C</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">35</td>
+          <td>Menulis</td>
+          <td class="col-cp">Menggunakan kosakata kreatif dan majas dalam menulis</td>
+          <td class="col-konsep">Majas personifikasi</td>
+          <td class="col-ind">Mengklasifikasikan kalimat yang menggunakan majas personifikasi dan kalimat biasa dari tiga contoh</td>
+          <td><span class="fmt-badge fmt-c">C</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+        <tr>
+          <td class="no-col">38</td>
+          <td>Menulis</td>
+          <td class="col-cp">Menulis teks dengan koherensi: menggunakan kalimat penghubung antarparagraf yang tepat</td>
+          <td class="col-konsep">Koherensi teks — kalimat penghubung</td>
+          <td class="col-ind">Memilih kalimat penghubung antarparagraf yang paling tepat untuk menyatukan dua paragraf bertemakan olahraga</td>
+          <td><span class="fmt-badge fmt-a">A</span></td>
+          <td><span class="fmt-badge lv-c3">C3</span></td>
+          <td class="skor-col">1</td>
+        </tr>
+        <tr>
+          <td class="no-col">40</td>
+          <td>Menulis</td>
+          <td class="col-cp">Menyunting teks: mengidentifikasi kesalahan ejaan, diksi, dan struktur kalimat</td>
+          <td class="col-konsep">Menyunting teks — jenis kesalahan</td>
+          <td class="col-ind">Mengklasifikasikan jenis kesalahan (ejaan, diksi, atau struktur kalimat) dari kutipan paragraf yang mengandung tiga kesalahan</td>
+          <td><span class="fmt-badge fmt-c">C</span></td>
+          <td><span class="fmt-badge lv-c4">C4</span></td>
+          <td class="skor-col">2</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GUARDRAILS -->
+  <div class="guardrails">
+    <h3>Catatan Pelaksanaan &amp; Guardrails</h3>
+    <div class="guardrails-grid">
+      <div class="guardrail-item">Semua soal berbasis teks — jawaban ditemukan dari stimulus yang disajikan, bukan pengetahuan umum di luar teks</div>
+      <div class="guardrail-item">Soal menyimak (Elemen 2) disajikan sebagai transkrip tertulis; tidak ada rekaman suara dalam pelaksanaan komputer</div>
+      <div class="guardrail-item">Soal bergambar (nomor 3, 8, 24, 36) menggunakan gambar yang tertanam dalam naskah soal digital</div>
+      <div class="guardrail-item">PG Kompleks (Tipe B): skor 2 jika semua benar, skor 1 jika hanya 1 jawaban benar, skor 0 jika lebih dari 1 salah</div>
+      <div class="guardrail-item">PG Kategori (Tipe C): skor 2 jika semua baris benar, skor 1 jika hanya 1 baris salah, skor 0 jika lebih dari 1 baris salah</div>
+      <div class="guardrail-item">Formula nilai: Nilai = (Skor Perolehan ÷ 63) × 100 — KKM: 70</div>
+      <div class="guardrail-item">Soal nomor 29 memiliki catatan errata (ambiguitas opsi jawaban) — lihat pedoman penskoran untuk panduan guru</div>
+      <div class="guardrail-item">Penyusun: Arif Azwar Anas, S.Pd. | SD Muhammadiyah 01 Kukusan | TP 2025/2026</div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  Kisi-Kisi Ujian Sekolah Bahasa Indonesia &nbsp;·&nbsp; SD Muhammadiyah 01 Kukusan &nbsp;·&nbsp; TP 2025/2026 &nbsp;·&nbsp; Penyusun: Arif Azwar Anas, S.Pd.
+</footer>
+
+</body>
+</html>

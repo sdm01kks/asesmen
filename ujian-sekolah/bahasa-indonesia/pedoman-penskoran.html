@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedoman Penskoran — Bahasa Indonesia · SD Muhammadiyah 01 Kukusan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--green:#1a5c35;--green-md:#2d7a4f;--green-lt:#f0faf4;--green-bdr:#b7dfc8;--gold:#f5a623;--gold-dk:#c47f00;--gold-lt:#fdf6e3;--blue:#1a5aaa;--blue-lt:#edf4fb;--text:#1e2d24;--muted:#5a6e62;--bg:#f5f9f6;--white:#fff;--border:#dde8e2;--r:10px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+
+    .topnav{background:var(--green);color:#fff;padding:0 20px;height:46px;display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:100;font-size:.82rem}
+    .topnav a{color:rgba(255,255,255,.82);text-decoration:none;font-weight:600}
+    .topnav a:hover{color:#fff;text-decoration:underline}
+    .topnav-sep{color:rgba(255,255,255,.35)}
+    .topnav-cur{color:#fff;font-weight:700}
+
+    .sticky-bar{position:sticky;top:46px;z-index:90;background:var(--white);border-bottom:1px solid var(--border);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+    .sticky-label{font-size:.82rem;font-weight:700;color:var(--muted)}
+    .btn-dl-sm{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;background:var(--green);color:#fff;border-radius:6px;font-size:.8rem;font-weight:700;text-decoration:none}
+    .btn-dl-sm:hover{background:var(--green-md)}
+
+    .page-header{background:var(--green);color:#fff;padding:32px 24px 24px;border-bottom:4px solid var(--gold)}
+    .header-inner{max-width:1000px;margin:0 auto}
+    .header-kode{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;opacity:.75;margin-bottom:8px}
+    .page-header h1{font-family:'Fraunces',serif;font-size:clamp(1.4rem,3.5vw,2rem);font-weight:700;line-height:1.25;margin-bottom:12px}
+    .page-header h1 em{color:var(--gold);font-style:italic}
+    .header-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.84rem;opacity:.88}
+    .header-meta span::before{content:'·';margin-right:6px;opacity:.5}
+    .header-meta span:first-child::before{display:none}
+
+    .main{max-width:1000px;margin:0 auto;padding:24px 20px 60px}
+
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:20px}
+    .stat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px}
+    .stat-val{font-size:1.7rem;font-weight:800;color:var(--green);line-height:1}
+    .stat-lbl{font-size:.75rem;color:var(--muted);margin-top:4px;font-weight:600}
+
+    .formula-box{background:var(--blue-lt);border:1px solid #b8d6f5;border-radius:var(--r);padding:14px 20px;margin-bottom:20px;font-size:.88rem}
+    .formula-box strong{font-size:1rem;color:var(--blue)}
+
+    .errata-box{background:var(--gold-lt);border:1.5px solid var(--gold);border-radius:var(--r);padding:14px 18px;margin-bottom:20px}
+    .errata-title{font-size:.9rem;font-weight:800;color:var(--gold-dk);margin-bottom:8px}
+    .errata-box p{font-size:.84rem;color:#5c4b1c;line-height:1.6}
+
+    .rules-box{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:24px}
+    .rules-box h3{font-size:.87rem;font-weight:800;color:var(--green);margin-bottom:12px}
+    .rules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+    .rule-card{border-radius:7px;padding:12px 14px;font-size:.82rem;line-height:1.75}
+    .rule-a{background:var(--blue-lt);border:1px solid #b8d6f5}
+    .rule-b{background:#fff8ec;border:1px solid #f0d090}
+    .rule-c{background:#f5f0ff;border:1px solid #c4a8f0}
+    .rule-card strong{display:block;margin-bottom:6px;font-size:.85rem}
+
+    .section-title{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);padding-bottom:8px;border-bottom:2px solid var(--border);margin-bottom:16px;margin-top:28px}
+
+    .table-wrap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--border);margin-bottom:28px}
+    table.rubrik{width:100%;border-collapse:collapse;font-size:.82rem}
+    table.rubrik thead th{background:var(--green);color:#fff;padding:10px 12px;text-align:left;font-weight:700;white-space:nowrap;border-right:1px solid rgba(255,255,255,.15)}
+    table.rubrik thead th:last-child{border-right:none}
+    table.rubrik tbody td{padding:9px 12px;vertical-align:top;border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+    table.rubrik tbody td:last-child{border-right:none}
+    table.rubrik tbody tr:last-child td{border-bottom:none}
+    table.rubrik tbody tr:hover{background:var(--green-lt)}
+    .divider-row td{background:var(--green-lt);font-weight:800;font-size:.8rem;color:var(--green);padding:8px 12px;border-bottom:2px solid var(--green-bdr)}
+    .no-col{font-weight:800;color:var(--green);text-align:center;white-space:nowrap}
+    .kunci-cell{font-weight:700;color:var(--green);font-size:.84rem}
+
+    .s2{color:#166534;font-weight:700;background:#dcfce7;padding:2px 6px;border-radius:4px;font-size:.79rem;white-space:nowrap}
+    .s1{color:#854d0e;font-weight:700;background:#fef9c3;padding:2px 6px;border-radius:4px;font-size:.79rem;white-space:nowrap}
+    .s0{color:#6b7280;font-weight:700;background:#f1f5f9;padding:2px 6px;border-radius:4px;font-size:.79rem;white-space:nowrap}
+
+    .tipe-a{color:#1a5aaa;font-weight:700}
+    .tipe-b{color:#c47f00;font-weight:700}
+    .tipe-c{color:#6d28d9;font-weight:700}
+
+    .errata-inline{display:inline-block;margin-top:6px;font-size:.79rem;color:var(--gold-dk);background:var(--gold-lt);border:1px solid var(--gold);border-radius:4px;padding:4px 8px}
+    .r-note{display:inline-block;background:var(--gold-lt);border:1px solid var(--gold);color:var(--gold-dk);border-radius:4px;padding:1px 6px;font-size:.72rem;font-weight:700;margin-left:4px}
+
+    table.konv{width:100%;border-collapse:collapse;font-size:.84rem}
+    table.konv th{background:var(--green);color:#fff;padding:10px 14px;text-align:center;font-weight:700}
+    table.konv td{padding:9px 14px;text-align:center;border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+    table.konv td:last-child{border-right:none}
+    .konv-tuntas{color:#166534;font-weight:700;background:#dcfce7}
+    .konv-butuh{color:#854d0e;background:#fef9c3}
+
+    .panduan-box{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:24px}
+    .panduan-box h3{font-size:.87rem;font-weight:800;color:var(--green);margin-bottom:12px}
+    .panduan-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+    .panduan-list li{font-size:.84rem;display:flex;gap:8px;align-items:flex-start;line-height:1.55}
+    .panduan-list li::before{content:'✓';color:var(--green);font-weight:800;flex-shrink:0;margin-top:2px}
+
+    .site-footer{text-align:center;font-size:.78rem;color:var(--muted);padding:24px 16px;border-top:1px solid var(--border)}
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../../">← Beranda</a><span class="topnav-sep">/</span>
+  <a href="../">Ujian Sekolah</a><span class="topnav-sep">/</span>
+  <a href="./">Bahasa Indonesia</a><span class="topnav-sep">/</span>
+  <span class="topnav-cur">Pedoman Penskoran</span>
+</nav>
+
+<div class="sticky-bar">
+  <span class="sticky-label">Pedoman Penskoran Bahasa Indonesia · 40 Soal · Skor Maks 63</span>
+  <a href="pedoman-penskoran.docx" download class="btn-dl-sm">⬇ Unduh Word (.docx)</a>
+</div>
+
+<header class="page-header">
+  <div class="header-inner">
+    <div class="header-kode">Administrasi · Ujian Sekolah Tertulis · TP 2025/2026</div>
+    <h1>Pedoman <em>Penskoran</em></h1>
+    <div class="header-meta">
+      <span>SD Muhammadiyah 01 Kukusan</span>
+      <span>Bahasa Indonesia — Kelas 6</span>
+      <span>40 Soal · 5 Mei 2026</span>
+      <span>Skor Maks: 63 · KKM: 70</span>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- STAT GRID -->
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-val">40</div><div class="stat-lbl">Total Soal</div></div>
+    <div class="stat-card"><div class="stat-val">63</div><div class="stat-lbl">Skor Maksimum</div></div>
+    <div class="stat-card"><div class="stat-val">17</div><div class="stat-lbl">PG Tunggal (×1)</div></div>
+    <div class="stat-card"><div class="stat-val">11</div><div class="stat-lbl">PG Kompleks (×2)</div></div>
+    <div class="stat-card"><div class="stat-val">12</div><div class="stat-lbl">PG Kategori (×2)</div></div>
+    <div class="stat-card"><div class="stat-val">70</div><div class="stat-lbl">KKM</div></div>
+  </div>
+
+  <!-- FORMULA -->
+  <div class="formula-box">
+    <strong>Nilai Akhir = (Skor Perolehan ÷ 63) × 100</strong><br>
+    Contoh: Siswa memperoleh skor 50 → (50 ÷ 63) × 100 = 79,4 → dibulatkan menjadi <strong>79</strong>. Nilai ≥ 70 = Tuntas.
+  </div>
+
+  <!-- ERRATA -->
+  <div class="errata-box">
+    <div class="errata-title">⚠ Errata Distribusi Format Soal</div>
+    <p>Kisi-kisi awal mencatat distribusi PG Tunggal 18 / PG Kompleks 12 / PG Kategori 10 (Skor maks 62). Setelah verifikasi naskah final: <strong>PG Tunggal 17 / PG Kompleks 11 / PG Kategori 12 (Skor maks 63)</strong>. Gunakan skor maks <strong>63</strong> sebagai basis konversi nilai.<br>
+    Soal 29 memiliki ambiguitas opsi — lihat catatan pada baris soal 29 di tabel rubrik. Guru diberikan kewenangan menggunakan kebijaksanaan profesional dalam pemberian skor soal tersebut.</p>
+  </div>
+
+  <!-- ATURAN UMUM -->
+  <div class="rules-box">
+    <h3>Aturan Penskoran per Tipe Soal</h3>
+    <div class="rules-grid">
+      <div class="rule-card rule-a">
+        <strong style="color:#1a5aaa">Tipe A — PG Tunggal (Skor Maks: 1)</strong>
+        <span class="s2">Skor 1</span> &nbsp;Memilih satu jawaban yang benar<br>
+        <span class="s0">Skor 0</span> &nbsp;Jawaban salah atau tidak menjawab
+      </div>
+      <div class="rule-card rule-b">
+        <strong style="color:#c47f00">Tipe B — PG Kompleks (Skor Maks: 2)</strong>
+        <span class="s2">Skor 2</span> &nbsp;Semua jawaban benar (tidak lebih, tidak kurang)<br>
+        <span class="s1">Skor 1</span> &nbsp;Hanya satu jawaban benar dari dua yang diminta<br>
+        <span class="s0">Skor 0</span> &nbsp;Dua atau lebih jawaban salah, atau tidak menjawab
+      </div>
+      <div class="rule-card rule-c">
+        <strong style="color:#6d28d9">Tipe C — PG Kategori (Skor Maks: 2)</strong>
+        <span class="s2">Skor 2</span> &nbsp;Semua baris diklasifikasikan dengan benar<br>
+        <span class="s1">Skor 1</span> &nbsp;Hanya satu baris yang salah<br>
+        <span class="s0">Skor 0</span> &nbsp;Dua baris atau lebih yang salah, atau tidak menjawab
+      </div>
+    </div>
+  </div>
+
+  <!-- RUBRIK TABLE -->
+  <div class="section-title">Rubrik Penskoran per Butir Soal</div>
+  <div class="table-wrap">
+    <table class="rubrik">
+      <thead>
+        <tr>
+          <th style="width:38px">No</th>
+          <th style="width:55px">Tipe</th>
+          <th style="width:55px">Skor Maks</th>
+          <th style="width:155px">Kunci Jawaban</th>
+          <th>Rubrik Penskoran</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- MEMBACA DAN MEMIRSA -->
+        <tr class="divider-row"><td colspan="5">📖 Elemen 1 — Membaca dan Memirsa (16 Soal · 23 Poin)</td></tr>
+
+        <tr>
+          <td class="no-col">1</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">A</td>
+          <td><span class="s2">Skor 1</span> Memilih A — Waktu dan ketentuan kehadiran siswa saat ujian<br><span class="s0">Skor 0</span> Memilih B, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">2</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">B</td>
+          <td><span class="s2">Skor 1</span> Memilih B — Siswa akan dikenakan sanksi pelanggaran<br><span class="s0">Skor 0</span> Memilih A, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">3</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">B</td>
+          <td><span class="s2">Skor 1</span> Memilih B — Kelas 6 memiliki minat baca tertinggi<br><span class="s0">Skor 0</span> Memilih A, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">4</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">B</td>
+          <td><span class="s2">Skor 1</span> Memilih B — Kepedulian dan ketulusan<br><span class="s0">Skor 0</span> Memilih A, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">5</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">A</td>
+          <td><span class="s2">Skor 1</span> Memilih A — Penyemangat dan peduli<br><span class="s0">Skor 0</span> Memilih B, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">8</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">B</td>
+          <td><span class="s2">Skor 1</span> Memilih B — Ayo bersama-sama hemat air untuk masa depan!<br><span class="s0">Skor 0</span> Memilih A, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">9</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">A</td>
+          <td><span class="s2">Skor 1</span> Memilih A — Pengikisan tanah oleh air<br><span class="s0">Skor 0</span> Memilih B, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">10</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">B</td>
+          <td><span class="s2">Skor 1</span> Memilih B — Dokumen tidak dapat dicetak karena tidak ada kertas<br><span class="s0">Skor 0</span> Memilih A, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">11</td><td class="tipe-b">B</td><td class="no-col">2</td>
+          <td class="kunci-cell">A &amp; B</td>
+          <td><span class="s2">Skor 2</span> Memilih A dan B (penggunaan gawai mengganggu mata + gawai bermanfaat)<br><span class="s1">Skor 1</span> Memilih A saja atau B saja<br><span class="s0">Skor 0</span> Kombinasi yang menyertakan C atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">12</td><td class="tipe-b">B</td><td class="no-col">2</td>
+          <td class="kunci-cell">A &amp; B</td>
+          <td><span class="s2">Skor 2</span> Memilih A dan B (hormat orang tua + jangan malu asal-usul)<br><span class="s1">Skor 1</span> Memilih A saja atau B saja<br><span class="s0">Skor 0</span> Kombinasi yang menyertakan C atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">14</td><td class="tipe-b">B</td><td class="no-col">2</td>
+          <td class="kunci-cell">B &amp; D</td>
+          <td><span class="s2">Skor 2</span> Memilih B dan D (Sita menerima maaf + Mereka kembali berteman)<br><span class="s1">Skor 1</span> Memilih B saja atau D saja<br><span class="s0">Skor 0</span> Kombinasi yang menyertakan A atau C</td>
+        </tr>
+        <tr>
+          <td class="no-col">15</td><td class="tipe-b">B</td><td class="no-col">2</td>
+          <td class="kunci-cell">A &amp; B</td>
+          <td><span class="s2">Skor 2</span> Memilih A dan B (Merah darah + Putih tulang)<br><span class="s1">Skor 1</span> Memilih A saja atau B saja<br><span class="s0">Skor 0</span> Kombinasi yang menyertakan C atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">16</td><td class="tipe-c">C</td><td class="no-col">2</td>
+          <td class="kunci-cell">K1→Denotatif<br>K2→Konotatif<br>K3→Konotatif</td>
+          <td><span class="s2">Skor 2</span> Ketiga baris benar (kepala sekolah=denotatif; kepala meja=konotatif; kepala dingin=konotatif)<br><span class="s1">Skor 1</span> Satu baris salah<br><span class="s0">Skor 0</span> Dua atau lebih baris salah</td>
+        </tr>
+        <tr>
+          <td class="no-col">18</td><td class="tipe-c">C</td><td class="no-col">2</td>
+          <td class="kunci-cell">Timun Mas→Fiksi<br>Berita→Nonfiksi<br>Ensiklopedia→Nonfiksi</td>
+          <td><span class="s2">Skor 2</span> Ketiga baris benar<br><span class="s1">Skor 1</span> Satu baris salah<br><span class="s0">Skor 0</span> Dua atau lebih baris salah</td>
+        </tr>
+        <tr>
+          <td class="no-col">19</td><td class="tipe-c">C</td><td class="no-col">2</td>
+          <td class="kunci-cell">K1→Efektif<br>K2→Tidak Efektif<br>K3→Tidak Efektif</td>
+          <td><span class="s2">Skor 2</span> Ketiga baris benar<br><span class="s1">Skor 1</span> Satu baris salah<br><span class="s0">Skor 0</span> Dua atau lebih baris salah</td>
+        </tr>
+        <tr>
+          <td class="no-col">36</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">B</td>
+          <td><span class="s2">Skor 1</span> Memilih B — Pilah (tahap pemilahan sampah)<br><span class="s0">Skor 0</span> Memilih A, C, atau D</td>
+        </tr>
+
+        <!-- MENYIMAK -->
+        <tr class="divider-row"><td colspan="5">🎧 Elemen 2 — Menyimak (6 Soal · 9 Poin)</td></tr>
+
+        <tr>
+          <td class="no-col">6</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">B</td>
+          <td><span class="s2">Skor 1</span> Memilih B — Mengajak siswa menjaga kebersihan dan kedisiplinan<br><span class="s0">Skor 0</span> Memilih A, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">7</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">A</td>
+          <td><span class="s2">Skor 1</span> Memilih A — Kasih sayang dan terima kasih kepada ibu<br><span class="s0">Skor 0</span> Memilih B, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">13</td><td class="tipe-b">B</td><td class="no-col">2</td>
+          <td class="kunci-cell">A &amp; B</td>
+          <td><span class="s2">Skor 2</span> Memilih A dan B (Siswa kelas 6 + Mendaftar sebelum 10 Mei)<br><span class="s1">Skor 1</span> Memilih A saja atau B saja<br><span class="s0">Skor 0</span> Kombinasi yang menyertakan C atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">17</td><td class="tipe-c">C</td><td class="no-col">2</td>
+          <td class="kunci-cell">K1→Sedih<br>K2→Gembira<br>K3→Tegas</td>
+          <td><span class="s2">Skor 2</span> Ketiga baris benar<br><span class="s1">Skor 1</span> Satu baris salah<br><span class="s0">Skor 0</span> Dua atau lebih baris salah</td>
+        </tr>
+        <tr>
+          <td class="no-col">20</td><td class="tipe-c">C</td><td class="no-col">2</td>
+          <td class="kunci-cell">P1→Mengajak<br>P2→Memberitahu<br>P3→Memerintah</td>
+          <td><span class="s2">Skor 2</span> Ketiga baris benar<br><span class="s1">Skor 1</span> Satu baris salah<br><span class="s0">Skor 0</span> Dua atau lebih baris salah</td>
+        </tr>
+        <tr>
+          <td class="no-col">37</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">B</td>
+          <td><span class="s2">Skor 1</span> Memilih B — Memberitahu ketidakhadiran karena sakit<br><span class="s0">Skor 0</span> Memilih A, C, atau D</td>
+        </tr>
+
+        <!-- BERBICARA DAN MEMPRESENTASIKAN -->
+        <tr class="divider-row"><td colspan="5">🎤 Elemen 3 — Berbicara dan Mempresentasikan (7 Soal · 10 Poin)</td></tr>
+
+        <tr>
+          <td class="no-col">21</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">A</td>
+          <td><span class="s2">Skor 1</span> Memilih A — B-C-A (pembuka-isi-penutup)<br><span class="s0">Skor 0</span> Memilih B, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">22</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">A</td>
+          <td><span class="s2">Skor 1</span> Memilih A — Naikkan volume suara dan gunakan gerakan tangan<br><span class="s0">Skor 0</span> Memilih B, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">23</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">A</td>
+          <td><span class="s2">Skor 1</span> Memilih A — Variasi 2 karena menggunakan pertanyaan provokatif<br><span class="s0">Skor 0</span> Memilih B, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">24</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">A</td>
+          <td><span class="s2">Skor 1</span> Memilih A — Terlalu padat teks sehingga sulit dibaca audiens<br><span class="s0">Skor 0</span> Memilih B, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">25</td><td class="tipe-b">B</td><td class="no-col">2</td>
+          <td class="kunci-cell">A &amp; B</td>
+          <td><span class="s2">Skor 2</span> Memilih A dan B (kedua tanggapan santun dan profesional)<br><span class="s1">Skor 1</span> Memilih A saja atau B saja<br><span class="s0">Skor 0</span> Kombinasi yang menyertakan C atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">34</td><td class="tipe-c">C</td><td class="no-col">2</td>
+          <td class="kunci-cell">S1→Non-Formal<br>S2→Formal</td>
+          <td><span class="s2">Skor 2</span> Kedua baris benar (teman sebaya=non-formal; guru=formal)<br><span class="s1">Skor 1</span> Satu baris salah<br><span class="s0">Skor 0</span> Kedua baris salah</td>
+        </tr>
+        <tr>
+          <td class="no-col">39</td><td class="tipe-b">B</td><td class="no-col">2</td>
+          <td class="kunci-cell">A &amp; B</td>
+          <td><span class="s2">Skor 2</span> Memilih A dan B (berlatih di cermin + catatan kecil pengingat)<br><span class="s1">Skor 1</span> Memilih A saja atau B saja<br><span class="s0">Skor 0</span> Kombinasi yang menyertakan C atau D</td>
+        </tr>
+
+        <!-- MENULIS -->
+        <tr class="divider-row"><td colspan="5">✍️ Elemen 4 — Menulis (11 Soal · 21 Poin)</td></tr>
+
+        <tr>
+          <td class="no-col">26</td><td class="tipe-b">B</td><td class="no-col">2</td>
+          <td class="kunci-cell">A &amp; B</td>
+          <td><span class="s2">Skor 2</span> Memilih A dan B (konjungsi "sehingga" + "karena")<br><span class="s1">Skor 1</span> Memilih A saja atau B saja<br><span class="s0">Skor 0</span> Kombinasi yang menyertakan C atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">27</td><td class="tipe-b">B</td><td class="no-col">2</td>
+          <td class="kunci-cell">A &amp; B</td>
+          <td><span class="s2">Skor 2</span> Memilih A dan B (Berbisik + Tersenyum — majas personifikasi)<br><span class="s1">Skor 1</span> Memilih A saja atau B saja<br><span class="s0">Skor 0</span> Kombinasi yang menyertakan C atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">28</td><td class="tipe-b">B</td><td class="no-col">2</td>
+          <td class="kunci-cell">A &amp; B</td>
+          <td><span class="s2">Skor 2</span> Memilih A dan B (Rina sakit tidak bisa lomba + Rina sedih dan kecewa)<br><span class="s1">Skor 1</span> Memilih A saja atau B saja<br><span class="s0">Skor 0</span> Kombinasi yang menyertakan C atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">29</td><td class="tipe-b">B</td><td class="no-col">2</td>
+          <td class="kunci-cell">A &amp; B <span class="r-note">⚠ Errata</span></td>
+          <td>
+            <span class="s2">Skor 2</span> Memilih A dan B (kunci jawaban resmi)<br>
+            <span class="s1">Skor 1</span> Memilih A saja atau B saja<br>
+            <span class="s0">Skor 0</span> Kombinasi yang menyertakan C atau D<br>
+            <span class="errata-inline">⚠ Errata: Secara logis, pertukaran langkah 1↔4 sudah menghasilkan urutan sempurna (Siapkan–Tumis–Masukkan–Sajikan). Guru dapat memberikan skor penuh (2) jika siswa hanya memilih A dengan penalaran yang tepat. Ikuti kunci resmi: A &amp; B.</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="no-col">30</td><td class="tipe-c">C</td><td class="no-col">2</td>
+          <td class="kunci-cell">K1→Relevan<br>K2→Relevan<br>K3→Tidak Relevan<br>K4→Relevan</td>
+          <td><span class="s2">Skor 2</span> Keempat baris benar (K3 tidak relevan; K1, K2, K4 relevan)<br><span class="s1">Skor 1</span> Satu baris salah<br><span class="s0">Skor 0</span> Dua atau lebih baris salah</td>
+        </tr>
+        <tr>
+          <td class="no-col">31</td><td class="tipe-c">C</td><td class="no-col">2</td>
+          <td class="kunci-cell">K1→Salah<br>K2→Benar<br>K3→Salah</td>
+          <td><span class="s2">Skor 2</span> Ketiga baris benar (hanya K2 yang benar sesuai EYD)<br><span class="s1">Skor 1</span> Satu baris salah<br><span class="s0">Skor 0</span> Dua atau lebih baris salah</td>
+        </tr>
+        <tr>
+          <td class="no-col">32</td><td class="tipe-c">C</td><td class="no-col">2</td>
+          <td class="kunci-cell">K1→Konotatif<br>K2→Denotatif<br>K3→Konotatif</td>
+          <td><span class="s2">Skor 2</span> Ketiga baris benar (bunga bank=konotatif; bunga taman=denotatif; bunga desa=konotatif)<br><span class="s1">Skor 1</span> Satu baris salah<br><span class="s0">Skor 0</span> Dua atau lebih baris salah</td>
+        </tr>
+        <tr>
+          <td class="no-col">33</td><td class="tipe-c">C</td><td class="no-col">2</td>
+          <td class="kunci-cell">K1→Teks Deskripsi<br>K2→Teks Eksposisi</td>
+          <td><span class="s2">Skor 2</span> Kedua baris benar<br><span class="s1">Skor 1</span> Satu baris salah<br><span class="s0">Skor 0</span> Kedua baris salah</td>
+        </tr>
+        <tr>
+          <td class="no-col">35</td><td class="tipe-c">C</td><td class="no-col">2</td>
+          <td class="kunci-cell">K1→Majas Personifikasi<br>K2→Kalimat Biasa<br>K3→Majas Personifikasi</td>
+          <td><span class="s2">Skor 2</span> Ketiga baris benar (Angin membelai + Matahari tersenyum = personifikasi; Dia berjalan = biasa)<br><span class="s1">Skor 1</span> Satu baris salah<br><span class="s0">Skor 0</span> Dua atau lebih baris salah</td>
+        </tr>
+        <tr>
+          <td class="no-col">38</td><td class="tipe-a">A</td><td class="no-col">1</td>
+          <td class="kunci-cell">A</td>
+          <td><span class="s2">Skor 1</span> Memilih A — Oleh karena itu,<br><span class="s0">Skor 0</span> Memilih B, C, atau D</td>
+        </tr>
+        <tr>
+          <td class="no-col">40</td><td class="tipe-c">C</td><td class="no-col">2</td>
+          <td class="kunci-cell">K1→Ejaan<br>K2→Diksi<br>K3→Struktur</td>
+          <td><span class="s2">Skor 2</span> Ketiga baris benar ("siswa"=ejaan; "dapat"=diksi; susunan kalimat akhir=struktur)<br><span class="s1">Skor 1</span> Satu baris salah<br><span class="s0">Skor 0</span> Dua atau lebih baris salah</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- REKAPITULASI -->
+  <div class="section-title">Rekapitulasi Skor Maks per Elemen</div>
+  <div class="table-wrap">
+    <table class="konv" style="font-size:.84rem">
+      <thead>
+        <tr>
+          <th style="text-align:left">Elemen</th>
+          <th>Jml Soal</th>
+          <th>PG Tunggal</th>
+          <th>PG Kompleks</th>
+          <th>PG Kategori</th>
+          <th>Skor Maks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="text-align:left;font-weight:600">📖 Membaca dan Memirsa</td><td>16</td><td>8 soal × 1 = 8</td><td>4 soal × 2 = 8</td><td>3 soal × 2 = 6</td><td style="font-weight:800;color:var(--green)">23</td></tr>
+        <tr><td style="text-align:left;font-weight:600">🎧 Menyimak</td><td>6</td><td>3 soal × 1 = 3</td><td>1 soal × 2 = 2</td><td>2 soal × 2 = 4</td><td style="font-weight:800;color:var(--green)">9</td></tr>
+        <tr><td style="text-align:left;font-weight:600">🎤 Berbicara &amp; Presentasi</td><td>7</td><td>4 soal × 1 = 4</td><td>2 soal × 2 = 4</td><td>1 soal × 2 = 2</td><td style="font-weight:800;color:var(--green)">10</td></tr>
+        <tr><td style="text-align:left;font-weight:600">✍️ Menulis</td><td>11</td><td>2 soal × 1 = 2</td><td>4 soal × 2 = 8</td><td>6 soal × 2 = 12</td><td style="font-weight:800;color:var(--green)">21</td></tr> <!-- wait, let me recalculate: menulis has skor 21? Let me verify: soal 26,27,28,29=PGK (4×2=8); soal 30,31,32,33,35,40=PGC (6×2=12); soal 38=PGT (1×1=1). Total=8+12+1=21. Yes. -->
+        <tr style="background:var(--green);color:#fff">
+          <td style="text-align:left;font-weight:800">Total</td>
+          <td style="font-weight:800">40</td>
+          <td style="font-weight:800">17 soal = 17 poin</td>
+          <td style="font-weight:800">11 soal = 22 poin</td>
+          <td style="font-weight:800">12 soal = 24 poin</td>
+          <td style="font-weight:800">63 poin</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TABEL KONVERSI -->
+  <div class="section-title">Tabel Konversi Nilai Akhir</div>
+  <p style="font-size:.84rem;color:var(--muted);margin-bottom:12px;">Nilai = (Skor ÷ 63) × 100, dibulatkan ke bilangan bulat terdekat. KKM = 70.</p>
+  <div class="table-wrap">
+    <table class="konv">
+      <thead>
+        <tr>
+          <th>Rentang Skor</th>
+          <th>Nilai Akhir (approx.)</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>60 – 63</td><td>95 – 100</td><td class="konv-tuntas">Tuntas — Sangat Baik</td></tr>
+        <tr><td>54 – 59</td><td>86 – 94</td><td class="konv-tuntas">Tuntas — Baik</td></tr>
+        <tr><td>48 – 53</td><td>76 – 84</td><td class="konv-tuntas">Tuntas — Cukup Baik</td></tr>
+        <tr><td>44 – 47</td><td>70 – 75</td><td class="konv-tuntas">Tuntas — Cukup</td></tr>
+        <tr><td>38 – 43</td><td>60 – 68</td><td class="konv-butuh">Belum Tuntas — Perlu Bimbingan</td></tr>
+        <tr><td>32 – 37</td><td>51 – 59</td><td class="konv-butuh">Belum Tuntas — Perlu Remedial</td></tr>
+        <tr><td>0 – 31</td><td>0 – 49</td><td class="konv-butuh">Belum Tuntas — Remedial Intensif</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PANDUAN GURU -->
+  <div class="panduan-box">
+    <h3>Panduan Koreksi untuk Guru</h3>
+    <ul class="panduan-list">
+      <li>Gunakan kunci jawaban resmi dari tabel rubrik di atas sebagai acuan utama. Untuk soal PG Tunggal, tidak ada kebijaksanaan — jawaban benar atau salah.</li>
+      <li>Untuk soal PG Kompleks (Tipe B): jika siswa memilih lebih dari dua opsi (misalnya A, B, dan C), hitung berapa yang benar dan berapa yang salah dari dua kunci. Jika dua atau lebih pilihan siswa salah → skor 0.</li>
+      <li>Untuk soal PG Kategori (Tipe C): koreksi setiap baris secara independen. Skor 2 hanya jika semua baris benar; skor 1 jika tepat satu baris salah; skor 0 jika dua atau lebih baris salah.</li>
+      <li>Soal 29 (<em>teks prosedur acak</em>): gunakan kebijaksanaan profesional. Jika siswa memilih A saja dengan penjelasan logis yang tepat (pertukaran 1↔4 menghasilkan urutan sempurna), guru dapat memberikan skor penuh (2).</li>
+      <li>Konversi nilai menggunakan formula: <strong>Nilai = (Skor ÷ 63) × 100</strong>, dibulatkan ke bilangan bulat. Jangan gunakan skor maks 62 (kisi-kisi lama) sebagai pembagi.</li>
+      <li>Siswa dengan nilai di bawah 70 (skor di bawah 44) perlu mengikuti program remedial. Identifikasi elemen mana yang paling lemah berdasarkan pola jawaban salah.</li>
+      <li>Soal berbasis gambar (nomor 3, 8, 24, 36): pastikan gambar tampil dengan benar di layar komputer sebelum ujian dimulai. Jika gambar tidak tampil, soal tetap dapat dikerjakan berdasarkan teks stimulus yang tersedia.</li>
+      <li>Dokumentasi nilai dan catatan remedial diserahkan kepada Wakabid Kurikulum paling lambat 3 hari kerja setelah pengumuman hasil ujian.</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  Pedoman Penskoran Ujian Sekolah Bahasa Indonesia &nbsp;·&nbsp; SD Muhammadiyah 01 Kukusan &nbsp;·&nbsp; TP 2025/2026 &nbsp;·&nbsp; Penyusun: Arif Azwar Anas, S.Pd.
+</footer>
+
+</body>
+</html>
