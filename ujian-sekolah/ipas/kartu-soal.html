@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kartu Soal US IPAS — SDM 01 Kukusan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal:    #0e7490; --teal-md: #1a849a; --teal-lt: #ecfeff; --teal-bdr: #a5d8e0;
+      --gold:    #f5a623; --gold-dk:  #c47f00;
+      --text:    #111;    --muted:    #555;
+      --bg:      #f0fafd; --white:    #fff; --border: #999;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 14px; }
+    body { font-family: 'Plus Jakarta Sans', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* ── TOPNAV ── */
+    .topnav { background: var(--teal); height: 48px; display: flex; align-items: center; padding: 0 20px; gap: 8px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+    .topnav a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .82rem; font-weight: 600; }
+    .topnav a:hover { color: #fff; text-decoration: underline; }
+    .topnav-sep { color: rgba(255,255,255,.3); }
+    .topnav-cur { color: rgba(255,255,255,.6); font-size: .82rem; font-weight: 600; }
+
+    /* ── CONTROLS ── */
+    .controls-bar {
+      max-width: 960px; margin: 20px auto 12px; padding: 0 16px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    }
+    .ctrl-info { font-size: .8rem; color: var(--muted); }
+    .ctrl-info strong { color: var(--teal); font-size: 1rem; }
+    .ctrl-nav { display: flex; align-items: center; gap: 10px; }
+    .ctrl-nav button {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--teal); color: white; border: none;
+      padding: 9px 18px; border-radius: 8px; cursor: pointer;
+      font-size: .82rem; font-weight: 700; font-family: inherit;
+      transition: background .15s;
+    }
+    .ctrl-nav button:hover { background: var(--teal-md); }
+    .ctrl-nav button:disabled { background: #bbb; cursor: not-allowed; }
+    .counter-display {
+      background: var(--white); border: 1.5px solid var(--teal-bdr);
+      border-radius: 8px; padding: 6px 16px;
+      font-size: .82rem; font-weight: 700; color: var(--teal);
+      white-space: nowrap;
+    }
+
+    /* ── DOTS NAVIGATOR ── */
+    .dots-nav {
+      max-width: 960px; margin: 0 auto 16px; padding: 0 16px;
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .dot {
+      width: 28px; height: 28px; border-radius: 6px;
+      border: 1.5px solid var(--teal-bdr);
+      background: var(--white); color: var(--muted);
+      font-size: .7rem; font-weight: 700; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .15s;
+    }
+    .dot:hover { background: var(--teal-lt); color: var(--teal); border-color: var(--teal); }
+    .dot.active { background: var(--teal); color: white; border-color: var(--teal); }
+    .dot.pgk { border-color: #c47f00; }
+    .dot.pgk.active { background: #c47f00; border-color: #c47f00; }
+    .dot.pgk-cat { border-color: #6d28d9; }
+    .dot.pgk-cat.active { background: #6d28d9; border-color: #6d28d9; }
+
+    /* ── KARTU ── */
+    .kartu-wrap { max-width: 960px; margin: 0 auto 28px; padding: 0 16px; }
+
+    .kartu {
+      background: var(--white);
+      border: 2px solid #333;
+      border-radius: 0;
+      overflow: hidden;
+    }
+
+    /* Title bar */
+    .kartu-title {
+      background: #d8d8d8;
+      text-align: center;
+      font-size: .92rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 7px 12px;
+      border-bottom: 1.5px solid #333;
+    }
+
+    /* School info */
+    .sekolah-info {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-bottom: 1.5px solid #333;
+      padding: 8px 14px;
+      font-size: .8rem;
+      gap: 2px 24px;
+    }
+    .sekolah-row { display: flex; gap: 4px; }
+    .sekolah-lbl { color: #333; min-width: 100px; }
+    .sekolah-val { font-weight: 600; }
+
+    /* Main body */
+    .kartu-body {
+      display: grid;
+      grid-template-columns: 195px 78px 1fr;
+      border-bottom: 1.5px solid #333;
+      min-height: 260px;
+    }
+
+    /* Left column */
+    .left-col {
+      border-right: 1.5px solid #333;
+      display: flex; flex-direction: column;
+    }
+    .left-sec {
+      padding: 0;
+      border-bottom: 1.5px solid #333;
+      display: flex; flex-direction: column;
+    }
+    .left-sec:last-child { border-bottom: none; flex: 1; }
+    .left-sec-label {
+      font-size: .68rem; font-weight: 800; letter-spacing: .06em;
+      text-transform: uppercase; background: #e8e8e8; color: #333;
+      padding: 4px 8px; border-bottom: 1px solid #bbb;
+    }
+    .left-sec-body { font-size: .77rem; padding: 8px 9px; line-height: 1.55; color: #222; flex: 1; }
+
+    /* Mid column */
+    .mid-col {
+      border-right: 1.5px solid #333;
+      display: flex; flex-direction: column; align-items: stretch;
+    }
+    .mid-sec {
+      border-bottom: 1.5px solid #333;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 6px 4px;
+    }
+    .mid-sec:last-child { border-bottom: none; flex: 1; }
+    .mid-lbl {
+      font-size: .62rem; font-weight: 800; letter-spacing: .06em;
+      text-transform: uppercase; color: #555; margin-bottom: 4px; text-align: center;
+    }
+    .nomor-val {
+      font-size: 1.7rem; font-weight: 800; color: var(--teal); line-height: 1; text-align: center;
+    }
+    .kunci-val {
+      font-size: 1.5rem; font-weight: 800; color: var(--teal); text-align: center; line-height: 1.2;
+    }
+    .kunci-multi {
+      font-size: .75rem; font-weight: 800; color: var(--teal); text-align: center; line-height: 1.7;
+    }
+    .kunci-cat-table { font-size: .67rem; color: var(--teal); font-weight: 700; text-align: left; line-height: 1.8; padding: 0 2px; }
+    .kunci-cat-row { display: flex; gap: 4px; align-items: center; }
+    .kunci-cat-num { min-width: 14px; color: #666; font-weight: 600; }
+
+    /* Right column */
+    .right-col { display: flex; flex-direction: column; }
+    .soal-label {
+      font-size: .68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+      background: #e8e8e8; color: #333; padding: 4px 12px; border-bottom: 1px solid #bbb;
+    }
+    .soal-body { padding: 10px 14px; font-size: .83rem; line-height: 1.6; flex: 1; }
+
+    /* Stimulus */
+    .stimulus {
+      background: #f0fafd; border: 1px solid var(--teal-bdr);
+      border-left: 3.5px solid var(--teal);
+      border-radius: 0 4px 4px 0; padding: 8px 11px; margin-bottom: 10px;
+    }
+    .stim-head {
+      font-size: .67rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 5px; padding-bottom: 4px; border-bottom: 1px dashed var(--teal-bdr);
+    }
+    .stim-content { font-size: .8rem; line-height: 1.6; }
+    .stim-content ul { list-style: none; padding-left: 4px; }
+    .stim-content ul li::before { content: '• '; color: var(--teal); font-weight: 700; }
+    .stim-content table { border-collapse: collapse; width: 100%; font-size: .76rem; margin-top: 6px; }
+    .stim-content th { background: var(--teal-lt); color: var(--teal); font-size: .68rem; font-weight: 800; padding: 4px 8px; border: 1px solid var(--teal-bdr); text-align: center; }
+    .stim-content td { padding: 4px 8px; border: 1px solid #ccc; text-align: center; }
+    .stim-content td:first-child { text-align: left; font-weight: 500; }
+
+    /* Question */
+    .q-text { font-size: .85rem; font-weight: 600; color: #111; margin-bottom: 9px; line-height: 1.6; }
+
+    /* Hint */
+    .hint { font-size: .72rem; background: #fdf6e3; border-left: 3px solid var(--gold); padding: 5px 9px; margin-bottom: 8px; color: var(--gold-dk); font-weight: 600; border-radius: 0 4px 4px 0; }
+    .hint-cat { font-size: .72rem; background: #edf4fb; border-left: 3px solid #1a5aaa; padding: 5px 9px; margin-bottom: 8px; color: #1a5aaa; font-weight: 600; border-radius: 0 4px 4px 0; }
+
+    /* Options */
+    .opt-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .opt-item { display: flex; gap: 8px; align-items: flex-start; padding: 5px 8px; border: 1px solid #e0e0e0; border-radius: 4px; font-size: .8rem; line-height: 1.5; }
+    .opt-letter { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #ccc; display: flex; align-items: center; justify-content: center; font-size: .67rem; font-weight: 800; color: #777; flex-shrink: 0; }
+    .pgk-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .pgk-item { display: flex; gap: 8px; align-items: flex-start; padding: 5px 8px; border: 1px solid #e0e0e0; border-radius: 4px; font-size: .8rem; line-height: 1.5; }
+    .pgk-check { width: 18px; height: 18px; border-radius: 3px; border: 1.5px solid #ccc; flex-shrink: 0; margin-top: 1px; }
+
+    /* Matrix table */
+    .matrix-wrap { overflow-x: auto; margin-top: 4px; }
+    .mtx { width: 100%; border-collapse: collapse; font-size: .76rem; }
+    .mtx th { background: var(--teal-lt); color: var(--teal); font-size: .68rem; font-weight: 800; padding: 5px 8px; border: 1px solid var(--teal-bdr); text-align: center; }
+    .mtx th:first-child { text-align: left; }
+    .mtx td { padding: 5px 8px; border: 1px solid #ddd; text-align: center; }
+    .mtx td:first-child { text-align: left; font-weight: 500; font-size: .78rem; }
+    .radio-circle { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid #aaa; display: inline-block; }
+
+    /* Stats bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: auto auto auto auto auto 1fr auto;
+      border-top: 1.5px solid #333;
+      font-size: .72rem;
+    }
+    .stat-cell {
+      padding: 0; border-right: 1px solid #555;
+      display: flex; flex-direction: column;
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-top {
+      font-size: .6rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+      background: #e0e0e0; padding: 3px 8px; border-bottom: 1px solid #bbb; text-align: center; color: #444;
+    }
+    .stat-val { padding: 4px 8px; font-weight: 700; text-align: center; color: #222; }
+    .stat-val.lg { font-size: .85rem; font-weight: 800; color: var(--teal); }
+
+    /* Proporsi sub-grid */
+    .proporsi-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .prop-sub { border-right: 1px solid #ddd; display: flex; flex-direction: column; align-items: center; }
+    .prop-sub:last-child { border-right: none; }
+    .prop-letter { font-size: .6rem; font-weight: 800; background: #f0f0f0; padding: 2px 0; width: 100%; text-align: center; border-bottom: 1px solid #ddd; }
+    .prop-val { font-size: .72rem; font-weight: 700; padding: 3px 6px; color: #555; }
+
+    /* Elemen badge */
+    .el-badge { display: inline-block; font-size: .62rem; font-weight: 800; padding: 2px 6px; border-radius: 3px; margin-bottom: 4px; letter-spacing: .04em; text-transform: uppercase; }
+    .el-mkhlk  { background: #dcfce7; color: #166534; }
+    .el-energi { background: #fef9c3; color: #854d0e; }
+    .el-bumi   { background: #e0f2fe; color: #0369a1; }
+    .el-sos    { background: #fce7f3; color: #9d174d; }
+    .el-proses { background: #f3e8ff; color: #6d28d9; }
+
+    /* FOOTER */
+    .site-footer { text-align: center; padding: 20px; font-size: .75rem; color: var(--muted); border-top: 1px solid #ddd; background: var(--white); margin-top: 8px; }
+
+    @media (max-width: 680px) {
+      .kartu-body { grid-template-columns: 150px 60px 1fr; }
+      .sekolah-info { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: repeat(4, 1fr); font-size: .65rem; }
+    }
+
+    @media print {
+      .topnav, .controls-bar, .dots-nav, .site-footer { display: none; }
+      .kartu-wrap { margin: 0; padding: 0; max-width: 100%; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../../">← Beranda</a>
+  <span class="topnav-sep">/</span>
+  <a href="../">Ujian Sekolah</a>
+  <span class="topnav-sep">/</span>
+  <a href="./">IPAS</a>
+  <span class="topnav-sep">/</span>
+  <span class="topnav-cur">Kartu Soal</span>
+</nav>
+
+<!-- CONTROLS -->
+<div class="controls-bar">
+  <div class="ctrl-info">
+    Kartu Soal <strong id="curr-num">1</strong> dari 40 &nbsp;·&nbsp;
+    <span id="curr-type-info" style="font-size:.78rem;"></span>
+    <span id="curr-elemen-info" style="font-size:.78rem;margin-left:4px;"></span>
+  </div>
+  <div class="ctrl-nav">
+    <button id="btn-prev" onclick="nav(-1)" disabled>← Sebelumnya</button>
+    <div class="counter-display" id="counter-display">1 / 40</div>
+    <button id="btn-next" onclick="nav(1)">Berikutnya →</button>
+  </div>
+</div>
+
+<!-- DOTS NAVIGATOR -->
+<div class="dots-nav" id="dots-nav"></div>
+
+<!-- CARD CONTAINER -->
+<div class="kartu-wrap">
+  <div class="kartu" id="kartu-el"></div>
+</div>
+
+<!-- BOTTOM CONTROLS -->
+<div class="controls-bar" style="margin-top:0;margin-bottom:20px;">
+  <div></div>
+  <div class="ctrl-nav">
+    <button id="btn-prev2" onclick="nav(-1)" disabled>← Sebelumnya</button>
+    <div class="counter-display" id="counter-display2">1 / 40</div>
+    <button id="btn-next2" onclick="nav(1)">Berikutnya →</button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <strong>SD Muhammadiyah 01 Kukusan</strong> · Kartu Soal Ujian Sekolah IPAS · TP 2025/2026<br>
+  Tanggal Ujian: 7 Mei 2026
+</footer>
+
+<script>
+// ════════════════════════════════════
+//  DATA
+// ════════════════════════════════════
+const CP = {
+  mkhlk1: 'Mendeskripsikan sistem organ tubuh manusia dan dampak kebiasaan hidup terhadap kesehatan organ.',
+  mkhlk2: 'Mendeskripsikan hubungan antar komponen ekosistem dan dampak perubahan populasi terhadap keseimbangan ekosistem.',
+  mkhlk3: 'Menjelaskan cara penularan penyakit menular dan upaya pencegahannya melalui perilaku hidup bersih dan sehat.',
+  mkhlk4: 'Mengidentifikasi komponen biotik dan abiotik dalam suatu ekosistem.',
+  mkhlk5: 'Mendeskripsikan hubungan pola makan bergizi seimbang dengan kesehatan dan pencegahan penyakit.',
+  mkhlk6: 'Menganalisis dampak berbagai tindakan manusia terhadap keseimbangan ekosistem dan upaya pelestariannya.',
+  mkhlk7: 'Mengidentifikasi dan mengelompokkan organ-organ tubuh ke dalam sistem organ yang tepat (pernapasan dan peredaran darah).',
+  energi1: 'Mendeskripsikan sifat-sifat cahaya: merambat lurus, dapat dipantulkan, dapat dibiaskan, dan dapat diuraikan.',
+  energi2: 'Mendeskripsikan sumber energi terbarukan dan tidak terbarukan; menganalisis kesesuaian energi dengan kondisi geografis.',
+  energi3: 'Mendeskripsikan sifat bunyi: dapat merambat melalui berbagai medium (padat, cair, gas).',
+  energi4: 'Menganalisis penggunaan energi listrik dalam kehidupan sehari-hari dan menerapkan upaya penghematan energi.',
+  energi5: 'Membedakan sumber energi terbarukan dan sumber energi tidak terbarukan.',
+  energi6: 'Mendeskripsikan cara kerja alat musik dan sumber bunyi yang dihasilkan (getaran senar, kolom udara, membran).',
+  energi7: 'Membedakan benda-benda yang memantulkan cahaya dengan baik dari benda yang menyerap cahaya.',
+  bumi1: 'Menjelaskan rotasi dan revolusi bumi serta dampaknya: pergantian siang-malam, perbedaan zona waktu, dan pergantian musim.',
+  bumi2: 'Membaca dan menginterpretasikan peta Indonesia; mengidentifikasi letak geografis provinsi berdasarkan deskripsi.',
+  bumi3: 'Membedakan akibat rotasi bumi dari akibat revolusi bumi terhadap kehidupan di bumi.',
+  bumi4: 'Mengidentifikasi kondisi geografis wilayah dan mengaitkannya dengan mata pencaharian penduduk setempat.',
+  bumi5: 'Mendeskripsikan perubahan iklim dan upaya mitigasi yang dapat dilakukan di tingkat individu maupun komunitas.',
+  bumi6: 'Mengidentifikasi anggota tata surya dan posisi planet-planet terhadap Sabuk Asteroid.',
+  sos1: 'Mengidentifikasi nilai-nilai perjuangan tokoh sejarah dan relevansinya dalam kehidupan masa kini.',
+  sos2: 'Mendeskripsikan kearifan lokal masyarakat adat dan dampaknya terhadap pelestarian lingkungan hidup.',
+  sos3: 'Membedakan jenis kegiatan ekonomi: produksi, distribusi, dan konsumsi berdasarkan aktivitas pelakunya.',
+  sos4: 'Mengidentifikasi nilai-nilai perjuangan pahlawan dan menerapkannya dalam konteks kehidupan sehari-hari.',
+  sos5: 'Mendeskripsikan keberagaman budaya Indonesia dan pengakuan internasional terhadap warisan budaya tak benda.',
+  sos6: 'Mendeskripsikan rantai distribusi dan peran pelaku dalam menyalurkan barang dari produsen ke konsumen.',
+  sos7: 'Mengidentifikasi praktik kearifan lokal Nusantara dan menjelaskan fungsinya sebagai mekanisme pelestarian sumber daya alam.',
+  sos8: 'Membedakan pelaku ekonomi: produsen dan konsumen berdasarkan aktivitasnya.',
+  sos9: 'Mendeskripsikan konsep kelangkaan sebagai kondisi ketidakseimbangan antara ketersediaan terbatas dan permintaan tinggi.',
+  sos10: 'Membedakan jenis sumber sejarah: sumber primer, sumber tertulis, dan artefak fisik tanpa teks.',
+  proses1: 'Membaca dan menginterpretasikan data dalam tabel; menarik kesimpulan yang valid berdasarkan seluruh data yang tersedia.',
+  proses2: 'Merumuskan pertanyaan investigasi yang tepat berdasarkan observasi dan fenomena yang diamati.',
+  proses3: 'Mengidentifikasi variabel bebas, variabel terikat, dan variabel kontrol dalam sebuah rancangan eksperimen.',
+  proses4: 'Mengevaluasi langkah-langkah penyelidikan ilmiah berdasarkan prinsip keterampilan proses sains yang benar.',
+  proses5: 'Memilih cara penyajian data yang paling tepat sesuai jenis dan tujuan penyajian data.',
+  proses6: 'Mengidentifikasi jenis-jenis peta dan memilih jenis peta yang paling tepat sesuai kebutuhan tugas.',
+  proses7: 'Memilih format komunikasi ilmiah yang paling tepat sesuai dengan karakteristik audiens yang dituju.',
+  proses8: 'Mengevaluasi kesalahan prosedur eksperimen dan menentukan langkah perbaikan yang paling tepat untuk meningkatkan validitas.',
+};
+
+const SOAL = [
+  // ── 1 ── Makhluk Hidup | PG Tunggal | L3
+  { id:1, type:'pg', el:'Makhluk Hidup', lv:'L3', errata:false,
+    cp: CP.mkhlk1, materi:'Sistem Organ Tubuh & Gaya Hidup',
+    indikator:'Disajikan data rekam medis pasien dengan berbagai kebiasaan hidup tidak sehat. Siswa dapat <strong>menganalisis</strong> sistem organ yang paling berisiko berdasarkan keseluruhan data klinis.',
+    kunci:'C',
+    soal:`<div class="stimulus"><div class="stim-head">Data Rekam Medis Pasien</div><div class="stim-content">Pak Rahmat, 45 tahun, memiliki kebiasaan:<ul><li>Merokok 2 bungkus per hari selama 20 tahun</li><li>Kolesterol darah: 280 mg/dL (normal &lt;200)</li><li>Tekanan darah: 150/95 mmHg (normal 120/80)</li><li>Jarang berolahraga, sering makan gorengan</li></ul></div></div>
+<p class="q-text">Berdasarkan data rekam medis tersebut, sistem organ yang <strong>paling berisiko</strong> mengalami gangguan pada Pak Rahmat adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Sistem pernapasan — akibat kebiasaan jarang olahraga</li><li class="opt-item"><span class="opt-letter">B</span>Sistem pencernaan — akibat konsumsi makanan berlemak tinggi</li><li class="opt-item"><span class="opt-letter">C</span>Sistem peredaran darah — akibat kolesterol tinggi dan tekanan darah tinggi</li><li class="opt-item"><span class="opt-letter">D</span>Sistem saraf — akibat stres karena tekanan pekerjaan</li></ol>`
+  },
+  // ── 2 ── Makhluk Hidup | PG Tunggal | L2
+  { id:2, type:'pg', el:'Makhluk Hidup', lv:'L2', errata:false,
+    cp: CP.mkhlk2, materi:'Keseimbangan Ekosistem & Rantai Makanan',
+    indikator:'Disajikan data populasi ekosistem sawah sebelum dan sesudah perburuan ular secara besar-besaran. Siswa dapat <strong>memprediksi</strong> dampak paling tepat terhadap keseimbangan ekosistem.',
+    kunci:'B',
+    soal:`<div class="stimulus"><div class="stim-head">Data Populasi Ekosistem Sawah</div><div class="stim-content"><table><tr><th>Komponen</th><th>Sebelum Perburuan</th><th>Sesudah Perburuan</th></tr><tr><td>Ular sawah</td><td>250 ekor</td><td>30 ekor</td></tr><tr><td>Tikus sawah</td><td>500 ekor</td><td>?</td></tr><tr><td>Padi</td><td>Normal</td><td>?</td></tr></table><p style="margin-top:6px;">Rantai makanan: Padi → Tikus → Ular → Elang</p></div></div>
+<p class="q-text">Perubahan yang <strong>paling tepat</strong> diprediksi terjadi pada ekosistem sawah setelah perburuan ular besar-besaran adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Populasi padi meningkat karena tikus juga berkurang mengikuti ular</li><li class="opt-item"><span class="opt-letter">B</span>Populasi tikus meledak sehingga padi rusak besar-besaran karena pemangsa alaminya berkurang</li><li class="opt-item"><span class="opt-letter">C</span>Populasi ular akan pulih sendiri dalam waktu singkat tanpa dampak pada padi</li><li class="opt-item"><span class="opt-letter">D</span>Populasi elang meningkat karena kini harus memangsa tikus secara langsung</li></ol>`
+  },
+  // ── 3 ── Energi | PG Tunggal | L1
+  { id:3, type:'pg', el:'Energi', lv:'L1', errata:false,
+    cp: CP.energi1, materi:'Sifat Cahaya — Pemantulan',
+    indikator:'Disajikan empat fenomena cahaya di kehidupan sehari-hari. Siswa dapat <strong>memilih</strong> fenomena yang secara khusus membuktikan sifat cahaya dapat dipantulkan.',
+    kunci:'A',
+    soal:`<div class="stimulus"><div class="stim-head">Fenomena Cahaya di Sekitar Kita</div><div class="stim-content"><ul><li><strong>Fenomena 1:</strong> Wajah Budi terlihat jelas di permukaan cermin kamar mandi</li><li><strong>Fenomena 2:</strong> Terlihat pelangi setelah hujan reda di langit barat</li><li><strong>Fenomena 3:</strong> Pensil tampak bengkok ketika dimasukkan ke dalam gelas berisi air</li><li><strong>Fenomena 4:</strong> Berkas cahaya senter membentuk garis lurus menembus kegelapan</li></ul></div></div>
+<p class="q-text">Fenomena yang <strong>paling khusus</strong> membuktikan bahwa cahaya <em>dapat dipantulkan</em> adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Fenomena 1 — cermin memantulkan cahaya sehingga wajah tampak</li><li class="opt-item"><span class="opt-letter">B</span>Fenomena 2 — pelangi terbentuk akibat cahaya diuraikan tetesan air</li><li class="opt-item"><span class="opt-letter">C</span>Fenomena 3 — pensil tampak bengkok akibat cahaya dibiaskan air</li><li class="opt-item"><span class="opt-letter">D</span>Fenomena 4 — cahaya merambat lurus di udara</li></ol>`
+  },
+  // ── 4 ── Energi | PG Tunggal | L3
+  { id:4, type:'pg', el:'Energi', lv:'L3', errata:false,
+    cp: CP.energi2, materi:'Sumber Energi Alternatif & Kondisi Geografis',
+    indikator:'Disajikan data kondisi geografis desa pesisir lengkap dengan kecepatan angin, paparan sinar matahari, dan jarak sungai. Siswa dapat <strong>menentukan</strong> sumber energi alternatif yang paling optimal.',
+    kunci:'B',
+    soal:`<div class="stimulus"><div class="stim-head">Profil Desa Bahari — Pesisir Selatan Jawa</div><div class="stim-content"><ul><li>Kecepatan angin rata-rata: <strong>7–9 m/s</strong> sepanjang tahun</li><li>Paparan sinar matahari: <strong>8–10 jam/hari</strong> (sangat tinggi)</li><li>Jarak ke sungai besar: <strong>35 km</strong> (jauh)</li><li>Tidak ada aktivitas vulkanik di sekitar desa</li><li>Listrik PLN belum menjangkau desa ini</li></ul></div></div>
+<p class="q-text">Berdasarkan kondisi geografis Desa Bahari, kombinasi sumber energi alternatif yang <strong>paling optimal</strong> untuk dikembangkan adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Energi geothermal dan energi air (PLTA) sungai</li><li class="opt-item"><span class="opt-letter">B</span>Energi angin (PLTB) dan energi surya (PLTS)</li><li class="opt-item"><span class="opt-letter">C</span>Energi air sungai (PLTA) dan energi geothermal</li><li class="opt-item"><span class="opt-letter">D</span>Pembangkit listrik batu bara dan energi surya</li></ol>`
+  },
+  // ── 5 ── Bumi | PG Tunggal | L1
+  { id:5, type:'pg', el:'Bumi & Alam Semesta', lv:'L1', errata:false,
+    cp: CP.bumi1, materi:'Rotasi Bumi & Perbedaan Zona Waktu',
+    indikator:'Disajikan kasus perbedaan waktu Jakarta dan Los Angeles yang terjadi secara teratur setiap hari. Siswa dapat <strong>menjelaskan</strong> fenomena tersebut sebagai akibat rotasi bumi pada porosnya.',
+    kunci:'A',
+    soal:`<div class="stimulus"><div class="stim-head">Perbedaan Waktu Jakarta dan Los Angeles</div><div class="stim-content">Ketika di Jakarta menunjukkan pukul <strong>08.00 WIB</strong> (pagi hari dan matahari baru terbit), di Los Angeles saat yang bersamaan menunjukkan pukul <strong>18.00 waktu setempat</strong> (sore hari). Perbedaan ini terjadi secara konsisten setiap hari.</div></div>
+<p class="q-text">Fenomena perbedaan waktu yang terjadi secara teratur antara Jakarta dan Los Angeles tersebut disebabkan oleh …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Rotasi bumi pada porosnya sehingga wilayah berbeda menghadap matahari pada waktu berbeda</li><li class="opt-item"><span class="opt-letter">B</span>Revolusi bumi mengelilingi matahari yang menyebabkan perubahan musim</li><li class="opt-item"><span class="opt-letter">C</span>Perbedaan gravitasi bumi di berbagai wilayah di permukaan bumi</li><li class="opt-item"><span class="opt-letter">D</span>Posisi bulan yang berubah setiap malam mempengaruhi waktu di bumi</li></ol>`
+  },
+  // ── 6 ── Bumi | PG Tunggal | L2
+  { id:6, type:'pg', el:'Bumi & Alam Semesta', lv:'L2', errata:false,
+    cp: CP.bumi2, materi:'Membaca Peta — Identifikasi Provinsi',
+    indikator:'Disajikan peta Indonesia dengan penanda X dan deskripsi letak geografis (batas-batas wilayah). Siswa dapat <strong>mengidentifikasi</strong> nama provinsi yang dimaksud.',
+    kunci:'C',
+    soal:`<div class="stimulus"><div class="stim-head">Deskripsi Letak Geografis Wilayah X</div><div class="stim-content">Wilayah X di peta Indonesia memiliki ciri:<ul><li>Terletak di antara Pulau Sumatera dan Pulau Kalimantan</li><li>Sebelah utara berbatasan dengan Laut Natuna</li><li>Sebelah selatan berbatasan dengan Laut Jawa</li><li>Dikenal sebagai salah satu penghasil <strong>timah</strong> terbesar di Indonesia</li><li>Terdiri dari dua pulau besar: Bangka dan Belitung</li></ul></div></div>
+<p class="q-text">Berdasarkan deskripsi letak geografis di atas, Wilayah X pada peta adalah Provinsi …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Kepulauan Riau</li><li class="opt-item"><span class="opt-letter">B</span>Riau</li><li class="opt-item"><span class="opt-letter">C</span>Kepulauan Bangka Belitung</li><li class="opt-item"><span class="opt-letter">D</span>Kalimantan Barat</li></ol>`
+  },
+  // ── 7 ── Sosial | PG Tunggal | L2
+  { id:7, type:'pg', el:'Masyarakat & Sosial', lv:'L2', errata:false,
+    cp: CP.sos1, materi:'Nilai Perjuangan Tokoh Sejarah — Ki Hajar Dewantara',
+    indikator:'Disajikan biografi singkat Ki Hajar Dewantara dan ajarannya. Siswa dapat <strong>menerapkan</strong> nilai perjuangan yang paling relevan dalam konteks menghadapi ujian sekolah.',
+    kunci:'B',
+    soal:`<div class="stimulus"><div class="stim-head">Biografi Singkat Ki Hajar Dewantara</div><div class="stim-content">Ki Hajar Dewantara (1889–1959) adalah Bapak Pendidikan Nasional Indonesia. Beliau mendirikan Taman Siswa pada tahun 1922, bertekad memberikan pendidikan berkualitas bagi rakyat pribumi yang selama penjajahan hanya bisa dinikmati kalangan bangsawan dan Belanda. Semboyan terkenalnya:<ul><li><em>Ing ngarsa sung tuladha</em> (di depan memberi contoh)</li><li><em>Ing madya mangun karsa</em> (di tengah memberi semangat)</li><li><em>Tut wuri handayani</em> (di belakang memberi dorongan)</li></ul></div></div>
+<p class="q-text">Nilai perjuangan Ki Hajar Dewantara yang <strong>paling relevan</strong> untuk diterapkan seorang siswa dalam menghadapi Ujian Sekolah adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Mendirikan lembaga pendidikan baru di daerah terpencil</li><li class="opt-item"><span class="opt-letter">B</span>Pantang menyerah, belajar mandiri, dan semangat menghadapi setiap tantangan akademik</li><li class="opt-item"><span class="opt-letter">C</span>Menolak segala bentuk teknologi asing dalam proses belajar mengajar</li><li class="opt-item"><span class="opt-letter">D</span>Memprioritaskan kepentingan kelompok di atas kepentingan belajar pribadi</li></ol>`
+  },
+  // ── 8 ── Sosial | PG Tunggal | L3
+  { id:8, type:'pg', el:'Masyarakat & Sosial', lv:'L3', errata:false,
+    cp: CP.sos2, materi:'Kearifan Lokal Masyarakat Dayak',
+    indikator:'Disajikan dua sistem kearifan lokal masyarakat Dayak. Siswa dapat <strong>menjelaskan</strong> dampak positif jangka panjang penerapan kedua sistem tersebut terhadap keseimbangan ekosistem hutan.',
+    kunci:'C',
+    soal:`<div class="stimulus"><div class="stim-head">Kearifan Lokal Masyarakat Dayak Kalimantan</div><div class="stim-content"><ul><li><strong>Tembawang</strong>: kawasan hutan adat yang dilindungi secara turun-temurun, dilarang ditebang sembarangan. Berfungsi sebagai hutan simpanan dan habitat satwa liar.</li><li><strong>Gilir Balik</strong>: sistem ladang berpindah secara teratur dengan siklus 5–7 tahun, memberikan waktu lahan untuk pulih secara alami sebelum kembali digunakan.</li></ul></div></div>
+<p class="q-text">Penerapan sistem Tembawang dan Gilir Balik secara bersamaan dalam jangka panjang akan memberikan dampak …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Mengikis keragaman hayati hutan Kalimantan secara perlahan</li><li class="opt-item"><span class="opt-letter">B</span>Meningkatkan produksi hasil pertanian tanpa batas waktu</li><li class="opt-item"><span class="opt-letter">C</span>Mempertahankan keseimbangan ekosistem hutan dan keanekaragaman hayati dalam jangka panjang</li><li class="opt-item"><span class="opt-letter">D</span>Membuka lahan pertanian seluas-luasnya untuk meningkatkan kesejahteraan</li></ol>`
+  },
+  // ── 9 ── Sosial | PG Tunggal | L1
+  { id:9, type:'pg', el:'Masyarakat & Sosial', lv:'L1', errata:false,
+    cp: CP.sos3, materi:'Jenis Kegiatan Ekonomi',
+    indikator:'Disajikan deskripsi aktivitas dua orang (penjahit dan sopir truk). Siswa dapat <strong>mengidentifikasi</strong> jenis kegiatan ekonomi Pak Joko (sopir truk) secara paling tepat.',
+    kunci:'D',
+    soal:`<div class="stimulus"><div class="stim-head">Aktivitas Ekonomi Sehari-hari</div><div class="stim-content"><ul><li><strong>Pak Ahmad</strong> adalah penjahit yang menerima pesanan baju seragam sekolah. Setiap hari ia memotong kain, menjahit, dan menghasilkan puluhan seragam baru.</li><li><strong>Pak Joko</strong> adalah sopir truk yang setiap hari mengangkut baju jadi dari pabrik garmen di Tangerang ke toko-toko pakaian di berbagai kota.</li></ul></div></div>
+<p class="q-text">Kegiatan ekonomi yang dilakukan <strong>Pak Joko</strong> termasuk dalam jenis …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Produksi — karena menghasilkan jasa transportasi</li><li class="opt-item"><span class="opt-letter">B</span>Konsumsi — karena menggunakan bahan bakar truk</li><li class="opt-item"><span class="opt-letter">C</span>Ekspor — karena memindahkan barang antar kota</li><li class="opt-item"><span class="opt-letter">D</span>Distribusi — karena menyalurkan barang dari produsen ke pengecer</li></ol>`
+  },
+  // ── 10 ── Keterampilan Proses | PG Tunggal | L3
+  { id:10, type:'pg', el:'Keterampilan Proses', lv:'L3', errata:false,
+    cp: CP.proses1, materi:'Interpretasi Tabel Data Eksperimen',
+    indikator:'Disajikan tabel data eksperimen pengaruh jenis pupuk terhadap pertumbuhan kacang hijau (4 perlakuan). Siswa dapat <strong>menyimpulkan</strong> temuan yang paling tepat dan didukung data.',
+    kunci:'B',
+    soal:`<div class="stimulus"><div class="stim-head">Data Eksperimen: Pengaruh Pupuk terhadap Pertumbuhan Kacang Hijau</div><div class="stim-content"><table><tr><th>Perlakuan</th><th>Jenis Pupuk</th><th>Tinggi Rata-rata (cm) setelah 2 minggu</th></tr><tr><td>A</td><td>Pupuk kompos</td><td>12 cm</td></tr><tr><td>B</td><td>Pupuk urea</td><td>15 cm</td></tr><tr><td>C</td><td>Pupuk NPK</td><td>18 cm</td></tr><tr><td>D</td><td>Tanpa pupuk (kontrol)</td><td>8 cm</td></tr></table><p style="font-size:.72rem;margin-top:4px;color:#555;">*Semua variabel lain (air, cahaya, media, benih) dibuat sama.</p></div></div>
+<p class="q-text">Simpulan yang <strong>paling tepat dan didukung</strong> oleh seluruh data eksperimen di atas adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Pupuk kompos adalah pupuk terbaik karena bersifat organik dan ramah lingkungan</li><li class="opt-item"><span class="opt-letter">B</span>Pupuk NPK menghasilkan pertumbuhan tertinggi (18 cm) dibandingkan perlakuan lain dalam eksperimen ini</li><li class="opt-item"><span class="opt-letter">C</span>Semua jenis pupuk memberikan efek yang sama terhadap pertumbuhan kacang hijau</li><li class="opt-item"><span class="opt-letter">D</span>Pupuk tidak berpengaruh terhadap pertumbuhan karena tanaman tetap tumbuh tanpa pupuk</li></ol>`
+  },
+  // ── 11 ── Makhluk Hidup | PG Kompleks | L3
+  { id:11, type:'pgk', el:'Makhluk Hidup', lv:'L3', errata:false,
+    cp: CP.mkhlk3, materi:'Pencegahan Penyakit Menular',
+    indikator:'Disajikan tiga jenis penyakit menular di sekolah beserta cara penularannya. Siswa dapat <strong>memilih lebih dari satu</strong> perilaku yang secara langsung dan efektif mencegah penularan ketiga penyakit.',
+    kunci:['A','B','C'],
+    soal:`<div class="stimulus"><div class="stim-head">Penyakit Menular yang Sering Muncul di Sekolah</div><div class="stim-content"><table><tr><th>Penyakit</th><th>Cara Penularan Utama</th></tr><tr><td>TBC</td><td>Droplet udara (batuk, bersin)</td></tr><tr><td>Diare</td><td>Makanan/minuman yang terkontaminasi kuman</td></tr><tr><td>Cacar Air</td><td>Kontak langsung dan udara (droplet)</td></tr></table></div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Perilaku yang secara <strong>langsung dan efektif</strong> mencegah penularan ketiga penyakit tersebut adalah …</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Menutup mulut dan hidung dengan siku saat batuk atau bersin</li><li class="pgk-item"><span class="pgk-check"></span>B. Mencuci tangan dengan sabun sebelum makan dan setelah dari toilet</li><li class="pgk-item"><span class="pgk-check"></span>C. Tidak berbagi peralatan makan, minum, dan handuk dengan orang lain</li><li class="pgk-item"><span class="pgk-check"></span>D. Minum jamu tradisional setiap pagi sebagai penangkal penyakit</li></ul>`
+  },
+  // ── 12 ── Makhluk Hidup | PG Kompleks | L1
+  { id:12, type:'pgk', el:'Makhluk Hidup', lv:'L1', errata:false,
+    cp: CP.mkhlk4, materi:'Komponen Biotik dan Abiotik Ekosistem',
+    indikator:'Disajikan gambar lingkungan sekolah dengan berbagai komponen (pohon, batu, cacing, kolam, siswa, udara). Siswa dapat <strong>memilih lebih dari satu</strong> komponen yang termasuk komponen biotik.',
+    kunci:['A','C','E'],
+    soal:`<div class="stimulus"><div class="stim-head">Komponen di Lingkungan Sekolah</div><div class="stim-content">Di halaman sekolah terdapat berbagai komponen berikut:<ul><li><strong>A.</strong> Pohon mangga besar di sudut halaman</li><li><strong>B.</strong> Batu besar di dekat lapangan</li><li><strong>C.</strong> Cacing tanah di kebun sekolah</li><li><strong>D.</strong> Kolam air tanpa ikan (hanya air dan lumpur)</li><li><strong>E.</strong> Siswa yang bermain di halaman</li><li><strong>F.</strong> Udara segar di sekitar pohon</li></ul></div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Komponen yang termasuk <strong>komponen biotik</strong> (makhluk hidup) dari ekosistem sekolah adalah …</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Pohon mangga</li><li class="pgk-item"><span class="pgk-check"></span>B. Batu besar</li><li class="pgk-item"><span class="pgk-check"></span>C. Cacing tanah</li><li class="pgk-item"><span class="pgk-check"></span>D. Kolam air (tanpa ikan)</li><li class="pgk-item"><span class="pgk-check"></span>E. Siswa yang bermain</li><li class="pgk-item"><span class="pgk-check"></span>F. Udara segar</li></ul>`
+  },
+  // ── 13 ── Energi | PG Kompleks | L2
+  { id:13, type:'pgk', el:'Energi', lv:'L2', errata:false,
+    cp: CP.energi3, materi:'Perambatan Bunyi melalui Benda Padat',
+    indikator:'Disajikan lima percobaan bunyi dengan medium berbeda. Siswa dapat <strong>memilih lebih dari satu</strong> percobaan yang khusus membuktikan bunyi merambat melalui benda padat.',
+    kunci:['A','B'],
+    soal:`<div class="stimulus"><div class="stim-head">Lima Percobaan Perambatan Bunyi</div><div class="stim-content"><ul><li><strong>Percobaan 1:</strong> Andi menempelkan telinganya di permukaan meja kayu, lalu temannya mengetuk ujung meja — bunyi terdengar jelas</li><li><strong>Percobaan 2:</strong> Dua kaleng susu dihubungkan benang yang diregangkan — suara bisikan terdengar di kaleng lain</li><li><strong>Percobaan 3:</strong> Suara sirine ambulans terdengar dari jarak 200 meter di udara terbuka</li><li><strong>Percobaan 4:</strong> Ikan di akuarium bergerak menjauhi tepukan tangan di dekat dinding akuarium</li><li><strong>Percobaan 5:</strong> Bunyi bel sekolah terdengar di ruang kelas sebelah melalui tembok</li></ul></div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Percobaan yang <strong>paling khusus</strong> membuktikan bahwa bunyi dapat merambat melalui benda <em>padat</em> adalah …</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Percobaan 1 — bunyi merambat melalui kayu meja</li><li class="pgk-item"><span class="pgk-check"></span>B. Percobaan 2 — bunyi merambat melalui benang yang diregangkan</li><li class="pgk-item"><span class="pgk-check"></span>C. Percobaan 3 — bunyi merambat melalui udara</li><li class="pgk-item"><span class="pgk-check"></span>D. Percobaan 4 — bunyi merambat melalui air</li><li class="pgk-item"><span class="pgk-check"></span>E. Percobaan 5 — bunyi merambat melalui udara di ruang kelas</li></ul>`
+  },
+  // ── 14 ── Energi | PG Kompleks | L3
+  { id:14, type:'pgk', el:'Energi', lv:'L3', errata:false,
+    cp: CP.energi4, materi:'Penghematan Energi Listrik',
+    indikator:'Disajikan data tagihan listrik tinggi sebuah keluarga beserta kebiasaan penggunaan listrik. Siswa dapat <strong>memilih lebih dari satu</strong> kebiasaan baru yang memberikan penghematan paling signifikan.',
+    kunci:['B','C','D'],
+    soal:`<div class="stimulus"><div class="stim-head">Tagihan Listrik Keluarga Pak Hendra — Bulan Ini: Rp 850.000</div><div class="stim-content">Kebiasaan penggunaan listrik keluarga:<ul><li>Menonton TV dari pagi hingga malam (12 jam/hari)</li><li>Charger ponsel dibiarkan terpasang meski baterai sudah penuh</li><li>AC kamar menyala 24 jam dengan suhu 16°C</li><li>Lampu teras dan ruang tamu menyala siang hari</li></ul></div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Kebiasaan baru yang memberikan penghematan <strong>paling signifikan</strong> pada tagihan listrik keluarga Pak Hendra adalah …</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Mengganti sikat gigi manual dengan sikat gigi elektrik</li><li class="pgk-item"><span class="pgk-check"></span>B. Segera mencabut charger setelah baterai ponsel penuh</li><li class="pgk-item"><span class="pgk-check"></span>C. Mengatur suhu AC di 25°C dan mematikannya saat tidak ada orang di kamar</li><li class="pgk-item"><span class="pgk-check"></span>D. Mematikan lampu teras dan ruang tamu pada siang hari yang terang</li></ul>`
+  },
+  // ── 15 ── Bumi | PG Kompleks | L1
+  { id:15, type:'pgk', el:'Bumi & Alam Semesta', lv:'L1', errata:false,
+    cp: CP.bumi3, materi:'Akibat Rotasi Bumi',
+    indikator:'Disajikan lima fenomena astronomi. Siswa dapat <strong>memilih lebih dari satu</strong> fenomena yang disebabkan oleh rotasi bumi pada porosnya.',
+    kunci:['A','B','D'],
+    soal:`<div class="stimulus"><div class="stim-head">Fenomena Astronomi yang Kita Amati</div><div class="stim-content"><ul><li><strong>Fenomena A:</strong> Di Bandung hari ini siang, sementara di London saat bersamaan sudah malam</li><li><strong>Fenomena B:</strong> Jakarta (WIB) berbeda 7 jam dari London (GMT)</li><li><strong>Fenomena C:</strong> Di bulan Juni, Australia mengalami musim dingin sementara Eropa mengalami musim panas</li><li><strong>Fenomena D:</strong> Matahari selalu terbit dari arah timur dan terbenam di arah barat setiap hari</li><li><strong>Fenomena E:</strong> Di kutub utara, pada bulan Juni siang hari bisa berlangsung selama 20 jam</li></ul></div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Fenomena yang disebabkan oleh <strong>rotasi bumi pada porosnya</strong> adalah …</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Fenomena A — perbedaan siang dan malam antar wilayah</li><li class="pgk-item"><span class="pgk-check"></span>B. Fenomena B — perbedaan zona waktu</li><li class="pgk-item"><span class="pgk-check"></span>C. Fenomena C — pergantian musim di berbagai belahan bumi</li><li class="pgk-item"><span class="pgk-check"></span>D. Fenomena D — matahari terbit dari timur dan terbenam di barat</li><li class="pgk-item"><span class="pgk-check"></span>E. Fenomena E — perbedaan panjang siang-malam di musim tertentu</li></ul>`
+  },
+  // ── 16 ── Keterampilan Proses | PG Kompleks | L2
+  { id:16, type:'pgk', el:'Keterampilan Proses', lv:'L2', errata:false,
+    cp: CP.proses2, materi:'Pertanyaan Investigasi Ilmiah',
+    indikator:'Disajikan kasus tanaman layu di tempat gelap meskipun disiram rutin. Siswa dapat <strong>memilih lebih dari satu</strong> pertanyaan investigasi yang tepat dan relevan untuk menyelidiki penyebabnya.',
+    kunci:['A','C'],
+    soal:`<div class="stimulus"><div class="stim-head">Kasus: Tanaman Layu di Tempat Gelap</div><div class="stim-content">Sari meletakkan dua pot tanaman hias yang sama jenis di dua lokasi berbeda. Pot pertama di dekat jendela (terkena sinar matahari), pot kedua di sudut kamar yang gelap. Keduanya disiram dengan jumlah air dan jadwal yang sama. Setelah 2 minggu, tanaman di sudut kamar tampak layu dan daunnya menguning, sedangkan tanaman di jendela tumbuh subur.</div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Pertanyaan investigasi yang <strong>tepat dan relevan</strong> untuk menyelidiki kasus di atas adalah …</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Apakah intensitas cahaya matahari mempengaruhi kesehatan dan pertumbuhan tanaman hias?</li><li class="pgk-item"><span class="pgk-check"></span>B. Mengapa air penting bagi kehidupan manusia dan tumbuhan?</li><li class="pgk-item"><span class="pgk-check"></span>C. Bagaimana pengaruh cahaya matahari terhadap laju fotosintesis pada tanaman hias?</li><li class="pgk-item"><span class="pgk-check"></span>D. Apa jenis pupuk yang paling baik untuk tanaman hias dalam pot?</li></ul>`
+  },
+  // ── 17 ── Energi | PG Kategori | L1
+  { id:17, type:'pgk-cat', el:'Energi', lv:'L1', errata:false,
+    cp: CP.energi5, materi:'Sumber Energi Terbarukan dan Tidak Terbarukan',
+    indikator:'Disajikan tiga sumber energi (gas alam, panas bumi, minyak bumi). Siswa dapat <strong>mengklasifikasikan</strong> setiap sumber energi sebagai Terbarukan atau Tidak Terbarukan.',
+    kunci:{rows:['Gas Alam','Panas Bumi (Geothermal)','Minyak Bumi'], cols:['Terbarukan','Tidak Terbarukan'], ans:['Tidak Terbarukan','Terbarukan','Tidak Terbarukan']},
+    soal:`<div class="stimulus"><div class="stim-head">Sumber-sumber Energi</div><div class="stim-content"><ul><li><strong>Gas Alam:</strong> Terbentuk dari sisa makhluk hidup purba yang terpendam jutaan tahun; cadangannya terbatas</li><li><strong>Panas Bumi (Geothermal):</strong> Bersumber dari panas inti bumi yang selalu ada dan terus diperbarui secara alami</li><li><strong>Minyak Bumi:</strong> Terbentuk dari fosil organisme laut purba; proses pembentukannya butuh jutaan tahun</li></ul></div></div>
+<p class="hint-cat">🗂️ Klasifikasikan setiap sumber energi ke dalam kategori yang tepat.</p>
+<p class="q-text">Klasifikasikan setiap sumber energi berikut sebagai <strong>Terbarukan</strong> atau <strong>Tidak Terbarukan</strong>!</p>
+<div class="matrix-wrap"><table class="mtx"><thead><tr><th>Sumber Energi</th><th>Terbarukan</th><th>Tidak Terbarukan</th></tr></thead><tbody><tr><td>Gas Alam</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Panas Bumi (Geothermal)</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Minyak Bumi</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr></tbody></table></div>`
+  },
+  // ── 18 ── Sosial | PG Kategori | L1
+  { id:18, type:'pgk-cat', el:'Masyarakat & Sosial', lv:'L1', errata:false,
+    cp: CP.sos3, materi:'Jenis Kegiatan Ekonomi',
+    indikator:'Disajikan tiga aktivitas sehari-hari. Siswa dapat <strong>mengklasifikasikan</strong> setiap aktivitas ke dalam jenis kegiatan ekonomi yang tepat.',
+    kunci:{rows:['Petani memanen padi','Sopir truk mengangkut beras ke kota','Ibu memasak nasi untuk keluarga'], cols:['Produksi','Distribusi','Konsumsi'], ans:['Produksi','Distribusi','Konsumsi']},
+    soal:`<div class="stimulus"><div class="stim-head">Aktivitas Ekonomi Sehari-hari</div><div class="stim-content"><ul><li><strong>Aktivitas 1:</strong> Pak Tani memanen padi di sawahnya yang subur untuk dijual ke pengepul</li><li><strong>Aktivitas 2:</strong> Pak Sopir mengangkut beras dalam karung dari gudang pengepul ke pasar-pasar di kota</li><li><strong>Aktivitas 3:</strong> Ibu memasak nasi dan lauk untuk makan siang seluruh anggota keluarga</li></ul></div></div>
+<p class="hint-cat">🗂️ Klasifikasikan setiap aktivitas ke dalam jenis kegiatan ekonomi yang tepat.</p>
+<p class="q-text">Klasifikasikan setiap aktivitas ke dalam jenis kegiatan ekonomi: <strong>Produksi, Distribusi, atau Konsumsi</strong>!</p>
+<div class="matrix-wrap"><table class="mtx"><thead><tr><th>Aktivitas</th><th>Produksi</th><th>Distribusi</th><th>Konsumsi</th></tr></thead><tbody><tr><td>Petani memanen padi</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Sopir truk mengangkut beras ke kota</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Ibu memasak nasi untuk keluarga</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr></tbody></table></div>`
+  },
+  // ── 19 ── Keterampilan Proses | PG Kategori | L3
+  { id:19, type:'pgk-cat', el:'Keterampilan Proses', lv:'L3', errata:false,
+    cp: CP.proses4, materi:'Kesesuaian Langkah Penyelidikan Ilmiah',
+    indikator:'Disajikan tiga langkah penyelidikan ilmiah siswa. Siswa dapat <strong>mengklasifikasikan</strong> setiap langkah sebagai Sesuai atau Tidak Sesuai dengan prinsip keterampilan proses ilmiah.',
+    kunci:{rows:['Langkah 1','Langkah 2','Langkah 3'], cols:['Sesuai Kaidah Ilmiah','Tidak Sesuai Kaidah Ilmiah'], ans:['Sesuai Kaidah Ilmiah','Tidak Sesuai Kaidah Ilmiah','Sesuai Kaidah Ilmiah']},
+    soal:`<div class="stimulus"><div class="stim-head">Langkah Penyelidikan Siswa — Eksperimen Pertumbuhan Tanaman</div><div class="stim-content"><ul><li><strong>Langkah 1:</strong> Sari mencatat secara teliti bahwa "tanaman di pot kiri tampak lebih tinggi dan daunnya lebih hijau dibandingkan pot kanan" berdasarkan hasil pengamatannya</li><li><strong>Langkah 2:</strong> Budi mengubah jumlah air yang diberikan di tengah-tengah percobaan karena merasa tanaman tampak layu</li><li><strong>Langkah 3:</strong> Dito mencatat tinggi tanaman setiap hari ke dalam tabel selama dua minggu berturut-turut</li></ul></div></div>
+<p class="hint-cat">🗂️ Klasifikasikan setiap langkah berdasarkan kesesuaiannya dengan kaidah ilmiah.</p>
+<p class="q-text">Klasifikasikan setiap langkah penyelidikan: <strong>Sesuai Kaidah Ilmiah</strong> atau <strong>Tidak Sesuai Kaidah Ilmiah</strong>!</p>
+<div class="matrix-wrap"><table class="mtx"><thead><tr><th>Langkah Penyelidikan</th><th>Sesuai Kaidah Ilmiah</th><th>Tidak Sesuai Kaidah Ilmiah</th></tr></thead><tbody><tr><td>Langkah 1 — Catatan Sari</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Langkah 2 — Tindakan Budi</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Langkah 3 — Pencatatan Dito</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr></tbody></table></div>`
+  },
+  // ── 20 ── Keterampilan Proses | PG Kategori | L2
+  { id:20, type:'pgk-cat', el:'Keterampilan Proses', lv:'L2', errata:false,
+    cp: CP.proses5, materi:'Pemilihan Cara Penyajian Data',
+    indikator:'Disajikan tiga cara penyajian data. Siswa dapat <strong>mengklasifikasikan</strong> setiap cara penyajian ke fungsi yang paling sesuai: Membandingkan Data atau Menunjukkan Tren.',
+    kunci:{rows:['Diagram batang nilai 5 siswa','Diagram batang curah hujan 12 bulan','Grafik garis berat badan 6 bulan'], cols:['Membandingkan Data','Menunjukkan Tren'], ans:['Membandingkan Data','Membandingkan Data','Menunjukkan Tren']},
+    soal:`<div class="stimulus"><div class="stim-head">Tiga Cara Penyajian Data Hasil Pengamatan</div><div class="stim-content"><ul><li><strong>Sajian 1:</strong> Diagram batang menampilkan nilai ujian 5 siswa berbeda (Ani=85, Budi=70, Cici=90, Dodi=75, Eni=88)</li><li><strong>Sajian 2:</strong> Diagram batang menampilkan jumlah curah hujan di 12 bulan (Januari–Desember) dalam satu tahun</li><li><strong>Sajian 3:</strong> Grafik garis menampilkan perubahan berat badan seorang siswa dari bulan Januari hingga Juni</li></ul></div></div>
+<p class="hint-cat">🗂️ Klasifikasikan setiap cara penyajian data berdasarkan fungsi utamanya.</p>
+<p class="q-text">Klasifikasikan setiap cara penyajian data ke fungsinya: <strong>Membandingkan Data</strong> atau <strong>Menunjukkan Tren Perubahan</strong>!</p>
+<div class="matrix-wrap"><table class="mtx"><thead><tr><th>Cara Penyajian Data</th><th>Membandingkan Data</th><th>Menunjukkan Tren</th></tr></thead><tbody><tr><td>Diagram batang nilai 5 siswa</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Diagram batang curah hujan 12 bulan</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Grafik garis berat badan 6 bulan</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr></tbody></table></div>`
+  },
+  // ── 21 ── Bumi | PG Tunggal | L2
+  { id:21, type:'pg', el:'Bumi & Alam Semesta', lv:'L2', errata:false,
+    cp: CP.bumi4, materi:'Kondisi Geografis & Mata Pencaharian',
+    indikator:'Disajikan peta kondisi geografis tiga wilayah (pegunungan, pesisir, dataran rendah). Siswa dapat <strong>menentukan</strong> mata pencaharian yang paling sesuai dengan karakteristik Wilayah A (pegunungan).',
+    kunci:'C',
+    soal:`<div class="stimulus"><div class="stim-head">Kondisi Geografis Tiga Wilayah</div><div class="stim-content"><table><tr><th>Wilayah</th><th>Kondisi</th><th>Ciri Khas</th></tr><tr><td><strong>Wilayah A</strong></td><td>Pegunungan (1.800 mdpl)</td><td>Udara sejuk, curah hujan tinggi, tanah subur</td></tr><tr><td>Wilayah B</td><td>Pesisir pantai</td><td>Laut luas, angin kencang, pasir dan terumbu</td></tr><tr><td>Wilayah C</td><td>Dataran rendah</td><td>Datar, dekat sungai, cocok persawahan luas</td></tr></table></div></div>
+<p class="q-text">Mata pencaharian yang <strong>paling sesuai</strong> dengan karakteristik geografis Wilayah A adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Nelayan tangkap ikan dan budidaya tambak udang</li><li class="opt-item"><span class="opt-letter">B</span>Petani padi sawah beririgasi di lahan datar</li><li class="opt-item"><span class="opt-letter">C</span>Petani sayuran dataran tinggi dan pekebun teh atau kopi</li><li class="opt-item"><span class="opt-letter">D</span>Pekerja industri pabrik dan pergudangan</li></ol>`
+  },
+  // ── 22 ── Sosial | PG Tunggal | L2
+  { id:22, type:'pg', el:'Masyarakat & Sosial', lv:'L2', errata:false,
+    cp: CP.sos4, materi:'Nilai Perjuangan Pahlawan Daerah di Era Digital',
+    indikator:'Disajikan gambar monumen pahlawan daerah beserta nilai perjuangannya. Siswa dapat <strong>menerapkan</strong> nilai yang paling relevan dalam konteks kehidupan akademik era digital.',
+    kunci:'A',
+    soal:`<div class="stimulus"><div class="stim-head">Monumen Pangeran Antasari — Kalimantan Selatan</div><div class="stim-content">Pangeran Antasari (1809–1862) dikenal sebagai pemimpin perlawanan rakyat Banjar melawan penjajah Belanda. Nilai-nilai perjuangan beliau:<ul><li>Pantang menyerah meski kalah persenjataan</li><li>Setia pada tanah air dan rakyatnya hingga akhir hayat</li><li>Berani berkorban demi kebenaran dan keadilan</li></ul>Semboyan: <em>"Haram manyarah, waja sampai kaputing"</em> (Pantang menyerah, baja sampai habis)</div></div>
+<p class="q-text">Nilai perjuangan Pangeran Antasari yang <strong>paling relevan</strong> untuk diterapkan siswa dalam menghadapi tantangan belajar di era digital adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Pantang menyerah menghadapi soal sulit dan tetap semangat belajar meski gagal berkali-kali</li><li class="opt-item"><span class="opt-letter">B</span>Membuat senjata dan perlengkapan perang untuk mempertahankan diri</li><li class="opt-item"><span class="opt-letter">C</span>Menghindari semua perangkat teknologi digital karena bisa menyebabkan kemalasan</li><li class="opt-item"><span class="opt-letter">D</span>Bergabung dengan komunitas pejuang untuk bersama-sama melawan ketidakadilan</li></ol>`
+  },
+  // ── 23 ── Sosial | PG Tunggal | L1
+  { id:23, type:'pg', el:'Masyarakat & Sosial', lv:'L1', errata:false,
+    cp: CP.sos5, materi:'Warisan Budaya UNESCO Indonesia',
+    indikator:'Disajikan beberapa contoh budaya Indonesia. Siswa dapat <strong>mengidentifikasi</strong> budaya yang telah resmi mendapat pengakuan UNESCO sebagai Warisan Budaya Tak Benda Dunia.',
+    kunci:'B',
+    soal:`<div class="stimulus"><div class="stim-head">Keberagaman Budaya Indonesia</div><div class="stim-content">Indonesia memiliki ragam budaya yang kaya, di antaranya:<ul><li>Tari Jaipong — tari tradisional dari Jawa Barat</li><li>Angklung — alat musik bambu dari Sunda</li><li>Tari Kecak — tari kolosal dari Bali</li><li>Motif Tenun Ikat — kain tradisional Nusa Tenggara</li></ul></div></div>
+<p class="q-text">Di antara budaya Indonesia tersebut, yang telah resmi diakui oleh UNESCO sebagai <strong>Warisan Budaya Tak Benda Dunia</strong> adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Tari Jaipong (2008)</li><li class="opt-item"><span class="opt-letter">B</span>Angklung (2010)</li><li class="opt-item"><span class="opt-letter">C</span>Tari Kecak (2012)</li><li class="opt-item"><span class="opt-letter">D</span>Motif Tenun Ikat (2015)</li></ol>`
+  },
+  // ── 24 ── Sosial | PG Tunggal | L1
+  { id:24, type:'pg', el:'Masyarakat & Sosial', lv:'L1', errata:false,
+    cp: CP.sos6, materi:'Rantai Distribusi — Peran Distributor',
+    indikator:'Disajikan rantai distribusi beras dari sawah ke meja makan dengan enam pelaku. Siswa dapat <strong>mengidentifikasi</strong> pelaku yang berperan paling tepat sebagai distributor.',
+    kunci:'C',
+    soal:`<div class="stimulus"><div class="stim-head">Rantai Distribusi Beras dari Sawah ke Meja Makan</div><div class="stim-content"><p>Petani → <strong>Pengepul</strong> → <strong>Pedagang Besar (Grosir)</strong> → Pedagang Pasar → Toko Retail → Konsumen</p><p style="margin-top:6px;font-size:.78rem;color:#555;">Pedagang Besar (Grosir): membeli beras dalam skala besar dari pengepul, menyimpan di gudang, lalu menyalurkan ke pedagang pasar dan toko di berbagai kota.</p></div></div>
+<p class="q-text">Dalam rantai distribusi beras di atas, pelaku yang berperan sebagai <strong>distributor</strong> adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Petani — karena menghasilkan beras di sawah</li><li class="opt-item"><span class="opt-letter">B</span>Konsumen — karena menggunakan beras untuk kebutuhan sehari-hari</li><li class="opt-item"><span class="opt-letter">C</span>Pedagang Besar (Grosir) — karena menyalurkan beras dari pengepul ke pengecer di berbagai kota</li><li class="opt-item"><span class="opt-letter">D</span>Toko Retail — karena menjual beras langsung kepada pembeli akhir</li></ol>`
+  },
+  // ── 25 ── Keterampilan Proses | PG Tunggal | L2
+  { id:25, type:'pg', el:'Keterampilan Proses', lv:'L2', errata:false,
+    cp: CP.proses3, materi:'Variabel Eksperimen',
+    indikator:'Disajikan rancangan eksperimen pengaruh cahaya matahari terhadap pertumbuhan tanaman dengan tiga kondisi. Siswa dapat <strong>mengidentifikasi</strong> variabel bebas, terikat, dan kontrol secara berurutan.',
+    kunci:'B',
+    soal:`<div class="stimulus"><div class="stim-head">Rancangan Eksperimen — Pengaruh Cahaya terhadap Pertumbuhan Tanaman</div><div class="stim-content"><table><tr><th>Pot</th><th>Paparan Cahaya</th><th>Jenis Tanaman</th><th>Media Tanam</th><th>Jumlah Air</th></tr><tr><td>Pot A</td><td>Cahaya penuh (8 jam)</td><td>Bayam merah</td><td>Tanah + kompos</td><td>100 mL/hari</td></tr><tr><td>Pot B</td><td>Setengah teduh (4 jam)</td><td>Bayam merah</td><td>Tanah + kompos</td><td>100 mL/hari</td></tr><tr><td>Pot C</td><td>Tanpa cahaya (0 jam)</td><td>Bayam merah</td><td>Tanah + kompos</td><td>100 mL/hari</td></tr></table><p style="margin-top:5px;font-size:.72rem;">Yang diukur: tinggi tanaman setelah 14 hari</p></div></div>
+<p class="q-text">Variabel <strong>bebas, terikat, dan kontrol</strong> dalam eksperimen tersebut secara berurutan adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Jenis tanaman — intensitas cahaya — tinggi tanaman</li><li class="opt-item"><span class="opt-letter">B</span>Intensitas cahaya matahari — tinggi tanaman — jenis media tanam dan jumlah air</li><li class="opt-item"><span class="opt-letter">C</span>Tinggi tanaman — jenis tanaman — intensitas cahaya</li><li class="opt-item"><span class="opt-letter">D</span>Jumlah air — tinggi tanaman — jenis tanaman</li></ol>`
+  },
+  // ── 26 ── Makhluk Hidup | PG Kompleks | L3
+  { id:26, type:'pgk', el:'Makhluk Hidup', lv:'L3', errata:false,
+    cp: CP.mkhlk5, materi:'Penyakit & Pola Makan Bergizi',
+    indikator:'Disajikan empat jenis penyakit beserta penyebabnya. Siswa dapat <strong>memilih lebih dari satu</strong> penyakit yang risikonya dapat dikurangi secara efektif melalui pola makan bergizi seimbang.',
+    kunci:['A','D'],
+    soal:`<div class="stimulus"><div class="stim-head">Empat Penyakit dan Penyebab Utamanya</div><div class="stim-content"><table><tr><th>Penyakit</th><th>Penyebab Utama</th></tr><tr><td>Anemia</td><td>Kekurangan zat besi dan protein dalam makanan</td></tr><tr><td>TBC (Tuberkulosis)</td><td>Bakteri <em>Mycobacterium tuberculosis</em> — menular lewat udara</td></tr><tr><td>Diare</td><td>Kuman/bakteri dari makanan atau minuman yang tidak bersih</td></tr><tr><td>Rabun Senja</td><td>Kekurangan Vitamin A dalam pola makan</td></tr></table></div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Penyakit yang risikonya dapat dikurangi secara <strong>paling efektif</strong> melalui pola makan bergizi seimbang adalah …</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Anemia — karena asupan zat besi dan protein yang cukup dapat mencegahnya</li><li class="pgk-item"><span class="pgk-check"></span>B. TBC — karena gizi baik melindungi dari semua infeksi bakteri</li><li class="pgk-item"><span class="pgk-check"></span>C. Diare — karena gizi baik lebih penting dari kebersihan makanan</li><li class="pgk-item"><span class="pgk-check"></span>D. Rabun Senja — karena asupan Vitamin A yang cukup langsung mencegahnya</li></ul>`
+  },
+  // ── 27 ── Makhluk Hidup | PG Kompleks | L3
+  { id:27, type:'pgk', el:'Makhluk Hidup', lv:'L3', errata:false,
+    cp: CP.mkhlk6, materi:'Dampak Tindakan Manusia terhadap Ekosistem Hutan',
+    indikator:'Disajikan empat tindakan manusia terhadap ekosistem hutan tropis Indonesia. Siswa dapat <strong>memilih lebih dari satu</strong> tindakan yang memberikan dampak positif dalam menjaga atau memulihkan keseimbangan ekosistem hutan.',
+    kunci:['A','D'],
+    soal:`<div class="stimulus"><div class="stim-head">Tindakan Manusia terhadap Hutan Tropis Indonesia</div><div class="stim-content"><ul><li><strong>Tindakan A:</strong> Program reboisasi — menanam kembali pohon di area hutan yang telah gundul</li><li><strong>Tindakan B:</strong> Pembukaan lahan hutan untuk perkebunan kelapa sawit skala besar tanpa batas</li><li><strong>Tindakan C:</strong> Penebangan hutan ilegal untuk diambil kayunya tanpa izin dan tanpa penanaman kembali</li><li><strong>Tindakan D:</strong> Pembentukan kawasan hutan lindung yang dilindungi undang-undang dari aktivitas eksploitasi</li></ul></div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Tindakan yang memberikan dampak <strong>positif</strong> dalam menjaga atau memulihkan keseimbangan ekosistem hutan adalah …</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Tindakan A — program reboisasi memulihkan tutupan hutan</li><li class="pgk-item"><span class="pgk-check"></span>B. Tindakan B — pembukaan lahan sawit meningkatkan ekonomi</li><li class="pgk-item"><span class="pgk-check"></span>C. Tindakan C — penebangan kayu menyediakan bahan bangunan</li><li class="pgk-item"><span class="pgk-check"></span>D. Tindakan D — kawasan hutan lindung melindungi keanekaragaman hayati</li></ul>`
+  },
+  // ── 28 ── Energi | PG Kompleks | L2
+  { id:28, type:'pgk', el:'Energi', lv:'L2', errata:false,
+    cp: CP.energi6, materi:'Sumber Bunyi Alat Musik',
+    indikator:'Disajikan gambar empat alat musik. Siswa dapat <strong>memilih lebih dari satu</strong> alat musik yang menghasilkan bunyi melalui getaran senar atau getaran kolom udara.',
+    kunci:['A','B','D'],
+    soal:`<div class="stimulus"><div class="stim-head">Empat Alat Musik Tradisional dan Modern</div><div class="stim-content"><ul><li><strong>Gitar:</strong> Alat musik petik — dimainkan dengan memetik senar baja/nilon</li><li><strong>Seruling (Suling):</strong> Alat musik tiup bambu — dimainkan dengan meniupkan udara ke lubang seruling</li><li><strong>Drum (Kendang):</strong> Alat musik pukul — dimainkan dengan memukul permukaan membran kulit</li><li><strong>Rebab:</strong> Alat musik gesek tradisional — dimainkan dengan menggesek senar menggunakan busur</li></ul></div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Alat musik yang menghasilkan bunyi melalui <strong>getaran senar</strong> atau <strong>getaran kolom udara</strong> adalah …</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Gitar — bunyi dari getaran senar yang dipetik</li><li class="pgk-item"><span class="pgk-check"></span>B. Seruling — bunyi dari getaran kolom udara di dalam tabung bambu</li><li class="pgk-item"><span class="pgk-check"></span>C. Drum/Kendang — bunyi dari getaran membran yang dipukul</li><li class="pgk-item"><span class="pgk-check"></span>D. Rebab — bunyi dari getaran senar yang digesek</li></ul>`
+  },
+  // ── 29 ── Bumi | PG Kompleks | L2
+  { id:29, type:'pgk', el:'Bumi & Alam Semesta', lv:'L2', errata:false,
+    cp: CP.bumi5, materi:'Mitigasi Perubahan Iklim',
+    indikator:'Disajikan konteks data konsentrasi CO₂ atmosfer dan berbagai aktivitas mitigasi. Siswa dapat <strong>memilih lebih dari satu</strong> aktivitas yang secara langsung berkontribusi pada mitigasi perubahan iklim.',
+    kunci:['A','B','C'],
+    soal:`<div class="stimulus"><div class="stim-head">Data Konsentrasi CO₂ Atmosfer Global</div><div class="stim-content">Konsentrasi CO₂ di atmosfer meningkat dari <strong>280 ppm</strong> (era pra-industri, sebelum 1750) menjadi <strong>420 ppm</strong> (tahun 2023). Peningkatan ini berkontribusi pada kenaikan suhu rata-rata bumi sebesar 1,1°C. Para ilmuwan menyerukan pengurangan emisi gas rumah kaca segera.</div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Aktivitas yang secara <strong>langsung</strong> berkontribusi pada mitigasi (pengurangan dampak) perubahan iklim adalah …</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Menggunakan sepeda atau berjalan kaki ke sekolah daripada menggunakan kendaraan bermotor</li><li class="pgk-item"><span class="pgk-check"></span>B. Menanam pohon di lingkungan sekolah dan rumah untuk menyerap CO₂</li><li class="pgk-item"><span class="pgk-check"></span>C. Mengurangi penggunaan plastik sekali pakai yang produksinya memerlukan banyak energi fosil</li><li class="pgk-item"><span class="pgk-check"></span>D. Membeli lebih banyak produk yang diimpor dari negara-negara yang jauh</li></ul>`
+  },
+  // ── 30 ── Sosial | PG Kompleks | L3
+  { id:30, type:'pgk', el:'Masyarakat & Sosial', lv:'L3', errata:false,
+    cp: CP.sos7, materi:'Kearifan Lokal sebagai Pelestarian SDA',
+    indikator:'Disajikan tiga sistem kearifan lokal (Sasi Laut, Subak, Ulos). Siswa dapat <strong>memilih lebih dari satu</strong> praktik yang berfungsi langsung sebagai mekanisme pelestarian sumber daya alam.',
+    kunci:['A','B'],
+    soal:`<div class="stimulus"><div class="stim-head">Kearifan Lokal Nusantara</div><div class="stim-content"><ul><li><strong>Sasi Laut (Maluku):</strong> Sistem pelarangan sementara (panen jeda) penangkapan biota laut tertentu di wilayah adat selama periode tertentu untuk memulihkan populasi ikan dan terumbu karang</li><li><strong>Subak (Bali):</strong> Sistem irigasi sawah adat yang mengatur distribusi air secara adil ke semua petani berdasarkan aturan adat dan ritual keagamaan</li><li><strong>Ulos (Batak, Sumatera Utara):</strong> Kain tenun tradisional yang diberikan dalam upacara adat sebagai simbol kasih sayang, doa, dan penghormatan antar anggota keluarga</li></ul></div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Praktik kearifan lokal yang berfungsi <strong>langsung</strong> sebagai mekanisme pelestarian sumber daya alam dan ekosistem adalah …</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Sasi Laut — karena secara langsung melindungi dan memulihkan populasi biota laut</li><li class="pgk-item"><span class="pgk-check"></span>B. Subak — karena mengatur penggunaan air secara berkelanjutan untuk pertanian</li><li class="pgk-item"><span class="pgk-check"></span>C. Ulos — karena menjaga tradisi dan nilai budaya masyarakat Batak</li><li class="pgk-item"><span class="pgk-check"></span>D. Ketiganya sama-sama berfungsi sebagai mekanisme pelestarian ekosistem</li></ul>`
+  },
+  // ── 31 ── Makhluk Hidup | PG Kategori | L1
+  { id:31, type:'pgk-cat', el:'Makhluk Hidup', lv:'L1', errata:false,
+    cp: CP.mkhlk7, materi:'Klasifikasi Sistem Organ Tubuh Manusia',
+    indikator:'Disajikan diagram sistem organ tubuh manusia. Siswa dapat <strong>mengklasifikasikan</strong> tiga organ ke dalam sistem pernapasan atau peredaran darah yang benar.',
+    kunci:{rows:['Paru-paru','Jantung','Diafragma'], cols:['Sistem Pernapasan','Sistem Peredaran Darah'], ans:['Sistem Pernapasan','Sistem Peredaran Darah','Sistem Pernapasan']},
+    soal:`<div class="stimulus"><div class="stim-head">Organ-organ Tubuh Manusia</div><div class="stim-content"><ul><li><strong>Paru-paru:</strong> Tempat pertukaran gas oksigen (O₂) dan karbon dioksida (CO₂) antara darah dan udara</li><li><strong>Jantung:</strong> Organ berotot yang memompa darah ke seluruh tubuh melalui pembuluh darah</li><li><strong>Diafragma:</strong> Otot berbentuk kubah di bawah paru-paru yang membantu proses menghirup dan menghembuskan napas</li></ul></div></div>
+<p class="hint-cat">🗂️ Klasifikasikan setiap organ ke dalam sistem organ yang tepat.</p>
+<p class="q-text">Klasifikasikan setiap organ ke dalam <strong>Sistem Pernapasan</strong> atau <strong>Sistem Peredaran Darah</strong>!</p>
+<div class="matrix-wrap"><table class="mtx"><thead><tr><th>Organ Tubuh</th><th>Sistem Pernapasan</th><th>Sistem Peredaran Darah</th></tr></thead><tbody><tr><td>Paru-paru</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Jantung</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Diafragma</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr></tbody></table></div>`
+  },
+  // ── 32 ── Energi | PG Kategori | L1
+  { id:32, type:'pgk-cat', el:'Energi', lv:'L1', errata:false,
+    cp: CP.energi7, materi:'Sifat Cahaya pada Berbagai Benda',
+    indikator:'Disajikan tiga benda. Siswa dapat <strong>mengklasifikasikan</strong> setiap benda berdasarkan kemampuannya terhadap cahaya: memantulkan dengan baik atau menyerap cahaya.',
+    kunci:{rows:['Cermin datar','Batu hitam kasar','Permukaan air tenang'], cols:['Memantulkan Cahaya dengan Baik','Menyerap Cahaya'], ans:['Memantulkan Cahaya dengan Baik','Menyerap Cahaya','Memantulkan Cahaya dengan Baik']},
+    soal:`<div class="stimulus"><div class="stim-head">Tiga Benda dan Sifatnya terhadap Cahaya</div><div class="stim-content"><ul><li><strong>Cermin datar:</strong> Permukaan sangat halus dan mengkilap, memiliki lapisan perak di belakang kaca</li><li><strong>Batu hitam kasar:</strong> Warna gelap, permukaan tidak rata dan kasar, diletakkan di bawah sinar matahari terasa panas</li><li><strong>Permukaan air tenang:</strong> Tidak bergelombang, bisa terlihat pantulan pohon dan langit di atasnya</li></ul></div></div>
+<p class="hint-cat">🗂️ Klasifikasikan setiap benda berdasarkan sifatnya terhadap cahaya.</p>
+<p class="q-text">Klasifikasikan setiap benda: <strong>Memantulkan Cahaya dengan Baik</strong> atau <strong>Menyerap Cahaya</strong>!</p>
+<div class="matrix-wrap"><table class="mtx"><thead><tr><th>Benda</th><th>Memantulkan Cahaya dengan Baik</th><th>Menyerap Cahaya</th></tr></thead><tbody><tr><td>Cermin datar</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Batu hitam kasar</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Permukaan air tenang</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr></tbody></table></div>`
+  },
+  // ── 33 ── Sosial | PG Kategori | L1
+  { id:33, type:'pgk-cat', el:'Masyarakat & Sosial', lv:'L1', errata:false,
+    cp: CP.sos8, materi:'Produsen vs. Konsumen',
+    indikator:'Disajikan tiga pelaku ekonomi. Siswa dapat <strong>mengklasifikasikan</strong> setiap pelaku sebagai Produsen atau Konsumen.',
+    kunci:{rows:['Pengrajin batik membuat kain','Siswa membeli sepatu baru','Pabrik sepatu memproduksi sepatu'], cols:['Produsen','Konsumen'], ans:['Produsen','Konsumen','Produsen']},
+    soal:`<div class="stimulus"><div class="stim-head">Tiga Pelaku Ekonomi</div><div class="stim-content"><ul><li><strong>Bu Ratna:</strong> Seorang pengrajin batik di Pekalongan yang setiap hari membuat dan menjual kain batik hasil karyanya sendiri</li><li><strong>Dika:</strong> Seorang siswa kelas 6 yang baru saja membeli sepatu baru untuk dipakai ke sekolah</li><li><strong>PT Maju Jaya:</strong> Sebuah pabrik sepatu yang memproduksi ribuan pasang sepatu setiap harinya untuk dijual ke toko-toko</li></ul></div></div>
+<p class="hint-cat">🗂️ Klasifikasikan setiap pelaku ekonomi ke dalam kategori yang tepat.</p>
+<p class="q-text">Klasifikasikan setiap pelaku ekonomi sebagai <strong>Produsen</strong> atau <strong>Konsumen</strong>!</p>
+<div class="matrix-wrap"><table class="mtx"><thead><tr><th>Pelaku Ekonomi</th><th>Produsen</th><th>Konsumen</th></tr></thead><tbody><tr><td>Bu Ratna (pengrajin batik)</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Dika (siswa membeli sepatu)</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>PT Maju Jaya (pabrik sepatu)</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr></tbody></table></div>`
+  },
+  // ── 34 ── Keterampilan Proses | PG Kategori | L3
+  { id:34, type:'pgk-cat', el:'Keterampilan Proses', lv:'L3', errata:false,
+    cp: CP.proses4, materi:'Metode Pencatatan Data Ilmiah',
+    indikator:'Disajikan tiga cara pencatatan hasil pengamatan pertumbuhan tanaman. Siswa dapat <strong>mengklasifikasikan</strong> setiap cara sebagai Efektif atau Kurang Efektif untuk keperluan analisis data ilmiah.',
+    kunci:{rows:['Tabel angka harian','Narasi panjang deskriptif','Grafik batang dari data'], cols:['Efektif untuk Analisis','Kurang Efektif untuk Analisis'], ans:['Efektif untuk Analisis','Kurang Efektif untuk Analisis','Efektif untuk Analisis']},
+    soal:`<div class="stimulus"><div class="stim-head">Tiga Cara Pencatatan Pengamatan Pertumbuhan Tanaman</div><div class="stim-content"><ul><li><strong>Cara 1:</strong> Mencatat tinggi tanaman (dalam cm) ke dalam tabel setiap hari selama 2 minggu: Hari 1=3cm, Hari 2=4.5cm, dst.</li><li><strong>Cara 2:</strong> Menulis cerita panjang setiap hari: "Hari ini tanamannya kelihatan lebih tinggi dari kemarin, warnanya juga sedikit lebih hijau, daunnya bertambah satu helai..."</li><li><strong>Cara 3:</strong> Membuat grafik batang dari data tinggi tanaman yang sudah dikumpulkan selama 2 minggu</li></ul></div></div>
+<p class="hint-cat">🗂️ Klasifikasikan setiap cara pencatatan berdasarkan keefektifannya untuk analisis data.</p>
+<p class="q-text">Klasifikasikan setiap cara pencatatan: <strong>Efektif</strong> atau <strong>Kurang Efektif</strong> untuk analisis data ilmiah!</p>
+<div class="matrix-wrap"><table class="mtx"><thead><tr><th>Cara Pencatatan</th><th>Efektif untuk Analisis</th><th>Kurang Efektif untuk Analisis</th></tr></thead><tbody><tr><td>Cara 1 — Tabel angka harian</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Cara 2 — Narasi panjang deskriptif</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Cara 3 — Grafik batang dari data</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr></tbody></table></div>`
+  },
+  // ── 35 ── Bumi | PG Kategori | L1
+  { id:35, type:'pgk-cat', el:'Bumi & Alam Semesta', lv:'L1', errata:false,
+    cp: CP.bumi6, materi:'Tata Surya — Planet Dalam dan Planet Luar',
+    indikator:'Disajikan diagram tata surya dengan Sabuk Asteroid. Siswa dapat <strong>mengklasifikasikan</strong> tiga planet sebagai Planet Dalam atau Planet Luar berdasarkan posisinya terhadap Sabuk Asteroid.',
+    kunci:{rows:['Merkurius','Saturnus','Mars'], cols:['Planet Dalam','Planet Luar'], ans:['Planet Dalam','Planet Luar','Planet Dalam']},
+    soal:`<div class="stimulus"><div class="stim-head">Susunan Tata Surya dan Sabuk Asteroid</div><div class="stim-content"><p style="font-size:.78rem;">Urutan planet dari Matahari: Merkurius, Venus, Bumi, Mars | <strong>Sabuk Asteroid</strong> | Yupiter, Saturnus, Uranus, Neptunus</p><p style="margin-top:5px;font-size:.78rem;"><strong>Planet Dalam:</strong> planet yang orbitnya berada di antara Matahari dan Sabuk Asteroid.<br><strong>Planet Luar:</strong> planet yang orbitnya berada di luar Sabuk Asteroid.</p></div></div>
+<p class="hint-cat">🗂️ Klasifikasikan setiap planet berdasarkan posisinya terhadap Sabuk Asteroid.</p>
+<p class="q-text">Klasifikasikan setiap planet sebagai <strong>Planet Dalam</strong> atau <strong>Planet Luar</strong>!</p>
+<div class="matrix-wrap"><table class="mtx"><thead><tr><th>Planet</th><th>Planet Dalam</th><th>Planet Luar</th></tr></thead><tbody><tr><td>Merkurius</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Saturnus</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr><tr><td>Mars</td><td><span class="radio-circle"></span></td><td><span class="radio-circle"></span></td></tr></tbody></table></div>`
+  },
+  // ── 36 ── Keterampilan Proses | PG Tunggal | L3
+  { id:36, type:'pg', el:'Keterampilan Proses', lv:'L3', errata:false,
+    cp: CP.proses6, materi:'Jenis Peta untuk Berbagai Kebutuhan',
+    indikator:'Disajikan tiga tugas berbeda yang memerlukan peta. Siswa dapat <strong>menentukan</strong> jenis peta yang paling tepat untuk menyelesaikan Tugas A (navigasi rute).',
+    kunci:'A',
+    soal:`<div class="stimulus"><div class="stim-head">Tiga Tugas yang Memerlukan Peta Berbeda</div><div class="stim-content"><ul><li><strong>Tugas A:</strong> Mira perlu pergi dari rumahnya ke perpustakaan kota menggunakan angkutan umum, melewati jalan-jalan di kota</li><li><strong>Tugas B:</strong> Raka sedang mengerjakan laporan tentang penyebaran kerajaan-kerajaan Hindu-Buddha di Jawa</li><li><strong>Tugas C:</strong> Kelompok hiking ingin mengetahui ketinggian dan bentuk medan pegunungan Bromo</li></ul></div></div>
+<p class="q-text">Jenis peta yang <strong>paling tepat</strong> digunakan Mira untuk menyelesaikan Tugas A adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Peta jalan (peta navigasi) — menampilkan rute, jalan, dan transportasi umum</li><li class="opt-item"><span class="opt-letter">B</span>Peta sejarah — menampilkan persebaran kerajaan dan wilayah di masa lalu</li><li class="opt-item"><span class="opt-letter">C</span>Peta topografi — menampilkan ketinggian wilayah dalam kontur</li><li class="opt-item"><span class="opt-letter">D</span>Peta iklim — menampilkan pola curah hujan dan suhu di berbagai wilayah</li></ol>`
+  },
+  // ── 37 ── Keterampilan Proses | PG Kompleks | L3
+  { id:37, type:'pgk', el:'Keterampilan Proses', lv:'L3', errata:false,
+    cp: CP.proses7, materi:'Format Komunikasi Ilmiah yang Tepat',
+    indikator:'Disajikan konteks presentasi hasil penyelidikan kepada tiga audiens berbeda. Siswa dapat <strong>memilih lebih dari satu</strong> format yang paling tepat untuk audiens warga sekitar sekolah.',
+    kunci:['A','D'],
+    soal:`<div class="stimulus"><div class="stim-head">Presentasi Hasil Penyelidikan: Kualitas Udara di Sekitar Sekolah</div><div class="stim-content">Kelompok IPAS kelas 6 melakukan penyelidikan kualitas udara di lingkungan sekolah. Mereka akan mempresentasikan hasilnya kepada tiga audiens berbeda:<ul><li><strong>Audiens 1:</strong> Warga sekitar sekolah (orang tua, pedagang, masyarakat umum) — rata-rata tidak berlatar belakang ilmiah</li><li><strong>Audiens 2:</strong> Juri Olimpiade Sains Nasional (peneliti dan akademisi)</li><li><strong>Audiens 3:</strong> Adik kelas 3 SD yang masih kecil dan suka gambar</li></ul></div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Format komunikasi yang <strong>paling tepat</strong> untuk Audiens 1 (warga sekitar sekolah) adalah …</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Poster bergambar dengan penjelasan singkat menggunakan bahasa sehari-hari yang mudah dipahami</li><li class="pgk-item"><span class="pgk-check"></span>B. Makalah ilmiah berisi tabel data statistik, metodologi, dan referensi penelitian</li><li class="pgk-item"><span class="pgk-check"></span>C. Presentasi PowerPoint dengan 50 slide grafik dan analisis regresi data</li><li class="pgk-item"><span class="pgk-check"></span>D. Video pendek berdurasi 3 menit dengan narasi sederhana dan animasi gambar</li></ul>`
+  },
+  // ── 38 ── Sosial | PG Tunggal | L1
+  { id:38, type:'pg', el:'Masyarakat & Sosial', lv:'L1', errata:false,
+    cp: CP.sos9, materi:'Konsep Kelangkaan dalam Ekonomi',
+    indikator:'Disajikan fenomena kenaikan harga daging sapi menjelang Lebaran akibat pasokan berkurang dan permintaan meningkat. Siswa dapat <strong>mengidentifikasi</strong> istilah ekonomi yang paling tepat untuk kondisi tersebut.',
+    kunci:'C',
+    soal:`<div class="stimulus"><div class="stim-head">Fenomena Harga Daging Sapi Menjelang Lebaran</div><div class="stim-content">Setiap tahun menjelang Hari Raya Idul Fitri, harga daging sapi di pasar tradisional naik drastis. Hal ini terjadi karena:<ul><li>Pasokan sapi dari peternak berkurang (banyak peternak tidak siap memenuhi permintaan)</li><li>Permintaan masyarakat melonjak sangat tinggi untuk kebutuhan memasak hidangan Lebaran</li><li>Harga yang biasanya Rp 120.000/kg naik menjadi Rp 180.000/kg</li></ul></div></div>
+<p class="q-text">Istilah ekonomi yang <strong>paling tepat</strong> untuk menggambarkan kondisi harga daging sapi menjelang Lebaran tersebut adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Inflasi — kenaikan harga semua barang dan jasa secara umum dan berkelanjutan</li><li class="opt-item"><span class="opt-letter">B</span>Resesi — penurunan aktivitas ekonomi dalam jangka waktu tertentu</li><li class="opt-item"><span class="opt-letter">C</span>Kelangkaan — kondisi ketidakseimbangan antara ketersediaan terbatas dan permintaan yang tinggi</li><li class="opt-item"><span class="opt-letter">D</span>Monopoli — penguasaan pasar oleh satu pihak sehingga menentukan harga sepihak</li></ol>`
+  },
+  // ── 39 ── Sosial | PG Kompleks | L2
+  { id:39, type:'pgk', el:'Masyarakat & Sosial', lv:'L2', errata:false,
+    cp: CP.sos10, materi:'Sumber Sejarah Tertulis',
+    indikator:'Disajikan gambar empat benda. Siswa dapat <strong>memilih lebih dari satu</strong> benda yang termasuk kategori sumber sejarah tertulis.',
+    kunci:['B','C'],
+    soal:`<div class="stimulus"><div class="stim-head">Empat Benda Peninggalan Sejarah</div><div class="stim-content"><ul><li><strong>Benda A:</strong> Keris pusaka milik Pangeran Diponegoro, terbuat dari besi pamor, tanpa prasasti atau tulisan</li><li><strong>Benda B:</strong> Prasasti Yupa (abad ke-4 M) — tiang batu dari Kerajaan Kutai yang berisi tulisan Sansekerta tentang upacara dan raja yang berkuasa</li><li><strong>Benda C:</strong> Buku catatan harian (diary) pejuang kemerdekaan berisi tulisan tangan pengalaman berjuang</li><li><strong>Benda D:</strong> Foto hitam-putih suasana proklamasi kemerdekaan 1945 tanpa teks</li></ul></div></div>
+<p class="hint">☑ Pilih <strong>lebih dari satu</strong> jawaban yang benar.</p>
+<p class="q-text">Benda yang termasuk <strong>sumber sejarah tertulis</strong> adalah …</p>
+<ul class="pgk-list"><li class="pgk-item"><span class="pgk-check"></span>A. Keris pusaka Pangeran Diponegoro</li><li class="pgk-item"><span class="pgk-check"></span>B. Prasasti Yupa — mengandung tulisan/teks kuno yang dapat dibaca</li><li class="pgk-item"><span class="pgk-check"></span>C. Buku catatan harian pejuang — berisi tulisan tangan yang memuat informasi sejarah</li><li class="pgk-item"><span class="pgk-check"></span>D. Foto hitam-putih proklamasi kemerdekaan tanpa teks</li></ul>`
+  },
+  // ── 40 ── Keterampilan Proses | PG Tunggal | L3
+  { id:40, type:'pg', el:'Keterampilan Proses', lv:'L3', errata:false,
+    cp: CP.proses8, materi:'Refleksi & Perbaikan Prosedur Eksperimen',
+    indikator:'Disajikan kasus eksperimen yang bermasalah (sendok pengaduk berbeda ukuran). Siswa dapat <strong>menentukan</strong> langkah refleksi dan perbaikan yang paling tepat untuk meningkatkan validitas eksperimen.',
+    kunci:'C',
+    soal:`<div class="stimulus"><div class="stim-head">Kasus: Eksperimen Kelarutan Garam yang Bermasalah</div><div class="stim-content">Kelompok Adi menguji kecepatan larut garam dalam tiga kondisi suhu air: panas, hangat, dan dingin. Setelah selesai, mereka menyadari bahwa:<ul><li>Garam diaduk menggunakan sendok yang berbeda ukuran untuk tiap gelas (besar, sedang, kecil)</li><li>Kesimpulan yang dihasilkan berbeda-beda dan tidak konsisten</li></ul>Akibatnya, mereka tidak yakin apakah perbedaan kecepatan larut disebabkan oleh suhu air atau oleh perbedaan ukuran sendok pengaduk.</div></div>
+<p class="q-text">Langkah refleksi dan perbaikan yang <strong>paling tepat</strong> untuk meningkatkan validitas eksperimen di atas adalah …</p>
+<ol class="opt-list"><li class="opt-item"><span class="opt-letter">A</span>Menambah jumlah pengulangan percobaan tanpa mengubah prosedur apa pun</li><li class="opt-item"><span class="opt-letter">B</span>Mengganti garam dengan jenis garam yang berbeda merek dan ukuran kristal</li><li class="opt-item"><span class="opt-letter">C</span>Mengulangi eksperimen dengan menggunakan sendok pengaduk yang sama ukuran dan bentuknya untuk semua perlakuan</li><li class="opt-item"><span class="opt-letter">D</span>Mengubah semua variabel (suhu air, jenis garam, dan sendok) secara bersamaan agar lebih efisien</li></ol>`
+  },
+];
+
+// ════════════════════════════════════
+//  LOOKUP TABLES
+// ════════════════════════════════════
+const EL_CLASS = {
+  'Makhluk Hidup': 'el-mkhlk',
+  'Energi': 'el-energi',
+  'Bumi & Alam Semesta': 'el-bumi',
+  'Masyarakat & Sosial': 'el-sos',
+  'Keterampilan Proses': 'el-proses'
+};
+
+const TYPE_LABEL = { 'pg':'Pilihan Ganda', 'pgk':'PG Kompleks', 'pgk-cat':'PG Kategori' };
+
+function kunciDisplay(soal) {
+  if (soal.type === 'pg') {
+    return `<div class="kunci-val">${soal.kunci}</div>`;
+  } else if (soal.type === 'pgk') {
+    return `<div class="kunci-multi">${soal.kunci.join('<br>')}</div>`;
+  } else {
+    const k = soal.kunci;
+    let html = '<div class="kunci-cat-table">';
+    k.rows.forEach((r, i) => {
+      const label = r.length > 14 ? r.substring(0,14)+'…' : r;
+      html += `<div class="kunci-cat-row"><span class="kunci-cat-num">${i+1}.</span><span style="font-size:.62rem;">${k.ans[i]}</span></div>`;
+    });
+    html += '</div>';
+    return html;
+  }
+}
+
+function proporsiCells(type) {
+  if (type === 'pgk-cat') {
+    return `<div class="proporsi-inner" style="grid-template-columns:1fr;">
+      <div class="prop-sub" style="border:none;"><div class="prop-letter" style="font-size:.58rem;">Multi Kategori</div><div class="prop-val">—</div></div>
+    </div>`;
+  }
+  return `<div class="proporsi-inner">
+    <div class="prop-sub"><div class="prop-letter">A</div><div class="prop-val">—</div></div>
+    <div class="prop-sub"><div class="prop-letter">B</div><div class="prop-val">—</div></div>
+    <div class="prop-sub"><div class="prop-letter">C</div><div class="prop-val">—</div></div>
+    <div class="prop-sub"><div class="prop-letter">D</div><div class="prop-val">—</div></div>
+  </div>`;
+}
+
+// ════════════════════════════════════
+//  RENDER
+// ════════════════════════════════════
+let current = 0;
+
+function render(idx) {
+  const s = SOAL[idx];
+  const elClass = EL_CLASS[s.el] || 'el-proses';
+  const typeLabel = TYPE_LABEL[s.type] || s.type.toUpperCase();
+  const errataBadge = s.errata ? '<span class="errata-flag">⚠ Errata</span>' : '';
+  const kelompok = s.id <= 20 ? 'Kelompok 1 — Sesi 1' : 'Kelompok 2 — Sesi 2';
+
+  const html = `
+  <div class="kartu-title">KARTU SOAL ${typeLabel.toUpperCase()}${errataBadge}</div>
+
+  <div class="sekolah-info">
+    <div>
+      <div class="sekolah-row"><span class="sekolah-lbl">Sekolah</span><span class="sekolah-val">: SD Muhammadiyah 01 Kukusan</span></div>
+      <div class="sekolah-row"><span class="sekolah-lbl">Fase/Kelas</span><span class="sekolah-val">: C / VI (Enam)</span></div>
+      <div class="sekolah-row"><span class="sekolah-lbl">Kurikulum</span><span class="sekolah-val">: Merdeka</span></div>
+    </div>
+    <div>
+      <div class="sekolah-row"><span class="sekolah-lbl">Mata Pelajaran</span><span class="sekolah-val">: IPAS</span></div>
+      <div class="sekolah-row"><span class="sekolah-lbl">Tahun Ajaran</span><span class="sekolah-val">: 2025/2026</span></div>
+      <div class="sekolah-row"><span class="sekolah-lbl">Kelompok Soal</span><span class="sekolah-val">: ${kelompok}</span></div>
+    </div>
+  </div>
+
+  <div class="kartu-body">
+    <!-- LEFT -->
+    <div class="left-col">
+      <div class="left-sec">
+        <div class="left-sec-label">Capaian Pembelajaran</div>
+        <div class="left-sec-body"><span class="el-badge ${elClass}">${s.el}</span><br>${s.cp}</div>
+      </div>
+      <div class="left-sec">
+        <div class="left-sec-label">Materi</div>
+        <div class="left-sec-body">${s.materi}</div>
+      </div>
+      <div class="left-sec">
+        <div class="left-sec-label">Indikator Soal</div>
+        <div class="left-sec-body">${s.indikator}</div>
+      </div>
+    </div>
+
+    <!-- MID -->
+    <div class="mid-col">
+      <div class="mid-sec">
+        <div class="mid-lbl">Nomor</div>
+        <div class="nomor-val">${s.id}</div>
+      </div>
+      <div class="mid-sec" style="flex:1;">
+        <div class="mid-lbl">Kunci</div>
+        ${kunciDisplay(s)}
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-col">
+      <div class="soal-label">Soal</div>
+      <div class="soal-body">${s.soal}</div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-cell">
+      <div class="stat-top">Digunakan untuk</div>
+      <div class="stat-val">Ujian Sekolah</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-top">Tanggal</div>
+      <div class="stat-val">7 Mei 2026</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-top">Jumlah Siswa</div>
+      <div class="stat-val">—</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-top">Kompleksitas</div>
+      <div class="stat-val lg">${s.lv}</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-top">Daya Pembeda</div>
+      <div class="stat-val">—</div>
+    </div>
+    <div class="stat-cell stat-proporsi">
+      <div class="stat-top">Proporsi Jawaban</div>
+      ${proporsiCells(s.type)}
+    </div>
+    <div class="stat-cell">
+      <div class="stat-top">Ket.</div>
+      <div class="stat-val">${s.errata ? '⚠' : ''}</div>
+    </div>
+  </div>`;
+
+  document.getElementById('kartu-el').innerHTML = html;
+
+  // Update controls
+  const n = idx + 1;
+  document.getElementById('curr-num').textContent = n;
+  document.getElementById('counter-display').textContent = `${n} / ${SOAL.length}`;
+  document.getElementById('counter-display2').textContent = `${n} / ${SOAL.length}`;
+  document.getElementById('curr-type-info').textContent = typeLabel;
+  document.getElementById('curr-elemen-info').innerHTML = `<span class="el-badge ${elClass}">${s.el}</span>`;
+
+  const prevBtns = [document.getElementById('btn-prev'), document.getElementById('btn-prev2')];
+  const nextBtns = [document.getElementById('btn-next'), document.getElementById('btn-next2')];
+  prevBtns.forEach(b => b.disabled = idx === 0);
+  nextBtns.forEach(b => b.disabled = idx === SOAL.length - 1);
+
+  document.querySelectorAll('.dot').forEach((d, i) => {
+    d.classList.toggle('active', i === idx);
+  });
+
+  document.querySelector('.kartu-wrap').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function nav(dir) {
+  const newIdx = current + dir;
+  if (newIdx < 0 || newIdx >= SOAL.length) return;
+  current = newIdx;
+  render(current);
+}
+
+function goTo(idx) {
+  current = idx;
+  render(current);
+}
+
+function buildDots() {
+  const container = document.getElementById('dots-nav');
+  SOAL.forEach((s, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot ' + s.type + (s.errata ? ' errata' : '');
+    d.textContent = s.id;
+    d.title = `Soal ${s.id} — ${s.el} — ${TYPE_LABEL[s.type]}`;
+    d.onclick = () => goTo(i);
+    container.appendChild(d);
+  });
+}
+
+buildDots();
+render(0);
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nav(1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   nav(-1);
+});
+</script>
+</body>
+</html>
