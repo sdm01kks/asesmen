@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kisi-Kisi US IPAS — SDM 01 Kukusan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal:    #0e7490; --teal-md: #1a849a; --teal-lt: #ecfeff; --teal-border: #a5d8e0;
+      --gold:    #f5a623; --gold-dk: #c47f00; --gold-lt: #fdf6e3;
+      --blue:    #1a5aaa; --blue-lt: #edf4fb;
+      --purple:  #6d28d9; --purple-lt:#f5f0ff;
+      --red:     #b91c1c; --red-lt:  #fef2f2;
+      --text:    #0c2931; --muted:   #4a6772;
+      --bg:      #f0fbff; --white:   #fff; --border: #b8dde6;
+      --r:       10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: clamp(13px, 3vw, 15px); scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); }
+
+    /* NAV */
+    .topnav { background: var(--teal); height: 48px; display: flex; align-items: center; padding: 0 20px; gap: 8px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+    .topnav a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .82rem; font-weight: 600; }
+    .topnav a:hover { color: white; text-decoration: underline; }
+    .topnav-sep { color: rgba(255,255,255,.3); }
+    .topnav-cur { color: rgba(255,255,255,.6); font-size: .82rem; font-weight: 600; }
+
+    /* HEADER */
+    .page-header { background: linear-gradient(150deg,#063c4a,#0e7490 60%,#1a8fa8); color: white; padding: 32px 20px 36px; border-bottom: 3px solid var(--gold); position: relative; overflow: hidden; }
+    .page-header::before { content:''; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size: 24px 24px; }
+    .header-inner { position: relative; max-width: 960px; margin: 0 auto; }
+    .header-kode { font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #a5e4f0; margin-bottom: 6px; }
+    .page-header h1 { font-family: 'Fraunces', serif; font-size: clamp(1.4rem,4vw,2rem); font-weight: 700; margin-bottom: 4px; }
+    .page-header h1 em { color: var(--gold); font-style: italic; }
+    .header-meta { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 12px; font-size: .78rem; color: rgba(255,255,255,.8); }
+    .header-meta span::before { content: '·'; margin-right: 6px; opacity: .5; }
+    .header-meta span:first-child::before { display: none; }
+
+    /* MAIN */
+    .main { max-width: 960px; margin: 0 auto; padding: 32px 20px 56px; }
+
+    /* SUMMARY GRID */
+    .summary-section { margin-bottom: 32px; }
+    .section-label { font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 20px; }
+    .stat-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px; }
+    .stat-card-val { font-size: 1.6rem; font-weight: 800; color: var(--teal); line-height: 1; margin-bottom: 2px; }
+    .stat-card-label { font-size: .73rem; color: var(--muted); font-weight: 600; }
+
+    /* DIST BARS */
+    .dist-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+    @media (max-width: 640px) { .dist-grid { grid-template-columns: 1fr; } }
+    .dist-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 16px; }
+    .dist-card h3 { font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .dist-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: .78rem; }
+    .dist-label { width: 130px; font-weight: 600; color: var(--text); flex-shrink: 0; font-size: .74rem; }
+    .dist-bar-wrap { flex: 1; background: var(--bg); border-radius: 4px; height: 8px; overflow: hidden; }
+    .dist-bar { height: 100%; border-radius: 4px; }
+    .dist-count { width: 28px; text-align: right; font-weight: 700; color: var(--muted); font-size: .73rem; }
+
+    /* FORMAT LEGEND */
+    .format-legend { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 16px 18px; margin-bottom: 24px; }
+    .format-legend h3 { font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .format-items { display: flex; flex-wrap: wrap; gap: 10px; }
+    .fmt { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); flex: 1 1 180px; }
+    .fmt-badge { font-size: .68rem; font-weight: 800; letter-spacing: .05em; padding: 2px 7px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 1px; }
+    .fmt-a { background: #e3f0ff; color: #1a5aaa; } .fmt-b { background: #fff0e3; color: #c47f00; } .fmt-c { background: #f0e3ff; color: #6d28d9; }
+    .fmt-text strong { display: block; font-size: .82rem; margin-bottom: 2px; }
+    .fmt-text span { font-size: .74rem; color: var(--muted); }
+
+    /* KELOMPOK HEADER */
+    .kelompok-header { background: var(--teal); color: white; padding: 10px 16px; border-radius: var(--r) var(--r) 0 0; display: flex; align-items: center; justify-content: space-between; margin-top: 28px; }
+    .kelompok-header:first-of-type { margin-top: 0; }
+    .kelompok-title { font-size: .88rem; font-weight: 700; }
+    .kelompok-sub { font-size: .74rem; opacity: .8; }
+    .kelompok-badge { font-size: .7rem; font-weight: 700; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.25); padding: 3px 10px; border-radius: 20px; }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-top: none; border-radius: 0 0 var(--r) var(--r); background: var(--white); margin-bottom: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: .78rem; }
+    thead th { background: var(--teal-lt); color: var(--teal); font-size: .68rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 9px 10px; border-bottom: 2px solid var(--teal-border); text-align: left; white-space: nowrap; }
+    thead th:first-child { width: 36px; text-align: center; }
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--teal-lt); }
+    tbody tr.elemen-divider td { background: #f0fbff; font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--teal-md); padding: 6px 10px; border-bottom: 1px solid var(--teal-border); }
+    tbody td { padding: 10px 10px; vertical-align: top; color: var(--text); line-height: 1.5; }
+    td.no { text-align: center; font-weight: 800; color: var(--teal); font-size: .85rem; width: 36px; }
+    td.cp { font-size: .72rem; color: var(--muted); max-width: 200px; }
+    td.konsep { font-weight: 700; font-size: .8rem; }
+    td.konsep small { display: block; font-weight: 400; color: var(--muted); font-size: .72rem; margin-top: 2px; }
+    td.indikator { max-width: 260px; font-size: .77rem; }
+    td.format { white-space: nowrap; }
+    .badge-fmt { display: inline-block; font-size: .67rem; font-weight: 800; padding: 2px 7px; border-radius: 4px; }
+    td.level .badge-level { display: inline-block; font-size: .67rem; font-weight: 800; padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+    .lv-c2 { background: #dcfce7; color: #166534; }
+    .lv-c3 { background: #fef9c3; color: #854d0e; }
+    .lv-c4 { background: #fee2e2; color: #991b1b; }
+    .skor { text-align: center; font-weight: 700; color: var(--teal); }
+
+    /* ELEMEN TAG */
+    .elemen-tag { display: inline-block; font-size: .65rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; margin-bottom: 3px; }
+    .el-mkhlk  { background: #dcfce7; color: #166534; }
+    .el-energi { background: #fef9c3; color: #854d0e; }
+    .el-bumi   { background: #e3f0ff; color: #1a5aaa; }
+    .el-sos    { background: #f0e3ff; color: #6d28d9; }
+    .el-proses { background: #fee2e2; color: #991b1b; }
+
+    /* GUARDRAILS */
+    .guardrails { background: var(--white); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; margin-top: 24px; }
+    .guardrails h3 { font-size: .78rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .guardrail-item { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+    .guardrail-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .guardrail-title { font-size: .82rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .guardrail-body { font-size: .76rem; color: var(--muted); line-height: 1.6; }
+    .guardrail-ex { display: flex; flex-direction: column; gap: 3px; margin-top: 5px; }
+    .ex-row { font-size: .74rem; display: flex; gap: 6px; align-items: flex-start; }
+    .ex-tag { font-size: .65rem; font-weight: 800; padding: 1px 6px; border-radius: 3px; flex-shrink: 0; margin-top: 1px; }
+    .tag-wrong { background: #fee2e2; color: #991b1b; }
+    .tag-right { background: #dcfce7; color: #166534; }
+
+    /* FOOTER */
+    .site-footer { text-align: center; padding: 24px 16px; font-size: .76rem; color: var(--muted); border-top: 1px solid var(--border); background: var(--white); }
+
+    /* Export button */
+    .export-bar { max-width: 960px; margin: 0 auto 4px; padding: 0 20px; display: flex; justify-content: flex-end; gap: 10px; }
+    .btn-export { display: inline-flex; align-items: center; gap: 7px; background: var(--teal); color: white; border: none; padding: 9px 18px; border-radius: 8px; cursor: pointer; font-size: .82rem; font-weight: 700; font-family: inherit; text-decoration: none; transition: background .15s; }
+    .btn-export:hover { background: var(--teal-md); }
+
+    @media print {
+      .topnav { display: none; }
+      .main { padding: 16px; }
+      body { background: white; }
+      .table-wrap { border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../../">← Beranda</a>
+  <span class="topnav-sep">/</span>
+  <a href="../">Ujian Sekolah</a>
+  <span class="topnav-sep">/</span>
+  <a href="./">IPAS</a>
+  <span class="topnav-sep">/</span>
+  <span class="topnav-cur">Kisi-Kisi</span>
+</nav>
+
+<header class="page-header">
+  <div class="header-inner">
+    <div class="header-kode">Administrasi · Ujian Sekolah Tertulis · TP 2025/2026</div>
+    <h1>Kisi-Kisi <em>IPAS</em></h1>
+    <div class="header-meta">
+      <span>SD Muhammadiyah 01 Kukusan</span>
+      <span>Kelas 6 — Fase C</span>
+      <span>40 Soal · 2 Kelompok Soal</span>
+      <span>7 Mei 2026</span>
+    </div>
+  </div>
+</header>
+
+<div class="export-bar">
+  <a href="kisi-kisi.docx" download class="btn-export">⬇ Unduh Word (.docx)</a>
+</div>
+<main class="main">
+
+  <!-- SUMMARY -->
+  <div class="summary-section">
+    <div class="section-label">Ringkasan Distribusi Soal</div>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-card-val">40</div><div class="stat-card-label">Total Soal</div></div>
+      <div class="stat-card"><div class="stat-card-val">5</div><div class="stat-card-label">Elemen / Domain</div></div>
+      <div class="stat-card"><div class="stat-card-val">18</div><div class="stat-card-label">Soal PG Tunggal (A)</div></div>
+      <div class="stat-card"><div class="stat-card-val">13</div><div class="stat-card-label">Soal PG Kompleks (B)</div></div>
+      <div class="stat-card"><div class="stat-card-val">9</div><div class="stat-card-label">Soal PG Kategori (C)</div></div>
+      <div class="stat-card"><div class="stat-card-val">62</div><div class="stat-card-label">Total Skor Maksimal</div></div>
+    </div>
+    <div class="dist-grid">
+      <div class="dist-card">
+        <h3>Per Elemen</h3>
+        <div class="dist-row"><span class="dist-label">Makhluk Hidup</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:42.5%;background:#16a34a"></div></div><span class="dist-count">7</span></div>
+        <div class="dist-row"><span class="dist-label">Energi</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:42.5%;background:#ca8a04"></div></div><span class="dist-count">7</span></div>
+        <div class="dist-row"><span class="dist-label">Bumi &amp; Alam Semesta</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:37.5%;background:#1a5aaa"></div></div><span class="dist-count">6</span></div>
+        <div class="dist-row"><span class="dist-label">Masyarakat &amp; Sosial</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:67.5%;background:#6d28d9"></div></div><span class="dist-count">11</span></div>
+        <div class="dist-row"><span class="dist-label">Keterampilan Proses</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:55%;background:#b91c1c"></div></div><span class="dist-count">9</span></div>
+      </div>
+      <div class="dist-card">
+        <h3>Per Format Soal</h3>
+        <div class="dist-row"><span class="dist-label">PG Tunggal (A)</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:45%;background:#0e7490"></div></div><span class="dist-count">18</span></div>
+        <div class="dist-row"><span class="dist-label">PG Kompleks (B)</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:32.5%;background:#c47f00"></div></div><span class="dist-count">13</span></div>
+        <div class="dist-row"><span class="dist-label">PG Kategori (C)</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:22.5%;background:#6d28d9"></div></div><span class="dist-count">9</span></div>
+      </div>
+      <div class="dist-card">
+        <h3>Per Level Kognitif</h3>
+        <div class="dist-row"><span class="dist-label">Pemahaman (C2)</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:35%;background:#16a34a"></div></div><span class="dist-count">14</span></div>
+        <div class="dist-row"><span class="dist-label">Aplikasi (C3)</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:30%;background:#ca8a04"></div></div><span class="dist-count">12</span></div>
+        <div class="dist-row"><span class="dist-label">Analisis/Penalaran (C4)</span><div class="dist-bar-wrap"><div class="dist-bar" style="width:35%;background:#b91c1c"></div></div><span class="dist-count">14</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMAT LEGEND -->
+  <div class="format-legend">
+    <h3>Legenda Format Soal</h3>
+    <div class="format-items">
+      <div class="fmt"><span class="fmt-badge fmt-a">Tipe A</span><div class="fmt-text"><strong>PG Tunggal</strong><span>Pilih satu jawaban benar dari 4 pilihan. Skor: 1 poin.</span></div></div>
+      <div class="fmt"><span class="fmt-badge fmt-b">Tipe B</span><div class="fmt-text"><strong>PG Kompleks</strong><span>Pilih satu atau lebih jawaban benar. Skor: 2 poin (penuh jika semua benar).</span></div></div>
+      <div class="fmt"><span class="fmt-badge fmt-c">Tipe C</span><div class="fmt-text"><strong>PG Kategori</strong><span>Klasifikasikan setiap item ke kategori yang tepat. Skor: 2 poin.</span></div></div>
+    </div>
+  </div>
+
+  <!-- ═══ KELOMPOK SOAL 1 (Sesi 1) ═══ -->
+  <div class="kelompok-header">
+    <div><div class="kelompok-title">Kelompok Soal 1 — Sesi 1</div><div class="kelompok-sub">Soal 1–20</div></div>
+    <span class="kelompok-badge">Elemen: Makhluk Hidup, Energi, Bumi &amp; Sosial</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Elemen</th>
+          <th>CP Fase C (Ringkasan)</th>
+          <th>Konsep Kunci</th>
+          <th>Indikator Soal</th>
+          <th>Format</th>
+          <th>Level</th>
+          <th>Skor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="elemen-divider"><td colspan="8">Makhluk Hidup &amp; Proses Kehidupan — Soal 1–2</td></tr>
+        <tr>
+          <td class="no">1</td>
+          <td><span class="elemen-tag el-mkhlk">Makhluk Hidup</span></td>
+          <td class="cp">Mendeskripsikan sistem organ tubuh manusia dan dampak kebiasaan hidup terhadap kesehatan organ.</td>
+          <td class="konsep"><strong>Sistem Organ &amp; Risiko Kesehatan</strong><small>Menganalisis faktor risiko kerusakan organ</small></td>
+          <td class="indikator">Disajikan data rekam medis pasien. Siswa dapat <strong>menganalisis</strong> sistem organ yang paling berisiko berdasarkan keseluruhan data klinis dan kebiasaan hidup.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr>
+          <td class="no">2</td>
+          <td><span class="elemen-tag el-mkhlk">Makhluk Hidup</span></td>
+          <td class="cp">Mendeskripsikan hubungan antar komponen ekosistem dan dampak perubahan populasi terhadap keseimbangan ekosistem.</td>
+          <td class="konsep"><strong>Rantai Makanan &amp; Keseimbangan Ekosistem</strong><small>Dampak penurunan populasi predator</small></td>
+          <td class="indikator">Disajikan data populasi ekosistem sawah sebelum dan sesudah perburuan ular. Siswa dapat <strong>memprediksi</strong> dampak paling tepat terhadap keseimbangan ekosistem.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Energi &amp; Perubahannya — Soal 3–4</td></tr>
+        <tr>
+          <td class="no">3</td>
+          <td><span class="elemen-tag el-energi">Energi</span></td>
+          <td class="cp">Mendeskripsikan sifat-sifat cahaya: merambat lurus, dapat dipantulkan, dapat dibiaskan, dan dapat diuraikan.</td>
+          <td class="konsep"><strong>Sifat Cahaya — Pemantulan</strong><small>Mengidentifikasi fenomena pemantulan cahaya</small></td>
+          <td class="indikator">Disajikan empat fenomena cahaya di kehidupan sehari-hari. Siswa dapat <strong>memilih</strong> fenomena yang secara khusus membuktikan sifat cahaya dapat dipantulkan.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr>
+          <td class="no">4</td>
+          <td><span class="elemen-tag el-energi">Energi</span></td>
+          <td class="cp">Mendeskripsikan sumber energi terbarukan dan tidak terbarukan; menganalisis kesesuaian energi dengan kondisi geografis.</td>
+          <td class="konsep"><strong>Energi Terbarukan — Pemilihan Optimal</strong><small>Menentukan energi terbaik berdasarkan data geografis</small></td>
+          <td class="indikator">Disajikan data kondisi geografis desa pesisir lengkap dengan kecepatan angin, paparan sinar matahari, dan jarak sungai. Siswa dapat <strong>menentukan</strong> sumber energi alternatif yang paling optimal.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Bumi &amp; Alam Semesta — Soal 5–6</td></tr>
+        <tr>
+          <td class="no">5</td>
+          <td><span class="elemen-tag el-bumi">Bumi &amp; Alam Semesta</span></td>
+          <td class="cp">Menjelaskan rotasi dan revolusi bumi serta dampaknya: pergantian siang-malam, perbedaan zona waktu, dan pergantian musim.</td>
+          <td class="konsep"><strong>Rotasi Bumi — Perbedaan Waktu</strong><small>Penyebab perbedaan siang-malam antarnegara</small></td>
+          <td class="indikator">Disajikan kasus perbedaan waktu Jakarta dan Los Angeles yang terjadi secara teratur. Siswa dapat <strong>menjelaskan</strong> fenomena tersebut sebagai akibat rotasi bumi pada porosnya.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr>
+          <td class="no">6</td>
+          <td><span class="elemen-tag el-bumi">Bumi &amp; Alam Semesta</span></td>
+          <td class="cp">Membaca dan menginterpretasikan peta Indonesia; mengidentifikasi letak geografis provinsi berdasarkan deskripsi.</td>
+          <td class="konsep"><strong>Peta Indonesia — Identifikasi Provinsi</strong><small>Menentukan provinsi berdasarkan deskripsi letak geografis</small></td>
+          <td class="indikator">Disajikan peta Indonesia dengan penanda X dan deskripsi letak geografis (batas-batas wilayah). Siswa dapat <strong>mengidentifikasi</strong> nama provinsi yang dimaksud.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Masyarakat &amp; Kehidupan Sosial — Soal 7–9</td></tr>
+        <tr>
+          <td class="no">7</td>
+          <td><span class="elemen-tag el-sos">Masyarakat &amp; Sosial</span></td>
+          <td class="cp">Mengidentifikasi nilai-nilai perjuangan tokoh sejarah dan relevansinya dalam kehidupan masa kini.</td>
+          <td class="konsep"><strong>Nilai Perjuangan Ki Hajar Dewantara</strong><small>Relevansi nilai pendidikan dalam kehidupan siswa</small></td>
+          <td class="indikator">Disajikan biografi singkat Ki Hajar Dewantara dan ajarannya. Siswa dapat <strong>menerapkan</strong> nilai perjuangan yang paling relevan dalam konteks menghadapi ujian sekolah.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr>
+          <td class="no">8</td>
+          <td><span class="elemen-tag el-sos">Masyarakat &amp; Sosial</span></td>
+          <td class="cp">Mendeskripsikan kearifan lokal masyarakat adat dan dampaknya terhadap pelestarian lingkungan hidup.</td>
+          <td class="konsep"><strong>Kearifan Lokal Dayak</strong><small>Dampak sistem Tembawang dan Adat Bunu terhadap ekosistem</small></td>
+          <td class="indikator">Disajikan dua sistem kearifan lokal masyarakat Dayak. Siswa dapat <strong>menjelaskan</strong> dampak positif jangka panjang penerapan kedua sistem tersebut terhadap keseimbangan ekosistem hutan.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr>
+          <td class="no">9</td>
+          <td><span class="elemen-tag el-sos">Masyarakat &amp; Sosial</span></td>
+          <td class="cp">Membedakan jenis kegiatan ekonomi: produksi, distribusi, dan konsumsi berdasarkan aktivitas pelakunya.</td>
+          <td class="konsep"><strong>Kegiatan Ekonomi — Distribusi</strong><small>Mengidentifikasi dan membedakan jenis kegiatan ekonomi</small></td>
+          <td class="indikator">Disajikan deskripsi aktivitas dua orang (penjahit dan sopir truk). Siswa dapat <strong>mengidentifikasi</strong> jenis kegiatan ekonomi Pak Joko (sopir truk) secara paling tepat.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Keterampilan Proses — Soal 10</td></tr>
+        <tr>
+          <td class="no">10</td>
+          <td><span class="elemen-tag el-proses">Keterampilan Proses</span></td>
+          <td class="cp">Membaca dan menginterpretasikan data dalam tabel; menarik kesimpulan yang valid berdasarkan seluruh data yang tersedia.</td>
+          <td class="konsep"><strong>Kesimpulan Data Eksperimen</strong><small>Menyimpulkan hasil tabel eksperimen pupuk</small></td>
+          <td class="indikator">Disajikan tabel data eksperimen pengaruh jenis pupuk terhadap pertumbuhan kacang hijau (4 perlakuan). Siswa dapat <strong>menyimpulkan</strong> temuan yang paling tepat dan didukung data.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr class="elemen-divider"><td colspan="8">Makhluk Hidup &amp; Proses Kehidupan — Soal 11–12 (PG Kompleks)</td></tr>
+        <tr>
+          <td class="no">11</td>
+          <td><span class="elemen-tag el-mkhlk">Makhluk Hidup</span></td>
+          <td class="cp">Menjelaskan cara penularan penyakit menular dan upaya pencegahannya melalui perilaku hidup bersih dan sehat.</td>
+          <td class="konsep"><strong>Pencegahan Penyakit Menular</strong><small>PHBS yang efektif mencegah flu, ISPA, dan diare</small></td>
+          <td class="indikator">Disajikan tiga jenis penyakit menular di sekolah beserta cara penularannya. Siswa dapat <strong>memilih lebih dari satu</strong> perilaku yang secara langsung dan efektif mencegah penularan ketiga penyakit.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr>
+          <td class="no">12</td>
+          <td><span class="elemen-tag el-mkhlk">Makhluk Hidup</span></td>
+          <td class="cp">Mengidentifikasi komponen biotik dan abiotik dalam suatu ekosistem.</td>
+          <td class="konsep"><strong>Komponen Biotik &amp; Abiotik</strong><small>Membedakan makhluk hidup dari benda mati</small></td>
+          <td class="indikator">Disajikan gambar lingkungan sekolah dengan berbagai komponen (pohon, batu, cacing, kolam, siswa, udara). Siswa dapat <strong>memilih lebih dari satu</strong> komponen yang termasuk komponen biotik.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Energi &amp; Perubahannya — Soal 13–14 (PG Kompleks)</td></tr>
+        <tr>
+          <td class="no">13</td>
+          <td><span class="elemen-tag el-energi">Energi</span></td>
+          <td class="cp">Mendeskripsikan sifat bunyi: dapat merambat melalui berbagai medium (padat, cair, gas).</td>
+          <td class="konsep"><strong>Bunyi Merambat Melalui Benda Padat</strong><small>Identifikasi percobaan yang membuktikan rambatan bunyi di benda padat</small></td>
+          <td class="indikator">Disajikan lima percobaan bunyi dengan medium berbeda. Siswa dapat <strong>memilih lebih dari satu</strong> percobaan yang khusus membuktikan bunyi merambat melalui benda padat.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr>
+          <td class="no">14</td>
+          <td><span class="elemen-tag el-energi">Energi</span></td>
+          <td class="cp">Menganalisis penggunaan energi listrik dalam kehidupan sehari-hari dan menerapkan upaya penghematan energi.</td>
+          <td class="konsep"><strong>Penghematan Energi Listrik</strong><small>Mengidentifikasi kebiasaan yang paling signifikan menghemat listrik</small></td>
+          <td class="indikator">Disajikan data tagihan listrik tinggi sebuah keluarga beserta kebiasaan penggunaan listrik. Siswa dapat <strong>memilih lebih dari satu</strong> kebiasaan baru yang memberikan penghematan paling signifikan.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Bumi &amp; Alam Semesta — Soal 15 (PG Kompleks)</td></tr>
+        <tr>
+          <td class="no">15</td>
+          <td><span class="elemen-tag el-bumi">Bumi &amp; Alam Semesta</span></td>
+          <td class="cp">Membedakan akibat rotasi bumi (siang-malam, zona waktu) dari akibat revolusi bumi (pergantian musim, perbedaan panjang siang-malam).</td>
+          <td class="konsep"><strong>Rotasi Bumi — Berbagai Fenomena</strong><small>Membedakan fenomena rotasi dan revolusi bumi</small></td>
+          <td class="indikator">Disajikan lima fenomena astronomi. Siswa dapat <strong>memilih lebih dari satu</strong> fenomena yang disebabkan oleh rotasi bumi pada porosnya.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Keterampilan Proses — Soal 16 (PG Kompleks)</td></tr>
+        <tr>
+          <td class="no">16</td>
+          <td><span class="elemen-tag el-proses">Keterampilan Proses</span></td>
+          <td class="cp">Merumuskan pertanyaan investigasi yang tepat berdasarkan observasi dan fenomena yang diamati.</td>
+          <td class="konsep"><strong>Merumuskan Pertanyaan Investigasi</strong><small>Pertanyaan yang relevan untuk menyelidiki penyebab layu tanaman</small></td>
+          <td class="indikator">Disajikan kasus tanaman layu di tempat gelap meskipun disiram rutin. Siswa dapat <strong>memilih lebih dari satu</strong> pertanyaan investigasi yang tepat dan relevan untuk menyelidiki penyebabnya.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr class="elemen-divider"><td colspan="8">Energi (Kategori) — Soal 17</td></tr>
+        <tr>
+          <td class="no">17</td>
+          <td><span class="elemen-tag el-energi">Energi</span></td>
+          <td class="cp">Membedakan sumber energi terbarukan (dapat diperbaharui secara alami) dan sumber energi tidak terbarukan.</td>
+          <td class="konsep"><strong>Klasifikasi Sumber Energi</strong><small>Terbarukan vs. Tidak Terbarukan</small></td>
+          <td class="indikator">Disajikan tiga sumber energi (gas alam, panas bumi, minyak bumi). Siswa dapat <strong>mengklasifikasikan</strong> setiap sumber energi sebagai Terbarukan atau Tidak Terbarukan.</td>
+          <td class="format"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Masyarakat &amp; Sosial (Kategori) — Soal 18</td></tr>
+        <tr>
+          <td class="no">18</td>
+          <td><span class="elemen-tag el-sos">Masyarakat &amp; Sosial</span></td>
+          <td class="cp">Mengidentifikasi dan membedakan tiga jenis kegiatan ekonomi: produksi, distribusi, dan konsumsi.</td>
+          <td class="konsep"><strong>Klasifikasi Kegiatan Ekonomi</strong><small>Produksi, Distribusi, Konsumsi</small></td>
+          <td class="indikator">Disajikan tiga aktivitas sehari-hari (petani panen, sopir truk, ibu memasak). Siswa dapat <strong>mengklasifikasikan</strong> setiap aktivitas ke dalam jenis kegiatan ekonomi yang tepat.</td>
+          <td class="format"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Keterampilan Proses (Kategori) — Soal 19–20</td></tr>
+        <tr>
+          <td class="no">19</td>
+          <td><span class="elemen-tag el-proses">Keterampilan Proses</span></td>
+          <td class="cp">Mengevaluasi langkah-langkah penyelidikan ilmiah berdasarkan prinsip keterampilan proses sains yang benar.</td>
+          <td class="konsep"><strong>Evaluasi Langkah Ilmiah</strong><small>Sesuai atau Tidak Sesuai prinsip ilmiah</small></td>
+          <td class="indikator">Disajikan tiga langkah penyelidikan ilmiah siswa. Siswa dapat <strong>mengklasifikasikan</strong> setiap langkah sebagai Sesuai atau Tidak Sesuai dengan prinsip keterampilan proses ilmiah.</td>
+          <td class="format"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr>
+          <td class="no">20</td>
+          <td><span class="elemen-tag el-proses">Keterampilan Proses</span></td>
+          <td class="cp">Memilih cara penyajian data yang paling tepat sesuai jenis dan tujuan penyajian data.</td>
+          <td class="konsep"><strong>Pemilihan Cara Penyajian Data</strong><small>Membandingkan vs. Menunjukkan tren</small></td>
+          <td class="indikator">Disajikan tiga cara penyajian data (dua diagram batang, satu grafik garis). Siswa dapat <strong>mengklasifikasikan</strong> setiap cara penyajian ke fungsi yang paling sesuai: Membandingkan Data atau Menunjukkan Tren.</td>
+          <td class="format"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══ KELOMPOK SOAL 2 (Sesi 2) ═══ -->
+  <div class="kelompok-header" style="margin-top:32px;">
+    <div><div class="kelompok-title">Kelompok Soal 2 — Sesi 2</div><div class="kelompok-sub">Soal 21–40</div></div>
+    <span class="kelompok-badge">Elemen: Bumi, Sosial, Makhluk Hidup, Energi &amp; Keterampilan Proses</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Elemen</th>
+          <th>CP Fase C (Ringkasan)</th>
+          <th>Konsep Kunci</th>
+          <th>Indikator Soal</th>
+          <th>Format</th>
+          <th>Level</th>
+          <th>Skor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="elemen-divider"><td colspan="8">Bumi &amp; Alam Semesta — Soal 21</td></tr>
+        <tr>
+          <td class="no">21</td>
+          <td><span class="elemen-tag el-bumi">Bumi &amp; Alam Semesta</span></td>
+          <td class="cp">Mengidentifikasi kondisi geografis wilayah dan mengaitkannya dengan mata pencaharian penduduk setempat.</td>
+          <td class="konsep"><strong>Kondisi Geografis &amp; Mata Pencaharian</strong><small>Kesesuaian pekerjaan dengan topografi pegunungan</small></td>
+          <td class="indikator">Disajikan peta kondisi geografis tiga wilayah (pegunungan, pesisir, dataran rendah). Siswa dapat <strong>menentukan</strong> mata pencaharian yang paling sesuai dengan karakteristik Wilayah A (pegunungan).</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Masyarakat &amp; Kehidupan Sosial — Soal 22–24</td></tr>
+        <tr>
+          <td class="no">22</td>
+          <td><span class="elemen-tag el-sos">Masyarakat &amp; Sosial</span></td>
+          <td class="cp">Mengidentifikasi nilai-nilai perjuangan pahlawan dan menerapkannya dalam konteks kehidupan sehari-hari.</td>
+          <td class="konsep"><strong>Nilai Perjuangan Pahlawan Daerah</strong><small>Relevansi nilai pantang menyerah di era digital</small></td>
+          <td class="indikator">Disajikan gambar monumen pahlawan daerah beserta nilai perjuangannya. Siswa dapat <strong>menerapkan</strong> nilai yang paling relevan dalam konteks kehidupan akademik era digital.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr>
+          <td class="no">23</td>
+          <td><span class="elemen-tag el-sos">Masyarakat &amp; Sosial</span></td>
+          <td class="cp">Mendeskripsikan keberagaman budaya Indonesia dan pengakuan internasional terhadap warisan budaya tak benda.</td>
+          <td class="konsep"><strong>Warisan Budaya UNESCO</strong><small>Budaya Indonesia yang telah diakui UNESCO</small></td>
+          <td class="indikator">Disajikan beberapa contoh budaya Indonesia dalam konteks kebhinekaan. Siswa dapat <strong>mengidentifikasi</strong> budaya yang telah resmi mendapat pengakuan UNESCO sebagai Warisan Budaya Tak Benda Dunia.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr>
+          <td class="no">24</td>
+          <td><span class="elemen-tag el-sos">Masyarakat &amp; Sosial</span></td>
+          <td class="cp">Mendeskripsikan rantai distribusi dan peran pelaku dalam menyalurkan barang dari produsen ke konsumen.</td>
+          <td class="konsep"><strong>Rantai Distribusi — Peran Distributor</strong><small>Mengidentifikasi pelaku distribusi grosir</small></td>
+          <td class="indikator">Disajikan rantai distribusi beras dari sawah ke meja makan dengan enam pelaku. Siswa dapat <strong>mengidentifikasi</strong> pelaku yang berperan paling tepat sebagai distributor.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Keterampilan Proses — Soal 25</td></tr>
+        <tr>
+          <td class="no">25</td>
+          <td><span class="elemen-tag el-proses">Keterampilan Proses</span></td>
+          <td class="cp">Mengidentifikasi variabel bebas, variabel terikat, dan variabel kontrol dalam sebuah rancangan eksperimen.</td>
+          <td class="konsep"><strong>Variabel Eksperimen</strong><small>Variabel bebas, terikat, dan kontrol</small></td>
+          <td class="indikator">Disajikan rancangan eksperimen pengaruh cahaya matahari terhadap pertumbuhan tanaman dengan tiga kondisi. Siswa dapat <strong>mengidentifikasi</strong> variabel bebas, terikat, dan kontrol secara berurutan.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">1</td>
+        </tr>
+
+        <tr class="elemen-divider"><td colspan="8">Makhluk Hidup &amp; Proses Kehidupan — Soal 26–27 (PG Kompleks)</td></tr>
+        <tr>
+          <td class="no">26</td>
+          <td><span class="elemen-tag el-mkhlk">Makhluk Hidup</span></td>
+          <td class="cp">Mendeskripsikan hubungan pola makan bergizi seimbang dengan kesehatan dan pencegahan penyakit.</td>
+          <td class="konsep"><strong>Penyakit &amp; Pola Makan Bergizi</strong><small>Pencegahan anemia dan rabun senja melalui gizi</small></td>
+          <td class="indikator">Disajikan empat jenis penyakit (anemia, TBC, diare, rabun senja) beserta penyebabnya. Siswa dapat <strong>memilih lebih dari satu</strong> penyakit yang risikonya dapat dikurangi secara efektif melalui pola makan bergizi seimbang.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr>
+          <td class="no">27</td>
+          <td><span class="elemen-tag el-mkhlk">Makhluk Hidup</span></td>
+          <td class="cp">Menganalisis dampak berbagai tindakan manusia terhadap keseimbangan ekosistem dan upaya pelestariannya.</td>
+          <td class="konsep"><strong>Dampak Tindakan Manusia terhadap Ekosistem</strong><small>Membedakan tindakan yang melestarikan dan merusak hutan</small></td>
+          <td class="indikator">Disajikan empat tindakan manusia terhadap ekosistem hutan tropis Indonesia. Siswa dapat <strong>memilih lebih dari satu</strong> tindakan yang memberikan dampak positif dalam menjaga atau memulihkan keseimbangan ekosistem hutan.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Energi &amp; Perubahannya — Soal 28 (PG Kompleks)</td></tr>
+        <tr>
+          <td class="no">28</td>
+          <td><span class="elemen-tag el-energi">Energi</span></td>
+          <td class="cp">Mendeskripsikan cara kerja alat musik dan sumber bunyi yang dihasilkan (getaran senar, kolom udara, membran).</td>
+          <td class="konsep"><strong>Sumber Bunyi Alat Musik</strong><small>Getaran senar dan getaran kolom udara</small></td>
+          <td class="indikator">Disajikan gambar empat alat musik (gitar, seruling, drum, rebab). Siswa dapat <strong>memilih lebih dari satu</strong> alat musik yang menghasilkan bunyi melalui getaran senar atau getaran kolom udara.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Bumi &amp; Alam Semesta — Soal 29 (PG Kompleks)</td></tr>
+        <tr>
+          <td class="no">29</td>
+          <td><span class="elemen-tag el-bumi">Bumi &amp; Alam Semesta</span></td>
+          <td class="cp">Mendeskripsikan perubahan iklim dan upaya mitigasi yang dapat dilakukan di tingkat individu maupun komunitas.</td>
+          <td class="konsep"><strong>Mitigasi Perubahan Iklim</strong><small>Aktivitas yang mengurangi emisi gas rumah kaca</small></td>
+          <td class="indikator">Disajikan konteks data konsentrasi CO₂ atmosfer dan berbagai aktivitas mitigasi. Siswa dapat <strong>memilih lebih dari satu</strong> aktivitas yang secara langsung berkontribusi pada mitigasi perubahan iklim.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Masyarakat &amp; Kehidupan Sosial — Soal 30 (PG Kompleks)</td></tr>
+        <tr>
+          <td class="no">30</td>
+          <td><span class="elemen-tag el-sos">Masyarakat &amp; Sosial</span></td>
+          <td class="cp">Mengidentifikasi praktik kearifan lokal Nusantara dan menjelaskan fungsinya sebagai mekanisme pelestarian sumber daya alam.</td>
+          <td class="konsep"><strong>Kearifan Lokal sebagai Pelestarian SDA</strong><small>Sasi Laut, Subak, dan Ulos</small></td>
+          <td class="indikator">Disajikan tiga sistem kearifan lokal (Sasi Laut, Subak, Ulos). Siswa dapat <strong>memilih lebih dari satu</strong> praktik yang berfungsi langsung sebagai mekanisme pelestarian sumber daya alam dan ekosistem.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr class="elemen-divider"><td colspan="8">Makhluk Hidup (Kategori) — Soal 31</td></tr>
+        <tr>
+          <td class="no">31</td>
+          <td><span class="elemen-tag el-mkhlk">Makhluk Hidup</span></td>
+          <td class="cp">Mengidentifikasi dan mengelompokkan organ-organ tubuh ke dalam sistem organ yang tepat (pernapasan dan peredaran darah).</td>
+          <td class="konsep"><strong>Klasifikasi Sistem Organ Tubuh</strong><small>Sistem Pernapasan vs. Sistem Peredaran Darah</small></td>
+          <td class="indikator">Disajikan diagram sistem organ tubuh manusia. Siswa dapat <strong>mengklasifikasikan</strong> tiga organ (paru-paru, jantung, diafragma) ke dalam sistem pernapasan atau peredaran darah yang benar.</td>
+          <td class="format"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Energi &amp; Perubahannya (Kategori) — Soal 32</td></tr>
+        <tr>
+          <td class="no">32</td>
+          <td><span class="elemen-tag el-energi">Energi</span></td>
+          <td class="cp">Membedakan benda-benda yang memantulkan cahaya dengan baik dari benda yang menyerap atau tidak memantulkan cahaya.</td>
+          <td class="konsep"><strong>Sifat Cahaya pada Berbagai Benda</strong><small>Memantulkan vs. Menyerap Cahaya</small></td>
+          <td class="indikator">Disajikan tiga benda (cermin datar, batu hitam kasar, permukaan air tenang). Siswa dapat <strong>mengklasifikasikan</strong> setiap benda berdasarkan kemampuannya terhadap cahaya: memantulkan dengan baik atau menyerap.</td>
+          <td class="format"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Masyarakat &amp; Kehidupan Sosial (Kategori) — Soal 33</td></tr>
+        <tr>
+          <td class="no">33</td>
+          <td><span class="elemen-tag el-sos">Masyarakat &amp; Sosial</span></td>
+          <td class="cp">Membedakan pelaku ekonomi: produsen (menghasilkan/memproses barang-jasa) dan konsumen (menggunakan barang-jasa).</td>
+          <td class="konsep"><strong>Produsen vs. Konsumen</strong><small>Mengklasifikasikan pelaku ekonomi</small></td>
+          <td class="indikator">Disajikan tiga pelaku ekonomi (pengrajin batik, siswa membeli sepatu, pabrik sepatu). Siswa dapat <strong>mengklasifikasikan</strong> setiap pelaku sebagai Produsen atau Konsumen.</td>
+          <td class="format"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Keterampilan Proses (Kategori) — Soal 34</td></tr>
+        <tr>
+          <td class="no">34</td>
+          <td><span class="elemen-tag el-proses">Keterampilan Proses</span></td>
+          <td class="cp">Mengevaluasi metode pencatatan hasil pengamatan dan menentukan cara pencatatan yang efektif untuk analisis data ilmiah.</td>
+          <td class="konsep"><strong>Metode Pencatatan Data Ilmiah</strong><small>Efektif vs. Kurang Efektif untuk analisis data</small></td>
+          <td class="indikator">Disajikan tiga cara pencatatan hasil pengamatan pertumbuhan tanaman. Siswa dapat <strong>mengklasifikasikan</strong> setiap cara sebagai Efektif atau Kurang Efektif untuk keperluan analisis data ilmiah.</td>
+          <td class="format"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr class="elemen-divider"><td colspan="8">Bumi &amp; Alam Semesta (Kategori) — Soal 35</td></tr>
+        <tr>
+          <td class="no">35</td>
+          <td><span class="elemen-tag el-bumi">Bumi &amp; Alam Semesta</span></td>
+          <td class="cp">Mengidentifikasi anggota tata surya dan posisi planet-planet terhadap Sabuk Asteroid.</td>
+          <td class="konsep"><strong>Tata Surya — Planet Dalam dan Planet Luar</strong><small>Klasifikasi berdasarkan posisi terhadap Sabuk Asteroid</small></td>
+          <td class="indikator">Disajikan diagram tata surya dengan Sabuk Asteroid. Siswa dapat <strong>mengklasifikasikan</strong> tiga planet (Merkurius, Saturnus, Mars) sebagai Planet Dalam atau Planet Luar berdasarkan posisinya.</td>
+          <td class="format"><span class="badge-fmt fmt-c">Tipe C</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">2</td>
+        </tr>
+
+        <tr class="elemen-divider"><td colspan="8">Campuran (PG Tunggal &amp; PG Kompleks) — Soal 36–40</td></tr>
+        <tr>
+          <td class="no">36</td>
+          <td><span class="elemen-tag el-proses">Keterampilan Proses</span></td>
+          <td class="cp">Mengidentifikasi jenis-jenis peta dan memilih jenis peta yang paling tepat sesuai kebutuhan tugas.</td>
+          <td class="konsep"><strong>Jenis Peta untuk Berbagai Kebutuhan</strong><small>Memilih peta yang tepat untuk tugas berbeda</small></td>
+          <td class="indikator">Disajikan tiga tugas berbeda yang memerlukan peta (rute, sejarah, topografi). Siswa dapat <strong>menentukan</strong> jenis peta yang paling tepat untuk menyelesaikan Tugas A (navigasi rute).</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr>
+          <td class="no">37</td>
+          <td><span class="elemen-tag el-proses">Keterampilan Proses</span></td>
+          <td class="cp">Memilih format komunikasi ilmiah yang paling tepat sesuai dengan karakteristik audiens yang dituju.</td>
+          <td class="konsep"><strong>Komunikasi Hasil Penyelidikan</strong><small>Format komunikasi yang tepat untuk audiens umum</small></td>
+          <td class="indikator">Disajikan konteks presentasi hasil penyelidikan kepada tiga audiens berbeda (warga umum, juri ilmiah, siswa kelas 3). Siswa dapat <strong>memilih lebih dari satu</strong> format yang paling tepat untuk audiens warga sekitar sekolah.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr>
+          <td class="no">38</td>
+          <td><span class="elemen-tag el-sos">Masyarakat &amp; Sosial</span></td>
+          <td class="cp">Mendeskripsikan konsep kelangkaan sebagai kondisi ketidakseimbangan antara ketersediaan terbatas dan permintaan tinggi.</td>
+          <td class="konsep"><strong>Kelangkaan dalam Ekonomi</strong><small>Mengidentifikasi konsep kelangkaan dari fenomena harga</small></td>
+          <td class="indikator">Disajikan fenomena kenaikan harga daging sapi menjelang Lebaran akibat pasokan berkurang dan permintaan meningkat. Siswa dapat <strong>mengidentifikasi</strong> istilah ekonomi yang paling tepat untuk kondisi tersebut.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c2">C2 Pemahaman</span></td>
+          <td class="skor">1</td>
+        </tr>
+        <tr>
+          <td class="no">39</td>
+          <td><span class="elemen-tag el-sos">Masyarakat &amp; Sosial</span></td>
+          <td class="cp">Membedakan jenis sumber sejarah: sumber primer, sumber tertulis, dan artefak fisik tanpa teks.</td>
+          <td class="konsep"><strong>Sumber Sejarah Tertulis</strong><small>Membedakan sumber tertulis dari artefak fisik</small></td>
+          <td class="indikator">Disajikan gambar empat benda (keris, prasasti, buku catatan pejuang, foto). Siswa dapat <strong>memilih lebih dari satu</strong> benda yang termasuk kategori sumber sejarah tertulis.</td>
+          <td class="format"><span class="badge-fmt fmt-b">Tipe B</span></td>
+          <td class="level"><span class="badge-level lv-c3">C3 Aplikasi</span></td>
+          <td class="skor">2</td>
+        </tr>
+        <tr>
+          <td class="no">40</td>
+          <td><span class="elemen-tag el-proses">Keterampilan Proses</span></td>
+          <td class="cp">Mengevaluasi kesalahan prosedur eksperimen dan menentukan langkah perbaikan yang paling tepat untuk meningkatkan validitas.</td>
+          <td class="konsep"><strong>Refleksi &amp; Perbaikan Eksperimen</strong><small>Langkah perbaikan yang meningkatkan validitas kesimpulan</small></td>
+          <td class="indikator">Disajikan kasus eksperimen yang bermasalah (sendok pengaduk berbeda ukuran). Siswa dapat <strong>menentukan</strong> langkah refleksi dan perbaikan yang paling tepat untuk meningkatkan validitas eksperimen.</td>
+          <td class="format"><span class="badge-fmt fmt-a">Tipe A</span></td>
+          <td class="level"><span class="badge-level lv-c4">C4 Analisis</span></td>
+          <td class="skor">1</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- GUARDRAILS -->
+  <div class="guardrails" style="margin-top:28px;">
+    <h3>Guardrails — Penjaga Esensi Soal IPAS</h3>
+    <div class="guardrail-item">
+      <div class="guardrail-title">🔬 Stimulus Berbasis Data &amp; Konteks Nyata</div>
+      <div class="guardrail-body">
+        Setiap soal IPAS harus berangkat dari stimulus konkret: data rekam medis, tabel eksperimen, peta wilayah, gambar ekosistem, atau konteks kehidupan nyata. Siswa tidak boleh diminta menjawab dari hafalan semata.
+        <div class="guardrail-ex">
+          <div class="ex-row"><span class="ex-tag tag-wrong">✕</span> "Sebutkan sifat-sifat cahaya!" tanpa konteks atau fenomena.</div>
+          <div class="ex-row"><span class="ex-tag tag-right">✓</span> Disajikan empat fenomena cahaya di kehidupan sehari-hari → siswa mengidentifikasi fenomena yang membuktikan sifat pemantulan.</div>
+        </div>
+      </div>
+    </div>
+    <div class="guardrail-item">
+      <div class="guardrail-title">⚖️ Keseimbangan Elemen &amp; Level Kognitif</div>
+      <div class="guardrail-body">
+        Distribusi soal mencakup seluruh elemen IPAS Fase C. Target level kognitif: C2 ±35%, C3 ±30%, C4 ±35%. Hindari soal yang hanya menuntut hafalan — pastikan ada soal yang meminta analisis data, evaluasi prosedur, dan penerapan konsep.
+      </div>
+    </div>
+    <div class="guardrail-item">
+      <div class="guardrail-title">🌏 Konteks Lokal &amp; Relevan Siswa Kelas 6</div>
+      <div class="guardrail-body">
+        Gunakan konteks yang dekat dengan kehidupan siswa: ekosistem sawah, kearifan lokal Nusantara, kegiatan ekonomi sehari-hari, sejarah pahlawan daerah, dan fenomena alam yang dapat diamati langsung.
+      </div>
+    </div>
+    <div class="guardrail-item">
+      <div class="guardrail-title">🧪 Keterampilan Proses — Tidak Sekadar Teori</div>
+      <div class="guardrail-body">
+        Soal keterampilan proses harus menguji kemampuan nyata: merumuskan pertanyaan, merancang eksperimen, mengidentifikasi variabel, membaca data, menyimpulkan, dan mengomunikasikan hasil. Bukan menghafal definisi "langkah metode ilmiah".
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <strong>SD Muhammadiyah 01 Kukusan</strong> · Kisi-Kisi Ujian Sekolah IPAS · TP 2025/2026<br>
+  <span style="margin-top:3px;display:block;">Dikelola oleh Guru IPAS Kelas 6 · Terakhir diperbarui: April 2026</span>
+</footer>
+
+</body>
+</html>

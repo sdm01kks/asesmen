@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soal & Kunci Jawaban — US IPAS · SDM 01 Kukusan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal:    #0e7490; --teal-md: #1a849a; --teal-lt: #ecfeff; --teal-border: #a5d8e0;
+      --gold:    #f5a623; --gold-dk: #c47f00; --gold-lt: #fdf6e3;
+      --blue:    #1a5aaa; --blue-lt: #edf4fb;
+      --text:    #0c2931; --muted:   #4a6772;
+      --bg:      #f0fbff; --white:   #fff; --border: #b8dde6;
+      --r: 10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: clamp(13px, 3vw, 15px); scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); }
+
+    .topnav { background: var(--teal); height: 48px; display: flex; align-items: center; padding: 0 20px; gap: 8px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+    .topnav a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .82rem; font-weight: 600; }
+    .topnav a:hover { color: white; text-decoration: underline; }
+    .topnav-sep { color: rgba(255,255,255,.3); }
+    .topnav-cur { color: rgba(255,255,255,.6); font-size: .82rem; font-weight: 600; }
+
+    .page-header { background: linear-gradient(150deg,#063c4a,#0e7490 60%,#1a8fa8); color: white; padding: 32px 20px 36px; border-bottom: 3px solid var(--gold); position: relative; overflow: hidden; }
+    .page-header::before { content:''; position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px); background-size:24px 24px; }
+    .header-inner { position:relative; max-width:820px; margin:0 auto; display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+    .header-left {}
+    .header-kode { font-size:.7rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#a5e4f0; margin-bottom:6px; }
+    .page-header h1 { font-family:'Fraunces',serif; font-size:clamp(1.4rem,4vw,2rem); font-weight:700; margin-bottom:4px; }
+    .page-header h1 em { color:var(--gold); font-style:italic; }
+    .header-meta { display:flex; flex-wrap:wrap; gap:4px 16px; margin-top:10px; font-size:.76rem; color:rgba(255,255,255,.78); }
+    .header-meta span::before { content:'·'; margin-right:6px; opacity:.5; }
+    .header-meta span:first-child::before { display:none; }
+
+    .toggle-kunci-btn { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,.15); border:1.5px solid rgba(255,255,255,.3); color:white; font-size:.82rem; font-weight:700; padding:10px 18px; border-radius:8px; cursor:pointer; transition:background .2s,border-color .2s; white-space:nowrap; flex-shrink:0; margin-top:20px; }
+    .toggle-kunci-btn:hover { background:rgba(255,255,255,.25); }
+    .toggle-kunci-btn.active { background:var(--gold); border-color:var(--gold); color:#1a2000; }
+
+    .sticky-bar { position:sticky; top:48px; z-index:90; background:var(--white); border-bottom:1px solid var(--border); padding:10px 20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; box-shadow:0 2px 8px rgba(0,0,0,.06); }
+    .sticky-label { font-size:.78rem; font-weight:600; color:var(--muted); }
+    .sticky-right { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .btn-dl-sm { display:flex; align-items:center; gap:6px; background:var(--teal-lt); color:var(--teal); border:1.5px solid var(--teal-border); font-size:.78rem; font-weight:700; padding:7px 14px; border-radius:7px; text-decoration:none; }
+    .toggle-btn-sticky { display:flex; align-items:center; gap:7px; background:var(--teal); color:white; border:none; font-size:.78rem; font-weight:700; padding:8px 16px; border-radius:7px; cursor:pointer; transition:background .2s; }
+    .toggle-btn-sticky:hover { background:var(--teal-md); }
+    .toggle-btn-sticky.active { background:var(--gold-dk); }
+
+    .main { max-width: 820px; margin: 0 auto; padding: 28px 20px 60px; }
+
+    .kelompok-div { background:var(--teal); color:white; padding:10px 16px; border-radius:var(--r) var(--r) 0 0; margin-top:28px; display:flex; align-items:center; justify-content:space-between; }
+    .kelompok-div:first-of-type { margin-top:0; }
+    .kelompok-title { font-weight:700; font-size:.88rem; }
+    .kelompok-sub { font-size:.74rem; opacity:.8; }
+    .kelompok-badge { font-size:.7rem; font-weight:700; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.25); padding:3px 10px; border-radius:20px; }
+
+    .soal-item { background:var(--white); border:1px solid var(--border); border-radius:var(--r); margin-bottom:14px; overflow:hidden; }
+    .soal-item:first-of-type { border-radius:0 0 var(--r) var(--r); }
+
+    .soal-header { display:flex; align-items:center; gap:12px; padding:12px 16px; border-bottom:1px solid var(--border); background:var(--teal-lt); }
+    .soal-num { width:32px; height:32px; border-radius:8px; background:var(--teal); color:white; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.88rem; flex-shrink:0; }
+    .soal-meta { flex:1; display:flex; flex-wrap:wrap; gap:5px; align-items:center; }
+    .tag-elemen { font-size:.65rem; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:2px 7px; border-radius:4px; }
+    .el-mkhlk  { background:#dcfce7; color:#166534; }
+    .el-energi { background:#fef9c3; color:#854d0e; }
+    .el-bumi   { background:#e3f0ff; color:#1a5aaa; }
+    .el-sos    { background:#f0e3ff; color:#6d28d9; }
+    .el-proses { background:#fee2e2; color:#991b1b; }
+    .tag-fmt { font-size:.65rem; font-weight:700; padding:2px 7px; border-radius:4px; }
+    .fmt-a { background:#e3f0ff; color:#1a5aaa; }
+    .fmt-b { background:#fff0e3; color:#c47f00; }
+    .fmt-c { background:#f0e3ff; color:#6d28d9; }
+    .tag-lv { font-size:.65rem; font-weight:700; padding:2px 7px; border-radius:4px; }
+    .lv-c2 { background:#dcfce7; color:#166534; }
+    .lv-c3 { background:#fef9c3; color:#854d0e; }
+    .lv-c4 { background:#fee2e2; color:#991b1b; }
+    .soal-skor { margin-left:auto; font-size:.72rem; font-weight:800; color:var(--teal); background:var(--teal-lt); border:1px solid var(--teal-border); padding:2px 8px; border-radius:4px; white-space:nowrap; }
+
+    .soal-body { padding:16px 18px; }
+
+    .stimulus { background:#f5fdff; border:1px solid var(--border); border-left:4px solid var(--teal); padding:14px 16px; border-radius:0 6px 6px 0; margin-bottom:14px; }
+    .stim-head { font-size:.72rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); margin-bottom:8px; padding-bottom:6px; border-bottom:1px dashed var(--border); }
+    .stim-body { font-size:.88rem; line-height:1.65; color:var(--text); }
+    .stim-body p { margin-bottom:4px; }
+    .stim-body table { width:100%; border-collapse:collapse; margin:8px 0; font-size:.84rem; }
+    .stim-body table th { background:var(--teal-lt); color:var(--teal); font-size:.7rem; font-weight:800; padding:6px 10px; border:1px solid var(--border); text-align:center; }
+    .stim-body table td { padding:6px 10px; border:1px solid var(--border); text-align:center; }
+    .stim-body table td:first-child { text-align:left; font-weight:500; }
+
+    .img-placeholder { background:#e8f9fd; border:1.5px dashed var(--teal-border); border-radius:6px; padding:20px 16px; text-align:center; margin:10px 0; }
+    .img-placeholder-icon { font-size:1.8rem; margin-bottom:6px; }
+    .img-placeholder-title { font-size:.78rem; font-weight:700; color:var(--teal); margin-bottom:3px; }
+    .img-placeholder-desc { font-size:.72rem; color:var(--muted); }
+
+    .q-text { font-size:.95rem; font-weight:600; color:var(--text); margin-bottom:12px; line-height:1.6; }
+
+    .hint-pgk { font-size:.76rem; background:var(--gold-lt); border-left:3px solid var(--gold); padding:7px 12px; border-radius:0 5px 5px 0; margin-bottom:10px; color:var(--gold-dk); font-weight:600; }
+    .hint-pgc { font-size:.76rem; background:var(--blue-lt); border-left:3px solid var(--blue); padding:7px 12px; border-radius:0 5px 5px 0; margin-bottom:10px; color:var(--blue); font-weight:600; }
+
+    .opt-list { list-style:none; padding:0; display:flex; flex-direction:column; gap:7px; }
+    .opt-item { display:flex; align-items:flex-start; gap:10px; padding:10px 14px; border:1px solid var(--border); border-radius:7px; font-size:.87rem; color:var(--text); line-height:1.5; }
+    .opt-letter { width:24px; height:24px; border-radius:50%; border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:.72rem; font-weight:800; color:var(--muted); flex-shrink:0; }
+    .opt-item.correct { background:#f0faf4; border-color:#2d7a4f; }
+    .opt-item.correct .opt-letter { background:#2d7a4f; border-color:#2d7a4f; color:white; }
+
+    .pgk-opt-list { list-style:none; padding:0; display:flex; flex-direction:column; gap:7px; }
+    .pgk-opt-item { display:flex; align-items:flex-start; gap:10px; padding:10px 14px; border:1px solid var(--border); border-radius:7px; font-size:.87rem; color:var(--text); line-height:1.5; }
+    .pgk-opt-item .opt-check { width:20px; height:20px; border-radius:4px; border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:.65rem; color:white; flex-shrink:0; margin-top:1px; }
+    .pgk-opt-item.correct { background:#f0faf4; border-color:#2d7a4f; }
+    .pgk-opt-item.correct .opt-check { background:#2d7a4f; border-color:#2d7a4f; }
+
+    .matrix-wrap { overflow-x:auto; margin-top:4px; }
+    .matrix-table { width:100%; border-collapse:collapse; font-size:.82rem; }
+    .matrix-table th { background:var(--teal-lt); color:var(--teal); font-size:.7rem; font-weight:800; text-align:center; padding:8px 12px; border:1px solid var(--border); }
+    .matrix-table th:first-child { text-align:left; }
+    .matrix-table td { padding:8px 12px; border:1px solid var(--border); text-align:center; }
+    .matrix-table td:first-child { text-align:left; font-weight:600; }
+    .matrix-table td.ans-cell { background:#f0faf4; color:#166534; font-weight:800; font-size:.78rem; }
+
+    .kunci-section { display:none; margin-top:16px; padding-top:16px; border-top:2px dashed var(--teal-border); }
+    .kunci-section.visible { display:block; }
+    .kunci-head { display:flex; align-items:center; gap:8px; font-size:.72rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); margin-bottom:12px; }
+    .kunci-badge { background:var(--teal); color:white; font-size:.65rem; font-weight:800; padding:2px 8px; border-radius:4px; }
+
+    .kunci-row { background:var(--teal-lt); border:1px solid var(--teal-border); border-radius:7px; padding:10px 14px; margin-bottom:8px; }
+    .kunci-label { font-size:.7rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+    .kunci-value { font-size:.88rem; font-weight:700; color:var(--teal); }
+    .kunci-value .correct-tag { display:inline-flex; align-items:center; gap:4px; background:var(--teal); color:white; font-size:.7rem; padding:2px 7px; border-radius:4px; font-weight:700; margin-right:4px; }
+
+    .pembahasan-box { background:var(--gold-lt); border:1px solid #f5c842; border-radius:7px; padding:12px 14px; margin-top:8px; }
+    .pembahasan-head { font-size:.7rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--gold-dk); margin-bottom:8px; display:flex; gap:6px; align-items:center; }
+    .pembahasan-body { font-size:.84rem; color:var(--text); line-height:1.65; }
+    .pembahasan-body p { margin-bottom:5px; }
+
+    .site-footer { text-align:center; padding:24px 16px; font-size:.76rem; color:var(--muted); border-top:1px solid var(--border); background:var(--white); }
+
+    @media print {
+      .topnav, .sticky-bar { display:none; }
+      .kunci-section { display:block !important; }
+      .main { padding:12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../../">← Beranda</a>
+  <span class="topnav-sep">/</span>
+  <a href="../">Ujian Sekolah</a>
+  <span class="topnav-sep">/</span>
+  <a href="./">IPAS</a>
+  <span class="topnav-sep">/</span>
+  <span class="topnav-cur">Soal &amp; Kunci</span>
+</nav>
+
+<header class="page-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="header-kode">Administrasi · Ujian Sekolah Tertulis · TP 2025/2026</div>
+      <h1>Soal &amp; <em>Kunci Jawaban</em></h1>
+      <div class="header-meta">
+        <span>SD Muhammadiyah 01 Kukusan</span>
+        <span>IPAS — Kelas 6</span>
+        <span>40 Soal · 7 Mei 2026</span>
+      </div>
+    </div>
+    <button class="toggle-kunci-btn" id="toggle-kunci-btn" onclick="toggleKunci()">
+      <span class="btn-icon">🔑</span> <span id="toggle-label">Tampilkan Kunci</span>
+    </button>
+  </div>
+</header>
+
+<div class="sticky-bar">
+  <span class="sticky-label">US IPAS · 40 Soal · Skor Maks: 62</span>
+  <div class="sticky-right">
+    <a href="soal-kunci.docx" download class="btn-dl-sm">⬇ Unduh Word (.docx)</a>
+    <button class="toggle-btn-sticky" id="toggle-btn-sticky" onclick="toggleKunci()">🔑 Tampilkan Kunci</button>
+  </div>
+</div>
+
+<main class="main">
+
+<!-- ══════════════════════════════════════════ SESI 1 ══════════════════════════════════════════ -->
+<div class="kelompok-div">
+  <div><div class="kelompok-title">Sesi 1 — PG Tunggal &amp; PG Kompleks &amp; PG Kategori</div><div class="kelompok-sub">Soal 1–20</div></div>
+  <span class="kelompok-badge">36 poin</span>
+</div>
+
+<!-- Soal 1 -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">1</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-mkhlk">Makhluk Hidup</span>
+      <span class="tag-fmt fmt-a">PG Tunggal</span>
+      <span class="tag-lv lv-c4">C4 Analisis</span>
+    </div>
+    <span class="soal-skor">1 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Data Rekam Medis Pak Rudi</div>
+      <div class="stim-body"><p>Pak Rudi (45 tahun) menjalani pemeriksaan kesehatan tahunan. Catatan medis menunjukkan: merokok 10 batang/hari selama 20 tahun, tidak pernah berolahraga, mengonsumsi makanan tinggi lemak jenuh hampir setiap hari, tekanan darah 155/95 mmHg (di atas normal), dan kadar kolesterol darah tinggi. Bandingkan dengan tetangganya, Pak Ahmad (47 tahun), yang berolahraga 3x seminggu, tidak merokok, dan memiliki tekanan darah normal.</p></div>
+    </div>
+    <p class="q-text">Berdasarkan seluruh data rekam medis Pak Rudi, sistem organ yang paling berisiko mengalami kerusakan serius dalam jangka panjang adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Sistem pencernaan dan sistem ekskresi, karena pola makan tinggi lemak merusak organ pencernaan</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Sistem pernapasan dan sistem peredaran darah, karena rokok merusak paru-paru dan kolesterol tinggi menyumbat pembuluh darah jantung</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Sistem saraf dan sistem endokrin, karena stres kerja mempengaruhi hormon dan fungsi otak</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Sistem kerangka dan sistem otot, karena kurang gerak menyebabkan tulang keropos</li>
+    </ul>
+    <div class="kunci-section" id="k-1">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span> Sistem pernapasan dan peredaran darah</div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Dari data klinis, dua faktor utama Pak Rudi adalah: (1) merokok 20 tahun → toksin rokok merusak jaringan paru-paru secara progresif; (2) kolesterol tinggi + tekanan darah tinggi → plak kolesterol menyumbat arteri koroner dan pembuluh darah. Kombinasi keduanya menyerang langsung sistem pernapasan (paru-paru) dan sistem peredaran darah (jantung dan pembuluh darah). Opsi lain tidak didukung oleh data klinis yang disajikan.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 2 -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">2</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-mkhlk">Makhluk Hidup</span>
+      <span class="tag-fmt fmt-a">PG Tunggal</span>
+      <span class="tag-lv lv-c4">C4 Analisis</span>
+    </div>
+    <span class="soal-skor">1 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Ekosistem Sawah dan Rantai Makanan</div>
+      <div class="stim-body">
+        <div class="img-placeholder"><div class="img-placeholder-icon">🌾</div><div class="img-placeholder-title">Diagram Rantai Makanan Ekosistem Sawah</div><div class="img-placeholder-desc">Padi → Belalang → Katak → Ular → Elang &nbsp;|&nbsp; Padi → Tikus → Ular → Elang</div></div>
+        <p>Data populasi: Padi (10.000 rumpun), Belalang (800 ekor), Tikus (500 → meningkat), Ular (<strong>200 → turun menjadi 20 ekor</strong> akibat perburuan liar), Elang (20 ekor).</p>
+      </div>
+    </div>
+    <p class="q-text">Berdasarkan data penurunan populasi ular dari 200 menjadi 20 ekor, dampak yang paling tepat terhadap keseimbangan ekosistem sawah adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Populasi elang meningkat drastis karena tidak ada kompetitor di puncak rantai makanan</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Populasi tikus meningkat tak terkendali sehingga mengancam hasil panen padi secara langsung</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Populasi belalang menurun karena kehilangan predator alami mereka</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Decomposer berkurang karena berkurangnya bangkai hewan di sawah</li>
+    </ul>
+    <div class="kunci-section" id="k-2">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span> Populasi tikus meningkat tak terkendali</div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Ular adalah predator utama tikus dalam rantai makanan sawah. Ketika ular berkurang drastis (dari 200 → 20 ekor), predasi terhadap tikus menurun tajam. Tikus berkembang biak tidak terkendali dan langsung memangsa padi → ancaman serius pada hasil panen. Opsi A salah karena elang masih membutuhkan ular sebagai mangsa. Opsi C salah karena predator belalang adalah katak, bukan ular secara langsung.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 3 -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">3</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-energi">Energi</span>
+      <span class="tag-fmt fmt-a">PG Tunggal</span>
+      <span class="tag-lv lv-c2">C2 Pemahaman</span>
+    </div>
+    <span class="soal-skor">1 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Fenomena Cahaya di Sekitar Kita</div>
+      <div class="stim-body"><p>Perhatikan empat fenomena berikut:<br>(1) Pensil yang dicelupkan ke dalam gelas berisi air tampak patah/bengkok.<br>(2) Setelah hujan, langit cerah menampilkan busur pelangi berwarna-warni.<br>(3) Saat berdiri di bawah lampu sorot di malam hari, bayangan tubuh terbentuk di lantai.<br>(4) Saat bercermin, wajah kita terlihat jelas di permukaan cermin datar.</p></div>
+    </div>
+    <p class="q-text">Di antara keempat fenomena di atas, peristiwa yang secara khusus membuktikan bahwa cahaya memiliki sifat dapat <strong>DIPANTULKAN</strong> adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Fenomena (1), karena cahaya berbelok saat memasuki medium yang berbeda kerapatannya</li>
+      <li class="opt-item"><span class="opt-letter">B</span>Fenomena (2), karena tetesan air hujan memecah cahaya putih menjadi spektrum warna</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Fenomena (3), karena cahaya merambat lurus sehingga membentuk bayangan gelap</li>
+      <li class="opt-item correct"><span class="opt-letter">D</span>Fenomena (4), karena cahaya dari wajah kita dipantulkan kembali oleh permukaan cermin</li>
+    </ul>
+    <div class="kunci-section" id="k-3">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ D</span> Fenomena (4)</div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Setiap fenomena membuktikan sifat cahaya yang berbeda: (1) pembiasan/refraksi, (2) dispersi/penguraian, (3) merambat lurus, (4) pemantulan/refleksi. Fenomena (4) secara tepat membuktikan pemantulan — cahaya yang dipancarkan wajah mengenai permukaan cermin lalu dipantulkan kembali sehingga bayangan terlihat.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 4 -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">4</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-energi">Energi</span>
+      <span class="tag-fmt fmt-a">PG Tunggal</span>
+      <span class="tag-lv lv-c4">C4 Analisis</span>
+    </div>
+    <span class="soal-skor">1 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Kondisi Geografis Desa Pesisir</div>
+      <div class="stim-body"><p>Desa Angin Ribut terletak di pesisir Selat Madura. Data lingkungan: kecepatan angin rata-rata 7–9 m/s sepanjang tahun (kategori baik untuk turbin), pantai terbuka tanpa penghalang tinggi, jauh dari sungai besar untuk PLTA, rata-rata 8 jam sinar matahari/hari. Pemerintah daerah mengalokasikan dana untuk membangun <strong>satu jenis</strong> pembangkit energi terbarukan.</p></div>
+    </div>
+    <p class="q-text">Berdasarkan seluruh data kondisi geografis Desa Angin Ribut, sumber energi alternatif yang paling optimal dan efisien untuk dikembangkan adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Panel surya (PLTS), karena Indonesia dikenal sebagai negara tropis dengan sinar matahari melimpah</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Pembangkit listrik tenaga angin (PLTB), karena potensi angin pesisir yang kuat, konsisten, dan sesuai spesifikasi turbin</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Pembangkit listrik tenaga air (PLTA), karena desa pesisir selalu dekat dengan sumber air</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Energi biomassa, karena sampah organik dari aktivitas nelayan dapat dimanfaatkan</li>
+    </ul>
+    <div class="kunci-section" id="k-4">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span> PLTB</div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Kecepatan angin 7–9 m/s merupakan kecepatan ideal untuk turbin angin skala menengah, terjadi sepanjang tahun secara konsisten. Data ini secara spesifik mendukung PLTB. PLTS (opsi A) kurang tepat karena meski ada sinar matahari cukup, keunggulan utama desa ini adalah angin. PLTA (opsi C) tidak sesuai karena desa jauh dari sungai besar. Opsi D tidak ada data pendukung yang memadai.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 5 -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">5</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-bumi">Bumi &amp; Alam Semesta</span>
+      <span class="tag-fmt fmt-a">PG Tunggal</span>
+      <span class="tag-lv lv-c2">C2 Pemahaman</span>
+    </div>
+    <span class="soal-skor">1 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Perbedaan Waktu Dua Kota</div>
+      <div class="stim-body"><p>Pada saat yang bersamaan: Jakarta (WIB, UTC+7) menunjukkan pukul 12.00 siang dan matahari bersinar terik di atas kepala, sementara kota Los Angeles, Amerika Serikat (PST, UTC-8) menunjukkan pukul 21.00 malam dan langit gelap gulita. Perbedaan ini terjadi setiap hari secara teratur dan berulang.</p></div>
+    </div>
+    <p class="q-text">Fenomena perbedaan siang dan malam serta zona waktu antara Jakarta dan Los Angeles disebabkan oleh…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Revolusi bumi mengelilingi matahari yang memerlukan waktu 365,25 hari per putaran</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Rotasi bumi pada porosnya sendiri yang menyebabkan setiap bagian permukaan bumi silih berganti menghadap dan membelakangi matahari</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Perbedaan jarak kota Jakarta dan Los Angeles dari garis khatulistiwa bumi</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Pergerakan bulan yang menghalangi cahaya matahari ke sebagian permukaan bumi</li>
+    </ul>
+    <div class="kunci-section" id="k-5">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span> Rotasi bumi</div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Rotasi bumi (berputar pada porosnya, ~24 jam) menyebabkan permukaan bumi bergantian menghadap matahari (siang) dan membelakanginya (malam). Inilah sebab perbedaan zona waktu dan siang-malam. Revolusi bumi (opsi A) menyebabkan pergantian musim. Opsi C dan D tidak benar secara ilmiah.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 6 -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">6</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-bumi">Bumi &amp; Alam Semesta</span>
+      <span class="tag-fmt fmt-a">PG Tunggal</span>
+      <span class="tag-lv lv-c2">C2 Pemahaman</span>
+    </div>
+    <span class="soal-skor">1 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Identifikasi Provinsi pada Peta Indonesia</div>
+      <div class="stim-body">
+        <div class="img-placeholder"><div class="img-placeholder-icon">🗺️</div><div class="img-placeholder-title">Peta Indonesia — Identifikasi Provinsi</div><div class="img-placeholder-desc">Huruf X menandai provinsi di bagian tengah Pulau Sulawesi</div></div>
+        <p>Sebuah huruf <strong>X</strong> menandai satu provinsi yang terletak di bagian tengah Pulau Sulawesi, berbatasan dengan Sulawesi Utara di utara, Sulawesi Selatan dan Sulawesi Barat di selatan, serta Teluk Tomini di bagian timurnya.</p>
+      </div>
+    </div>
+    <p class="q-text">Berdasarkan deskripsi letak geografis dan penanda huruf X pada peta, provinsi yang dimaksud adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Sulawesi Utara</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Sulawesi Tengah</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Sulawesi Selatan</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Gorontalo</li>
+    </ul>
+    <div class="kunci-section" id="k-6">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span> Sulawesi Tengah</div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Deskripsi "bagian tengah Pulau Sulawesi, berbatasan dengan Sulawesi Utara di utara, Sulawesi Selatan dan Sulawesi Barat di selatan, serta Teluk Tomini di timur" merujuk tepat pada Sulawesi Tengah (ibu kota: Palu). Gorontalo terletak di bagian utara Sulawesi dan berbatasan dengan Teluk Tomini di selatan.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 7 -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">7</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-sos">Masyarakat &amp; Sosial</span>
+      <span class="tag-fmt fmt-a">PG Tunggal</span>
+      <span class="tag-lv lv-c3">C3 Aplikasi</span>
+    </div>
+    <span class="soal-skor">1 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Perjuangan Ki Hajar Dewantara</div>
+      <div class="stim-body"><p>Ki Hajar Dewantara (1889–1959) mendirikan Taman Siswa pada tahun 1922 sebagai bentuk perjuangan melawan penjajahan melalui jalur pendidikan. Ajarannya yang terkenal: <em>"Ing ngarsa sung tuladha, ing madya mangun karsa, tut wuri handayani"</em> (di depan memberi teladan, di tengah membangun semangat, di belakang mendorong maju).</p></div>
+    </div>
+    <p class="q-text">Nilai perjuangan Ki Hajar Dewantara yang paling relevan dan langsung dapat diterapkan oleh siswa kelas 6 dalam menghadapi ujian sekolah adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Meninggalkan sekolah negeri dan mendirikan kelompok belajar mandiri tanpa guru</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Berjuang keras dalam belajar karena pendidikan adalah kunci kemajuan bangsa, dan tidak menyerah meskipun soal terasa sulit</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Menulis surat protes kepada kepala sekolah jika merasa soal ujian terlalu sulit</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Bergantung sepenuhnya pada bantuan teman saat menghadapi kesulitan soal</li>
+    </ul>
+    <div class="kunci-section" id="k-7">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span> Berjuang keras dalam belajar</div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Ki Hajar Dewantara tidak menyerah meski dipecat dan justru mendirikan sekolah sendiri — semangat pantang menyerah dalam memperjuangkan pendidikan. Nilai paling relevan bagi siswa adalah semangat belajar keras dan tidak menyerah saat menghadapi kesulitan akademis.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 8 -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">8</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-sos">Masyarakat &amp; Sosial</span>
+      <span class="tag-fmt fmt-a">PG Tunggal</span>
+      <span class="tag-lv lv-c3">C3 Aplikasi</span>
+    </div>
+    <span class="soal-skor">1 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Kearifan Lokal Dayak: Tembawang dan Adat Bunu</div>
+      <div class="stim-body"><p>Masyarakat adat Dayak di Kalimantan Tengah menerapkan dua sistem kearifan lokal: (1) <strong>Tembawang</strong> — hutan adat yang dikelola keluarga turun-temurun dengan larangan membabat habis dan kewajiban menjaga keanekaragaman tanaman, dan (2) <strong>Adat Bunu</strong> — aturan adat yang mewajibkan menanam minimal 5 pohon baru untuk setiap 1 pohon yang ditebang. Sistem ini telah berlangsung ratusan tahun sebelum konsep "pembangunan berkelanjutan" dikenal secara global.</p></div>
+    </div>
+    <p class="q-text">Dampak positif jangka panjang dari penerapan kedua sistem kearifan lokal tersebut terhadap keseimbangan ekosistem hutan adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Mengurangi keanekaragaman hayati karena hutan dipenuhi satu jenis pohon buah yang sama</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Mempertahankan tutupan hutan dan keanekaragaman hayati karena penebangan diimbangi penanaman berlipat</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Meningkatkan produksi kayu komersial sehingga mendorong pertumbuhan ekonomi daerah</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Mencegah bencana alam hanya di wilayah adat saja, tidak berpengaruh di luar wilayah tersebut</li>
+    </ul>
+    <div class="kunci-section" id="k-8">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span> Mempertahankan tutupan hutan</div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Aturan Adat Bunu (5 pohon ditanam per 1 pohon ditebang) memastikan bahwa biomassa hutan tidak berkurang, bahkan bertambah. Tembawang melarang pembabatan habis dan menjaga keanekaragaman jenis tanaman. Kombinasi keduanya mempertahankan tutupan hutan dan biodiversitas secara berkelanjutan.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 9 -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">9</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-sos">Masyarakat &amp; Sosial</span>
+      <span class="tag-fmt fmt-a">PG Tunggal</span>
+      <span class="tag-lv lv-c2">C2 Pemahaman</span>
+    </div>
+    <span class="soal-skor">1 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Aktivitas Ekonomi Ibu Sari dan Pak Joko</div>
+      <div class="stim-body"><p>Ibu Sari seorang penjahit profesional: ia membeli kain dari toko, memotong, dan menjahitnya menjadi pakaian jadi sesuai pesanan pelanggan. Pak Joko bekerja sebagai pengemudi truk: setiap hari ia mengangkut sayuran segar dari petani di Lembang, Jawa Barat ke pasar-pasar besar di Jakarta. Pak Joko <strong>tidak mengubah atau mengolah</strong> sayuran tersebut — hanya memastikan sayuran sampai ke tujuan dalam kondisi baik.</p></div>
+    </div>
+    <p class="q-text">Berdasarkan aktivitas masing-masing, kegiatan ekonomi Pak Joko paling tepat dikategorikan sebagai…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Produksi, karena ia menghasilkan nilai tambah dengan menjaga kualitas sayuran selama perjalanan</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Distribusi, karena ia memindahkan barang dari tempat produsen ke tempat konsumen tanpa mengubah wujudnya</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Konsumsi, karena ia menggunakan bahan bakar dan tenaga untuk menjalankan truknya</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Investasi, karena kepemilikan truk adalah aset yang menghasilkan pendapatan</li>
+    </ul>
+    <div class="kunci-section" id="k-9">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span> Distribusi</div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Distribusi adalah kegiatan menyalurkan barang dari produsen (petani) ke konsumen (pasar) tanpa mengubah wujud barang. Pak Joko tidak memproduksi atau mengolah sayuran — ia hanya memindahkannya. Ibu Sari melakukan produksi karena mengubah kain mentah menjadi pakaian jadi (menghasilkan barang baru).</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 10 -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">10</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-proses">Keterampilan Proses</span>
+      <span class="tag-fmt fmt-a">PG Tunggal</span>
+      <span class="tag-lv lv-c4">C4 Analisis</span>
+    </div>
+    <span class="soal-skor">1 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Data Eksperimen: Pengaruh Jenis Pupuk terhadap Pertumbuhan Tanaman Kacang Hijau</div>
+      <div class="stim-body">
+        <table>
+          <tr><th>Perlakuan</th><th>Tinggi Minggu 1 (cm)</th><th>Tinggi Minggu 2 (cm)</th><th>Tinggi Minggu 4 (cm)</th><th>Hasil Panen (gram)</th></tr>
+          <tr><td>Pupuk Organik</td><td>4</td><td>13</td><td>27</td><td>320</td></tr>
+          <tr><td>Pupuk Anorganik</td><td>5</td><td>16</td><td>25</td><td>280</td></tr>
+          <tr><td>Organik + Anorganik</td><td>4</td><td>15</td><td>31</td><td>380</td></tr>
+          <tr><td>Tanpa Pupuk (Kontrol)</td><td>3</td><td>7</td><td>12</td><td>110</td></tr>
+        </table>
+      </div>
+    </div>
+    <p class="q-text">Berdasarkan seluruh data dalam tabel di atas, kesimpulan yang paling tepat dan didukung oleh data adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Pupuk anorganik adalah yang paling efektif karena menunjukkan pertumbuhan tertinggi pada Minggu 1 dan 2</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Kombinasi pupuk organik dan anorganik menghasilkan pertumbuhan tanaman tertinggi sekaligus panen terbesar dibanding perlakuan lainnya</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Pupuk organik lebih baik dari pupuk anorganik dalam semua aspek pertumbuhan dan hasil panen</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Tanaman tanpa pupuk tidak dapat menghasilkan panen sama sekali karena tidak ada pertumbuhan</li>
+    </ul>
+    <div class="kunci-section" id="k-10">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span> Kombinasi organik + anorganik terbaik</div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Data menunjukkan: Organik+Anorganik → tinggi minggu 4 tertinggi (31 cm) DAN panen terbesar (380 g). Opsi A salah karena pupuk anorganik unggul hanya di minggu 1–2, bukan secara keseluruhan. Opsi C salah karena organik menghasilkan panen lebih tinggi (320 g vs 280 g) tapi tinggi minggu 4 lebih rendah (27 vs 31). Opsi D salah karena tanpa pupuk tetap ada panen 110 g.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 11 — PGK -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">11</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-mkhlk">Makhluk Hidup</span>
+      <span class="tag-fmt fmt-b">PG Kompleks</span>
+      <span class="tag-lv lv-c3">C3 Aplikasi</span>
+    </div>
+    <span class="soal-skor">2 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Penyakit Menular di Sekolah</div>
+      <div class="stim-body"><p>Tiga penyakit yang paling sering menyebar di lingkungan sekolah: (1) <strong>Flu/Influenza</strong> — menular melalui droplet udara saat batuk/bersin, (2) <strong>ISPA</strong> — menular lewat udara dan kontak langsung, (3) <strong>Diare</strong> — menular melalui makanan/minuman yang terkontaminasi. Ketiga penyakit ini dapat dicegah dengan perilaku hidup bersih dan sehat yang konsisten.</p></div>
+    </div>
+    <p class="hint-pgk">☑ Pilih <strong>LEBIH DARI SATU</strong> jawaban yang benar</p>
+    <p class="q-text">Pilih LEBIH DARI SATU perilaku yang secara langsung dan paling efektif mencegah penularan ketiga penyakit tersebut!</p>
+    <ul class="pgk-opt-list">
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>A. Mencuci tangan dengan sabun mengalir sebelum makan, setelah ke toilet, dan setelah bersin</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>B. Menutup mulut dan hidung dengan tisu atau siku saat batuk atau bersin di tempat umum</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>C. Berolahraga rutin 3 kali seminggu untuk menjaga kebugaran fisik</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>D. Mengonsumsi suplemen vitamin setiap pagi sebelum berangkat sekolah</li>
+    </ul>
+    <div class="kunci-section" id="k-11">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ A</span><span class="correct-tag">✓ B</span></div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>A dan B adalah PHBS (Perilaku Hidup Bersih dan Sehat) yang secara langsung memutus rantai penularan ketiga penyakit: cuci tangan mencegah diare (rute fecal-oral); menutup mulut/hidung mencegah penyebaran droplet (flu dan ISPA). Berolahraga (C) dan suplemen vitamin (D) memperkuat imunitas tetapi tidak secara langsung memutus jalur transmisi spesifik ketiga penyakit tersebut.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 12 — PGK -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">12</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-mkhlk">Makhluk Hidup</span>
+      <span class="tag-fmt fmt-b">PG Kompleks</span>
+      <span class="tag-lv lv-c2">C2 Pemahaman</span>
+    </div>
+    <span class="soal-skor">2 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Komponen di Lingkungan Sekolah</div>
+      <div class="stim-body">
+        <div class="img-placeholder"><div class="img-placeholder-icon">🌳</div><div class="img-placeholder-title">Komponen Biotik dan Abiotik di Lingkungan Sekolah</div><div class="img-placeholder-desc">Pohon mangga, batu hias, cacing tanah, kolam air, siswa bermain, udara</div></div>
+        <p>Gambar menampilkan berbagai komponen yang ditemukan di lingkungan SD Muhammadiyah 01 Kukusan.</p>
+      </div>
+    </div>
+    <p class="hint-pgk">☑ Pilih <strong>LEBIH DARI SATU</strong> jawaban yang benar</p>
+    <p class="q-text">Berdasarkan gambar tersebut, pilih LEBIH DARI SATU komponen yang termasuk komponen BIOTIK (makhluk hidup)!</p>
+    <ul class="pgk-opt-list">
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>A. Pohon mangga besar di halaman sekolah</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>B. Batu hias taman yang ditata rapi</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>C. Cacing tanah yang ditemukan di kebun sekolah</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>D. Kolam air di sudut taman</li>
+    </ul>
+    <div class="kunci-section" id="k-12">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ A</span><span class="correct-tag">✓ C</span></div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Komponen biotik = makhluk hidup. Pohon mangga (tumbuhan) dan cacing tanah (hewan) adalah makhluk hidup. Batu hias (benda mati) dan kolam air (benda mati/abiotik) bukan makhluk hidup meskipun air merupakan kebutuhan makhluk hidup.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 13 — PGK -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">13</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-energi">Energi</span>
+      <span class="tag-fmt fmt-b">PG Kompleks</span>
+      <span class="tag-lv lv-c3">C3 Aplikasi</span>
+    </div>
+    <span class="soal-skor">2 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Lima Percobaan Gelombang Bunyi</div>
+      <div class="stim-body"><p>Lima percobaan bunyi: (1) Telinga di ujung meja kayu, ujung lain diketuk → bunyi terdengar jelas. (2) Berenang, mendengar ketukan dinding kolam di dalam air → bunyi terdengar. (3) Berteriak di lapangan terbuka → suara memantul dari gedung bertingkat. (4) Mendengar musik keras dari speaker melalui dinding bata. (5) Berkomunikasi menggunakan telepon kaleng yang dihubungkan benang terentang.</p></div>
+    </div>
+    <p class="hint-pgk">☑ Pilih <strong>LEBIH DARI SATU</strong> jawaban yang benar</p>
+    <p class="q-text">Pilih LEBIH DARI SATU percobaan yang KHUSUS membuktikan bahwa gelombang bunyi dapat merambat melalui benda PADAT!</p>
+    <ul class="pgk-opt-list">
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>A. Percobaan (1): bunyi merambat melalui kayu meja yang padat</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>B. Percobaan (2): bunyi merambat melalui air kolam renang</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>C. Percobaan (3): bunyi merambat melalui udara kemudian dipantulkan gedung</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>D. Percobaan (5): bunyi merambat melalui benang yang terentang</li>
+    </ul>
+    <div class="kunci-section" id="k-13">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ A</span><span class="correct-tag">✓ D</span></div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Percobaan (1): kayu meja = benda padat ✓. Percobaan (5): benang terentang = benda padat ✓. Percobaan (2): air = benda cair. Percobaan (3): udara = benda gas. Percobaan (4): melalui udara + dinding bata, namun dinding hanya penghalang, bukan medium perambatan utama yang sedang diuji.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 14 — PGK -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">14</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-energi">Energi</span>
+      <span class="tag-fmt fmt-b">PG Kompleks</span>
+      <span class="tag-lv lv-c3">C3 Aplikasi</span>
+    </div>
+    <span class="soal-skor">2 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Program Hemat Energi Keluarga</div>
+      <div class="stim-body"><p>Keluarga Pak Budi menerima tagihan listrik Rp 850.000/bulan. Data penggunaan: AC menyala 12 jam/hari (konsumsi terbesar), lampu pijar 60W di 5 ruangan (hidup terus menerus), charger laptop dan HP dibiarkan tertancap 24 jam, dan mesin cuci digunakan setiap hari untuk jumlah pakaian sedikit.</p></div>
+    </div>
+    <p class="hint-pgk">☑ Pilih <strong>LEBIH DARI SATU</strong> jawaban yang benar</p>
+    <p class="q-text">Pilih LEBIH DARI SATU kebiasaan baru yang akan memberikan penghematan energi listrik paling signifikan!</p>
+    <ul class="pgk-opt-list">
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>A. Mengganti seluruh lampu pijar 60W dengan lampu LED 9W yang setara terangnya</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>B. Mencabut charger laptop dan HP dari stopkontak ketika tidak digunakan (mencegah phantom load)</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>C. Mengatur suhu AC lebih tinggi (26–27°C) dan mematikan saat ruangan sudah dingin</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>D. Mengganti warna cat dinding rumah menjadi warna putih agar ruangan terasa lebih terang</li>
+    </ul>
+    <div class="kunci-section" id="k-14">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ A</span><span class="correct-tag">✓ B</span><span class="correct-tag">✓ C</span></div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>A: LED 9W vs pijar 60W → hemat 85% konsumsi lampu. B: phantom load (charger tertancap tanpa gawai) terakumulasi menjadi pemborosan signifikan. C: AC adalah konsumen listrik terbesar — mengurangi intensitas penggunaan berdampak besar. D: mengecat dinding tidak mempengaruhi konsumsi listrik secara langsung — efeknya psikologis saja.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 15 — PGK -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">15</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-bumi">Bumi &amp; Alam Semesta</span>
+      <span class="tag-fmt fmt-b">PG Kompleks</span>
+      <span class="tag-lv lv-c3">C3 Aplikasi</span>
+    </div>
+    <span class="soal-skor">2 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Berbagai Fenomena Astronomi</div>
+      <div class="stim-body"><p>Fenomena astronomi yang diamati manusia: (1) Perbedaan zona waktu antarnegara (Indonesia WIB/WITA/WIT, Amerika PST/EST). (2) Matahari tampak bergerak dari timur ke barat setiap harinya. (3) Indonesia mengalami musim hujan dan musim kemarau yang berganti setiap tahun. (4) Beberapa belahan bumi mengalami perbedaan panjang siang dan malam tergantung musim. (5) Tokyo, Jepang mengalami malam ketika New York, Amerika sedang siang hari.</p></div>
+    </div>
+    <p class="hint-pgk">☑ Pilih <strong>LEBIH DARI SATU</strong> jawaban yang benar</p>
+    <p class="q-text">Pilih LEBIH DARI SATU fenomena yang disebabkan oleh ROTASI bumi pada porosnya!</p>
+    <ul class="pgk-opt-list">
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>A. Fenomena (1): perbedaan zona waktu antarnegara</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>B. Fenomena (2): gerak semu harian matahari dari timur ke barat</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>C. Fenomena (3): pergantian musim hujan dan kemarau di Indonesia</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>D. Fenomena (5): perbedaan siang-malam antara Tokyo dan New York</li>
+    </ul>
+    <div class="kunci-section" id="k-15">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ A</span><span class="correct-tag">✓ B</span><span class="correct-tag">✓ D</span></div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Rotasi bumi (perputaran pada poros, ~24 jam) menyebabkan: perbedaan zona waktu (1), gerak semu harian matahari (2), dan perbedaan siang-malam antarnegara (5). Pergantian musim (3) dan perbedaan panjang siang-malam antar musim (4) disebabkan oleh <em>revolusi</em> bumi mengelilingi matahari ditambah kemiringan sumbu rotasi bumi sebesar 23,5°.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 16 — PGK -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">16</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-proses">Keterampilan Proses</span>
+      <span class="tag-fmt fmt-b">PG Kompleks</span>
+      <span class="tag-lv lv-c4">C4 Analisis</span>
+    </div>
+    <span class="soal-skor">2 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Investigasi: Tanaman Layu Meskipun Disiram</div>
+      <div class="stim-body"><p>Budi memiliki dua pot tanaman serupa: Pot A di dekat jendela (cukup cahaya, tanah gembur) — tumbuh sehat. Pot B di dalam lemari (gelap, tidak ada sirkulasi udara) — disiram sama banyaknya dengan Pot A, namun setelah 2 minggu daun menguning dan layu. Budi bingung karena sudah menyiram secara rutin namun tanaman tetap layu.</p></div>
+    </div>
+    <p class="hint-pgk">☑ Pilih <strong>LEBIH DARI SATU</strong> jawaban yang benar</p>
+    <p class="q-text">Pilih LEBIH DARI SATU pertanyaan investigasi yang tepat dan relevan untuk menyelidiki penyebab layu pada Pot B!</p>
+    <ul class="pgk-opt-list">
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>A. Apakah ketiadaan cahaya menghalangi tanaman melakukan fotosintesis untuk menghasilkan energi?</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>B. Apakah sirkulasi udara yang sangat terbatas di dalam lemari mengakibatkan kadar CO₂ terlalu tinggi bagi tanaman?</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>C. Apakah warna pot Pot B mempengaruhi kemampuan tanaman menyerap air?</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>D. Apakah merk pupuk yang digunakan berbeda antara Pot A dan Pot B?</li>
+    </ul>
+    <div class="kunci-section" id="k-16">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ A</span><span class="correct-tag">✓ B</span></div></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Perbedaan nyata Pot B dari Pot A: gelap (tidak ada cahaya) dan tidak ada sirkulasi udara. Pertanyaan A relevan karena tanaman membutuhkan cahaya untuk fotosintesis — tanpa fotosintesis tidak ada energi untuk pertumbuhan. Pertanyaan B relevan karena sirkulasi udara diperlukan untuk pertukaran gas yang sehat. Pertanyaan C dan D tidak relevan karena warna pot dan pupuk tidak disebutkan berbeda antara Pot A dan B.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 17 — PGK-Cat -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">17</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-energi">Energi</span>
+      <span class="tag-fmt fmt-c">PG Kategori</span>
+      <span class="tag-lv lv-c2">C2 Pemahaman</span>
+    </div>
+    <span class="soal-skor">2 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Klasifikasi Sumber Energi</div>
+      <div class="stim-body"><p>Sumber energi dibedakan menjadi energi <strong>Terbarukan</strong> (dapat diperbaharui secara alami dalam waktu singkat) dan <strong>Tidak Terbarukan</strong> (terbentuk selama jutaan tahun dan akan habis bila terus dieksploitasi).</p></div>
+    </div>
+    <p class="hint-pgc">📊 Klasifikasikan setiap sumber energi ke dalam kategori yang tepat</p>
+    <p class="q-text">Klasifikasikan setiap sumber energi berikut ke dalam kategori yang tepat!</p>
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <tr><th>Sumber Energi</th><th>Energi Terbarukan</th><th>Energi Tidak Terbarukan</th></tr>
+        <tr><td>Gas alam (LPG/LNG)</td><td>○</td><td class="ans-cell">✓ BENAR</td></tr>
+        <tr><td>Energi panas bumi (Geothermal)</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr>
+        <tr><td>Minyak bumi (Petroleum)</td><td>○</td><td class="ans-cell">✓ BENAR</td></tr>
+      </table>
+    </div>
+    <div class="kunci-section" id="k-17">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Gas alam dan minyak bumi terbentuk dari fosil organisme yang terpendam jutaan tahun → tidak terbarukan. Panas bumi (geothermal) berasal dari panas inti bumi yang terus menerus tersedia secara alami → terbarukan. Contoh energi terbarukan lainnya: surya, angin, air, biomassa.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 18 — PGK-Cat -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">18</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-sos">Masyarakat &amp; Sosial</span>
+      <span class="tag-fmt fmt-c">PG Kategori</span>
+      <span class="tag-lv lv-c2">C2 Pemahaman</span>
+    </div>
+    <span class="soal-skor">2 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Tiga Jenis Kegiatan Ekonomi</div>
+      <div class="stim-body"><p><strong>Produksi</strong> (menghasilkan barang/jasa), <strong>Distribusi</strong> (menyalurkan barang dari produsen ke konsumen), dan <strong>Konsumsi</strong> (menggunakan/menghabiskan barang/jasa).</p></div>
+    </div>
+    <p class="hint-pgc">📊 Klasifikasikan setiap aktivitas ke dalam jenis kegiatan ekonomi yang tepat</p>
+    <p class="q-text">Klasifikasikan setiap aktivitas berikut ke dalam jenis kegiatan ekonomi yang paling tepat!</p>
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <tr><th>Aktivitas</th><th>Produksi</th><th>Distribusi</th><th>Konsumsi</th></tr>
+        <tr><td>Seorang petani memanen padi dari sawahnya</td><td class="ans-cell">✓ BENAR</td><td>○</td><td>○</td></tr>
+        <tr><td>Seorang sopir truk mengangkut beras dari gudang ke supermarket</td><td>○</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr>
+        <tr><td>Seorang ibu memasak dan mengonsumsi nasi untuk keluarganya</td><td>○</td><td>○</td><td class="ans-cell">✓ BENAR</td></tr>
+      </table>
+    </div>
+    <div class="kunci-section" id="k-18">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Petani memanen → menghasilkan bahan pangan (produksi). Sopir truk mengangkut tanpa mengubah → menyalurkan dari produsen ke konsumen (distribusi). Ibu memasak dan memakan → menggunakan/menghabiskan barang untuk kebutuhan (konsumsi).</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 19 — PGK-Cat -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">19</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-proses">Keterampilan Proses</span>
+      <span class="tag-fmt fmt-c">PG Kategori</span>
+      <span class="tag-lv lv-c4">C4 Analisis</span>
+    </div>
+    <span class="soal-skor">2 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Evaluasi Langkah Penyelidikan Ilmiah</div>
+      <div class="stim-body"><p>Dalam penyelidikan ilmiah yang baik, setiap langkah harus dapat dipertanggungjawabkan secara logis dan berdasarkan data. Tentukan apakah setiap langkah <strong>Sesuai</strong> atau <strong>Tidak Sesuai</strong> dengan prinsip keterampilan proses ilmiah yang benar.</p></div>
+    </div>
+    <p class="hint-pgc">📊 Klasifikasikan setiap langkah apakah Sesuai atau Tidak Sesuai dengan prinsip ilmiah</p>
+    <p class="q-text">Klasifikasikan setiap langkah apakah Sesuai atau Tidak Sesuai dengan prinsip ilmiah!</p>
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <tr><th>Langkah Penyelidikan</th><th>Sesuai Prinsip Ilmiah</th><th>Tidak Sesuai Prinsip Ilmiah</th></tr>
+        <tr><td>Menyimpulkan bahwa faktor X berpengaruh meskipun tabel data menunjukkan tidak ada perbedaan signifikan</td><td>○</td><td class="ans-cell">✓ BENAR</td></tr>
+        <tr><td>Setelah hasil tidak konsisten, mengulang eksperimen dengan alat ukur yang lebih akurat</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr>
+        <tr><td>Mengabaikan data yang berbeda jauh dari prediksi dengan alasan "pasti ada kesalahan"</td><td>○</td><td class="ans-cell">✓ BENAR</td></tr>
+      </table>
+    </div>
+    <div class="kunci-section" id="k-19">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Langkah 1: menyimpulkan berlawanan dengan data → pelanggaran prinsip ilmiah (kesimpulan harus berbasis data). Langkah 2: mengulangi eksperimen dengan instrumen lebih baik untuk memperoleh data yang lebih akurat → sesuai prinsip ilmiah. Langkah 3: mengabaikan data anomali tanpa alasan ilmiah yang valid → pelanggaran prinsip ilmiah (semua data harus dihargai dan dianalisis).</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Soal 20 — PGK-Cat -->
+<div class="soal-item">
+  <div class="soal-header">
+    <div class="soal-num">20</div>
+    <div class="soal-meta">
+      <span class="tag-elemen el-proses">Keterampilan Proses</span>
+      <span class="tag-fmt fmt-c">PG Kategori</span>
+      <span class="tag-lv lv-c4">C4 Analisis</span>
+    </div>
+    <span class="soal-skor">2 poin</span>
+  </div>
+  <div class="soal-body">
+    <div class="stimulus">
+      <div class="stim-head">Pemilihan Cara Penyajian Data</div>
+      <div class="stim-body"><p>Setiap cara penyajian data memiliki keunggulan tersendiri: ada yang lebih baik untuk <strong>Membandingkan Data</strong> antara kelompok, dan ada yang lebih baik untuk <strong>Menunjukkan Tren</strong> (perubahan seiring waktu).</p></div>
+    </div>
+    <p class="hint-pgc">📊 Klasifikasikan setiap cara penyajian data ke dalam fungsi yang paling sesuai</p>
+    <p class="q-text">Klasifikasikan setiap cara penyajian data ke dalam fungsi yang paling sesuai!</p>
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <tr><th>Cara Penyajian Data</th><th>Membandingkan Data antar Kelompok</th><th>Menunjukkan Tren/Perubahan Waktu</th></tr>
+        <tr><td>Diagram batang menampilkan jumlah siswa lulus di 5 kelas berbeda</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr>
+        <tr><td>Grafik garis menampilkan perubahan suhu harian selama 30 hari</td><td>○</td><td class="ans-cell">✓ BENAR</td></tr>
+        <tr><td>Diagram batang menampilkan perbandingan tinggi tanaman setelah 4 jenis perlakuan pupuk</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr>
+      </table>
+    </div>
+    <div class="kunci-section" id="k-20">
+      <div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div>
+      <div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Diagram batang efektif membandingkan nilai diskrit antar kelompok/kategori (perbandingan tinggi tanaman antar perlakuan, jumlah siswa lulus per kelas). Grafik garis efektif menampilkan perubahan data berkelanjutan sepanjang waktu (tren suhu harian). Keduanya memiliki kekuatan yang berbeda sesuai jenis data dan tujuan analisis.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ SESI 2 ══════════════════════════════════════════ -->
+<div class="kelompok-div" style="margin-top:32px;">
+  <div><div class="kelompok-title">Sesi 2 — PG Tunggal, PG Kompleks, PG Kategori &amp; Campuran</div><div class="kelompok-sub">Soal 21–40</div></div>
+  <span class="kelompok-badge">26 poin</span>
+</div>
+
+<!-- Soal 21–40 (abbreviated for readability but complete) -->
+<!-- Soal 21 -->
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">21</div><div class="soal-meta"><span class="tag-elemen el-bumi">Bumi &amp; Alam Semesta</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div><span class="soal-skor">1 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Peta Kondisi Geografis Indonesia</div><div class="stim-body"><div class="img-placeholder"><div class="img-placeholder-icon">🗺️</div><div class="img-placeholder-title">Peta Kondisi Alam Indonesia: Tiga Wilayah Geografis</div><div class="img-placeholder-desc">Wilayah A: pegunungan tinggi, tanah vulkanik subur, suhu sejuk &nbsp;|&nbsp; Wilayah B: pesisir &nbsp;|&nbsp; Wilayah C: dataran rendah subur</div></div></div></div>
+    <p class="q-text">Berdasarkan karakteristik Wilayah A (pegunungan tinggi, tanah vulkanik subur, suhu sejuk, akses transportasi terbatas), mata pencaharian utama yang paling sesuai adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Nelayan dan pembudidaya tambak udang karena dekat dengan sumber air</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Petani sayuran, buah-buahan, dan tanaman perkebunan seperti teh atau kopi karena tanahnya subur dan iklimnya sejuk</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Buruh pabrik dan karyawan industri karena wilayah pegunungan cocok untuk kawasan industri</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Penambang batu dan pasir dari dasar sungai karena topografi berlereng</li>
+    </ul>
+    <div class="kunci-section" id="k-21"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Tanah vulkanik subur + iklim sejuk di pegunungan = kondisi ideal untuk pertanian sayuran, buah, teh, dan kopi. Contoh nyata: Lembang, Dieng, dan kawasan pegunungan Jawa yang merupakan sentra pertanian hortikultura dan perkebunan teh/kopi.</p></div></div></div>
+  </div>
+</div>
+
+<!-- Soal 22 -->
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">22</div><div class="soal-meta"><span class="tag-elemen el-sos">Masyarakat &amp; Sosial</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div><span class="soal-skor">1 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Monumen Pahlawan Daerah</div><div class="stim-body"><div class="img-placeholder"><div class="img-placeholder-icon">🏛️</div><div class="img-placeholder-title">Monumen Pahlawan Daerah</div><div class="img-placeholder-desc">Monumen yang mengenang perjuangan pahlawan lokal yang pantang menyerah</div></div><p>Para pahlawan tersebut berjuang bukan hanya dengan senjata, tetapi juga dengan strategi, kesatuan tekad, dan pengorbanan jiwa raga demi tanah air.</p></div></div>
+    <p class="q-text">Nilai perjuangan yang paling relevan dari gambar monumen tersebut untuk diterapkan siswa dalam konteks kehidupan akademik di era digital saat ini adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Mencari cara pintas untuk mengerjakan tugas dengan memanfaatkan teknologi semaksimal mungkin</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Pantang menyerah menghadapi kesulitan belajar dan terus berusaha keras meskipun soal terasa sulit</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Mengandalkan kelompok belajar sepenuhnya dan tidak berusaha memahami materi sendiri</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Menghindari tantangan akademik yang dirasa terlalu berat karena tidak sesuai kemampuan</li>
+    </ul>
+    <div class="kunci-section" id="k-22"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Nilai utama yang digambarkan monumen adalah pantang menyerah (berjuang meski menghadapi kekuatan yang lebih besar). Dalam konteks akademik, ini berarti terus berusaha keras meski menghadapi soal yang sulit — bukan mencari jalan pintas atau menghindari tantangan.</p></div></div></div>
+  </div>
+</div>
+
+<!-- Soal 23 -->
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">23</div><div class="soal-meta"><span class="tag-elemen el-sos">Masyarakat &amp; Sosial</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div><span class="soal-skor">1 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Warisan Budaya Indonesia</div><div class="stim-body"><p>Indonesia memiliki ribuan warisan budaya. Beberapa telah mendapat pengakuan UNESCO sebagai Warisan Budaya Tak Benda Dunia: Batik (motif kain tradisional Jawa), Tari Saman (tari massal dari Aceh), Upacara Ngaben (kremasi jenazah adat Bali), Wayang Kulit (pertunjukan seni bayangan dari Jawa).</p></div></div>
+    <p class="q-text">Berdasarkan konteks kebhinekaan dan pengakuan UNESCO, budaya Indonesia yang telah resmi mendapat status Warisan Budaya Tak Benda Dunia termasuk…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Hanya Batik, karena merupakan budaya yang paling dikenal di dunia internasional</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Batik, Wayang Kulit, dan Tari Saman, yang ketiganya telah mendapat pengakuan UNESCO</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Hanya Upacara Ngaben, karena merupakan tradisi paling unik di Asia Tenggara</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Semua budaya di atas, karena setiap budaya daerah otomatis diakui UNESCO</li>
+    </ul>
+    <div class="kunci-section" id="k-23"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Batik (2009), Wayang (2008), dan Tari Saman (2011) telah resmi diakui UNESCO. Pengakuan UNESCO melalui proses seleksi ketat — tidak semua budaya daerah otomatis diakui. Upacara Ngaben belum masuk daftar UNESCO ICH (Intangible Cultural Heritage).</p></div></div></div>
+  </div>
+</div>
+
+<!-- Soal 24 -->
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">24</div><div class="soal-meta"><span class="tag-elemen el-sos">Masyarakat &amp; Sosial</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div><span class="soal-skor">1 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Rantai Distribusi Beras dari Sawah ke Meja Makan</div><div class="stim-body"><p>(1) Petani → (2) Pengepul desa → (3) Pabrik penggilingan → (4) <strong>Distributor grosir</strong> — membeli beras dalam jumlah besar dari pabrik dan mendistribusikannya ke kota-kota → (5) Pedagang eceran → (6) Konsumen.</p></div></div>
+    <p class="q-text">Dalam rantai tersebut, pelaku yang berperan paling tepat sebagai DISTRIBUTOR (penyalur barang dalam jumlah besar antara produsen dan pengecer) adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Petani, karena menghasilkan gabah yang menjadi bahan baku beras</li>
+      <li class="opt-item"><span class="opt-letter">B</span>Pabrik penggilingan, karena mengolah gabah menjadi produk beras siap jual</li>
+      <li class="opt-item correct"><span class="opt-letter">C</span>Distributor grosir, karena menyalurkan beras dalam jumlah besar dari pabrik ke berbagai pedagang eceran</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Pedagang eceran, karena langsung berhadapan dengan konsumen akhir</li>
+    </ul>
+    <div class="kunci-section" id="k-24"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ C</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Distributor = penyalur barang dalam jumlah besar antara produsen dan pengecer. Distributor grosir membeli dari pabrik dalam partai besar lalu menyebarkan ke pedagang eceran di berbagai kota — inilah peran distribusi skala besar. Petani = produsen, pabrik = produsen/pengolah, pedagang eceran = pengecer.</p></div></div></div>
+  </div>
+</div>
+
+<!-- Soal 25 -->
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">25</div><div class="soal-meta"><span class="tag-elemen el-proses">Keterampilan Proses</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div><span class="soal-skor">1 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Perencanaan Eksperimen: Pengaruh Cahaya terhadap Pertumbuhan Tanaman</div><div class="stim-body"><p>Dini menyiapkan 3 pot tanaman kacang hijau identik: Pot 1 = sinar matahari penuh (8 jam/hari), Pot 2 = tempat teduh (2 jam/hari), Pot 3 = dalam ruangan gelap (0 jam). Semua pot menggunakan tanah yang sama dan disiram air dengan jumlah yang sama setiap hari.</p></div></div>
+    <p class="q-text">Dalam eksperimen Dini, variabel bebas (diubah-ubah), variabel terikat (yang diukur), dan variabel kontrol (dijaga tetap) secara berurutan adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item correct"><span class="opt-letter">A</span>Jumlah cahaya matahari — Tinggi/kecepatan tumbuh tanaman — Jumlah air dan jenis tanah</li>
+      <li class="opt-item"><span class="opt-letter">B</span>Tinggi tanaman — Jumlah cahaya matahari — Jenis bibit kacang hijau</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Jumlah air — Jenis bibit kacang hijau — Jumlah cahaya matahari</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Jenis tanah — Tinggi tanaman — Jumlah cahaya matahari</li>
+    </ul>
+    <div class="kunci-section" id="k-25"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ A</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Variabel bebas = yang sengaja diubah/dibedakan → jumlah cahaya (8 jam, 2 jam, 0 jam). Variabel terikat = yang diukur untuk melihat pengaruhnya → tinggi/kecepatan tumbuh tanaman. Variabel kontrol = yang dijaga sama agar tidak mempengaruhi hasil → jumlah air dan jenis tanah (disebutkan sama untuk semua pot).</p></div></div></div>
+  </div>
+</div>
+
+<!-- Soal 26–30: PGK -->
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">26</div><div class="soal-meta"><span class="tag-elemen el-mkhlk">Makhluk Hidup</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c4">C4 Analisis</span></div><span class="soal-skor">2 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Penyakit dan Penyebabnya</div><div class="stim-body"><p>(1) <strong>Anemia</strong> — kekurangan sel darah merah, disebabkan kekurangan zat besi/vitamin B12/asam folat. (2) <strong>TBC</strong> — infeksi bakteri <em>Mycobacterium tuberculosis</em> yang menyebar melalui udara. (3) <strong>Diare</strong> — infeksi bakteri E.coli dari makanan/air kotor. (4) <strong>Rabun senja</strong> — kekurangan vitamin A.</p></div></div>
+    <p class="hint-pgk">☑ Pilih <strong>LEBIH DARI SATU</strong> jawaban yang benar</p>
+    <p class="q-text">Pilih LEBIH DARI SATU penyakit yang dapat dicegah atau dikurangi risikonya secara efektif melalui pola makan bergizi seimbang!</p>
+    <ul class="pgk-opt-list">
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>A. Anemia, karena kecukupan zat besi dan vitamin B12 dari makanan bergizi mencegah kekurangan sel darah merah</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>B. TBC, karena nutrisi yang baik akan membunuh bakteri penyebab TBC secara langsung</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>C. Diare, karena makanan bergizi seimbang meningkatkan imunitas sehingga lebih tahan terhadap infeksi</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>D. Rabun senja, karena kecukupan vitamin A dari sayur dan buah berwarna mencegah gangguan penglihatan</li>
+    </ul>
+    <div class="kunci-section" id="k-26"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ A</span><span class="correct-tag">✓ D</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Anemia (A) dan rabun senja (D) adalah penyakit defisiensi gizi — langsung dapat dicegah dengan asupan nutrisi yang tepat (zat besi untuk anemia, vitamin A untuk rabun senja). TBC (B) disebabkan bakteri yang harus dibasmi dengan antibiotik, bukan oleh gizi. Diare (C) meskipun imunitas membantu, cara utama pencegahannya adalah higienitas makanan dan sanitasi.</p></div></div></div>
+  </div>
+</div>
+
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">27</div><div class="soal-meta"><span class="tag-elemen el-mkhlk">Makhluk Hidup</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c4">C4 Analisis</span></div><span class="soal-skor">2 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Dampak Tindakan Manusia terhadap Ekosistem</div><div class="stim-body"><p>(1) Reboisasi lahan kritis menggunakan tanaman asli daerah setempat. (2) Konversi hutan menjadi perkebunan sawit monokultur skala besar. (3) Pembangunan koridor satwa liar yang menghubungkan dua hutan yang terfragmentasi oleh jalan raya. (4) Pembuangan limbah cair industri ke sungai yang mengalir melintasi kawasan hutan.</p></div></div>
+    <p class="hint-pgk">☑ Pilih <strong>LEBIH DARI SATU</strong> jawaban yang benar</p>
+    <p class="q-text">Pilih LEBIH DARI SATU tindakan yang memberikan dampak POSITIF dalam menjaga atau memulihkan keseimbangan ekosistem hutan!</p>
+    <ul class="pgk-opt-list">
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>A. Reboisasi lahan kritis menggunakan tanaman asli daerah setempat</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>B. Konversi hutan menjadi perkebunan sawit monokultur skala besar</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>C. Pembangunan koridor satwa liar penghubung antarhutan yang terfragmentasi</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>D. Pembuangan limbah cair industri ke sungai kawasan hutan</li>
+    </ul>
+    <div class="kunci-section" id="k-27"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ A</span><span class="correct-tag">✓ C</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>A: Reboisasi dengan tanaman asli → memulihkan tutupan hutan dan keanekaragaman hayati. C: Koridor satwa → memungkinkan hewan berpindah antara dua hutan yang terpisah, menjaga aliran gen dan keanekaragaman populasi. B: Monokultur sawit menghilangkan keanekaragaman hayati. D: Limbah industri mencemari ekosistem sungai dan hutan sekitarnya.</p></div></div></div>
+  </div>
+</div>
+
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">28</div><div class="soal-meta"><span class="tag-elemen el-energi">Energi</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div><span class="soal-skor">2 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Cara Alat Musik Menghasilkan Bunyi</div><div class="stim-body"><div class="img-placeholder"><div class="img-placeholder-icon">🎵</div><div class="img-placeholder-title">Empat Alat Musik: Gitar, Seruling, Drum, Rebab</div><div class="img-placeholder-desc">Gitar (dipetik), Seruling bambu (ditiup), Drum (dipukul), Rebab (digesek)</div></div></div></div>
+    <p class="hint-pgk">☑ Pilih <strong>LEBIH DARI SATU</strong> jawaban yang benar</p>
+    <p class="q-text">Pilih LEBIH DARI SATU alat musik yang menghasilkan bunyi melalui GETARAN SENAR atau GETARAN KOLOM UDARA!</p>
+    <ul class="pgk-opt-list">
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>A. Gitar, karena menghasilkan bunyi saat senarnya dipetik dan bergetar</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>B. Seruling, karena menghasilkan bunyi dari getaran kolom udara di dalam tabung bambu</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>C. Drum, karena menghasilkan bunyi saat membran/kulit dipukul</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>D. Rebab, karena menghasilkan bunyi saat senarnya digesek dan bergetar</li>
+    </ul>
+    <div class="kunci-section" id="k-28"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ A</span><span class="correct-tag">✓ B</span><span class="correct-tag">✓ D</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Gitar dan rebab = alat musik kordofon (sumber bunyi: getaran senar). Seruling = alat musik aerofon (sumber bunyi: getaran kolom udara dalam tabung). Drum = alat musik membranofon (sumber bunyi: getaran membran/kulit yang dipukul) → tidak termasuk kategori yang ditanyakan.</p></div></div></div>
+  </div>
+</div>
+
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">29</div><div class="soal-meta"><span class="tag-elemen el-bumi">Bumi &amp; Alam Semesta</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div><span class="soal-skor">2 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Mitigasi Perubahan Iklim</div><div class="stim-body"><p>Data NASA menunjukkan konsentrasi CO₂ atmosfer telah mencapai 421 ppm (2023) — tertinggi dalam 800.000 tahun. Berbagai aktivitas dapat dilakukan mulai dari skala individu untuk membantu <strong>mitigasi</strong> (upaya mengurangi penyebab) perubahan iklim.</p></div></div>
+    <p class="hint-pgk">☑ Pilih <strong>LEBIH DARI SATU</strong> jawaban yang benar</p>
+    <p class="q-text">Pilih LEBIH DARI SATU aktivitas yang secara langsung berkontribusi pada mitigasi perubahan iklim dengan mengurangi emisi gas rumah kaca!</p>
+    <ul class="pgk-opt-list">
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>A. Menanam pohon di lahan kosong dekat rumah untuk menyerap CO₂ dari udara</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>B. Mengganti perjalanan jarak dekat dengan sepeda atau berjalan kaki untuk mengurangi emisi kendaraan bermotor</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>C. Membakar sampah plastik dan organik di pekarangan untuk mengurangi volume sampah</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>D. Menggunakan kantong belanja kain yang dapat dipakai ulang untuk mengurangi produksi plastik sekali pakai</li>
+    </ul>
+    <div class="kunci-section" id="k-29"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ A</span><span class="correct-tag">✓ B</span><span class="correct-tag">✓ D</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>A: Pohon menyerap CO₂ melalui fotosintesis → langsung mengurangi konsentrasi GRK. B: Tidak menggunakan kendaraan bermotor → emisi CO₂ dari bahan bakar berkurang. D: Kantong kain mengurangi produksi plastik yang membutuhkan energi dan melepas GRK dalam proses produksinya. C: Membakar sampah justru melepaskan CO₂, CO, dan partikel berbahaya ke udara → KONTRAPRODUKTIF.</p></div></div></div>
+  </div>
+</div>
+
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">30</div><div class="soal-meta"><span class="tag-elemen el-sos">Masyarakat &amp; Sosial</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c4">C4 Analisis</span></div><span class="soal-skor">2 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Praktik Kearifan Lokal Nusantara</div><div class="stim-body"><p>(1) <strong>Sasi Laut</strong> (Maluku) — larangan mengambil hasil laut tertentu selama periode penutupan adat, untuk memberi waktu populasi laut pulih. (2) <strong>Subak</strong> (Bali) — sistem irigasi sawah yang mengelola distribusi air secara adil, berkelanjutan, dan berdasarkan kesepakatan komunal. (3) <strong>Ulos</strong> (Batak) — kain tradisional sakral yang digunakan dalam upacara adat pernikahan, kelahiran, dan kematian.</p></div></div>
+    <p class="hint-pgk">☑ Pilih <strong>LEBIH DARI SATU</strong> jawaban yang benar</p>
+    <p class="q-text">Pilih LEBIH DARI SATU praktik kearifan lokal yang berfungsi LANGSUNG sebagai mekanisme pelestarian sumber daya alam dan ekosistem!</p>
+    <ul class="pgk-opt-list">
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>A. Sasi Laut, karena memberi jeda waktu bagi populasi biota laut untuk berkembang biak dan pulih</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>B. Subak, karena mengelola distribusi air irigasi secara berkelanjutan sehingga sawah tidak kekurangan air</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>C. Ulos, karena memperkuat ikatan sosial masyarakat Batak melalui nilai-nilai tradisional</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>D. Semua praktik di atas, karena semua kearifan lokal pasti berkaitan dengan alam</li>
+    </ul>
+    <div class="kunci-section" id="k-30"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ A</span><span class="correct-tag">✓ B</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Sasi Laut secara langsung melindungi ekosistem laut dengan memberikan masa istirahat bagi biota. Subak secara langsung mengelola sumber daya air untuk pertanian secara berkelanjutan. Ulos merupakan kearifan budaya sosial — fungsinya memperkuat ikatan sosial, bukan secara langsung melestarikan sumber daya alam.</p></div></div></div>
+  </div>
+</div>
+
+<!-- Soal 31–35: PGK-Cat -->
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">31</div><div class="soal-meta"><span class="tag-elemen el-mkhlk">Makhluk Hidup</span><span class="tag-fmt fmt-c">PG Kategori</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div><span class="soal-skor">2 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Diagram Sistem Organ Tubuh Manusia</div><div class="stim-body"><div class="img-placeholder"><div class="img-placeholder-icon">🫀</div><div class="img-placeholder-title">Diagram Sistem Pernapasan dan Peredaran Darah</div><div class="img-placeholder-desc">Diagram anatomi sistem organ pernapasan dan peredaran darah manusia</div></div></div></div>
+    <p class="hint-pgc">📊 Klasifikasikan setiap organ ke dalam sistem yang benar</p>
+    <p class="q-text">Klasifikasikan setiap organ apakah termasuk Sistem Pernapasan atau Sistem Peredaran Darah!</p>
+    <div class="matrix-wrap"><table class="matrix-table"><tr><th>Organ</th><th>Sistem Pernapasan</th><th>Sistem Peredaran Darah</th></tr><tr><td>Paru-paru</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr><tr><td>Jantung</td><td>○</td><td class="ans-cell">✓ BENAR</td></tr><tr><td>Diafragma</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr></table></div>
+    <div class="kunci-section" id="k-31"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Paru-paru = tempat pertukaran O₂ dan CO₂ → sistem pernapasan. Jantung = memompa darah ke seluruh tubuh → sistem peredaran darah. Diafragma = otot yang mengatur gerakan naik-turun paru-paru saat bernapas → sistem pernapasan.</p></div></div></div>
+  </div>
+</div>
+
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">32</div><div class="soal-meta"><span class="tag-elemen el-energi">Energi</span><span class="tag-fmt fmt-c">PG Kategori</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div><span class="soal-skor">2 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Sifat Cahaya pada Berbagai Benda</div><div class="stim-body"><p>Benda dengan permukaan halus dan mengkilap cenderung memantulkan cahaya dengan baik, sementara benda berwarna gelap atau kasar cenderung menyerap cahaya.</p></div></div>
+    <p class="hint-pgc">📊 Klasifikasikan setiap benda berdasarkan kemampuannya terhadap cahaya</p>
+    <p class="q-text">Klasifikasikan setiap benda berdasarkan kemampuannya terhadap cahaya!</p>
+    <div class="matrix-wrap"><table class="matrix-table"><tr><th>Benda</th><th>Memantulkan Cahaya dengan Baik</th><th>Menyerap/Tidak Memantulkan Cahaya</th></tr><tr><td>Permukaan cermin datar yang bersih</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr><tr><td>Batu hitam dengan permukaan kasar</td><td>○</td><td class="ans-cell">✓ BENAR</td></tr><tr><td>Permukaan air kolam yang tenang dan jernih</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr></table></div>
+    <div class="kunci-section" id="k-32"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Cermin datar (permukaan halus mengkilap) → memantulkan cahaya secara sempurna (refleksi spekuler). Batu hitam (gelap, kasar) → menyerap cahaya karena warna hitam menyerap semua panjang gelombang. Air kolam yang tenang dan jernih → memantulkan cahaya (kamu bisa melihat bayangan langit di kolam yang tenang).</p></div></div></div>
+  </div>
+</div>
+
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">33</div><div class="soal-meta"><span class="tag-elemen el-sos">Masyarakat &amp; Sosial</span><span class="tag-fmt fmt-c">PG Kategori</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div><span class="soal-skor">2 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Pelaku Ekonomi: Produsen dan Konsumen</div><div class="stim-body"><p><strong>Produsen</strong> = pihak yang menghasilkan barang atau jasa. <strong>Konsumen</strong> = pihak yang menggunakan atau menghabiskan barang dan jasa untuk memenuhi kebutuhannya.</p></div></div>
+    <p class="hint-pgc">📊 Klasifikasikan setiap pelaku sebagai Produsen atau Konsumen</p>
+    <p class="q-text">Klasifikasikan setiap pelaku ekonomi berikut apakah termasuk Produsen atau Konsumen!</p>
+    <div class="matrix-wrap"><table class="matrix-table"><tr><th>Pelaku Ekonomi</th><th>Produsen</th><th>Konsumen</th></tr><tr><td>Pengrajin batik yang membuat dan menjual kain batik tulis</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr><tr><td>Seorang siswa membeli dan memakai sepatu baru untuk sekolah</td><td>○</td><td class="ans-cell">✓ BENAR</td></tr><tr><td>Pabrik sepatu memproduksi 1.000 pasang sepatu per hari</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr></table></div>
+    <div class="kunci-section" id="k-33"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Pengrajin batik dan pabrik sepatu = produsen (menghasilkan barang). Siswa yang membeli dan memakai sepatu = konsumen (menggunakan barang untuk memenuhi kebutuhan).</p></div></div></div>
+  </div>
+</div>
+
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">34</div><div class="soal-meta"><span class="tag-elemen el-proses">Keterampilan Proses</span><span class="tag-fmt fmt-c">PG Kategori</span><span class="tag-lv lv-c4">C4 Analisis</span></div><span class="soal-skor">2 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Metode Pencatatan Hasil Pengamatan</div><div class="stim-body"><p>Kelompok riset siswa diminta mencatat hasil pengamatan pertumbuhan tanaman selama 4 minggu. Tentukan apakah setiap cara <strong>Efektif</strong> atau <strong>Kurang Efektif</strong> untuk keperluan analisis data ilmiah.</p></div></div>
+    <p class="hint-pgc">📊 Klasifikasikan setiap cara pencatatan</p>
+    <p class="q-text">Klasifikasikan setiap cara pencatatan apakah Efektif atau Kurang Efektif untuk analisis data ilmiah!</p>
+    <div class="matrix-wrap"><table class="matrix-table"><tr><th>Cara Pencatatan</th><th>Efektif untuk Analisis Data</th><th>Kurang Efektif untuk Analisis Data</th></tr><tr><td>Tabel terstruktur dengan kolom: Tanggal, Tinggi Tanaman (cm), Warna Daun, Kondisi Tanah</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr><tr><td>Sketsa kasar tanpa skala, ukuran, atau keterangan waktu yang spesifik</td><td>○</td><td class="ans-cell">✓ BENAR</td></tr><tr><td>Rekaman video berdurasi penuh dari awal hingga akhir setiap sesi pengamatan</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr></table></div>
+    <div class="kunci-section" id="k-34"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Tabel terstruktur → efektif karena data terorganisir, mudah dibandingkan, dan langsung dapat dihitung/dianalisis. Rekaman video penuh → efektif karena menyimpan semua detail observasi yang dapat ditinjau ulang. Sketsa kasar tanpa skala atau waktu → kurang efektif karena tidak ada data kuantitatif yang dapat dianalisis secara ilmiah.</p></div></div></div>
+  </div>
+</div>
+
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">35</div><div class="soal-meta"><span class="tag-elemen el-bumi">Bumi &amp; Alam Semesta</span><span class="tag-fmt fmt-c">PG Kategori</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div><span class="soal-skor">2 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Diagram Tata Surya</div><div class="stim-body"><div class="img-placeholder"><div class="img-placeholder-icon">🪐</div><div class="img-placeholder-title">Diagram Tata Surya dengan Sabuk Asteroid</div><div class="img-placeholder-desc">Planet Dalam (sebelum Sabuk Asteroid): Merkurius, Venus, Bumi, Mars &nbsp;|&nbsp; Planet Luar (setelah Sabuk Asteroid): Jupiter, Saturnus, Uranus, Neptunus</div></div></div></div>
+    <p class="hint-pgc">📊 Klasifikasikan berdasarkan posisi terhadap Sabuk Asteroid</p>
+    <p class="q-text">Berdasarkan posisinya terhadap Sabuk Asteroid, klasifikasikan setiap planet berikut!</p>
+    <div class="matrix-wrap"><table class="matrix-table"><tr><th>Planet</th><th>Planet Dalam (sebelum Sabuk Asteroid)</th><th>Planet Luar (setelah Sabuk Asteroid)</th></tr><tr><td>Merkurius</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr><tr><td>Saturnus</td><td>○</td><td class="ans-cell">✓ BENAR</td></tr><tr><td>Mars</td><td class="ans-cell">✓ BENAR</td><td>○</td></tr></table></div>
+    <div class="kunci-section" id="k-35"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Planet Dalam (di antara Matahari dan Sabuk Asteroid): Merkurius, Venus, Bumi, Mars. Planet Luar (di luar Sabuk Asteroid): Jupiter, Saturnus, Uranus, Neptunus. Merkurius dan Mars = planet dalam. Saturnus = planet luar (gas raksasa dengan cincin khasnya).</p></div></div></div>
+  </div>
+</div>
+
+<!-- Soal 36–40: Campuran -->
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">36</div><div class="soal-meta"><span class="tag-elemen el-proses">Keterampilan Proses</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c4">C4 Analisis</span></div><span class="soal-skor">1 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Pemilihan Jenis Peta untuk Berbagai Kebutuhan</div><div class="stim-body"><p><strong>Tugas A:</strong> Mencari rute tercepat dari sekolah ke museum menggunakan transportasi umum.<br><strong>Tugas B:</strong> Mempelajari perubahan batas wilayah administratif Kabupaten Bogor sejak tahun 1950.<br><strong>Tugas C:</strong> Melihat gambaran ketinggian, kontur tanah, dan kemiringan lereng di wilayah pegunungan Jawa Barat.</p></div></div>
+    <p class="q-text">Jenis peta yang paling tepat untuk menyelesaikan Tugas A adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Peta topografi konvensional, karena menampilkan informasi ketinggian dan kontur tanah secara akurat</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Peta digital interaktif (seperti Google Maps), karena dapat memberikan informasi rute real-time dan jadwal transportasi umum</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Atlas peta historis, karena berisi data wilayah dari berbagai periode waktu yang berbeda</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Peta administrasi dinding kelas, karena mudah dibaca dan tersedia di setiap sekolah</li>
+    </ul>
+    <div class="kunci-section" id="k-36"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Tugas A membutuhkan: rute real-time, jalur transportasi umum, dan mungkin informasi waktu. Hanya peta digital interaktif (Google Maps, OpenStreetMap) yang dapat menyediakan semua fitur ini secara dinamis. Peta topografi untuk Tugas C, atlas historis untuk Tugas B.</p></div></div></div>
+  </div>
+</div>
+
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">37</div><div class="soal-meta"><span class="tag-elemen el-proses">Keterampilan Proses</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c4">C4 Analisis</span></div><span class="soal-skor">2 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Mengomunikasikan Hasil Penyelidikan kepada Berbagai Audiens</div><div class="stim-body"><p>Kelompok 5 harus mempresentasikan hasil penyelidikan kepada tiga audiens: (1) Warga sekitar sekolah (masyarakat umum), (2) Tim juri lomba ilmiah (ilmuwan dan guru berpengalaman), (3) Siswa kelas 3 (usia 8–9 tahun).</p></div></div>
+    <p class="hint-pgk">☑ Pilih <strong>LEBIH DARI SATU</strong> jawaban yang benar</p>
+    <p class="q-text">Pilih LEBIH DARI SATU format komunikasi yang paling tepat untuk menyampaikan hasil kepada WARGA SEKITAR SEKOLAH (audiens umum)!</p>
+    <ul class="pgk-opt-list">
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>A. Poster infografis berwarna dengan gambar menarik dan poin-poin ringkas yang mudah dipahami</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>B. Laporan ilmiah formal setebal 20 halaman dengan tabel statistik dan daftar pustaka lengkap</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>C. Video dokumenter pendek berdurasi 2–3 menit dengan narasi sederhana dan visual yang menarik</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>D. Presentasi PowerPoint penuh grafik dan data statistik detail untuk tim juri ilmiah</li>
+    </ul>
+    <div class="kunci-section" id="k-37"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ A</span><span class="correct-tag">✓ C</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Warga umum = tidak berlatar belakang sains → butuh komunikasi yang sederhana, visual, dan menarik. Poster infografis (A) dan video pendek (C) memenuhi kriteria ini. Laporan ilmiah formal (B) dan PowerPoint statistik (D) cocok untuk tim juri ilmiah, bukan warga umum.</p></div></div></div>
+  </div>
+</div>
+
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">38</div><div class="soal-meta"><span class="tag-elemen el-sos">Masyarakat &amp; Sosial</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c2">C2 Pemahaman</span></div><span class="soal-skor">1 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Fenomena Ekonomi Menjelang Hari Raya</div><div class="stim-body"><p>Menjelang Lebaran, harga daging sapi naik dari Rp 120.000/kg menjadi Rp 180.000/kg dalam dua minggu. Pasokan sapi lebih sedikit dari biasanya (peternak menahan sapi untuk keperluan kurban), sementara permintaan masyarakat meningkat drastis karena tradisi memasak hidangan spesial.</p></div></div>
+    <p class="q-text">Istilah ekonomi yang paling tepat untuk menggambarkan kondisi ketidakseimbangan antara ketersediaan yang terbatas dengan permintaan yang tinggi pada kasus daging sapi tersebut adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Inflasi — kenaikan harga barang secara menyeluruh dalam perekonomian</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Kelangkaan — kondisi di mana ketersediaan sumber daya (barang) tidak mencukupi untuk memenuhi kebutuhan yang ada</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Deflasi — penurunan harga barang secara umum dalam jangka waktu tertentu</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Surplus — kondisi kelebihan pasokan barang di atas kebutuhan masyarakat</li>
+    </ul>
+    <div class="kunci-section" id="k-38"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Kelangkaan adalah kondisi ketidakseimbangan antara kebutuhan/permintaan yang besar dengan ketersediaan yang terbatas. Dalam kasus ini: permintaan naik + pasokan turun = kelangkaan daging sapi. Inflasi berbeda — inflasi adalah kenaikan harga barang secara umum dan menyeluruh dalam perekonomian (bukan satu jenis barang saja).</p></div></div></div>
+  </div>
+</div>
+
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">39</div><div class="soal-meta"><span class="tag-elemen el-sos">Masyarakat &amp; Sosial</span><span class="tag-fmt fmt-b">PG Kompleks</span><span class="tag-lv lv-c3">C3 Aplikasi</span></div><span class="soal-skor">2 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Berbagai Jenis Sumber Sejarah</div><div class="stim-body"><div class="img-placeholder"><div class="img-placeholder-icon">📜</div><div class="img-placeholder-title">Kolase Sumber Sejarah</div><div class="img-placeholder-desc">(1) Keris kuno berukir &nbsp;|&nbsp; (2) Batu prasasti dengan tulisan kuno &nbsp;|&nbsp; (3) Buku catatan harian pejuang &nbsp;|&nbsp; (4) Foto hitam-putih peristiwa sejarah</div></div></div></div>
+    <p class="hint-pgk">☑ Pilih <strong>LEBIH DARI SATU</strong> jawaban yang benar</p>
+    <p class="q-text">Pilih LEBIH DARI SATU benda yang termasuk kategori SUMBER SEJARAH TERTULIS!</p>
+    <ul class="pgk-opt-list">
+      <li class="pgk-opt-item"><span class="opt-check"></span>A. Keris kuno berukir, karena merupakan benda bersejarah yang bernilai tinggi</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>B. Batu prasasti dengan tulisan kuno terpahat, karena mengandung teks/tulisan berisi informasi sejarah</li>
+      <li class="pgk-opt-item correct"><span class="opt-check">✓</span>C. Buku catatan harian pejuang kemerdekaan, karena berisi tulisan langsung dari pelaku sejarah</li>
+      <li class="pgk-opt-item"><span class="opt-check"></span>D. Foto hitam-putih peristiwa sejarah, karena merupakan dokumentasi visual masa lampau</li>
+    </ul>
+    <div class="kunci-section" id="k-39"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span><span class="correct-tag">✓ C</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Sumber sejarah tertulis = sumber yang mengandung teks/tulisan berisi informasi sejarah. Prasasti (B): teks terpahat di batu → sumber tertulis. Buku catatan harian (C): tulisan dari pelaku sejarah → sumber tertulis. Keris (A): artefak fisik tanpa teks → sumber benda/artefak. Foto (D): dokumentasi visual → sumber gambar/visual, bukan tertulis.</p></div></div></div>
+  </div>
+</div>
+
+<div class="soal-item">
+  <div class="soal-header"><div class="soal-num">40</div><div class="soal-meta"><span class="tag-elemen el-proses">Keterampilan Proses</span><span class="tag-fmt fmt-a">PG Tunggal</span><span class="tag-lv lv-c4">C4 Analisis</span></div><span class="soal-skor">1 poin</span></div>
+  <div class="soal-body">
+    <div class="stimulus"><div class="stim-head">Evaluasi Eksperimen yang Bermasalah</div><div class="stim-body"><p>Kelompok Anisa menyelidiki pengaruh suhu air terhadap kecepatan melarutnya gula. Hasil: Air panas (80°C) → 30 detik; Air hangat (50°C) → 2 menit; Air dingin (20°C) → 8 menit. Namun mereka menggunakan sendok pengaduk berbeda ukuran (panas: sendok besar, hangat: sedang, dingin: kecil), sehingga frekuensi dan kekuatan pengadukan tidak terkontrol. Hal ini membuat validitas kesimpulan diragukan.</p></div></div>
+    <p class="q-text">Langkah refleksi dan perbaikan yang paling tepat untuk meningkatkan validitas eksperimen kelompok Anisa adalah…</p>
+    <ul class="opt-list">
+      <li class="opt-item"><span class="opt-letter">A</span>Mengabaikan perbedaan ukuran sendok karena hanya alat bantu dan tidak mempengaruhi hasil larutan</li>
+      <li class="opt-item correct"><span class="opt-letter">B</span>Mengulang eksperimen dengan menggunakan sendok yang sama ukuran dan jumlah adukannya sama untuk setiap kondisi suhu</li>
+      <li class="opt-item"><span class="opt-letter">C</span>Mengubah kesimpulan menjadi "suhu tidak berpengaruh" karena ada kemungkinan pengadukan yang menyebabkan perbedaan</li>
+      <li class="opt-item"><span class="opt-letter">D</span>Menghilangkan data percobaan dengan sendok berbeda dan hanya menggunakan data yang dianggap benar</li>
+    </ul>
+    <div class="kunci-section" id="k-40"><div class="kunci-head">🔑 <span class="kunci-badge">Kunci &amp; Pembahasan</span></div><div class="kunci-row"><div class="kunci-label">Kunci Jawaban</div><div class="kunci-value"><span class="correct-tag">✓ B</span></div></div><div class="pembahasan-box"><div class="pembahasan-head">💡 Pembahasan</div><div class="pembahasan-body"><p>Masalahnya adalah variabel pengadukan tidak terkontrol (sendok berbeda ukuran). Solusi ilmiah yang tepat adalah mengontrol variabel tersebut dengan mengulang eksperimen menggunakan sendok yang sama dan jumlah adukan yang sama. Ini meningkatkan validitas internal eksperimen. Opsi C (mengubah kesimpulan tanpa data baru) dan D (menghapus data) adalah pelanggaran prinsip ilmiah.</p></div></div></div>
+  </div>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <strong>SD Muhammadiyah 01 Kukusan</strong> · Soal &amp; Kunci Jawaban Ujian Sekolah IPAS · TP 2025/2026
+</footer>
+
+<script>
+let kunciVisible = false;
+
+function toggleKunci() {
+  kunciVisible = !kunciVisible;
+  document.querySelectorAll('.kunci-section').forEach(el => {
+    el.classList.toggle('visible', kunciVisible);
+  });
+  const label = kunciVisible ? 'Sembunyikan Kunci' : 'Tampilkan Kunci';
+  const icon  = kunciVisible ? '🙈' : '🔑';
+  document.getElementById('toggle-label').textContent = label;
+  document.getElementById('toggle-kunci-btn').classList.toggle('active', kunciVisible);
+  document.getElementById('toggle-btn-sticky').textContent = icon + ' ' + label;
+  document.getElementById('toggle-btn-sticky').classList.toggle('active', kunciVisible);
+}
+</script>
+
+</body>
+</html>
